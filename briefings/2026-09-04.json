@@ -1,0 +1,953 @@
+{
+  "today_str": "2026-09-04",
+  "api": {
+    "call_count": 40,
+    "max_calls": 40,
+    "quota_exceeded": false,
+    "auth_failed": false,
+    "partial_due_to_own_budget_cap": true
+  },
+  "keywords_main": [
+    "영어",
+    "영어회화",
+    "영어 공부법",
+    "영어 스피킹"
+  ],
+  "keywords_sub": [
+    "영어 듣기",
+    "영어 발음",
+    "영어 독학",
+    "원어민 표현",
+    "영어 문법"
+  ],
+  "temp_keywords": [],
+  "exclude_words": [
+    "shorts",
+    "밈",
+    "asmr",
+    "노래"
+  ],
+  "collection_summary": {
+    "total_seed_ids": 321,
+    "total_filtered": 175,
+    "excluded_log": {
+      "shorts": 137,
+      "exclude_word": 1,
+      "low_view": 8
+    },
+    "unique_channels": 95
+  },
+  "keyword_stats": [
+    {
+      "keyword": "영어",
+      "type": "주",
+      "count": 30,
+      "totalViews": 24557327,
+      "medianViews": 50567,
+      "top3ChannelSharePct": 53.2
+    },
+    {
+      "keyword": "영어회화",
+      "type": "주",
+      "count": 31,
+      "totalViews": 3665336,
+      "medianViews": 20314,
+      "top3ChannelSharePct": 56.8
+    },
+    {
+      "keyword": "영어 공부법",
+      "type": "주",
+      "count": 34,
+      "totalViews": 2423977,
+      "medianViews": 36783,
+      "top3ChannelSharePct": 60.5
+    },
+    {
+      "keyword": "영어 스피킹",
+      "type": "주",
+      "count": 33,
+      "totalViews": 1947980,
+      "medianViews": 27707,
+      "top3ChannelSharePct": 73.1
+    },
+    {
+      "keyword": "영어 듣기",
+      "type": "보조",
+      "count": 40,
+      "totalViews": 1984720,
+      "medianViews": 13288,
+      "top3ChannelSharePct": 74.8
+    },
+    {
+      "keyword": "영어 발음",
+      "type": "보조",
+      "count": 9,
+      "totalViews": 3345181,
+      "medianViews": 105342,
+      "top3ChannelSharePct": 83.8
+    },
+    {
+      "keyword": "영어 독학",
+      "type": "보조",
+      "count": 24,
+      "totalViews": 4601016,
+      "medianViews": 35186,
+      "top3ChannelSharePct": 84.9
+    },
+    {
+      "keyword": "원어민 표현",
+      "type": "보조",
+      "count": 17,
+      "totalViews": 325003,
+      "medianViews": 8491,
+      "top3ChannelSharePct": 67.2
+    },
+    {
+      "keyword": "영어 문법",
+      "type": "보조",
+      "count": 26,
+      "totalViews": 809407,
+      "medianViews": 15243,
+      "top3ChannelSharePct": 84.7
+    }
+  ],
+  "top20": [
+    {
+      "rank": 1,
+      "videoId": "9Vf9iyYxdik",
+      "title": "Some selectors. think kapil dev can't talk in english.#kapildev #indiancricketteam #indiancricketer",
+      "channelTitle": "The Cricket Classroom ",
+      "channelSubscribers": 12100,
+      "viewCount": 5744715,
+      "dailyAvgViews": 205168.4,
+      "engagementRate": 1.0225,
+      "durationBucket": "1~4분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-07T17:26:55Z",
+      "titleLength": 99,
+      "titlePatternTags": [],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 2,
+      "videoId": "FGeRBd3tWIs",
+      "title": "어른도 모르는 어려운 영어단어를 사용하는 하영이? #내아이의사생활 #02hby",
+      "channelTitle": "두부우",
+      "channelSubscribers": 155000,
+      "viewCount": 4047693,
+      "dailyAvgViews": 809538.6,
+      "engagementRate": 1.0915,
+      "durationBucket": "1~4분",
+      "freshness": "7일 이내",
+      "publishedAt": "2026-08-30T04:00:03Z",
+      "titleLength": 43,
+      "titlePatternTags": [
+        "질문형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 3,
+      "videoId": "Imni1FKN5hE",
+      "title": "Gujju Obsession with English Names | Princy Parikh #name #gujarati #gujarat #girl #baby #relatable",
+      "channelTitle": "Princy Parikh",
+      "channelSubscribers": 3740000,
+      "viewCount": 3269050,
+      "dailyAvgViews": 326905.0,
+      "engagementRate": 2.9584,
+      "durationBucket": "1~4분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-25T07:06:58Z",
+      "titleLength": 98,
+      "titlePatternTags": [],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 4,
+      "videoId": "unA7m6rjTUw",
+      "title": "\"영어 나올 줄 알았는데?\" 할리우드 홍보장에서 완벽한 한국어 뱉어 외신 기자들 싹 다 얼게 만든 12살 독학 배우의 정체",
+      "channelTitle": "4800만",
+      "channelSubscribers": 24900,
+      "viewCount": 2927670,
+      "dailyAvgViews": 418238.6,
+      "engagementRate": 0.986,
+      "durationBucket": "1~4분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-27T23:07:01Z",
+      "titleLength": 68,
+      "titlePatternTags": [
+        "질문형",
+        "결과성과형",
+        "경고반전형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 5,
+      "videoId": "R8Eyd1hjNtk",
+      "title": "골프장 가서 영어 한마디에 게임비 폭탄 맞은 황새와 아이들 #최용수 #골프왕 #최용수예능",
+      "channelTitle": "알고리즘 탈출 실패",
+      "channelSubscribers": 5510,
+      "viewCount": 2296493,
+      "dailyAvgViews": 82017.6,
+      "engagementRate": 0.4405,
+      "durationBucket": "1~4분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-07T05:34:03Z",
+      "titleLength": 49,
+      "titlePatternTags": [
+        "결과성과형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 6,
+      "videoId": "2d4OKT2oRh4",
+      "title": "🔥 Gen Z English vs Millennial English | Which One Do You Speak? #english #learnenglish #viralvideo",
+      "channelTitle": "BARI ENGLISH ACADEMY",
+      "channelSubscribers": 1500000,
+      "viewCount": 2279768,
+      "dailyAvgViews": 81420.3,
+      "engagementRate": 2.5204,
+      "durationBucket": "1~4분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-07T06:30:26Z",
+      "titleLength": 98,
+      "titlePatternTags": [
+        "질문형",
+        "비교형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 7,
+      "videoId": "9UG_1WIT4pM",
+      "title": "Jisoo’s English moments😭✨#jisoo #jisoenglish #blackpink #kimjisoo #misskorea#blackpinkinyourarea#kim",
+      "channelTitle": "Rosie",
+      "channelSubscribers": 5640,
+      "viewCount": 1375116,
+      "dailyAvgViews": 72374.5,
+      "engagementRate": 3.5824,
+      "durationBucket": "1~4분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-16T11:04:33Z",
+      "titleLength": 100,
+      "titlePatternTags": [],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 8,
+      "videoId": "cRp3PvK9Kqs",
+      "title": "영국영어로 말하는 명예영국인 본캐 | 존박의 스몰톡",
+      "channelTitle": "존이냐박이냐",
+      "channelSubscribers": 532000,
+      "viewCount": 1190222,
+      "dailyAvgViews": 45777.8,
+      "engagementRate": 1.8839,
+      "durationBucket": "20분+",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-09T10:30:04Z",
+      "titleLength": 28,
+      "titlePatternTags": [],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 9,
+      "videoId": "4DF-FhS4jP8",
+      "title": "미치도록 웃기는 본토 발음 실수 모음집",
+      "channelTitle": "짭쌀떡",
+      "channelSubscribers": 84800,
+      "viewCount": 1128659,
+      "dailyAvgViews": 56432.9,
+      "engagementRate": 2.8814,
+      "durationBucket": "1~4분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-15T08:55:25Z",
+      "titleLength": 21,
+      "titlePatternTags": [],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 10,
+      "videoId": "KUGt6FH2Fro",
+      "title": "영어 왕초보라면 이 영상으로 시작하세요 | 쉬운 영어 80문장",
+      "channelTitle": "생각하는 영어",
+      "channelSubscribers": 103000,
+      "viewCount": 951209,
+      "dailyAvgViews": 32800.3,
+      "engagementRate": 3.14,
+      "durationBucket": "20분+",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-06T04:13:52Z",
+      "titleLength": 34,
+      "titlePatternTags": [
+        "숫자형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": true
+    },
+    {
+      "rank": 11,
+      "videoId": "QEmEjcvqiZk",
+      "title": "이것만 죽어라 외우세요 l 세상 모든 해외여행 영어 문장 80%가 해결되는 앞대가리 공식 10개 5탄",
+      "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "channelSubscribers": 554000,
+      "viewCount": 488160,
+      "dailyAvgViews": 40680.0,
+      "engagementRate": 0.6789,
+      "durationBucket": "20분+",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-23T11:15:06Z",
+      "titleLength": 56,
+      "titlePatternTags": [
+        "숫자형",
+        "경고반전형"
+      ],
+      "descFlags": {
+        "hasLink": true,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": true
+    },
+    {
+      "rank": 12,
+      "videoId": "bB5jPt38Ob8",
+      "title": "대화중에 남친 몰래 영어 발음게임해보깈ㅋㅋㅋㅋ",
+      "channelTitle": "웰고티비",
+      "channelSubscribers": 11300,
+      "viewCount": 484120,
+      "dailyAvgViews": 25480.0,
+      "engagementRate": 0.9774,
+      "durationBucket": "1~4분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-16T05:22:39Z",
+      "titleLength": 25,
+      "titlePatternTags": [],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 13,
+      "videoId": "jeMIRXw-OT8",
+      "title": "99%가 모르는 AI 영어 공부법, 이 영상 하나로 끝내세요",
+      "channelTitle": "제나쌤 | 영어독학",
+      "channelSubscribers": 57400,
+      "viewCount": 369212,
+      "dailyAvgViews": 16052.7,
+      "engagementRate": 2.91,
+      "durationBucket": "4~10분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-12T08:38:28Z",
+      "titleLength": 33,
+      "titlePatternTags": [
+        "숫자형",
+        "결과성과형",
+        "경고반전형",
+        "뉴스업데이트형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": true
+    },
+    {
+      "rank": 14,
+      "videoId": "6DgwJBzyvvk",
+      "title": "단 60일, 영어로 말하게 해드립니다 (궁극의 스피킹 플랜)",
+      "channelTitle": "세라 잉글리쉬 Sarah English",
+      "channelSubscribers": 26000,
+      "viewCount": 351458,
+      "dailyAvgViews": 16736.1,
+      "engagementRate": 5.0524,
+      "durationBucket": "20분+",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-14T04:11:14Z",
+      "titleLength": 33,
+      "titlePatternTags": [
+        "숫자형",
+        "결과성과형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 15,
+      "videoId": "nagbyb4c2t8",
+      "title": "나는 영어를 잘하는 편일까? | 영어 레벨 테스트",
+      "channelTitle": "주아쌤_소리튠영어",
+      "channelSubscribers": 870000,
+      "viewCount": 288722,
+      "dailyAvgViews": 12030.1,
+      "engagementRate": 0.877,
+      "durationBucket": "10~20분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-11T11:00:30Z",
+      "titleLength": 27,
+      "titlePatternTags": [
+        "질문형"
+      ],
+      "descFlags": {
+        "hasLink": true,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 16,
+      "videoId": "Vdp9QjN2gT8",
+      "title": "have been 1분 완벽정리  #영어회화 #영어공부 #기초영어",
+      "channelTitle": "잉글리스트",
+      "channelSubscribers": 375000,
+      "viewCount": 281557,
+      "dailyAvgViews": 46926.2,
+      "engagementRate": 2.4322,
+      "durationBucket": "1~4분",
+      "freshness": "7일 이내",
+      "publishedAt": "2026-08-29T01:00:28Z",
+      "titleLength": 36,
+      "titlePatternTags": [
+        "숫자형",
+        "튜토리얼형"
+      ],
+      "descFlags": {
+        "hasLink": true,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": true
+    },
+    {
+      "rank": 17,
+      "videoId": "RJBvFzqidRo",
+      "title": "화려한 옷을 입은 그녀의 오싹한 직업? #standupcomedy #standupcomedian #영어회화 #comedy",
+      "channelTitle": "코믹한영어",
+      "channelSubscribers": 179000,
+      "viewCount": 270309,
+      "dailyAvgViews": 270309.0,
+      "engagementRate": 2.4084,
+      "durationBucket": "1~4분",
+      "freshness": "7일 이내",
+      "publishedAt": "2026-09-03T01:00:09Z",
+      "titleLength": 67,
+      "titlePatternTags": [
+        "질문형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 18,
+      "videoId": "Jdc0kFebXJY",
+      "title": "평범한 나를 통역사로 만들어 준 단 1권의 영어독학책 | 국내파통역사의 효율10배 올리는 영어공부법 | 국내파통역사의 인생역전 아웃풋 영어공부법",
+      "channelTitle": "만다블_국내파통역사의 영어공부법",
+      "channelSubscribers": 35000,
+      "viewCount": 244783,
+      "dailyAvgViews": 13599.1,
+      "engagementRate": 0.851,
+      "durationBucket": "20분+",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-17T12:00:53Z",
+      "titleLength": 80,
+      "titlePatternTags": [
+        "숫자형",
+        "결과성과형",
+        "권위인용형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": false
+    },
+    {
+      "rank": 19,
+      "videoId": "iZyNuxjjCaY",
+      "title": "[페파피그 리스닝] 소리카피(발음 집중)➕문장카피(의미 집중)🟰무자막 영어 듣기 가능 훈련",
+      "channelTitle": "에스텔잉글리쉬EstellEnglish",
+      "channelSubscribers": 688000,
+      "viewCount": 159850,
+      "dailyAvgViews": 8880.6,
+      "engagementRate": 1.1949,
+      "durationBucket": "10~20분",
+      "freshness": "8~30일",
+      "publishedAt": "2026-08-16T22:00:15Z",
+      "titleLength": 50,
+      "titlePatternTags": [
+        "튜토리얼형"
+      ],
+      "descFlags": {
+        "hasLink": true,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": true
+    },
+    {
+      "rank": 20,
+      "videoId": "69RRB4pazVA",
+      "title": "영어 회화 이렇게 했더니 7일 만에 입 뚫림｜2026 AI 영어 회화 공부법",
+      "channelTitle": "제나쌤 | 영어독학",
+      "channelSubscribers": 57400,
+      "viewCount": 142207,
+      "dailyAvgViews": 23701.2,
+      "engagementRate": 1.3438,
+      "durationBucket": "10~20분",
+      "freshness": "7일 이내",
+      "publishedAt": "2026-08-29T06:42:48Z",
+      "titleLength": 42,
+      "titlePatternTags": [
+        "숫자형",
+        "결과성과형",
+        "뉴스업데이트형",
+        "튜토리얼형"
+      ],
+      "descFlags": {
+        "hasLink": false,
+        "hasCTA": false,
+        "hasTimestamp": false,
+        "hasGithub": false
+      },
+      "isEducationContent": true
+    }
+  ],
+  "duration_bucket_stats_full175": [
+    {
+      "bucket": "20분+",
+      "count": 96,
+      "avgViews": 55993,
+      "avgEngagementRate": 2.539
+    },
+    {
+      "bucket": "1~4분",
+      "count": 21,
+      "avgViews": 1162454,
+      "avgEngagementRate": 2.107
+    },
+    {
+      "bucket": "10~20분",
+      "count": 35,
+      "avgViews": 39422,
+      "avgEngagementRate": 3.014
+    },
+    {
+      "bucket": "4~10분",
+      "count": 23,
+      "avgViews": 35309,
+      "avgEngagementRate": 2.372
+    }
+  ],
+  "channel_table_top20": [
+    {
+      "channelTitle": "The Cricket Classroom ",
+      "channelId": "UCblGJaQAcllBHb6e2WOXLNw",
+      "subscribers": 12100,
+      "topicVideoCount": 1,
+      "topicTotalViews": 5744715,
+      "channelRelativePerf": 474.77
+    },
+    {
+      "channelTitle": "두부우",
+      "channelId": "UCkavWA4JMTdOKfLr1Qilx8g",
+      "subscribers": 155000,
+      "topicVideoCount": 1,
+      "topicTotalViews": 4047693,
+      "channelRelativePerf": 26.11
+    },
+    {
+      "channelTitle": "Princy Parikh",
+      "channelId": "UCHWcTUlaLVO-HhIefZZXGEA",
+      "subscribers": 3740000,
+      "topicVideoCount": 1,
+      "topicTotalViews": 3269050,
+      "channelRelativePerf": 0.87
+    },
+    {
+      "channelTitle": "4800만",
+      "channelId": "UCKV4df397J-moklrlzQkMrA",
+      "subscribers": 24900,
+      "topicVideoCount": 1,
+      "topicTotalViews": 2927670,
+      "channelRelativePerf": 117.58
+    },
+    {
+      "channelTitle": "알고리즘 탈출 실패",
+      "channelId": "UCnzXbLWWX1Y0PCoQ6CjoDxg",
+      "subscribers": 5510,
+      "topicVideoCount": 1,
+      "topicTotalViews": 2296493,
+      "channelRelativePerf": 416.79
+    },
+    {
+      "channelTitle": "BARI ENGLISH ACADEMY",
+      "channelId": "UC8TlLhW3BTZ2IDE7IyTvv2A",
+      "subscribers": 1500000,
+      "topicVideoCount": 1,
+      "topicTotalViews": 2279768,
+      "channelRelativePerf": 1.52
+    },
+    {
+      "channelTitle": "Rosie",
+      "channelId": "UCAq_7Ms8XWu9pOMfzFAkbCA",
+      "subscribers": 5640,
+      "topicVideoCount": 1,
+      "topicTotalViews": 1375116,
+      "channelRelativePerf": 243.81
+    },
+    {
+      "channelTitle": "존이냐박이냐",
+      "channelId": "UC3QsCXXj8b3uu9Elki3TE3A",
+      "subscribers": 532000,
+      "topicVideoCount": 1,
+      "topicTotalViews": 1190222,
+      "channelRelativePerf": 2.24
+    },
+    {
+      "channelTitle": "짭쌀떡",
+      "channelId": "UCiu5s_TrCX9J6LaEbVM3M4Q",
+      "subscribers": 84800,
+      "topicVideoCount": 1,
+      "topicTotalViews": 1128659,
+      "channelRelativePerf": 13.31
+    },
+    {
+      "channelTitle": "생각하는 영어",
+      "channelId": "UCriPylhJnLG2ZXhgE1I5UpA",
+      "subscribers": 103000,
+      "topicVideoCount": 1,
+      "topicTotalViews": 951209,
+      "channelRelativePerf": 9.24
+    },
+    {
+      "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+      "subscribers": 554000,
+      "topicVideoCount": 4,
+      "topicTotalViews": 794435,
+      "channelRelativePerf": 1.43
+    },
+    {
+      "channelTitle": "주아쌤_소리튠영어",
+      "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+      "subscribers": 870000,
+      "topicVideoCount": 12,
+      "topicTotalViews": 732144,
+      "channelRelativePerf": 0.84
+    },
+    {
+      "channelTitle": "제나쌤 | 영어독학",
+      "channelId": "UCNM9TmyfbOD_GWAfd9qyOMw",
+      "subscribers": 57400,
+      "topicVideoCount": 2,
+      "topicTotalViews": 511419,
+      "channelRelativePerf": 8.91
+    },
+    {
+      "channelTitle": "웰고티비",
+      "channelId": "UCoKRQLIlNZpte79wYyGmRiw",
+      "subscribers": 11300,
+      "topicVideoCount": 1,
+      "topicTotalViews": 484120,
+      "channelRelativePerf": 42.84
+    },
+    {
+      "channelTitle": "세라 잉글리쉬 Sarah English",
+      "channelId": "UCI4NjvHev0lX1yTDwnvQ39A",
+      "subscribers": 26000,
+      "topicVideoCount": 1,
+      "topicTotalViews": 351458,
+      "channelRelativePerf": 13.52
+    },
+    {
+      "channelTitle": "만다블_국내파통역사의 영어공부법",
+      "channelId": "UCDp0BcWITympoRz30fODYLw",
+      "subscribers": 35000,
+      "topicVideoCount": 3,
+      "topicTotalViews": 307363,
+      "channelRelativePerf": 8.78
+    },
+    {
+      "channelTitle": "잉글리스트",
+      "channelId": "UCMrqtn61zY0AJRIT1V1KUkw",
+      "subscribers": 375000,
+      "topicVideoCount": 2,
+      "topicTotalViews": 304332,
+      "channelRelativePerf": 0.81
+    },
+    {
+      "channelTitle": "코믹한영어",
+      "channelId": "UC5SUNyVlWpvuU5qbIat3cQA",
+      "subscribers": 179000,
+      "topicVideoCount": 1,
+      "topicTotalViews": 270309,
+      "channelRelativePerf": 1.51
+    },
+    {
+      "channelTitle": "에스텔잉글리쉬EstellEnglish",
+      "channelId": "UC0Wy2BjhsQP3gk2iuksCudw",
+      "subscribers": 688000,
+      "topicVideoCount": 1,
+      "topicTotalViews": 159850,
+      "channelRelativePerf": 0.23
+    }
+  ],
+  "oligopoly": {
+    "top20_total_views": 28290973,
+    "top3_share_pct": 46.2,
+    "is_oligopoly": false
+  },
+  "emerging_channels": [
+    {
+      "channelTitle": "알고리즘 탈출 실패",
+      "subscribers": 5510,
+      "channelRelativePerf": 416.79,
+      "topicTotalViews": 2296493
+    },
+    {
+      "channelTitle": "Rosie",
+      "subscribers": 5640,
+      "channelRelativePerf": 243.81,
+      "topicTotalViews": 1375116
+    },
+    {
+      "channelTitle": "칩스영어",
+      "subscribers": 3160,
+      "channelRelativePerf": 21.41,
+      "topicTotalViews": 67663
+    },
+    {
+      "channelTitle": "쏘로그 | Tholog",
+      "subscribers": 5020,
+      "channelRelativePerf": 15.09,
+      "topicTotalViews": 75750
+    },
+    {
+      "channelTitle": "공부가 뭐길래 꼭쌤",
+      "subscribers": 14,
+      "channelRelativePerf": 14.36,
+      "topicTotalViews": 201
+    },
+    {
+      "channelTitle": "지니스",
+      "subscribers": 1390,
+      "channelRelativePerf": 13.72,
+      "topicTotalViews": 19069
+    },
+    {
+      "channelTitle": "Starting Today",
+      "subscribers": 3050,
+      "channelRelativePerf": 11.27,
+      "topicTotalViews": 34370
+    },
+    {
+      "channelTitle": "공시생 곰곰이 @domybest.s2",
+      "subscribers": 7650,
+      "channelRelativePerf": 5.24,
+      "topicTotalViews": 40078
+    },
+    {
+      "channelTitle": "봉식이 쌤",
+      "subscribers": 5830,
+      "channelRelativePerf": 4.84,
+      "topicTotalViews": 28228
+    },
+    {
+      "channelTitle": "스토리영어",
+      "subscribers": 7190,
+      "channelRelativePerf": 3.09,
+      "topicTotalViews": 22195
+    },
+    {
+      "channelTitle": "석달걀",
+      "subscribers": 7010,
+      "channelRelativePerf": 2.21,
+      "topicTotalViews": 15497
+    },
+    {
+      "channelTitle": "영어식 사고ㅣ러너블 티처 케일라 & 아멜리아",
+      "subscribers": 6150,
+      "channelRelativePerf": 2.2,
+      "topicTotalViews": 13503
+    },
+    {
+      "channelTitle": "영어 귀뚫기 : 리스닝 반복학습",
+      "subscribers": 9040,
+      "channelRelativePerf": 2.14,
+      "topicTotalViews": 19375
+    }
+  ],
+  "comment_insight": {
+    "collectedVideoCount": 13,
+    "targetVideoCount": 14,
+    "skippedDueToBudget": [
+      "SFFFMpLg8L4"
+    ],
+    "skippedDueToCommentsDisabled": [],
+    "educationRelevantVideoIds": [
+      "KUGt6FH2Fro",
+      "Vdp9QjN2gT8",
+      "69RRB4pazVA"
+    ],
+    "repeatedQuestions": [
+      "AI 학습 도구 확장성(제미나이/챗지피티 호환 여부)",
+      "PC-모바일 연동/플랫폼 호환 여부"
+    ],
+    "repeatedComplaints": [
+      "음성 인식 오류(영어 발화가 한글로만 인식됨)",
+      "고정 댓글 부재로 참고자료를 찾기 어려움"
+    ],
+    "requests": [
+      "왕초보 문장 시리즈 지속 제작 요청",
+      "더 쉬운 난이도 버전 요청"
+    ],
+    "sentimentApprox": {
+      "positivePct": 40.7,
+      "neutralPct": 49.2,
+      "negativePct": 10.2,
+      "sampleSize": 59,
+      "method": "keyword-matching approximation, education-relevant videos only"
+    }
+  },
+  "gap_analysis": {
+    "lowCompetitionSubKeywords": [],
+    "unmetDemand": [
+      "AI 툴 다양성(제미나이/챗지피티 호환) 콘텐츠 부재",
+      "PC-모바일 연동 가이드 부재",
+      "음성 인식 오류 트러블슈팅 콘텐츠 부재"
+    ],
+    "recentSurgeAnglesNotOnOurChannel": [
+      "1분 완결형 문법 포인트 정리",
+      "AI 활용 스피킹 학습법"
+    ]
+  },
+  "our_channel_comparison": "OUR_CHANNEL_ID 미설정으로 생략",
+  "core_points": [
+    {
+      "point": "AI 활용 스피킹 학습법 앵글이 최근 7일 내 급성장 중이며 도구 확장·모바일 사용성에 대한 후속 수요가 댓글로 검증됨",
+      "evidence": "제나쌤|영어독학 채널 관련 영상 2건 TOP20 동시 진입(13위 369,212뷰/일평균15,383, 20위 142,207뷰/일평균20,315), 채널대비성과 8.91배(구독자 57,400명). 댓글에서 AI 툴 호환·모바일 사용법 질문 반복.",
+      "action": "AI 툴 활용 스피킹 콘텐츠 신설, Claude/Gemini/ChatGPT 비교 + 모바일 세팅법까지 포함"
+    },
+    {
+      "point": "참여율은 영상 길이가 아니라 완결성에서 나온다 — 1분 내외 초단문법 정리가 20분+ 대용량 문장모음보다 참여율이 높음",
+      "evidence": "필터 통과 175건 길이구간별 평균참여율: 10~20분 3.014% > 4~10분 2.372% > 20분+ 2.539%. have been 1분 완벽정리(참여율 2.43%, 최근7일 신규진입) 댓글 표본 부정반응 사실상 0.",
+      "action": "20분+ 롱폼(175건 중 96건·55%, 평균조회수는 최저 55,993)에 편중하지 말고 1분 완결형 문법 포맷을 정기적으로 섞는다"
+    },
+    {
+      "point": "순수 검색 트래픽 최상위권은 교육 콘텐츠가 아니라 바이럴 클립이 장악 — 조회수 랭킹 전체를 벤치마크하면 오도될 수 있음",
+      "evidence": "TOP20 중 순수 교육 튜토리얼 6건, 나머지 14건은 스포츠/아이돌/예능/문화비교 클립. 상위3채널 점유율 46.2%(과점 미만)이나 1위 채널(The Cricket Classroom, 구독자 12,100명) 채널대비성과 474.77배.",
+      "action": "영어 단일 키워드 조회수 랭킹 전체 대신 교육형 서브셋(6건)의 포맷·앵글만 벤치마크"
+    }
+  ],
+  "title_drafts": [
+    {
+      "title": "제미나이도, 챗지피티도 다 됩니다 | AI 스피킹 연습 완전정복 (모바일 세팅 포함)",
+      "basis": "미충족 수요(AI 툴 호환·모바일) + 제나쌤 채널대비성과 8.91배"
+    },
+    {
+      "title": "have been, 1분이면 완전정복 — 헷갈리는 문법 포인트 매일 하나씩",
+      "basis": "TOP20 16위, 참여율 2.43%, 최근7일 신규진입, 부정댓글 거의 없음"
+    },
+    {
+      "title": "왕초보 영어 80문장, 오늘부터 이거 하나만 들으세요",
+      "basis": "TOP20 10위 951,209뷰 참여율 3.14%, 시리즈 지속 요청 댓글 다수"
+    },
+    {
+      "title": "20분 문장모음 대신, 문법 딱 1개만 끝내는 1분 스피킹",
+      "basis": "길이구간 평균참여율 10~20분 3.014% > 20분+ 2.539%"
+    },
+    {
+      "title": "AI로 말하기 연습하다 막힌 부분, 오늘 다 풀어드립니다 (음성인식 오류 해결법 포함)",
+      "basis": "댓글 미해결 불만(음성인식 오류) 대응"
+    }
+  ],
+  "yesterday_comparison": "2026-09-02 브리핑은 다른 키워드셋/슬롯 체계로 수집되어 직접 비교 불가 (비교 생략)",
+  "data_notes": [
+    "TOP20 중 다수가 비교육 바이럴 클립(스포츠/아이돌/예능)이라 상위권 평균 지표는 왜곡 가능성 있음",
+    "감정 톤 분류는 키워드 매칭 기반 근사치",
+    "API 호출 40회 예산을 정확히 소진하여 댓글 수집 대상 14건 중 1건 미수집(quotaExceeded 아님, 자체 예산 상한)"
+  ]
+}
