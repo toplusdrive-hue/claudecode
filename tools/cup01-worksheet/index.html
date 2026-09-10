@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Small Steps Every Morning</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Source+Sans+3:wght@400;600&family=Noto+Sans+KR:wght@400;500;700&display=swap">
+<style>
+/* ── tokens ───────────────────────────────────────────── */
+:root{
+  --bg:#EDF1F0; --stage:#DFE6E4; --panel:#FFFFFF; --panel-2:#F5F8F7;
+  --line:#D6DEDC; --line-soft:#E6ECEA;
+  --text:#16211F; --muted:#5E706C; --faint:#8A9A96;
+  --accent:#2E6F6A; --accent-ink:#FFFFFF; --accent-tint:#E3EEEC;
+  --warn:#B4571F; --warn-tint:#FBEDE2;
+  --shadow:0 1px 2px rgba(22,33,31,.06),0 8px 24px rgba(22,33,31,.10);
+  --ui:"Noto Sans KR","Pretendard",-apple-system,BlinkMacSystemFont,"Malgun Gothic",sans-serif;
+  --en:"Source Sans 3","Noto Sans KR",-apple-system,sans-serif;
+  --display:"Fraunces","Source Sans 3",Georgia,serif;
+  /* paper stays paper in both themes */
+  --paper:#FFFFFF; --paper-ink:#16211F; --paper-muted:#5A6B67; --paper-faint:#93A5A0;
+  --paper-line:#D9E1DF; --rule-soft:#B7CBD6; --rule-dash:#CFDDE4; --rule-base:#6F8998; --ghost:#C4D0CE;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#111716; --stage:#0A0F0E; --panel:#19211F; --panel-2:#1F2926;
+    --line:#2C3735; --line-soft:#232D2B;
+    --text:#E8EEEC; --muted:#95A6A2; --faint:#71827E;
+    --accent-tint:#1E2E2C; --accent-ink:#FFFFFF;
+    --warn:#E39A63; --warn-tint:#2B211A;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.45);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111716; --stage:#0A0F0E; --panel:#19211F; --panel-2:#1F2926;
+  --line:#2C3735; --line-soft:#232D2B;
+  --text:#E8EEEC; --muted:#95A6A2; --faint:#71827E;
+  --accent-tint:#1E2E2C; --accent-ink:#FFFFFF;
+  --warn:#E39A63; --warn-tint:#2B211A;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:var(--ui);font-size:14px;line-height:1.5;-webkit-font-smoothing:antialiased}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+
+/* ── app shell ────────────────────────────────────────── */
+.app{display:flex;flex-direction:column;height:100vh;min-height:100vh}
+.topbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;
+  padding-block:10px;padding-left:16px;padding-right:16px;
+  background:var(--panel);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:baseline;gap:9px;margin-right:auto;min-width:0}
+.brand .code{font-family:var(--en);font-size:11px;font-weight:600;letter-spacing:.14em;
+  color:var(--accent-ink);background:var(--accent);padding:3px 7px;border-radius:3px}
+.brand h1{margin:0;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.01em;white-space:nowrap}
+.brand .sub{color:var(--faint);font-size:12px;white-space:nowrap}
+.tools{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:6px;background:var(--panel-2);border:1px solid var(--line);
+  padding:7px 12px;border-radius:6px;cursor:pointer;white-space:nowrap}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:500}
+.btn.primary:hover{filter:brightness(1.08);color:var(--accent-ink)}
+.btn.ghost{background:transparent}
+.btn.tiny{padding:3px 7px;font-size:12px;border-radius:5px}
+
+.workspace{flex:1;display:flex;min-height:0}
+.rail{width:390px;flex:none;background:var(--panel);border-right:1px solid var(--line);
+  overflow-y:auto;padding-block:4px 40px}
+.stage{flex:1;background:var(--stage);overflow:auto;padding:24px 16px 48px}
+
+/* ── editor rail ──────────────────────────────────────── */
+.sect{border-bottom:1px solid var(--line-soft);padding:16px}
+.sect > h2{margin:0 0 12px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+.grid{display:grid;gap:10px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:1fr 1fr 1fr}
+label.f{display:grid;gap:4px;min-width:0}
+label.f > span{font-size:12px;color:var(--muted)}
+input[type=text],input[type=date],input[type=number],select,textarea{
+  width:100%;background:var(--panel-2);border:1px solid var(--line);border-radius:6px;padding:7px 9px}
+input:hover,select:hover,textarea:hover{border-color:var(--faint)}
+textarea{resize:vertical;line-height:1.55}
+.days{display:flex;flex-wrap:wrap;gap:6px}
+.day-chip{display:inline-flex;align-items:center;gap:6px;background:var(--panel-2);border:1px solid var(--line);
+  border-radius:999px;padding:5px 6px 5px 12px;cursor:pointer;font-variant-numeric:tabular-nums}
+.day-chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.day-chip .x{opacity:.55;font-size:13px;line-height:1;padding:2px 4px;border-radius:50%}
+.day-chip .x:hover{opacity:1;background:rgba(127,127,127,.25)}
+
+.slist{display:grid;gap:8px}
+.srow{border:1px solid var(--line);border-radius:8px;background:var(--panel-2);padding:8px 8px 9px;display:grid;gap:6px}
+.srow-top{display:flex;align-items:center;gap:6px}
+.srow-top .no{font-family:var(--en);font-variant-numeric:tabular-nums;font-weight:600;color:var(--accent);width:22px}
+.srow-top .sp{margin-left:auto;display:flex;gap:2px}
+.iconbtn{border:0;background:transparent;color:var(--faint);cursor:pointer;padding:3px 6px;border-radius:5px;line-height:1}
+.iconbtn:hover{background:var(--line-soft);color:var(--text)}
+.srow input.en-in{font-family:var(--en);font-size:15px}
+.hint{font-size:12px;color:var(--faint);margin:8px 0 0}
+.seg{display:flex;background:var(--panel-2);border:1px solid var(--line);border-radius:7px;padding:2px;gap:2px}
+.seg button{flex:1;border:0;background:transparent;padding:6px 4px;border-radius:5px;cursor:pointer;font-size:13px;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);font-weight:500}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 0;cursor:pointer}
+.switch span{font-size:13px}
+.switch input{accent-color:var(--accent);width:16px;height:16px}
+.swatches{display:flex;gap:8px}
+.sw{width:26px;height:26px;border-radius:50%;border:2px solid transparent;cursor:pointer;padding:0}
+.sw[aria-pressed="true"]{border-color:var(--text);box-shadow:inset 0 0 0 2px var(--panel)}
+.rowline{display:flex;align-items:center;gap:8px}
+.rowline input[type=range]{flex:1;accent-color:var(--accent)}
+.val{font-variant-numeric:tabular-nums;color:var(--muted);min-width:34px;text-align:right;font-size:13px}
+
+/* ── stage / paper ────────────────────────────────────── */
+.stagebar{display:flex;align-items:center;gap:10px;max-width:210mm;margin:0 auto 14px;color:var(--muted);font-size:12px}
+.stagebar .z{margin-left:auto;display:flex;align-items:center;gap:4px}
+.pages{display:grid;gap:22px;justify-items:center;transform-origin:top center}
+.page{position:relative;width:210mm}
+.sheet{width:210mm;height:297mm;overflow:hidden;background:var(--paper);color:var(--paper-ink);
+  box-shadow:var(--shadow);padding:14mm 15mm 12mm;display:flex;flex-direction:column;position:relative;
+  font-size:calc(3.35mm * var(--fs,1));
+  -webkit-print-color-adjust:exact;print-color-adjust:exact}
+.overflow-flag{position:absolute;top:-10px;right:0;z-index:2;background:var(--warn-tint);color:var(--warn);
+  border:1px solid currentColor;border-radius:5px;font-size:11px;padding:2px 8px}
+
+/* sheet head */
+.sheet-head{display:flex;align-items:flex-start;gap:6mm;border-bottom:0.9mm solid var(--paper-ink);padding-bottom:3mm}
+.mast{flex:1;min-width:0}
+.mast .code{font-family:var(--en);font-size:.72em;font-weight:600;letter-spacing:.16em;
+  color:#fff;background:var(--sheet-accent,#2E6F6A);padding:.15em .5em;border-radius:2px}
+.mast h2{font-family:var(--display);font-weight:700;font-size:1.85em;margin:.22em 0 0;letter-spacing:-.015em;text-wrap:balance}
+.mast .ko-sub{margin:.15em 0 0;color:var(--paper-muted);font-size:.85em}
+.daybox{text-align:center;border:0.5mm solid var(--paper-ink);border-radius:1.5mm;padding:1.5mm 3mm;min-width:20mm}
+.daybox .lb{display:block;font-family:var(--en);font-size:.62em;letter-spacing:.2em;color:var(--paper-muted)}
+.daybox .num{display:block;font-family:var(--display);font-weight:700;font-size:1.7em;line-height:1.05;font-variant-numeric:tabular-nums}
+
+.meta-row{display:flex;gap:6mm;margin-top:3mm;font-size:.85em}
+.field{display:flex;align-items:baseline;gap:2mm;flex:1}
+.field b{font-weight:500;color:var(--paper-muted);white-space:nowrap;font-size:.92em}
+.field i{flex:1;font-style:normal;border-bottom:0.3mm solid var(--paper-line);min-height:1.5em;padding-left:1mm;
+  font-variant-numeric:tabular-nums}
+
+.focus{margin-top:3.5mm;display:grid;gap:1.6mm;background:var(--sheet-tint,#E3EEEC);
+  border-left:1mm solid var(--sheet-accent,#2E6F6A);padding:2.6mm 3.5mm;border-radius:0 1.5mm 1.5mm 0}
+.focus p{margin:0;font-size:.87em}
+.focus .tag{font-size:.8em;font-weight:700;color:var(--sheet-accent,#2E6F6A);margin-right:1.5mm}
+
+/* sentences */
+.items{flex:1;margin-top:4mm;display:grid;gap:3mm;align-content:start}
+.item{display:flex;gap:3mm;break-inside:avoid;page-break-inside:avoid}
+.item .no{font-family:var(--en);font-weight:600;font-variant-numeric:tabular-nums;color:var(--sheet-accent,#2E6F6A);
+  font-size:.95em;padding-top:.15em;min-width:6mm}
+.item .body{flex:1;min-width:0}
+.line-en{display:flex;align-items:baseline;gap:3mm}
+.en{font-family:var(--en);font-size:1.18em;font-weight:600;margin:0;flex:1;letter-spacing:-.005em}
+.ko{margin:.6mm 0 0;font-size:.87em;color:var(--paper-muted)}
+.ko.lead{margin:0;flex:1;font-size:1em;color:var(--paper-ink)}
+.pron{color:var(--paper-faint);font-size:.95em}
+.pron::before{content:"｜";margin:0 .3em;color:var(--paper-line)}
+.shadow-check{display:flex;align-items:center;gap:1.4mm;flex:none}
+.shadow-check .lb{font-size:.68em;color:var(--paper-faint);letter-spacing:.04em}
+.shadow-check i{width:3.2mm;height:3.2mm;border:0.35mm solid var(--rule-base);border-radius:50%;display:block}
+.traces{margin-top:1.8mm;display:grid;gap:2.5mm}
+.trace{position:relative;height:9mm;border-top:0.3mm solid var(--rule-soft);border-bottom:0.3mm solid var(--rule-soft)}
+.trace::before{content:"";position:absolute;inset-inline:0;top:40%;border-top:0.25mm dashed var(--rule-dash)}
+.trace::after{content:"";position:absolute;inset-inline:0;top:72%;border-top:0.4mm solid var(--rule-base)}
+.trace.plain{border-top:0;height:8mm}
+.trace.plain::before{display:none}
+.trace-ghost{position:absolute;left:2mm;top:72%;transform:translateY(-100%);font-family:var(--en);
+  font-size:1.1em;color:var(--ghost);white-space:nowrap;overflow:hidden;max-width:calc(100% - 4mm)}
+
+/* wrap-up */
+.wrapup{margin-top:5mm;border-top:0.4mm dashed var(--paper-line);padding-top:3.5mm;break-inside:avoid}
+.wrapup h3{margin:0 0 2.5mm;font-size:.9em;font-weight:700;display:flex;align-items:center;gap:2mm}
+.wrapup h3::before{content:"";width:2.6mm;height:2.6mm;background:var(--sheet-accent,#2E6F6A);border-radius:.6mm}
+.quiz{margin:0;padding:0;list-style:none;display:grid;gap:2.6mm}
+.quiz li{display:flex;align-items:baseline;gap:2.5mm;font-size:.87em}
+.quiz .qno{font-family:var(--en);font-weight:600;color:var(--paper-faint);font-variant-numeric:tabular-nums}
+.quiz .qko{color:var(--paper-muted);flex:none;max-width:44%}
+.answer{flex:1;border-bottom:0.3mm dotted var(--rule-base);min-height:6mm}
+.closing{margin-top:4mm;display:flex;gap:4mm;align-items:stretch;break-inside:avoid}
+.closing .note{flex:1;display:grid;gap:1.5mm}
+.closing .note b{font-size:.85em;font-weight:700}
+.checks{display:flex;gap:3mm;font-size:.8em;color:var(--paper-muted)}
+.checks label{display:inline-flex;align-items:center;gap:1.2mm}
+.checks i{width:3mm;height:3mm;border:0.35mm solid var(--rule-base);display:block;border-radius:.5mm}
+.stampbox{width:26mm;border:0.35mm solid var(--paper-line);border-radius:1.5mm;display:flex;
+  align-items:flex-start;justify-content:center;padding-top:1.4mm;font-size:.72em;color:var(--paper-faint)}
+.sheet-foot{margin-top:auto;padding-top:3mm;border-top:0.3mm solid var(--paper-line);
+  display:flex;justify-content:space-between;gap:4mm;font-size:.72em;color:var(--paper-faint);
+  font-variant-numeric:tabular-nums}
+.sheet-foot .en-mark{font-family:var(--en);letter-spacing:.04em}
+
+/* data panel */
+.data-io{display:grid;gap:8px}
+.data-io textarea{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:12px;min-height:110px}
+.notice{font-size:12px;padding:7px 9px;border-radius:6px;background:var(--accent-tint);color:var(--accent)}
+
+@media (max-width:900px){
+  .workspace{flex-direction:column}
+  .rail{width:auto;border-right:0;border-bottom:1px solid var(--line);max-height:none;overflow:visible}
+  .stage{overflow-x:auto}
+  .brand .sub{display:none}
+}
+
+/* ── print ────────────────────────────────────────────── */
+@page{size:A4;margin:0}
+@media print{
+  html,body{background:#fff}
+  .topbar,.rail,.stagebar{display:none!important}
+  .app{display:block;height:auto}
+  .workspace{display:block}
+  .stage{padding:0;overflow:visible;background:#fff}
+  .pages{display:block;zoom:1!important}
+  .page{break-after:page;page-break-after:always}
+  .page:last-child{break-after:auto;page-break-after:auto}
+  .sheet{box-shadow:none;margin:0}
+  .overflow-flag{display:none}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <span class="code">CUP01</span>
+      <h1>Small Steps Every Morning</h1>
+      <span class="sub">아침 영어 문장 학습지 편집기</span>
+    </div>
+    <div class="tools">
+      <button class="btn ghost" id="btnTheme" type="button" title="화면 테마 전환">◐ 테마</button>
+      <button class="btn" id="btnSample" type="button">샘플 5일치</button>
+      <button class="btn primary" id="btnPrint" type="button">인쇄 · PDF 저장</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <aside class="rail" id="rail">
+      <section class="sect">
+        <h2>학습지 (Day)</h2>
+        <div class="days" id="days"></div>
+        <div class="grid g2" style="margin-top:10px">
+          <button class="btn" id="btnAddDay" type="button">+ 새 Day</button>
+          <button class="btn" id="btnDupDay" type="button">현재 Day 복제</button>
+        </div>
+      </section>
+
+      <section class="sect">
+        <h2>머리말</h2>
+        <div class="grid g2">
+          <label class="f"><span>코스 코드</span><input type="text" id="f-course"></label>
+          <label class="f"><span>Day</span><input type="text" id="f-day"></label>
+        </div>
+        <div class="grid g2" style="margin-top:10px">
+          <label class="f"><span>날짜</span><input type="text" id="f-date" placeholder="2026-09-10 또는 빈칸"></label>
+          <label class="f"><span>권장 학습 시간</span><input type="text" id="f-minutes" placeholder="10분"></label>
+        </div>
+        <div class="grid" style="margin-top:10px">
+          <label class="f"><span>프로그램명 (영문 워드마크)</span><input type="text" id="f-program"></label>
+          <label class="f"><span>부제 (한글)</span><input type="text" id="f-tagline"></label>
+          <label class="f"><span>오늘의 주제</span><input type="text" id="f-theme"></label>
+          <label class="f"><span>오늘의 목표</span><input type="text" id="f-goal"></label>
+        </div>
+      </section>
+
+      <section class="sect">
+        <h2>오늘의 문장</h2>
+        <div class="slist" id="slist"></div>
+        <div class="grid g2" style="margin-top:10px">
+          <button class="btn" id="btnAddSentence" type="button">+ 문장 추가</button>
+          <button class="btn" id="btnBulk" type="button">일괄 입력</button>
+        </div>
+        <div id="bulkWrap" hidden style="margin-top:10px">
+          <label class="f"><span>한 줄에 한 문장 · <code>영어 | 뜻 | 발음</code></span>
+            <textarea id="bulkText" rows="6" placeholder="Good morning! | 좋은 아침! | 굿 모닝"></textarea>
+          </label>
+          <div class="grid g2" style="margin-top:8px">
+            <button class="btn" id="btnBulkAppend" type="button">이어 붙이기</button>
+            <button class="btn" id="btnBulkReplace" type="button">전체 교체</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="sect">
+        <h2>학습지 형식</h2>
+        <div class="seg" id="segMode" role="group" aria-label="학습지 모드">
+          <button type="button" data-mode="study">학습</button>
+          <button type="button" data-mode="practice">덮어쓰기</button>
+          <button type="button" data-mode="test">점검</button>
+        </div>
+        <p class="hint" id="modeHint"></p>
+        <div class="grid" style="margin-top:12px">
+          <div class="rowline"><span style="font-size:13px;width:88px">따라쓰기 줄</span>
+            <input type="range" id="o-trace" min="0" max="4" step="1"><span class="val" id="v-trace"></span></div>
+          <div class="rowline"><span style="font-size:13px;width:88px">쉐도잉 ○</span>
+            <input type="range" id="o-shadow" min="0" max="6" step="1"><span class="val" id="v-shadow"></span></div>
+          <div class="rowline"><span style="font-size:13px;width:88px">페이지당 문장</span>
+            <input type="range" id="o-perPage" min="1" max="12" step="1"><span class="val" id="v-perPage"></span></div>
+          <div class="rowline"><span style="font-size:13px;width:88px">글자 크기</span>
+            <input type="range" id="o-fs" min="0.85" max="1.25" step="0.05"><span class="val" id="v-fs"></span></div>
+          <div class="rowline"><span style="font-size:13px;width:88px">확인 문항</span>
+            <input type="range" id="o-quiz" min="0" max="6" step="1"><span class="val" id="v-quiz"></span></div>
+        </div>
+        <label class="switch"><span>영어 4선 안내선</span><input type="checkbox" id="o-guide"></label>
+        <label class="switch"><span>한글 발음 표기</span><input type="checkbox" id="o-pron"></label>
+        <label class="switch"><span>마무리 기록 칸</span><input type="checkbox" id="o-reflect"></label>
+        <label class="switch"><span>흑백 인쇄용 (잉크 절약)</span><input type="checkbox" id="o-mono"></label>
+        <div style="margin-top:12px">
+          <span style="font-size:12px;color:var(--muted);display:block;margin-bottom:7px">강조색</span>
+          <div class="swatches" id="swatches"></div>
+        </div>
+      </section>
+
+      <section class="sect">
+        <h2>인쇄 범위 · 데이터</h2>
+        <label class="f"><span>미리보기 · 인쇄 범위</span>
+          <select id="o-scope">
+            <option value="one">현재 Day만</option>
+            <option value="all">전체 Day 이어서</option>
+          </select>
+        </label>
+        <div class="data-io" style="margin-top:12px">
+          <textarea id="jsonBox" rows="5" spellcheck="false" aria-label="학습지 데이터 JSON"></textarea>
+          <div class="grid g3">
+            <button class="btn" id="btnExport" type="button">JSON 내보내기</button>
+            <button class="btn" id="btnImport" type="button">JSON 불러오기</button>
+            <button class="btn" id="btnReset" type="button">전체 초기화</button>
+          </div>
+          <p class="hint" id="ioMsg">작업 내용은 이 브라우저에 자동 저장됩니다. 다른 기기로 옮길 땐 JSON을 복사해 두세요.</p>
+        </div>
+      </section>
+    </aside>
+
+    <section class="stage" id="stage">
+      <div class="stagebar">
+        <span id="stageInfo"></span>
+        <span class="z">
+          <button class="btn tiny" id="zOut" type="button" aria-label="축소">−</button>
+          <span class="val" id="zVal">100%</span>
+          <button class="btn tiny" id="zIn" type="button" aria-label="확대">+</button>
+          <button class="btn tiny" id="zFit" type="button">맞춤</button>
+        </span>
+      </div>
+      <div class="pages" id="pages"></div>
+    </section>
+  </main>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ── data ─────────────────────────────────────────────── */
+var ACCENTS = [
+  {name:"모닝 파인",  hex:"#2E6F6A", tint:"#E3EEEC"},
+  {name:"메리골드",   hex:"#B07C12", tint:"#F5EDDA"},
+  {name:"인디고",     hex:"#3A5BA0", tint:"#E6EBF5"},
+  {name:"로즈",       hex:"#A84C64", tint:"#F5E6EA"}
+];
+var MODE_HINT = {
+  study:"영어 문장·뜻·발음을 모두 보여 주고 아래 줄에 따라 씁니다.",
+  practice:"첫 줄에 연한 영어 글씨가 깔립니다. 학생은 그 위를 덮어쓰고 나머지 줄에 스스로 씁니다.",
+  test:"한글 뜻만 보고 영어 문장을 직접 씁니다. 발음·쉐도잉 칸은 숨깁니다."
+};
+var SAMPLE = [
+  {day:"01", theme:"아침 인사와 기분 표현", goal:"인사 문장 6개를 보지 않고 말하기", sentences:[
+    ["Good morning! Did you sleep well?","좋은 아침! 잘 잤어?","굿 모닝! 디쥬 슬립 웰"],
+    ["I woke up at seven today.","나는 오늘 7시에 일어났어.","아이 워크 업 앳 세븐 투데이"],
+    ["I'm ready for a great day.","멋진 하루를 맞을 준비가 됐어.","아임 레디 포 어 그레잇 데이"],
+    ["Let's start with a smile.","미소로 시작하자.","렛츠 스타트 위드 어 스마일"],
+    ["What are you going to do today?","오늘 뭐 할 거야?","왓 아 유 고잉 투 두 투데이"],
+    ["One small step is enough.","작은 한 걸음이면 충분해.","원 스몰 스텝 이즈 이너프"]
+  ]},
+  {day:"02", theme:"아침 준비 루틴", goal:"내 아침 루틴을 영어로 세 문장 말하기", sentences:[
+    ["I brush my teeth every morning.","나는 아침마다 이를 닦아.","아이 브러시 마이 티쓰 에브리 모닝"],
+    ["I have toast and milk for breakfast.","나는 아침으로 토스트와 우유를 먹어.","아이 해브 토스트 앤 밀크 포 브렉퍼스트"],
+    ["Don't forget your lunchbox.","도시락 잊지 마.","돈트 포겟 유어 런치박스"],
+    ["I pack my bag before I leave.","나는 나가기 전에 가방을 챙겨.","아이 팩 마이 백 비포 아이 리브"],
+    ["It takes ten minutes to walk to school.","학교까지 걸어서 10분 걸려.","잇 테익스 텐 미닛츠 투 워크 투 스쿨"],
+    ["I'm running a little late.","나 조금 늦었어.","아임 러닝 어 리틀 레잇"]
+  ]},
+  {day:"03", theme:"날씨와 오늘의 컨디션", goal:"날씨와 기분을 묻고 답하기", sentences:[
+    ["How's the weather this morning?","오늘 아침 날씨 어때?","하우즈 더 웨더 디스 모닝"],
+    ["It's chilly today. Take a jacket.","오늘 쌀쌀해. 겉옷 챙겨.","잇츠 칠리 투데이. 테익 어 재킷"],
+    ["The sky is so clear.","하늘이 정말 맑아.","더 스카이 이즈 쏘 클리어"],
+    ["I feel great today.","나 오늘 기분 최고야.","아이 필 그레잇 투데이"],
+    ["I'm a little sleepy.","나 조금 졸려.","아임 어 리틀 슬리피"],
+    ["Have a nice day!","좋은 하루 보내!","해브 어 나이스 데이"]
+  ]},
+  {day:"04", theme:"교실에서 쓰는 첫 마디", goal:"교실 표현 6개를 상황에 맞게 쓰기", sentences:[
+    ["Hi! How was your weekend?","안녕! 주말 어땠어?","하이! 하우 워즈 유어 위켄드"],
+    ["Can I sit here?","여기 앉아도 될까?","캔 아이 씻 히어"],
+    ["Did you finish your homework?","숙제 다 했어?","디쥬 피니시 유어 홈워크"],
+    ["I forgot my pencil case.","필통을 두고 왔어.","아이 포갓 마이 펜슬 케이스"],
+    ["May I go to the restroom?","화장실 다녀와도 될까요?","메이 아이 고 투 더 레스트룸"],
+    ["Let's practice together.","같이 연습하자.","렛츠 프랙티스 투게더"]
+  ]},
+  {day:"05", theme:"나에게 하는 말", goal:"자기 격려 문장 외워서 소리 내어 말하기", sentences:[
+    ["I can do this.","나는 할 수 있어.","아이 캔 두 디스"],
+    ["Mistakes help me learn.","실수는 나를 배우게 해.","미스테익스 헬프 미 런"],
+    ["I'll try one more time.","한 번 더 해 볼래.","아일 트라이 원 모어 타임"],
+    ["Speaking English is fun.","영어로 말하는 건 즐거워.","스피킹 잉글리시 이즈 펀"],
+    ["Small steps every morning.","매일 아침, 작은 걸음.","스몰 스텝스 에브리 모닝"],
+    ["I'm proud of myself today.","오늘 나 자신이 자랑스러워.","아임 프라우드 오브 마이셀프 투데이"]
+  ]}
+];
+
+function makeSheet(src){
+  return {
+    course:"CUP01", program:"Small Steps Every Morning", tagline:"아침 5분, 오늘의 영어 문장",
+    day:src.day, date:"", minutes:"10분", theme:src.theme, goal:src.goal,
+    sentences:src.sentences.map(function(s){return {en:s[0],ko:s[1],pr:s[2]};})
+  };
+}
+function defaultState(){
+  return {
+    v:1,
+    options:{mode:"study",trace:1,shadow:3,perPage:6,fs:1,quiz:3,guide:true,pron:true,reflect:true,mono:false,
+      accent:ACCENTS[0].hex,scope:"one"},
+    active:0,
+    sheets:SAMPLE.map(makeSheet)
+  };
+}
+
+/* ── state ────────────────────────────────────────────── */
+var KEY="cup01-worksheet-v1";
+var state=load()||defaultState();
+var zoom=1, zoomAuto=true;
+
+function load(){
+  try{ var raw=localStorage.getItem(KEY); if(!raw) return null; var s=JSON.parse(raw); return valid(s)?s:null; }
+  catch(e){ return null; }
+}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+function valid(s){ return s && s.options && Array.isArray(s.sheets) && s.sheets.length; }
+
+var $=function(id){return document.getElementById(id);};
+function esc(t){ return String(t==null?"":t).replace(/[&<>"]/g,function(c){
+  return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
+function current(){ return state.sheets[state.active]; }
+function accentOf(){
+  if(state.options.mono) return {hex:"#3A4442",tint:"#EFF1F0"};
+  for(var i=0;i<ACCENTS.length;i++) if(ACCENTS[i].hex===state.options.accent) return ACCENTS[i];
+  return ACCENTS[0];
+}
+
+/* ── preview ──────────────────────────────────────────── */
+function chunk(arr,n){
+  var out=[],i; for(i=0;i<arr.length;i+=n) out.push(arr.slice(i,i+n));
+  return out.length?out:[[]];
+}
+function pickQuiz(list,n){
+  if(n<=0||!list.length) return [];
+  var out=[],step=Math.max(1,Math.floor(list.length/n)),i;
+  for(i=0;i<list.length&&out.length<n;i+=step) out.push({no:i+1,item:list[i]});
+  return out;
+}
+function itemHTML(s,no,o){
+  var lines = o.mode==="practice" ? Math.max(1,o.trace) : o.trace;
+  var cls = o.guide ? "trace" : "trace plain";
+  var t="",i;
+  for(i=0;i<lines;i++){
+    var ghost = (o.mode==="practice" && i===0) ? '<span class="trace-ghost">'+esc(s.en)+'</span>' : "";
+    t += '<div class="'+cls+'">'+ghost+'</div>';
+  }
+  var dots="",j;
+  if(o.shadow>0 && o.mode!=="test"){
+    for(j=0;j<o.shadow;j++) dots+="<i></i>";
+    dots='<span class="shadow-check"><span class="lb">쉐도잉</span>'+dots+"</span>";
+  }
+  /* 학습 모드는 영어가 머리줄, 덮어쓰기·점검 모드는 한글 뜻이 머리줄이 된다. */
+  var lead, sub="";
+  if(o.mode==="study"){
+    var pron = (o.pron && s.pr) ? '<span class="pron">'+esc(s.pr)+"</span>" : "";
+    lead='<p class="en">'+esc(s.en)+"</p>";
+    sub='<p class="ko">'+esc(s.ko)+pron+"</p>";
+  } else {
+    lead='<p class="ko lead">'+esc(s.ko)+"</p>";
+  }
+  return '<article class="item"><div class="no">'+(no<10?"0":"")+no+"</div>"+
+    '<div class="body"><div class="line-en">'+lead+dots+"</div>"+ sub +
+    (t?'<div class="traces">'+t+"</div>":"")+"</div></article>";
+}
+function wrapupHTML(sheet,o){
+  var html="";
+  var q=pickQuiz(sheet.sentences,o.quiz);
+  if(q.length){
+    html+='<section class="wrapup"><h3>오늘의 확인 · 한글을 보고 영어로 쓰기</h3><ol class="quiz">';
+    q.forEach(function(x,i){
+      html+='<li><span class="qno">'+(i+1)+'.</span><span class="qko">'+esc(x.item.ko)+
+            '</span><span class="answer"></span></li>';
+    });
+    html+="</ol></section>";
+  }
+  if(o.reflect){
+    html+='<section class="closing"><div class="note">'+
+      '<div class="checks">'+
+        '<label><i></i>듣기</label><label><i></i>따라 말하기</label>'+
+        '<label><i></i>따라 쓰기</label><label><i></i>안 보고 말하기</label></div>'+
+      '<b>오늘의 한 걸음 — 가장 마음에 든 문장은?</b>'+
+      '<span class="answer"></span></div>'+
+      '<div class="stampbox">확인</div></section>';
+  }
+  return html;
+}
+function headHTML(sheet,pageNo){
+  var day=esc(sheet.day||"");
+  if(pageNo>0){
+    return '<header class="sheet-head"><div class="mast">'+
+      '<span class="code">'+esc(sheet.course)+'</span>'+
+      '<h2 style="font-size:1.15em">'+esc(sheet.program)+"</h2></div>"+
+      '<div class="daybox" style="min-width:16mm;padding:1mm 2.5mm">'+
+      '<span class="lb">DAY</span><span class="num" style="font-size:1.2em">'+day+"</span></div></header>";
+  }
+  return '<header class="sheet-head"><div class="mast">'+
+    '<span class="code">'+esc(sheet.course)+"</span>"+
+    "<h2>"+esc(sheet.program)+"</h2>"+
+    '<p class="ko-sub">'+esc(sheet.tagline)+"</p></div>"+
+    '<div class="daybox"><span class="lb">DAY</span><span class="num">'+day+"</span></div></header>"+
+    '<div class="meta-row">'+
+      '<span class="field"><b>날짜</b><i>'+esc(sheet.date)+"</i></span>"+
+      '<span class="field"><b>이름</b><i></i></span>'+
+      '<span class="field"><b>학습 시간</b><i>'+esc(sheet.minutes)+"</i></span></div>"+
+    '<div class="focus">'+
+      '<p><span class="tag">오늘의 주제</span>'+esc(sheet.theme)+"</p>"+
+      '<p><span class="tag">오늘의 목표</span>'+esc(sheet.goal)+"</p></div>";
+}
+function renderPreview(){
+  var o=state.options, ac=accentOf();
+  var sheets = o.scope==="all" ? state.sheets : [current()];
+  var html="", total=0;
+  sheets.forEach(function(sheet){
+    var pages=chunk(sheet.sentences,Math.max(1,o.perPage));
+    pages.forEach(function(items,pi){
+      total++;
+      var body=items.map(function(s,k){ return itemHTML(s,pi*o.perPage+k+1,o); }).join("");
+      var tail = pi===pages.length-1 ? wrapupHTML(sheet,o) : "";
+      html+='<div class="page"><span class="overflow-flag" hidden>내용이 A4 한 쪽을 넘칩니다 · 페이지당 문장 수를 줄여 보세요</span>'+
+        '<section class="sheet" style="--fs:'+o.fs+';--sheet-accent:'+ac.hex+';--sheet-tint:'+ac.tint+'">'+
+        headHTML(sheet,pi)+
+        '<div class="items">'+body+"</div>"+ tail +
+        '<footer class="sheet-foot"><span class="en-mark">'+esc(sheet.course)+" · "+esc(sheet.program)+"</span>"+
+        "<span>Day "+esc(sheet.day)+" · "+(pi+1)+" / "+pages.length+"</span>"+
+        '<span>매일 아침 한 걸음</span></footer></section></div>';
+    });
+  });
+  $("pages").innerHTML=html;
+  $("stageInfo").textContent = (o.scope==="all"? state.sheets.length+"개 Day · ":"Day "+current().day+" · ")+
+    total+"쪽 · A4";
+  flagOverflow();
+  applyZoom();
+}
+function flagOverflow(){
+  var nodes=$("pages").querySelectorAll(".page");
+  Array.prototype.forEach.call(nodes,function(wrap){
+    var el=wrap.querySelector(".sheet"), items=el.querySelector(".items");
+    /* mm-based padding rounds up by a pixel or two, so keep a small tolerance;
+       a squeezed .items block is the precise signal that content ran past the page. */
+    var over = el.scrollHeight > el.clientHeight+6 || items.scrollHeight > items.clientHeight+2;
+    wrap.querySelector(".overflow-flag").hidden = !over;
+  });
+}
+
+/* ── zoom ─────────────────────────────────────────────── */
+var A4PX=794; /* 210mm at 96dpi */
+function applyZoom(){
+  if(zoomAuto){
+    var w=$("stage").clientWidth-40;
+    zoom=Math.min(1,Math.max(.3,w/A4PX));
+  }
+  $("pages").style.zoom=zoom;
+  $("zVal").textContent=Math.round(zoom*100)+"%";
+}
+function setZoom(z){ zoomAuto=false; zoom=Math.min(1.6,Math.max(.3,z)); applyZoom(); }
+
+/* ── editor ───────────────────────────────────────────── */
+function renderDays(){
+  var html=state.sheets.map(function(s,i){
+    return '<span class="day-chip" role="button" tabindex="0" aria-pressed="'+(i===state.active)+'" data-i="'+i+'">'+
+      "Day "+esc(s.day||(i+1))+
+      (state.sheets.length>1?'<button class="x" data-del="'+i+'" type="button" aria-label="Day 삭제">×</button>':"")+
+      "</span>";
+  }).join("");
+  $("days").innerHTML=html;
+}
+function renderMeta(){
+  var s=current();
+  $("f-course").value=s.course||""; $("f-day").value=s.day||"";
+  $("f-date").value=s.date||"";     $("f-minutes").value=s.minutes||"";
+  $("f-program").value=s.program||"";$("f-tagline").value=s.tagline||"";
+  $("f-theme").value=s.theme||"";   $("f-goal").value=s.goal||"";
+}
+function renderSentences(){
+  var list=current().sentences;
+  $("slist").innerHTML=list.map(function(s,i){
+    return '<div class="srow" data-i="'+i+'">'+
+      '<div class="srow-top"><span class="no">'+(i<9?"0":"")+(i+1)+"</span>"+
+      '<input class="en-in" type="text" data-k="en" value="'+esc(s.en)+'" placeholder="English sentence" aria-label="영어 문장 '+(i+1)+'">'+
+      '<span class="sp">'+
+        '<button class="iconbtn" data-mv="-1" type="button" aria-label="위로">↑</button>'+
+        '<button class="iconbtn" data-mv="1" type="button" aria-label="아래로">↓</button>'+
+        '<button class="iconbtn" data-rm="1" type="button" aria-label="삭제">✕</button>'+
+      "</span></div>"+
+      '<input type="text" data-k="ko" value="'+esc(s.ko)+'" placeholder="한글 뜻" aria-label="한글 뜻 '+(i+1)+'">'+
+      '<input type="text" data-k="pr" value="'+esc(s.pr)+'" placeholder="한글 발음 (선택)" aria-label="발음 '+(i+1)+'">'+
+      "</div>";
+  }).join("");
+}
+function renderOptions(){
+  var o=state.options;
+  Array.prototype.forEach.call($("segMode").children,function(b){
+    b.setAttribute("aria-pressed", String(b.dataset.mode===o.mode));
+  });
+  $("modeHint").textContent=MODE_HINT[o.mode];
+  $("o-trace").value=o.trace;     $("v-trace").textContent=o.trace+"줄";
+  $("o-shadow").value=o.shadow;   $("v-shadow").textContent=o.shadow+"개";
+  $("o-perPage").value=o.perPage; $("v-perPage").textContent=o.perPage+"개";
+  $("o-fs").value=o.fs;           $("v-fs").textContent=Math.round(o.fs*100)+"%";
+  $("o-quiz").value=o.quiz;       $("v-quiz").textContent=o.quiz+"개";
+  $("o-guide").checked=o.guide; $("o-pron").checked=o.pron;
+  $("o-reflect").checked=o.reflect; $("o-mono").checked=o.mono;
+  $("o-scope").value=o.scope;
+  $("swatches").innerHTML=ACCENTS.map(function(a){
+    return '<button class="sw" type="button" data-hex="'+a.hex+'" title="'+a.name+'" aria-label="강조색 '+a.name+
+      '" aria-pressed="'+(a.hex===o.accent)+'" style="background:'+a.hex+'"></button>';
+  }).join("");
+}
+function renderAll(){ renderDays(); renderMeta(); renderSentences(); renderOptions(); renderPreview(); }
+function touch(){ save(); renderPreview(); }
+
+/* ── events ───────────────────────────────────────────── */
+$("days").addEventListener("click",function(e){
+  var del=e.target.closest("[data-del]");
+  if(del){
+    e.stopPropagation();
+    var d=+del.dataset.del;
+    if(state.sheets.length<2) return;
+    if(!confirm("Day "+state.sheets[d].day+" 학습지를 삭제할까요?")) return;
+    state.sheets.splice(d,1);
+    state.active=Math.min(state.active,state.sheets.length-1);
+    save(); renderAll(); return;
+  }
+  var chip=e.target.closest("[data-i]");
+  if(chip){ state.active=+chip.dataset.i; save(); renderAll(); }
+});
+$("days").addEventListener("keydown",function(e){
+  if(e.key!=="Enter"&&e.key!==" ") return;
+  var chip=e.target.closest("[data-i]");
+  if(chip){ e.preventDefault(); state.active=+chip.dataset.i; save(); renderAll(); }
+});
+$("btnAddDay").addEventListener("click",function(){
+  var last=state.sheets[state.sheets.length-1];
+  var n=String(parseInt(last.day,10)+1||state.sheets.length+1);
+  state.sheets.push({course:last.course,program:last.program,tagline:last.tagline,
+    day:n.length<2?"0"+n:n,date:"",minutes:last.minutes,theme:"",goal:"",
+    sentences:[{en:"",ko:"",pr:""},{en:"",ko:"",pr:""},{en:"",ko:"",pr:""}]});
+  state.active=state.sheets.length-1; save(); renderAll();
+});
+$("btnDupDay").addEventListener("click",function(){
+  var copy=JSON.parse(JSON.stringify(current()));
+  var n=String(parseInt(copy.day,10)+1||state.sheets.length+1);
+  copy.day=n.length<2?"0"+n:n;
+  state.sheets.splice(state.active+1,0,copy);
+  state.active++; save(); renderAll();
+});
+[["f-course","course"],["f-day","day"],["f-date","date"],["f-minutes","minutes"],
+ ["f-program","program"],["f-tagline","tagline"],["f-theme","theme"],["f-goal","goal"]].forEach(function(p){
+  $(p[0]).addEventListener("input",function(){
+    current()[p[1]]=this.value;
+    if(p[1]==="day") renderDays();
+    touch();
+  });
+});
+$("slist").addEventListener("input",function(e){
+  var k=e.target.dataset.k; if(!k) return;
+  var i=+e.target.closest(".srow").dataset.i;
+  current().sentences[i][k]=e.target.value;
+  touch();
+});
+$("slist").addEventListener("click",function(e){
+  var row=e.target.closest(".srow"); if(!row) return;
+  var i=+row.dataset.i, list=current().sentences;
+  if(e.target.dataset.rm){ list.splice(i,1); }
+  else if(e.target.dataset.mv){
+    var j=i+ +e.target.dataset.mv;
+    if(j<0||j>=list.length) return;
+    var tmp=list[i]; list[i]=list[j]; list[j]=tmp;
+  } else return;
+  save(); renderSentences(); renderPreview();
+});
+$("btnAddSentence").addEventListener("click",function(){
+  current().sentences.push({en:"",ko:"",pr:""});
+  save(); renderSentences(); renderPreview();
+  var rows=$("slist").querySelectorAll(".en-in");
+  if(rows.length) rows[rows.length-1].focus();
+});
+$("btnBulk").addEventListener("click",function(){ $("bulkWrap").hidden=!$("bulkWrap").hidden; });
+function parseBulk(){
+  return $("bulkText").value.split("\n").map(function(l){return l.trim();}).filter(Boolean).map(function(l){
+    var p=l.split("|").map(function(x){return x.trim();});
+    return {en:p[0]||"",ko:p[1]||"",pr:p[2]||""};
+  });
+}
+$("btnBulkAppend").addEventListener("click",function(){
+  var rows=parseBulk(); if(!rows.length) return;
+  current().sentences=current().sentences.concat(rows);
+  $("bulkText").value=""; save(); renderSentences(); renderPreview();
+});
+$("btnBulkReplace").addEventListener("click",function(){
+  var rows=parseBulk(); if(!rows.length) return;
+  current().sentences=rows;
+  $("bulkText").value=""; save(); renderSentences(); renderPreview();
+});
+$("segMode").addEventListener("click",function(e){
+  var b=e.target.closest("[data-mode]"); if(!b) return;
+  state.options.mode=b.dataset.mode; save(); renderOptions(); renderPreview();
+});
+[["o-trace","trace",1],["o-shadow","shadow",1],["o-perPage","perPage",1],
+ ["o-fs","fs",0],["o-quiz","quiz",1]].forEach(function(p){
+  $(p[0]).addEventListener("input",function(){
+    state.options[p[1]]=p[2]?parseInt(this.value,10):parseFloat(this.value);
+    save(); renderOptions(); renderPreview();
+  });
+});
+[["o-guide","guide"],["o-pron","pron"],["o-reflect","reflect"],["o-mono","mono"]].forEach(function(p){
+  $(p[0]).addEventListener("change",function(){ state.options[p[1]]=this.checked; touch(); });
+});
+$("o-scope").addEventListener("change",function(){ state.options.scope=this.value; touch(); });
+$("swatches").addEventListener("click",function(e){
+  var b=e.target.closest("[data-hex]"); if(!b) return;
+  state.options.accent=b.dataset.hex; save(); renderOptions(); renderPreview();
+});
+
+$("btnPrint").addEventListener("click",function(){ window.print(); });
+$("btnSample").addEventListener("click",function(){
+  if(!confirm("샘플 5일치를 불러오면 현재 내용이 대체됩니다. 계속할까요?")) return;
+  var opts=state.options; state=defaultState(); state.options=opts;
+  save(); renderAll();
+});
+$("btnReset").addEventListener("click",function(){
+  if(!confirm("모든 학습지를 지우고 빈 Day 하나로 시작할까요?")) return;
+  state=defaultState();
+  state.sheets=[{course:"CUP01",program:"Small Steps Every Morning",tagline:"아침 5분, 오늘의 영어 문장",
+    day:"01",date:"",minutes:"10분",theme:"",goal:"",
+    sentences:[{en:"",ko:"",pr:""},{en:"",ko:"",pr:""},{en:"",ko:"",pr:""}]}];
+  state.active=0; save(); renderAll();
+});
+$("btnExport").addEventListener("click",function(){
+  $("jsonBox").value=JSON.stringify(state,null,2);
+  $("jsonBox").select();
+  var ok=false;
+  try{ ok=document.execCommand("copy"); }catch(e){}
+  if(navigator.clipboard && !ok){ navigator.clipboard.writeText($("jsonBox").value).catch(function(){}); ok=true; }
+  $("ioMsg").textContent = ok ? "JSON을 복사했습니다. 파일로 저장해 두면 다른 기기에서 이어서 편집할 수 있습니다."
+                              : "아래 칸의 JSON을 직접 복사해 두세요.";
+});
+$("btnImport").addEventListener("click",function(){
+  var raw=$("jsonBox").value.trim();
+  if(!raw){ $("ioMsg").textContent="먼저 아래 칸에 JSON을 붙여 넣어 주세요."; return; }
+  var data;
+  try{ data=JSON.parse(raw); }
+  catch(e){ $("ioMsg").textContent="JSON 형식이 올바르지 않습니다. 여는 괄호와 닫는 괄호를 확인해 주세요."; return; }
+  if(!valid(data)){ $("ioMsg").textContent="학습지 데이터가 아닙니다. options와 sheets 항목이 필요합니다."; return; }
+  state=data; state.active=Math.min(state.active||0,state.sheets.length-1);
+  save(); renderAll();
+  $("ioMsg").textContent="불러왔습니다. "+state.sheets.length+"개 Day.";
+});
+$("btnTheme").addEventListener("click",function(){
+  var root=document.documentElement;
+  var now=root.getAttribute("data-theme");
+  var dark=now?now==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;
+  root.setAttribute("data-theme",dark?"light":"dark");
+});
+$("zIn").addEventListener("click",function(){ setZoom(zoom+.1); });
+$("zOut").addEventListener("click",function(){ setZoom(zoom-.1); });
+$("zFit").addEventListener("click",function(){ zoomAuto=true; applyZoom(); });
+window.addEventListener("resize",function(){ if(zoomAuto) applyZoom(); });
+
+renderAll();
+})();
+</script>
+</body>
+</html>
