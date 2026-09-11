@@ -1,0 +1,1029 @@
+{
+  "today_str": "2026-09-11",
+  "keywords": {
+    "primary": [
+      "영어",
+      "영어회화",
+      "영어 공부법",
+      "영어 스피킹"
+    ],
+    "secondary": [
+      "영어 듣기",
+      "영어 발음",
+      "영어 독학",
+      "원어민 표현",
+      "영어 문법"
+    ],
+    "temp_from_payload": [],
+    "source": "task_default (no config/keywords.yaml found)"
+  },
+  "call_count": 39,
+  "call_budget": 40,
+  "quota_exceeded": false,
+  "partial_collection": false,
+  "total_unique_videos_searched": 313,
+  "total_filtered": 188,
+  "excluded_count": 125,
+  "keyword_agg": {
+    "영어": {
+      "count": 29,
+      "totalViews": 18947185,
+      "medianViews": 31848,
+      "top3Share": 59.5
+    },
+    "영어회화": {
+      "count": 31,
+      "totalViews": 3985058,
+      "medianViews": 18675,
+      "top3Share": 69.5
+    },
+    "영어 공부법": {
+      "count": 35,
+      "totalViews": 2853333,
+      "medianViews": 41283,
+      "top3Share": 59.3
+    },
+    "영어 스피킹": {
+      "count": 33,
+      "totalViews": 2348070,
+      "medianViews": 24784,
+      "top3Share": 70.3
+    },
+    "영어 듣기": {
+      "count": 38,
+      "totalViews": 1073977,
+      "medianViews": 18543.5,
+      "top3Share": 44.3
+    },
+    "영어 발음": {
+      "count": 14,
+      "totalViews": 3137245,
+      "medianViews": 115453.0,
+      "top3Share": 73.2
+    },
+    "영어 독학": {
+      "count": 28,
+      "totalViews": 4959585,
+      "medianViews": 28791.5,
+      "top3Share": 85.1
+    },
+    "원어민 표현": {
+      "count": 21,
+      "totalViews": 301161,
+      "medianViews": 1759,
+      "top3Share": 61.1
+    },
+    "영어 문법": {
+      "count": 24,
+      "totalViews": 1868638,
+      "medianViews": 25160.5,
+      "top3Share": 72.2
+    }
+  },
+  "study_top20_ids": [
+    "FGeRBd3tWIs",
+    "unA7m6rjTUw",
+    "4DF-FhS4jP8",
+    "RJBvFzqidRo",
+    "QEmEjcvqiZk",
+    "bB5jPt38Ob8",
+    "6DgwJBzyvvk",
+    "jeMIRXw-OT8",
+    "Vdp9QjN2gT8",
+    "Jdc0kFebXJY",
+    "igoN3sry5Ik",
+    "iZyNuxjjCaY",
+    "0J2ZedwTyPg",
+    "SFFFMpLg8L4",
+    "69RRB4pazVA",
+    "EyhdWsOq_gQ",
+    "vV4Kl9KbmZ8",
+    "F9hLGXd7pe4",
+    "v6EZnsGpvkw",
+    "QBeAfxk4c-o"
+  ],
+  "study_top20": {
+    "FGeRBd3tWIs": {
+      "title": "어른도 모르는 어려운 영어단어를 사용하는 하영이? #내아이의사생활 #02hby",
+      "channelTitle": "두부우",
+      "channelId": "UCkavWA4JMTdOKfLr1Qilx8g",
+      "publishedAt": "2026-08-30T04:00:03Z",
+      "ageDays": 11,
+      "views": 5005985,
+      "likes": 52630,
+      "commentCount": 469,
+      "durationSec": 70,
+      "lengthBucket": "1~4분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 455089.5,
+      "engagementRate": 1.061,
+      "subCount": 158000,
+      "perfVsSub": 31.68,
+      "tags": [
+        "내아이의사생활",
+        "육아",
+        "ENA",
+        "도경완",
+        "장윤정",
+        "도연우",
+        "도하영",
+        "추성훈",
+        "추사랑",
+        "가족여행",
+        "태하",
+        "도아",
+        "벤틀리",
+        "윌리엄",
+        "박성탄",
+        "두부우"
+      ],
+      "description": "부모님들은 내 아이의 사생활을 얼마나 알고 있을까?\n재밌는 영상은 ENA에서 만나요😊\n\n#내아이의사생활 #도경완 #장윤정 #도연우 #도하영 #박도아 #태하 #벤틀리 #윌리엄 #육아",
+      "categoryId": "24",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "unA7m6rjTUw": {
+      "title": "\"영어 나올 줄 알았는데?\" 할리우드 홍보장에서 완벽한 한국어 뱉어 외신 기자들 싹 다 얼게 만든 12살 독학 배우의 정체",
+      "channelTitle": "4800만",
+      "channelId": "UCKV4df397J-moklrlzQkMrA",
+      "publishedAt": "2026-08-27T23:07:01Z",
+      "ageDays": 14,
+      "views": 3151149,
+      "likes": 30268,
+      "commentCount": 295,
+      "durationSec": 66,
+      "lengthBucket": "1~4분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 225082.1,
+      "engagementRate": 0.97,
+      "subCount": 27000,
+      "perfVsSub": 116.71,
+      "tags": [],
+      "description": "새 영화 '프로텍터' 홍보 현장, 당연히 영어가 나올 줄 알고 마이크를 들이댄 외신 기자들이 완벽한 한국어 한마디에 그대로 얼어붙었습니다! 주인공은 할리우드 배우 이사벨 마이어. 인스타그램 프로필에 '행복하지 않아도 괜찮아'라는 문장을 적어두고, 삼일절마다 태극기를 올리는 찐 '한국 덕후' 배우죠. 6·25 전쟁 시절 부산과 인연을 맺은 집안 내력 덕분에 어릴 적 식탁엔 늘 김치와 국이 올랐다고 합니다. 놀라운 건 그녀의 수준급 한국어가 과외 하나 없이 오직 유튜브와 K-드라마를 자막도 없이 무한 반복하며 쌓아 올린 독학의 결실이라는 점! 모르는 표현을 멈춰 찾아가며 익힌 결과, 번역기 티 하나 없는 자연스러운 한국 10대 말투를 완성해 냈습니다. 남의 나라 언어를 홀로 파고들어 제 것으로 만든 할리우드 배우의 진심 어린 한국 사랑을 들여다봅니다. 해시태그: #이사벨마이어 #프로텍터 #할리우드배우 #한국어독학 #K드라마 #외신반응 #외국인반응 #한국사랑 #국뽕쇼츠 #K문화",
+      "categoryId": "10",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "4DF-FhS4jP8": {
+      "title": "미치도록 웃기는 본토 발음 실수 모음집",
+      "channelTitle": "짭쌀떡",
+      "channelId": "UCiu5s_TrCX9J6LaEbVM3M4Q",
+      "publishedAt": "2026-08-15T08:55:25Z",
+      "ageDays": 26,
+      "views": 1391679,
+      "likes": 39336,
+      "commentCount": 282,
+      "durationSec": 73,
+      "lengthBucket": "1~4분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 53526.1,
+      "engagementRate": 2.847,
+      "subCount": 86800,
+      "perfVsSub": 16.03,
+      "tags": [],
+      "description": "주말인데 다들 아이스 아메리카노 한잔들 하시죵",
+      "categoryId": "22",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "RJBvFzqidRo": {
+      "title": "화려한 옷을 입은 그녀의 오싹한 직업? #standupcomedy #standupcomedian #영어회화 #comedy",
+      "channelTitle": "코믹한영어",
+      "channelId": "UC5SUNyVlWpvuU5qbIat3cQA",
+      "publishedAt": "2026-09-03T01:00:09Z",
+      "ageDays": 7,
+      "views": 831221,
+      "likes": 18964,
+      "commentCount": 220,
+      "durationSec": 100,
+      "lengthBucket": "1~4분",
+      "freshness": "7일 이내",
+      "dailyAvgViews": 118745.9,
+      "engagementRate": 2.308,
+      "subCount": 181000,
+      "perfVsSub": 4.59,
+      "tags": [],
+      "description": "",
+      "categoryId": "22",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "QEmEjcvqiZk": {
+      "title": "이것만 죽어라 외우세요 l 세상 모든 해외여행 영어 문장 80%가 해결되는 앞대가리 공식 10개 5탄",
+      "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+      "publishedAt": "2026-08-23T11:15:06Z",
+      "ageDays": 18,
+      "views": 816592,
+      "likes": 4409,
+      "commentCount": 25,
+      "durationSec": 1242,
+      "lengthBucket": "20분+",
+      "freshness": "8~30일",
+      "dailyAvgViews": 45366.2,
+      "engagementRate": 0.543,
+      "subCount": 558000,
+      "perfVsSub": 1.46,
+      "tags": [
+        "영어회화",
+        "영어공부",
+        "영어독학",
+        "기초영어",
+        "해외여행영어",
+        "여행영어회화",
+        "지름길영어",
+        "앞대가리 공식"
+      ],
+      "description": "영어는 재미있게 흡수하세요\n💡알고보카(갤럭시) 구글 플레이스토어 https://bit.ly/4wClTaR\n💡알고보카(아이폰) 애플 앱스토어 https://apple.co/4xVaILu\n\n00:00 앞대가리가 중요한 이유\n05:37 1. ~ 주실래요? \n08:04 2. ~ 해주실수 있나요? \n09:44 3. ~ 어떻게 가나요? \n10:37 4. ~ 해도 되나요? \n12:05 5. ~ 할게요 \n13:49 6. ~ 을 찾고 있어요\n15:22 7. ~ 하러 왔어요 \n16:38 8. ~ 있나요? \n18:04 9. ~ 얼마에요? \n19:05 10. 문제가 생겼어요 \n\n\n#지름길영어 #영어회화\n\n🎵Music provided by 브금대통령 \n🎵Track : 한탕하는날 - https://youtu.be/Zphi0aokSEw\n\n🎵Music provided by 브금대통령\n🎵Track : 시골 버스 정류장 - https://youtu.be/BYKC4eBQFig",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "bB5jPt38Ob8": {
+      "title": "대화중에 남친 몰래 영어 발음게임해보깈ㅋㅋㅋㅋ",
+      "channelTitle": "웰고티비",
+      "channelId": "UCoKRQLIlNZpte79wYyGmRiw",
+      "publishedAt": "2026-08-16T05:22:39Z",
+      "ageDays": 25,
+      "views": 487130,
+      "likes": 4725,
+      "commentCount": 28,
+      "durationSec": 74,
+      "lengthBucket": "1~4분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 19485.2,
+      "engagementRate": 0.976,
+      "subCount": 11800,
+      "perfVsSub": 41.28,
+      "tags": [],
+      "description": "",
+      "categoryId": "22",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "6DgwJBzyvvk": {
+      "title": "단 60일, 영어로 말하게 해드립니다 (궁극의 스피킹 플랜)",
+      "channelTitle": "세라 잉글리쉬 Sarah English",
+      "channelId": "UCI4NjvHev0lX1yTDwnvQ39A",
+      "publishedAt": "2026-08-14T04:11:14Z",
+      "ageDays": 27,
+      "views": 468338,
+      "likes": 17966,
+      "commentCount": 2123,
+      "durationSec": 1443,
+      "lengthBucket": "20분+",
+      "freshness": "8~30일",
+      "dailyAvgViews": 17345.9,
+      "engagementRate": 4.289,
+      "subCount": 27500,
+      "perfVsSub": 17.03,
+      "tags": [],
+      "description": "안녕하세요 세라입니다!\n\n⏳ 타임라인 (Timestamps)\n00:00 오프닝\n00:19 뭘 할거냐면\n01:21 4개국어 인증\n02:05 원어민 사고방식은 다르다?\n04:45 레벨테스트 설명\n05:33 레벨테스트 시작\n09:29 풀이 시작\n16:54 홍보\n19:00 쉐도잉 사이트 추천\n20:41 숙어에 대해\n\n\n숙어집 pdf 다운로드 링크입니다! (좋아요와 댓글 한번씩만 꼭 남겨주세요ㅠㅠ)\n\nhttps://drive.google.com/file/d/11v1TEBnebblex0yg4vZYA6hzT4JnzN0n/view?usp=sharing\n\nhttps://drive.google.com/file/d/1Fdak3DBTeHgKrAE8Ot5zZ7d1kGxbS3TW/view?usp=sharing\n\n\n제가 '세라 아카데미' 라는 이름으로 온라인 어학원을 런칭했습니다!\n\n현재 강의는 영어회화 (단문 뽀개기/장문 뽀개기) 이렇게 두가지의 수업을 진행하고 있고,\n\n오픽은 전자책 + AI 어시스턴트 /",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "jeMIRXw-OT8": {
+      "title": "99%가 모르는 AI 영어 공부법, 이 영상 하나로 끝내세요",
+      "channelTitle": "제나쌤 | 영어독학",
+      "channelId": "UCNM9TmyfbOD_GWAfd9qyOMw",
+      "publishedAt": "2026-08-12T08:38:28Z",
+      "ageDays": 29,
+      "views": 432259,
+      "likes": 10999,
+      "commentCount": 257,
+      "durationSec": 558,
+      "lengthBucket": "4~10분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 14905.5,
+      "engagementRate": 2.604,
+      "subCount": 58300,
+      "perfVsSub": 7.41,
+      "tags": [
+        "ai영어공부",
+        "영어공부법",
+        "영어회화",
+        "ai영어회화",
+        "ai영어"
+      ],
+      "description": "",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "Vdp9QjN2gT8": {
+      "title": "have been 1분 완벽정리  #영어회화 #영어공부 #기초영어",
+      "channelTitle": "잉글리스트",
+      "channelId": "UCMrqtn61zY0AJRIT1V1KUkw",
+      "publishedAt": "2026-08-29T01:00:28Z",
+      "ageDays": 12,
+      "views": 417393,
+      "likes": 8971,
+      "commentCount": 173,
+      "durationSec": 65,
+      "lengthBucket": "1~4분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 34782.8,
+      "engagementRate": 2.191,
+      "subCount": 378000,
+      "perfVsSub": 1.1,
+      "tags": [
+        "영어",
+        "영어공부",
+        "영어회화",
+        "기초영어",
+        "왕초보영어",
+        "잉글리스트"
+      ],
+      "description": "*4강이면 입이 트여요 https://englist.co.kr (잉글리스트)*",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "Jdc0kFebXJY": {
+      "title": "평범한 나를 통역사로 만들어 준 단 1권의 영어독학책 | 국내파통역사의 효율10배 올리는 영어공부법 | 국내파통역사의 인생역전 아웃풋 영어공부법",
+      "channelTitle": "만다블_국내파통역사의 영어공부법",
+      "channelId": "UCDp0BcWITympoRz30fODYLw",
+      "publishedAt": "2026-08-17T12:00:53Z",
+      "ageDays": 24,
+      "views": 291237,
+      "likes": 2349,
+      "commentCount": 33,
+      "durationSec": 2350,
+      "lengthBucket": "20분+",
+      "freshness": "8~30일",
+      "dailyAvgViews": 12134.9,
+      "engagementRate": 0.818,
+      "subCount": 35300,
+      "perfVsSub": 8.25,
+      "tags": [
+        "영어잘하는법",
+        "성인영어",
+        "고급영어",
+        "초급영어",
+        "중급영어",
+        "영어듣ㄷ기",
+        "영어말하기",
+        "영어스피킹",
+        "영어회화",
+        "직장인영어",
+        "30대영어",
+        "40대영어",
+        "50대영어",
+        "성인영어공부",
+        "직장인영어회화",
+        "어학연수",
+        "유학",
+        "영국영ㅇ어",
+        "미국영어",
+        "억양",
+        "영어발음",
+        "영어문장",
+        "영어문법",
+        "영어단어",
+        "영어문장만들기",
+        "영어문장구조",
+        "영어어순",
+        "영어스피치",
+        "영어발표",
+        "외국계회사영어",
+        "영어면접"
+      ],
+      "description": "#영어회화공부법#영어스피킹#영어공부법\n\n한국인의 평균 영어학습기간, 10년\n10년동안 공부해도 우리는 아직도 말 한마디 제대로 하는 것이 너무나 어렵습니다.\n그 근본적인 이유를 찾기 위해 오랫동안 공부하고 배우며 방법을 찾았습니다.\n\n저처럼 평범한 한국인에게 가장 효율적이면서도 근본적인 영어인풋 그리고 아웃풋 문제를 반드시 해결해 줄거라 믿습니다.\n\n오늘 영상은 제가 영어를 처음 시작한 순간부터 지금까지도 간직하고 있는, 그리고\n가장 먼저 추천하는 책을 소개해 드리고, 나아가서 어떻게 공부를 해야 하는지,\n독학으로 공부를 하기위한 방법까지 자세히 담았습니다. \n\n많은 분들이 수많은 책과 강의를 전부 들어야 하는지, 앱을 깔아야 하는지에 대해서\n물어보시지만, 결국 영어는 스스로 입을 움직이고 말을하면서 연습해야하고,\n나에게 가장 잘맞는 방법을 찾아서 그걸 꾸준히 반복하는데 그 성장의 힘이 있다고\n생각합니다. \n\n오늘 말씀드린 이 방법은 누구나 혼자서 할 수 있는  독학공부법입니다.\n일",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "igoN3sry5Ik": {
+      "title": "\"I'm not big on~\" 1초 만에 해석 안 되면 꼭 보세요! | 원어민들이 정말 자주 쓰는 회화 5개",
+      "channelTitle": "주아쌤_소리튠영어",
+      "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+      "publishedAt": "2026-09-06T11:00:12Z",
+      "ageDays": 4,
+      "views": 206144,
+      "likes": 1208,
+      "commentCount": 19,
+      "durationSec": 1347,
+      "lengthBucket": "20분+",
+      "freshness": "7일 이내",
+      "dailyAvgViews": 51536.0,
+      "engagementRate": 0.595,
+      "subCount": 875000,
+      "perfVsSub": 0.24,
+      "tags": [
+        "영어",
+        "영어공부",
+        "영어회화",
+        "영어발음",
+        "영어발성",
+        "영어 잘하는법",
+        "영어 공부법",
+        "영어 듣기",
+        "영어 쉐도잉",
+        "영어공부혼자하기",
+        "화상영어",
+        "영어회화학원",
+        "영어문장",
+        "영단어",
+        "영어로",
+        "왕초보영어",
+        "기초영어",
+        "성인영어회화",
+        "스피킹공부",
+        "영어스피킹",
+        "스피킹영어",
+        "영어리스닝",
+        "영어공부법"
+      ],
+      "description": "오늘처럼 영어 스피킹 훈련,\n더 다양한 훈련과 함께, 체계적으로 진행하고 싶다면?\n링크 클릭 👉  https://bit.ly/4xFXr9R\n\nHi, guys! 안녕하세요 여러분, 주아쌤입니다! 😊\n\n영어 공부 혼자 하기 정말 막막하시죠?\n그동안 화상 영어나 전화 영어, 혹은 시간 내기 힘들었던 영어 회화 학원에서 효과를 못 느끼셨다면 이제 나에게 맞는 학습법을 선택해 보세요.\n\n📍 가볍게 영어 독학을 원하는 분들은 제 유튜브 채널의 영상들을 보며 매일 꾸준히 영어 공부를 이어가시고,\n📍 보다 체계적이고 탄탄한 기초가 필요한 분들은 지금 바로 네이버에 [소리튠영어]를 검색해 보세요!\n\n소리튠영어의 온라인 수업은 성인 영어 학습자부터 기초를 잡아야 하는 초등 영어까지, 누구나 확실한 변화를 경험할 수 있는 영어 공부법을 제안합니다.\n\n영어 발음 교정과 영어 말하기 기초부터 원어민 필수 영어 문장 학습!\n답답했던 영어 듣기와 영어 리스닝 귀를 뚫어주는 특별한 훈련!\n자신감 넘치는 영어 스",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "iZyNuxjjCaY": {
+      "title": "[페파피그 리스닝] 소리카피(발음 집중)➕문장카피(의미 집중)🟰무자막 영어 듣기 가능 훈련",
+      "channelTitle": "에스텔잉글리쉬EstellEnglish",
+      "channelId": "UC0Wy2BjhsQP3gk2iuksCudw",
+      "publishedAt": "2026-08-16T22:00:15Z",
+      "ageDays": 25,
+      "views": 186677,
+      "likes": 1939,
+      "commentCount": 83,
+      "durationSec": 750,
+      "lengthBucket": "10~20분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 7467.1,
+      "engagementRate": 1.083,
+      "subCount": 688000,
+      "perfVsSub": 0.27,
+      "tags": [
+        "영어",
+        "에스텔잉글리쉬",
+        "영어무료강의",
+        "영어공부혼자하기",
+        "영어유튜브",
+        "영어유튜브추천",
+        "에스텔쌤",
+        "영어말하기",
+        "영어공부",
+        "영어회화",
+        "영어스피킹"
+      ],
+      "description": "📢 수강신청 문의\n●홈페이지 = http://www.estellenglish.com  (← 클릭)\n     ↳에스텔 쌤의 체계적인 수업듣고 무료 코칭도 받자!   \n     ↳(홈페이지로 오세요!)\n\n●카톡문의 = http://pf.kakao.com/_xcxmwxnC/chat (← 클릭)\n●전화문의 =  070-4647-2588\n●인스타그램 =  https://www.instagram.com/estellenglish_official\n\n00:00 인트로\n00:27 step1\n01:18 step2\n11:10 step3\n12:01 아웃트로",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "0J2ZedwTyPg": {
+      "title": "룸메 월세 함부로 올리면 안되는 이유? #standupcomedy #standupcomedian #영어회화 #lucydarling",
+      "channelTitle": "코믹한영어",
+      "channelId": "UC5SUNyVlWpvuU5qbIat3cQA",
+      "publishedAt": "2026-09-06T05:34:20Z",
+      "ageDays": 4,
+      "views": 183891,
+      "likes": 3853,
+      "commentCount": 32,
+      "durationSec": 171,
+      "lengthBucket": "1~4분",
+      "freshness": "7일 이내",
+      "dailyAvgViews": 45972.8,
+      "engagementRate": 2.113,
+      "subCount": 181000,
+      "perfVsSub": 1.02,
+      "tags": [],
+      "description": "",
+      "categoryId": "22",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "SFFFMpLg8L4": {
+      "title": "세상 모든 영어 문장 80%는 이걸로 해결됩니다 l 앞대가리 공식 46개 모음",
+      "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+      "publishedAt": "2026-08-30T11:15:06Z",
+      "ageDays": 11,
+      "views": 180266,
+      "likes": 2386,
+      "commentCount": 23,
+      "durationSec": 4929,
+      "lengthBucket": "20분+",
+      "freshness": "8~30일",
+      "dailyAvgViews": 16387.8,
+      "engagementRate": 1.336,
+      "subCount": 558000,
+      "perfVsSub": 0.32,
+      "tags": [
+        "기초영어",
+        "영어회화",
+        "영어공부",
+        "영어독학",
+        "영어공부혼자하기",
+        "지름길영어",
+        "알고보카"
+      ],
+      "description": "영어는 재미있게 흡수하세요\n💡알고보카(갤럭시) 구글 플레이스토어 https://bit.ly/4gp8E8K\n💡알고보카(아이폰) 애플 앱스토어 https://apple.co/4gEyCns\n\n\n\n\n#지름길영어 #영어회화\n\n🎵Music provided by 브금대통령 \n🎵Track : 한탕하는날 - https://youtu.be/Zphi0aokSEw\n\n🎵Music provided by 브금대통령\n🎵Track : 시골 버스 정류장 - https://youtu.be/BYKC4eBQFig",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "69RRB4pazVA": {
+      "title": "영어 회화 이렇게 했더니 7일 만에 입 뚫림｜2026 AI 영어 회화 공부법",
+      "channelTitle": "제나쌤 | 영어독학",
+      "channelId": "UCNM9TmyfbOD_GWAfd9qyOMw",
+      "publishedAt": "2026-08-29T06:42:48Z",
+      "ageDays": 12,
+      "views": 179358,
+      "likes": 2250,
+      "commentCount": 77,
+      "durationSec": 1013,
+      "lengthBucket": "10~20분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 14946.5,
+      "engagementRate": 1.297,
+      "subCount": 58300,
+      "perfVsSub": 3.08,
+      "tags": [
+        "영어회화",
+        "영어회화공부법",
+        "회화공부법",
+        "AI영어",
+        "AI영어공부",
+        "AI영어회화"
+      ],
+      "description": "",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "EyhdWsOq_gQ": {
+      "title": "기초영어는 이 한편으로 끝난다고 보시면 됩니다. 틀어두고 주구장창 들으세요~!",
+      "channelTitle": "잉글리스트",
+      "channelId": "UCMrqtn61zY0AJRIT1V1KUkw",
+      "publishedAt": "2026-09-07T12:00:30Z",
+      "ageDays": 3,
+      "views": 176736,
+      "likes": 2416,
+      "commentCount": 100,
+      "durationSec": 755,
+      "lengthBucket": "10~20분",
+      "freshness": "7일 이내",
+      "dailyAvgViews": 58912.0,
+      "engagementRate": 1.424,
+      "subCount": 378000,
+      "perfVsSub": 0.47,
+      "tags": [
+        "영어회화",
+        "영어문장",
+        "영어",
+        "기초영어",
+        "왕초보영어",
+        "영어공부",
+        "잉글리스트"
+      ],
+      "description": "*4강이면 영어가 트이는 초밀도 커리큘럼 https://englist.co.kr (잉글리스트)*\n영어에는 여러가지 형식이 존재하지만\n사실 2형식만 정확히 이해해도 나머지는 알아서 정리됩니다!\n\n#영어공부 #영어회화 #기초영어",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "vV4Kl9KbmZ8": {
+      "title": "30분이면 왕초보도 당황할 정도로 영어가 술술 나옵니다. | 스피킹 벌크업 06",
+      "channelTitle": "주아쌤_소리튠영어",
+      "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+      "publishedAt": "2026-09-01T11:00:38Z",
+      "ageDays": 9,
+      "views": 161056,
+      "likes": 1759,
+      "commentCount": 29,
+      "durationSec": 2160,
+      "lengthBucket": "20분+",
+      "freshness": "8~30일",
+      "dailyAvgViews": 17895.1,
+      "engagementRate": 1.11,
+      "subCount": 875000,
+      "perfVsSub": 0.18,
+      "tags": [
+        "영어",
+        "영어공부",
+        "영어회화",
+        "영어발음",
+        "영어발성",
+        "영어 잘하는법",
+        "영어 공부법",
+        "영어 듣기",
+        "영어 쉐도잉",
+        "영어공부혼자하기",
+        "화상영어",
+        "영어회화학원",
+        "영어문장",
+        "영단어",
+        "영어로",
+        "왕초보영어",
+        "영어회화 인강",
+        "learn beginner english",
+        "영어스피킹",
+        "영어리스닝",
+        "영어말하기",
+        "영어말하기연습"
+      ],
+      "description": "[NEW 리스닝 블록]\n영어를 한국어처럼 듣고 싶다면?\n링크 클릭 👉 https://bit.ly/4cBhxtE\n\nHi, guys! 안녕하세요 여러분, 주아쌤입니다! 😊\n\n영어 공부 혼자 하기 정말 막막하시죠?\n그동안 화상 영어나 전화 영어, 혹은 시간 내기 힘들었던 영어 회화 학원에서 효과를 못 느끼셨다면 이제 나에게 맞는 학습법을 선택해 보세요.\n\n📍 가볍게 영어 독학을 원하는 분들은 제 유튜브 채널의 영상들을 보며 매일 꾸준히 영어 공부를 이어가시고,\n📍 보다 체계적이고 탄탄한 기초가 필요한 분들은 지금 바로 네이버에 [소리튠영어]를 검색해 보세요!\n\n소리튠영어의 온라인 수업은 성인 영어 학습자부터 기초를 잡아야 하는 초등 영어까지, 누구나 확실한 변화를 경험할 수 있는 영어 공부법을 제안합니다.\n\n- 영어 발음 교정과 영어 말하기 기초부터 원어민 필수 영어 문장 학습!\n- 답답했던 영어 듣기와 영어 리스닝 귀를 뚫어주는 특별한 훈련!\n- 자신감 넘치는 영어 스피킹을 위한 생활 ",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "F9hLGXd7pe4": {
+      "title": "제발 이것만 외우세요 l 세상에 존재하는 영어 문장 80%는 해결되는 앞대가리 공식 15개 4탄",
+      "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+      "publishedAt": "2026-08-16T11:15:28Z",
+      "ageDays": 25,
+      "views": 147629,
+      "likes": 2675,
+      "commentCount": 42,
+      "durationSec": 1485,
+      "lengthBucket": "20분+",
+      "freshness": "8~30일",
+      "dailyAvgViews": 5905.2,
+      "engagementRate": 1.84,
+      "subCount": 558000,
+      "perfVsSub": 0.26,
+      "tags": [
+        "영어회화",
+        "영어공부",
+        "영어독학",
+        "기초영어",
+        "생활영어",
+        "초보영어",
+        "앞대가리 공식",
+        "지름길영어",
+        "알고보카"
+      ],
+      "description": "영어는 재미있게 흡수하세요\n💡알고보카(갤럭시) 구글 플레이스토어 https://bit.ly/461HdvB\n💡알고보카(아이폰) 애플 앱스토어 https://apple.co/4qoyGfQ\n\n\n00:00 앞대가리가 중요한 이유\n03:52 1. 커피가 땡기네 \n05:39 2. 문제는 말이야 \n06:50 3. 추위에 익숙해 \n08:26 4. 잠이 부족해 \n09:38 5. 열심히 하고 있어 \n10:52 6. 모르는 것 같아 \n12:03 7. 이해하기 어렵네요 \n13:19 8. 말할 시간돼 \n14:47 9. 끝났어 \n16:29 10. 하려고 하고 있는데~\n17:43 11. 가보는게 좋겠어 \n18:51 12. 안 좋아하는 것 같은데 \n20:23 13. 꼭 잠그고 나가 \n21:43 14. 내가 틀렸다는 말이야? \n22:44 15. 어쩐지 피곤해보이더라 \n\n\n\n#지름길영어 #영어회화\n\n🎵Music provided by 브금대통령 \n🎵Track : 한탕하는날 - https://youtu.be/Zphi0",
+      "categoryId": "27",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "v6EZnsGpvkw": {
+      "title": "72세 미망민의 젊은 남성 공개모집 #standupcomedy #standupcomedian #영어회화 #comedy",
+      "channelTitle": "코믹한영어",
+      "channelId": "UC5SUNyVlWpvuU5qbIat3cQA",
+      "publishedAt": "2026-09-01T01:30:20Z",
+      "ageDays": 9,
+      "views": 143223,
+      "likes": 2566,
+      "commentCount": 29,
+      "durationSec": 81,
+      "lengthBucket": "1~4분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 15913.7,
+      "engagementRate": 1.812,
+      "subCount": 181000,
+      "perfVsSub": 0.79,
+      "tags": [],
+      "description": "",
+      "categoryId": "22",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    },
+    "QBeAfxk4c-o": {
+      "title": "발음을 정확히 해줬으면 좋겠어",
+      "channelTitle": "𝗣𝘂𝗻𝗰𝗵𝗹𝗶𝗻𝗲 𝗘𝗻𝗴𝗹𝗶𝘀𝗵",
+      "channelId": "UCU3fgui7NLyYeNk3hIHIKYQ",
+      "publishedAt": "2026-08-19T01:55:28Z",
+      "ageDays": 22,
+      "views": 140241,
+      "likes": 3007,
+      "commentCount": 93,
+      "durationSec": 95,
+      "lengthBucket": "1~4분",
+      "freshness": "8~30일",
+      "dailyAvgViews": 6374.6,
+      "engagementRate": 2.21,
+      "subCount": 117000,
+      "perfVsSub": 1.2,
+      "tags": [],
+      "description": "Source: Jimmy Carr (지미 카)\n\nAll rights to the original content belong to the creator. We deeply respect the original artists' creative value and provide secondary works with cultural interpretations and subtitles. Our mission is to share global stand-up comedy culture and its educational insights.\n\n*We strongly encourage you to visit the original creator's official channel to watch the full version.\n\n모든 영상의 원본 저작권은 원작자에게 있습니다. 본 채널은 원작자의 창의적인 가치를 깊이 존중하며, 한국 시청자들의 이해를 돕기 위한 문화적 해석과 자막 편집을 더한 2차 창",
+      "categoryId": "24",
+      "defaultLanguage": "ko",
+      "isStudy": true
+    }
+  },
+  "title_pattern_tags": {
+    "FGeRBd3tWIs": [
+      "질문형",
+      "반전형"
+    ],
+    "unA7m6rjTUw": [
+      "질문형",
+      "반전형"
+    ],
+    "4DF-FhS4jP8": [
+      "모음집(리스트형)"
+    ],
+    "RJBvFzqidRo": [
+      "질문형"
+    ],
+    "QEmEjcvqiZk": [
+      "숫자형",
+      "경고반전형",
+      "튜토리얼형"
+    ],
+    "bB5jPt38Ob8": [
+      "결과성과형"
+    ],
+    "6DgwJBzyvvk": [
+      "숫자형",
+      "결과성과형"
+    ],
+    "jeMIRXw-OT8": [
+      "숫자형",
+      "반전경고형",
+      "권위인용형"
+    ],
+    "Vdp9QjN2gT8": [
+      "숫자형",
+      "튜토리얼형",
+      "한영혼용"
+    ],
+    "Jdc0kFebXJY": [
+      "숫자형",
+      "결과성과형",
+      "권위인용형"
+    ],
+    "igoN3sry5Ik": [
+      "숫자형",
+      "경고반전형",
+      "한영혼용"
+    ],
+    "iZyNuxjjCaY": [
+      "튜토리얼형"
+    ],
+    "0J2ZedwTyPg": [
+      "질문형"
+    ],
+    "SFFFMpLg8L4": [
+      "숫자형",
+      "튜토리얼형"
+    ],
+    "69RRB4pazVA": [
+      "결과성과형",
+      "숫자형",
+      "뉴스업데이트형"
+    ],
+    "EyhdWsOq_gQ": [
+      "결과성과형",
+      "튜토리얼형"
+    ],
+    "vV4Kl9KbmZ8": [
+      "숫자형",
+      "결과성과형"
+    ],
+    "F9hLGXd7pe4": [
+      "숫자형",
+      "경고반전형",
+      "튜토리얼형"
+    ],
+    "v6EZnsGpvkw": [
+      "숫자형"
+    ],
+    "QBeAfxk4c-o": [
+      "질문형(요청형)"
+    ]
+  },
+  "top_words": [
+    [
+      "영어",
+      11
+    ],
+    [
+      "한국어",
+      3
+    ],
+    [
+      "동요",
+      3
+    ],
+    [
+      "이유",
+      3
+    ],
+    [
+      "영어회화",
+      3
+    ],
+    [
+      "회화",
+      3
+    ],
+    [
+      "모르는",
+      2
+    ],
+    [
+      "English",
+      2
+    ],
+    [
+      "외신",
+      2
+    ],
+    [
+      "기자들",
+      2
+    ]
+  ],
+  "top_tags_study_top20": [
+    [
+      "영어회화",
+      11
+    ],
+    [
+      "영어공부",
+      8
+    ],
+    [
+      "기초영어",
+      6
+    ],
+    [
+      "영어",
+      5
+    ],
+    [
+      "왕초보영어",
+      4
+    ],
+    [
+      "영어스피킹",
+      4
+    ],
+    [
+      "영어문장",
+      4
+    ],
+    [
+      "영어공부혼자하기",
+      4
+    ],
+    [
+      "영어독학",
+      3
+    ],
+    [
+      "지름길영어",
+      3
+    ],
+    [
+      "영어말하기",
+      3
+    ],
+    [
+      "영어발음",
+      3
+    ],
+    [
+      "앞대가리 공식",
+      2
+    ],
+    [
+      "영어공부법",
+      2
+    ],
+    [
+      "잉글리스트",
+      2
+    ]
+  ],
+  "length_bucket_stats_all": {
+    "20분+": {
+      "count": 88,
+      "avgViews": 49163.4,
+      "avgEngagement": 2.338
+    },
+    "4~10분": {
+      "count": 26,
+      "avgViews": 36725.1,
+      "avgEngagement": 2.505
+    },
+    "10~20분": {
+      "count": 47,
+      "avgViews": 83612.4,
+      "avgEngagement": 2.028
+    },
+    "1~4분": {
+      "count": 27,
+      "avgViews": 829559.9,
+      "avgEngagement": 1.886
+    }
+  },
+  "weekday_dist_study_top20": {
+    "Sunday": 8,
+    "Saturday": 3,
+    "Thursday": 2,
+    "Wednesday": 2,
+    "Monday": 2,
+    "Tuesday": 2,
+    "Friday": 1
+  },
+  "emerging_channels": [
+    {
+      "channel": "지니스",
+      "subs": 1470,
+      "videos_in_topic": 1,
+      "perf_vs_sub": 28.61
+    },
+    {
+      "channel": "공부가 뭐길래 꼭쌤",
+      "subs": 17,
+      "videos_in_topic": 1,
+      "perf_vs_sub": 17.65
+    },
+    {
+      "channel": "쏘로그 | Tholog",
+      "subs": 5100,
+      "videos_in_topic": 1,
+      "perf_vs_sub": 15.88
+    },
+    {
+      "channel": "Starting Today",
+      "subs": 3420,
+      "videos_in_topic": 1,
+      "perf_vs_sub": 13.92
+    },
+    {
+      "channel": "영어식 사고ㅣ러너블 티처 케일라 & 아멜리아",
+      "subs": 7160,
+      "videos_in_topic": 1,
+      "perf_vs_sub": 9.86
+    },
+    {
+      "channel": "칩스영어",
+      "subs": 6330,
+      "videos_in_topic": 1,
+      "perf_vs_sub": 8.4
+    },
+    {
+      "channel": "영어시험연구소-토익",
+      "subs": 4390,
+      "videos_in_topic": 1,
+      "perf_vs_sub": 7.25
+    },
+    {
+      "channel": "365매일영어",
+      "subs": 964,
+      "videos_in_topic": 6,
+      "perf_vs_sub": 3.47
+    }
+  ],
+  "top3_share_study_pool": 50.9,
+  "oligopoly_keywords": [
+    "영어 독학 (85.1%)",
+    "영어 발음 (73.2%)",
+    "영어 스피킹 (70.3%)",
+    "영어회화 (69.5%)"
+  ],
+  "low_competition_keywords_by_count": [],
+  "gap_notes": [
+    "영어 발음: 영상수 14건(최소)인데 상위3채널 점유율 73.2%로 과점형 좁은 시장",
+    "원어민 표현: 영상수 있으나 중앙값 조회수 1,759로 최저 - 단발 히트보다 시리즈 축적형이 유효",
+    "최근 급등 각도 중 우리 채널에 없는 것: 'AI 활용 공부법', '표현 1개 1분 완결형'"
+  ],
+  "comment_insight": {
+    "sample_note": "예산 제약으로 학습형 콘텐츠 댓글 표본 1건만 확보(igoN3sry5Ik)",
+    "repeated_question": "캐주얼한 한국어 표현을 영어로 직역했을 때 뉘앙스 차이에 대한 궁금증",
+    "content_idea": "직역하면 안 되는 한국어 일상 표현, 영어로는?",
+    "videos_with_comments_fetched": [
+      "FGeRBd3tWIs",
+      "Imni1FKN5hE",
+      "unA7m6rjTUw",
+      "9UG_1WIT4pM",
+      "MWIeY_bgKCU",
+      "YXGanq9cgHk",
+      "4DF-FhS4jP8",
+      "RJBvFzqidRo",
+      "igoN3sry5Ik",
+      "0J2ZedwTyPg"
+    ],
+    "skipped_disabled": [
+      "ODAywhV-FQk"
+    ]
+  },
+  "prior_briefing_comparison": {
+    "prior_file": "briefings/2026-09-02.md",
+    "note": "이전 실행은 완전히 다른 키워드셋(문장형 영어 특화 14개) 사용 - 키워드 단위 비교 불가, 영상 ID 교차 확인만 수행",
+    "cross_check": [
+      {
+        "videoId": "QEmEjcvqiZk",
+        "title": "이것만 죽어라 외우세요 l 세상 모든 해외여행 영어 문장 80%가 해결되는 앞대가리 공식 10개 5탄",
+        "views_20260902": 372986,
+        "views_20260911": 816592,
+        "delta": 443606
+      }
+    ]
+  },
+  "our_channel_comparison": "OUR_CHANNEL_ID 미설정으로 생략",
+  "core_points": [
+    "숫자형+튜토리얼형 반복 시리즈(지름길영어 앞대가리 공식)가 9일간 +443,606회 증가, 영어독학 키워드 상위3채널 점유율 85.1%로 포맷 자체가 사실상 독점",
+    "'영어' 단일 키워드 상위는 케이팝/뉴스/키즈 예능 클립이 대부분(순수 학습 콘텐츠 아님) - 좁은 보조 키워드(영어 발음/영어 독학)가 실제 경쟁 구도를 더 잘 보여줌",
+    "365매일영어(964명), 지니스(1,470명) 등 소형 채널이 저비용 반복 시리즈로 채널대비성과 3~29배 달성 - 대형 히트보다 반복 가능한 짧은 포맷이 소형 채널에 안전한 전략"
+  ]
+}
