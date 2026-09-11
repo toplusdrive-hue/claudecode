@@ -1,43 +1,58 @@
 # Two Cups Workbook Studio
 
-SRT 자막 하나로 영어 듣기 학습지를 만들고, 그 자리에서 고쳐 쓰고, 인쇄(PDF)까지 하는
-단일 HTML 도구입니다. 서버도 빌드도 필요 없고 브라우저에서 `index.html`만 열면 됩니다.
+Turn a podcast SRT into a simple, printable English worksheet — then edit every
+line of it in the browser. One HTML file, no server, no build.
+The worksheet is written entirely in English for learners; the studio interface
+itself can switch between English and Korean with the language button.
 
-## 쓰는 법
+## Use it
 
-1. `index.html`을 브라우저에서 엽니다. (`episodes.js`에 CUP01–CUP15가 들어 있어 바로 학습지가 보입니다.)
-2. 왼쪽에서 에피소드·레벨·분량·수록 섹션을 고르고 **학습지 생성**.
-3. 학습지의 글자는 전부 그 자리에서 고칠 수 있습니다. 섹션은 ↑↓ 이동, ↻ 다시 생성, ＋ 문항 추가, ✕ 삭제.
-4. 오른쪽 **대본** 패널에서 원하는 문장을 골라 빈칸·받아쓰기·쉐도잉·T/F·순서·배열 문제로 바로 넣을 수 있습니다.
-5. **인쇄 · PDF** → 대상을 "PDF로 저장"으로. 정답지는 자동으로 다음 장에 인쇄됩니다.
+1. Open `index.html` in a browser. (`episodes.js` carries CUP01–CUP15, so a
+   worksheet is on screen straight away.)
+2. Pick an episode, a level and a length on the left, then **Make worksheet**.
+3. Every word on the sheet is editable. Each part has ↑ ↓ move, ↻ make again,
+   ＋ add an item, ✕ delete.
+4. The **Script** panel on the right turns any sentence into a blank, a
+   dictation line, a repeat line, a T/F item, a matching pair or a word-order item.
+5. **Print · PDF** → choose “Save as PDF”. The answer key prints on its own page.
 
-내 자막으로 만들려면 왼쪽 **SRT 파일 열기**에 `.srt`/`.vtt` 파일을 끌어다 놓으면 됩니다.
-음원 파일(mp3 등)을 연결하면 학습지·대본의 타임스탬프를 눌러 그 구간을 바로 들을 수 있습니다.
+Drop your own `.srt` / `.vtt` files on the left to use any other transcript.
+Link an audio file and every time code becomes a play button (with a Loop
+button that plays one sentence only).
 
-## 만들어지는 섹션
+## What gets made
 
-| 섹션 | 내용 | 자동 생성 방식 |
+| Part | The task | How it is built |
 | --- | --- | --- |
-| 워밍업 | 주제 예측·단어 미리보기 | `Today, our topic is …` 문장에서 주제 추출 |
-| 핵심 단어 | 단어 / 뜻 쓰기 / 예문 | 불용어·고유명사 제외 후 어간 묶어 빈도순 |
-| 반복 표현 | 3회 이상 반복된 2~4어 표현 | n-gram 빈도, 겹치는 표현은 긴 쪽만 남김 |
-| 빈칸 듣기 | 단어 상자 + 빈칸 문장 | 핵심어 우선, 같은 단어가 반복되지 않게 분산 |
-| 알맞은 단어 고르기 | 4지선다 | 정답 외 보기는 다른 핵심어에서 |
-| 받아쓰기 | 구간 시각 + 쓰기 줄 | 에피소드 전체에 고르게 분포 |
-| 내용 확인 T/F | 참·거짓 문장 | 반의어·숫자·핵심어를 바꿔 거짓 문장 생성 |
-| 사건 순서 배열 | 문장 순서 맞히기 | 실제 발화 순서가 정답 |
-| 단어 배열 | 어순 연습 | 짧은 문장을 섞어서 제시 |
-| 쉐도잉 | 문장 + 3회 체크 | 구간 시각과 함께 |
-| 말하기·쓰기 | 서술형 과제 | 주제와 반복 표현을 넣어 구성 |
+| Before You Listen | predict, tick known words, one question | from the episode topic line |
+| Words to Know | word · meaning · example, with a tick box | stemmed frequency, stopwords and names removed |
+| Useful Phrases | phrases said again and again, 3 repeat boxes | 2–4 word n-grams, the longer form kept |
+| Listen and Write the Word | one blank per sentence + word box | key words first, spread so no word repeats |
+| True or False | short statements to circle | half made false by an opposite, a number or a negation |
+| Match the Two Halves | join sentence halves with a letter | split near the middle at and / but / when / with … |
+| Put the Words in Order | 4–7 word sentences, shuffled | statements only, questions left out |
+| Listen and Write the Sentence | time code + writing lines | short sentences, spread across the episode |
+| Say It with Ben and Mia | shadowing lines, 3 boxes each | short sentences with time codes |
+| Your Turn | write and speak | built from the topic and the phrases above |
+| Choose the Right Word · Notes | optional extras | off by default |
 
-난이도(초급/중급/고급)는 문장 길이, 한 문장당 빈칸 수, 단어 상자 제공 여부를 바꿉니다.
+Level (Beginner A1 / Elementary A2 / Intermediate B1) sets how long the
+sentences are, how many blanks each one gets, and whether a word box is given.
+Length (10 / 20 / 35 min) sets how many items each part has.
 
-## 파일
+## Files
 
-- `index.html` — 스튜디오 전체 (HTML·CSS·JS 한 파일)
-- `episodes.js` — 내장 자막 데이터 (`build-episodes.mjs`로 생성)
-- `srt/` — 원본 자막 CUP01–CUP15
-- `build-episodes.mjs` — `srt/` 폴더를 `episodes.js`로 묶기: `node build-episodes.mjs`
-- `make-artifact.mjs` — 웹 게시용(body-only) 사본 생성
+- `index.html` — the whole studio (HTML, CSS, JS in one file)
+- `episodes.js` — built-in transcripts, made by `build-episodes.mjs`
+- `srt/` — source subtitles CUP01–CUP15
+- `build-episodes.mjs` — bundle a folder of SRT files: `node build-episodes.mjs`
+- `make-artifact.mjs` — body-only copy for publishing on the web
 
-학습지는 브라우저에 자동 저장되고, **저장**으로 JSON 파일로 내보내 **불러오기**로 다시 열 수 있습니다.
+Worksheets autosave in the browser; **Save** writes a JSON file and **Open**
+reads it back. **Export HTML** and **Copy as text** give you the sheet to paste
+into any other document.
+
+---
+
+학습지 내용은 학습자를 위해 전부 영어로 나오고, 스튜디오 화면은 오른쪽 위
+언어 버튼으로 English / 한국어를 바꿀 수 있습니다.

@@ -254,12 +254,29 @@ body[data-rail="on"] .scrim,body[data-tr="on"] .scrim{display:block}
   padding:9px 16px;border-radius:99px;font-size:13px;z-index:60;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .18s}
 .toast.on{opacity:1}
 </style>
+<style>
+/* ---------- basic-level exercise atoms ---------- */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.match ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.match li{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:start;font-size:13.5px;line-height:1.6}
+.match .tag{font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:3px;font-variant-numeric:tabular-nums}
+.match .slot{display:inline-block;min-width:30px;border-bottom:1px solid var(--line);text-align:center;
+  font-family:var(--mono);font-size:12.5px;color:transparent;margin-left:6px}
+body.answers .match .slot{color:var(--accent-ink);border-bottom-color:var(--accent)}
+.match h4{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  font-weight:500;margin:0 0 9px}
+@media (max-width:620px){.match{grid-template-columns:1fr;gap:14px}}
+.repeat{display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.repeat b{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+.say{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:start}
+.lang-pill{font-family:var(--mono);font-size:11px;letter-spacing:.06em}
+</style>
 </head>
 <body>
 <div class="app">
   <header class="topbar">
     <div class="tabs">
-      <button class="icon" id="tabRail" title="자료·설정 열기">☰</button>
+      <button class="icon" id="tabRail" title="Open panel">☰</button>
     </div>
     <div class="brand">
       <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true">
@@ -273,81 +290,70 @@ body[data-rail="on"] .scrim,body[data-tr="on"] .scrim{display:block}
     </div>
     <div class="spacer"></div>
     <div class="tool">
-      <button class="btn primary" id="btnGen">학습지 생성</button>
-      <button class="btn" id="btnAnswers" aria-pressed="false">정답 보기</button>
-      <button class="btn" id="btnPrint">인쇄 · PDF</button>
-      <button class="btn" id="btnSave">저장</button>
-      <button class="btn" id="btnLoad">불러오기</button>
-      <button class="icon" id="btnTheme" title="라이트/다크 전환">◐</button>
-      <button class="icon" id="tabTr" title="대본 열기">대본</button>
+      <button class="btn primary" id="btnGen" data-t="ui.make">Make worksheet</button>
+      <button class="btn" id="btnAnswers" aria-pressed="false" data-t="ui.answers">Answers</button>
+      <button class="btn" id="btnPrint" data-t="ui.print">Print · PDF</button>
+      <button class="btn" id="btnSave" data-t="ui.save">Save</button>
+      <button class="btn" id="btnLoad" data-t="ui.open">Open</button>
+      <button class="btn lang-pill" id="btnLang" title="Language / 언어">EN</button>
+      <button class="icon" id="btnTheme" title="Light / dark">◐</button>
+      <button class="icon" id="tabTr" data-t="ui.script">Script</button>
     </div>
   </header>
 
   <div class="body">
     <aside class="rail left" id="railLeft">
       <section>
-        <h2>에피소드</h2>
+        <h2 data-t="rail.episodes">Episodes</h2>
         <div class="ep-list" id="epList"></div>
         <div class="drop" id="drop" style="margin-top:10px">
-          SRT 파일 열기<br><span style="opacity:.75">클릭 또는 드래그 &amp; 드롭 · 여러 개 가능</span>
+          <span data-t="rail.open">Open your own SRT</span><br><span style="opacity:.75" data-t="rail.openSub">click or drop files here</span>
         </div>
         <input type="file" id="fileSrt" accept=".srt,.vtt,.txt" multiple hidden>
         <input type="file" id="fileJson" accept=".json" hidden>
       </section>
 
       <section>
-        <h2>에피소드 정보</h2>
+        <h2 data-t="rail.about">This episode</h2>
         <div id="epStats"></div>
       </section>
 
       <section>
-        <h2>난이도 · 분량</h2>
+        <h2 data-t="rail.level">Level and length</h2>
         <div class="grid2">
-          <label class="field">레벨
+          <label class="field" data-t="rail.levelLabel">Level
             <select id="setLevel">
-              <option value="1">초급 A1–A2</option>
-              <option value="2" selected>중급 A2–B1</option>
-              <option value="3">고급 B1+</option>
+              <option value="1" selected data-t="lv.1">Beginner A1</option>
+              <option value="2" data-t="lv.2">Elementary A2</option>
+              <option value="3" data-t="lv.3">Intermediate B1</option>
             </select>
           </label>
-          <label class="field">문항 수
+          <label class="field" data-t="rail.sizeLabel">Length
             <select id="setSize">
-              <option value="s">짧게 (10분)</option>
-              <option value="m" selected>보통 (25분)</option>
-              <option value="l">길게 (40분)</option>
-            </select>
-          </label>
-          <label class="field">안내문
-            <select id="setLang">
-              <option value="ko" selected>한국어</option>
-              <option value="both">한국어 + English</option>
-              <option value="en">English</option>
-            </select>
-          </label>
-          <label class="field">타임스탬프
-            <select id="setStamp">
-              <option value="1" selected>표시</option>
-              <option value="0">숨김</option>
+              <option value="s" data-t="sz.s">Short · 10 min</option>
+              <option value="m" selected data-t="sz.m">Normal · 20 min</option>
+              <option value="l" data-t="sz.l">Long · 35 min</option>
             </select>
           </label>
         </div>
-        <label class="check" style="margin-top:10px"><input type="checkbox" id="setBank" checked> 빈칸 문제에 단어 상자 제공</label>
-        <label class="check"><input type="checkbox" id="setKey" checked> 마지막에 정답지 붙이기</label>
+        <label class="check" style="margin-top:10px"><input type="checkbox" id="setStamp" checked> <span data-t="rail.stamp">Show time codes</span></label>
+        <label class="check"><input type="checkbox" id="setBank" checked> <span data-t="rail.bank">Give a word box for blanks</span></label>
+        <label class="check"><input type="checkbox" id="setKey" checked> <span data-t="rail.key">Add the answer key</span></label>
       </section>
 
       <section>
-        <h2>수록 섹션</h2>
+        <h2 data-t="rail.parts">Parts of the worksheet</h2>
         <div class="sec-toggles" id="secToggles"></div>
-        <p class="hint" style="margin:10px 0 0">체크한 섹션만 <b>학습지 생성</b> 시 만들어집니다. 만든 뒤에도 섹션·문항을 직접 고치거나 추가할 수 있어요.</p>
+        <p class="hint" style="margin:10px 0 0" data-t="rail.partsHint">Only the ticked parts are made. You can still edit, add or delete anything afterwards.</p>
       </section>
 
       <section>
-        <h2>내보내기</h2>
+        <h2 data-t="rail.export">Export</h2>
         <div class="tool" style="flex-wrap:wrap;gap:6px">
-          <button class="btn" id="btnHtml">HTML로 내보내기</button>
-          <button class="btn" id="btnMd">텍스트 복사</button>
+          <button class="btn" id="btnHtml" data-t="ui.html">Export HTML</button>
+          <button class="btn" id="btnMd" data-t="ui.copy">Copy as text</button>
         </div>
-        <p class="hint" style="margin:10px 0 0">인쇄 창에서 <b>대상: PDF로 저장</b>을 고르면 학습지 PDF가 됩니다. 정답지는 자동으로 다음 장에 인쇄돼요.</p>
+        <p class="hint" style="margin:10px 0 0" data-t="rail.printHint">In the print window choose “Save as PDF”. The answer key prints on its own page.</p>
       </section>
     </aside>
 
@@ -358,17 +364,17 @@ body[data-rail="on"] .scrim,body[data-tr="on"] .scrim{display:block}
     <aside class="rail right" id="railRight">
       <div class="tr-head">
         <div style="display:flex;align-items:center;gap:8px">
-          <h2 style="margin:0;flex:1">대본 <span id="trCount" class="tstamp"></span></h2>
-          <button class="icon" id="trClose" title="닫기">✕</button>
+          <h2 style="margin:0;flex:1"><span data-t="tr.title">Script</span> <span id="trCount" class="tstamp"></span></h2>
+          <button class="icon" id="trClose" title="Close">✕</button>
         </div>
-        <input type="text" id="trSearch" placeholder="문장 검색 (예: morning)">
-        <p class="hint" style="margin:0">문장 위에 마우스를 올리면 그 문장을 빈칸·받아쓰기·쉐도잉 문제로 바로 넣을 수 있어요.</p>
+        <input type="text" id="trSearch" placeholder="Search a sentence">
+        <p class="hint" style="margin:0" data-t="tr.hint">Point at a sentence to turn it into a blank, a dictation line, a repeat line and more.</p>
       </div>
       <div class="tr-list" id="trList"></div>
       <div class="audio-dock">
         <div style="display:flex;gap:8px;align-items:center">
-          <button class="btn" id="btnAudio" style="flex:1">음원 파일 연결</button>
-          <button class="icon" id="btnLoop" aria-pressed="false" title="문장 구간만 재생">구간</button>
+          <button class="btn" id="btnAudio" style="flex:1" data-t="tr.audio">Link an audio file</button>
+          <button class="icon" id="btnLoop" aria-pressed="false" data-t="tr.loop" title="Play one sentence only">Loop</button>
         </div>
         <input type="file" id="fileAudio" accept="audio/*" hidden>
         <audio id="player" controls preload="none"></audio>
@@ -383,7 +389,7 @@ body[data-rail="on"] .scrim,body[data-tr="on"] .scrim{display:block}
 <script>
 /* =====================================================================
    Two Cups Workbook Studio
-   SRT  ->  printable English workbook  ->  editable in place
+   SRT  ->  a simple English worksheet  ->  edit it in place
    ===================================================================== */
 (function () {
 'use strict';
@@ -485,6 +491,8 @@ function analyze(ep) {
   }
   const proper = new Set();
   for (const [w, c] of capMid) if (c >= 2 && c >= (seen.get(w) || 1) * 0.6) proper.add(w);
+  const names = Array.from(capMid.entries()).filter(([w]) => proper.has(w))
+    .sort((a, b) => b[1] - a[1]).slice(0, 4).map(([w]) => w.charAt(0).toUpperCase() + w.slice(1));
 
   /* word frequency, grouped by stem */
   const groups = new Map();
@@ -547,37 +555,152 @@ function analyze(ep) {
     : (sents.find((s) => s.n >= 7) || { text: ep.code }).text.replace(/[.!?]+$/, '');
 
   ep._an = {
-    sents, vocab, phrases, proper, topic,
+    sents, vocab, phrases, proper, names, topic,
     stats: { dur, wordCount, sentCount: sents.length, cueCount: cues.length, wpm: dur ? Math.round(wordCount / (dur / 60)) : 0 }
   };
   return ep._an;
 }
 
-/* ---------- generation ---------- */
-const SIZE = {
-  s: { vocab: 6, phrases: 4, cloze: 5, mcq: 3, dictation: 3, tf: 4, sequence: 4, scramble: 3, shadow: 4, open: 2, warmup: 2 },
-  m: { vocab: 10, phrases: 6, cloze: 8, mcq: 4, dictation: 5, tf: 6, sequence: 5, scramble: 4, shadow: 6, open: 3, warmup: 3 },
-  l: { vocab: 14, phrases: 8, cloze: 12, mcq: 6, dictation: 7, tf: 8, sequence: 6, scramble: 6, shadow: 8, open: 4, warmup: 3 }
-};
-const LEVEL = { 1: { min: 5, max: 12, blanks: 1 }, 2: { min: 6, max: 16, blanks: 2 }, 3: { min: 8, max: 24, blanks: 3 } };
-const ANT = { small: 'big', big: 'small', slow: 'fast', fast: 'slow', morning: 'evening', evening: 'morning', hard: 'easy', easy: 'hard', long: 'short', short: 'long', dark: 'bright', bright: 'dark', first: 'last', last: 'first', new: 'old', old: 'new', good: 'bad', bad: 'good', always: 'never', never: 'always', start: 'finish', finish: 'start', open: 'close', closed: 'open', heavy: 'light', quiet: 'loud', warm: 'cold', cold: 'warm', more: 'less', less: 'more', many: 'few', few: 'many', before: 'after', after: 'before', remember: 'forget', forget: 'remember', happy: 'sad', sad: 'happy', full: 'empty', empty: 'full', up: 'down', down: 'up', inside: 'outside', outside: 'inside' };
-const NUM = { one: 'four', two: 'six', three: 'eight', four: 'nine', five: 'two', six: 'three', ten: 'twenty', twenty: 'fifty', thirty: 'fifteen', hundred: 'thousand' };
 
-function ins(ko, en, lang) { return lang === 'ko' ? ko : lang === 'en' ? en : ko + '  /  ' + en; }
+/* ---------- words shown in both languages ---------- */
+const I18N = {
+  en: {
+    'ui.make': 'Make worksheet', 'ui.answers': 'Answers', 'ui.print': 'Print · PDF', 'ui.save': 'Save', 'ui.open': 'Open',
+    'ui.html': 'Export HTML', 'ui.copy': 'Copy as text', 'ui.script': 'Script',
+    'rail.episodes': 'Episodes', 'rail.open': 'Open your own SRT', 'rail.openSub': 'click or drop files here',
+    'rail.about': 'This episode', 'rail.level': 'Level and length', 'rail.levelLabel': 'Level', 'rail.sizeLabel': 'Length',
+    'rail.stamp': 'Show time codes', 'rail.bank': 'Give a word box for blanks', 'rail.key': 'Add the answer key',
+    'rail.parts': 'Parts of the worksheet', 'rail.export': 'Export',
+    'rail.partsHint': 'Only the ticked parts are made. You can still edit, add or delete anything afterwards.',
+    'rail.printHint': 'In the print window choose “Save as PDF”. The answer key prints on its own page.',
+    'lv.1': 'Beginner A1', 'lv.2': 'Elementary A2', 'lv.3': 'Intermediate B1',
+    'sz.s': 'Short · 10 min', 'sz.m': 'Normal · 20 min', 'sz.l': 'Long · 35 min',
+    'tr.title': 'Script', 'tr.search': 'Search a sentence', 'tr.audio': 'Link an audio file', 'tr.loop': 'Loop',
+    'tr.hint': 'Point at a sentence to turn it into a blank, a dictation line, a repeat line and more.',
+    'tr.count': '{a} of {b} sentences',
+    'st.topic': 'Topic', 'st.length': 'Length', 'st.sentences': 'Sentences', 'st.words': 'Words',
+    'st.speed': 'Speaking speed', 'st.easy': 'Short sentences', 'st.level': 'Level',
+    'sheet.kind': 'Listening worksheet', 'sheet.goal': 'Learn {n} words from this episode. Then say three sentences of your own.',
+    'sheet.name': 'Name', 'sheet.date': 'Date', 'sheet.score': 'Score', 'sheet.goalLabel': 'Goal',
+    'sheet.key': 'Answer Key', 'sheet.keyHint': 'Untick “Add the answer key” before you print the student copy.',
+    'sheet.add': 'Add a part', 'sheet.wordbox': 'Word box', 'sheet.times': 'times',
+    'tbl.word': 'Word', 'tbl.meaning': 'Meaning (your language)', 'tbl.example': 'You hear it here',
+    'match.left': 'Match this...', 'match.right': '...with this',
+    'sec.before': 'Before You Listen', 'sec.words': 'Words to Know', 'sec.phrases': 'Useful Phrases',
+    'sec.blanks': 'Listen and Write the Word', 'sec.truefalse': 'True or False', 'sec.match': 'Match the Two Halves',
+    'sec.order': 'Put the Words in Order', 'sec.dictation': 'Listen and Write the Sentence',
+    'sec.repeat': 'Say It with Ben and Mia', 'sec.choose': 'Choose the Right Word', 'sec.yourturn': 'Your Turn',
+    'sec.notes': 'Notes',
+    'inst.before': 'Look at the title and the words. Think, then write short answers.',
+    'inst.words': 'These words are in the episode. Tick each word when you hear it, then write what it means.',
+    'inst.phrases': 'Ben and Mia say these again and again. Say each one three times.',
+    'inst.blanks': 'Listen. Write one word in each blank.',
+    'inst.truefalse': 'Circle T if the sentence is true. Circle F if it is not true.',
+    'inst.match': 'Match the two halves of each sentence. Write the letter in the box.',
+    'inst.order': 'Put the words in the right order. Write the sentence.',
+    'inst.dictation': 'Listen to each time code. Write the sentence you hear.',
+    'inst.repeat': 'Listen and speak at the same time. Say each line three times and tick a box.',
+    'inst.choose': 'Listen. Circle the right word for each blank.',
+    'inst.yourturn': 'Write your answer in English. Then say it out loud.',
+    'inst.notes': 'Free space for homework or class notes.',
+    'q.title': 'The title of this episode is “{t}”. What will Ben and Mia talk about?',
+    'q.words': 'Which of these words do you know? Tick them: {w}',
+    'q.you': 'Do you like {t}? Say why, in one sentence.',
+    'q.about': 'Write two sentences about {t}.',
+    'q.use': 'Use these phrases in your own sentences: {p}',
+    'q.best': 'What was the best idea in this episode? Write one sentence.',
+    'q.week': 'What will you do this week? Write one sentence.',
+    'msg.made': 'New worksheet made', 'msg.again': 'Make it again? Your edits will be lost.',
+    'msg.delSec': 'Delete “{t}”?', 'msg.loaded': 'Worksheet opened', 'msg.badFile': 'That file could not be read',
+    'msg.copied': 'Worksheet copied as text', 'msg.saved': '{f} saved', 'msg.declined': 'Save cancelled',
+    'msg.clip': 'Could not save, so it is on your clipboard', 'msg.audio': 'Audio linked — tap a time code to hear it',
+    'msg.needAudio': 'Link an audio file first (bottom right)', 'msg.loopOn': 'Playing one sentence only',
+    'msg.loopOff': 'Playing straight on', 'msg.srt': '{n} file(s) added', 'msg.level': 'Level changed — make the worksheet again',
+    'msg.added': 'Added to “{t}”', 'msg.empty': 'Open an SRT file on the left to start.'
+  },
+  ko: {
+    'ui.make': '학습지 생성', 'ui.answers': '정답 보기', 'ui.print': '인쇄 · PDF', 'ui.save': '저장', 'ui.open': '불러오기',
+    'ui.html': 'HTML 내보내기', 'ui.copy': '텍스트 복사', 'ui.script': '대본',
+    'rail.episodes': '에피소드', 'rail.open': '내 SRT 파일 열기', 'rail.openSub': '클릭 또는 드래그 & 드롭',
+    'rail.about': '에피소드 정보', 'rail.level': '난이도 · 분량', 'rail.levelLabel': '레벨', 'rail.sizeLabel': '분량',
+    'rail.stamp': '타임코드 표시', 'rail.bank': '빈칸에 단어 상자 제공', 'rail.key': '정답지 붙이기',
+    'rail.parts': '수록 섹션', 'rail.export': '내보내기',
+    'rail.partsHint': '체크한 섹션만 생성됩니다. 생성 후에도 자유롭게 고치고 추가할 수 있어요.',
+    'rail.printHint': '인쇄 창에서 “PDF로 저장”을 고르세요. 정답지는 다음 장에 인쇄됩니다.',
+    'lv.1': '입문 A1', 'lv.2': '초급 A2', 'lv.3': '중급 B1',
+    'sz.s': '짧게 · 10분', 'sz.m': '보통 · 20분', 'sz.l': '길게 · 35분',
+    'tr.title': '대본', 'tr.search': '문장 검색', 'tr.audio': '음원 파일 연결', 'tr.loop': '구간',
+    'tr.hint': '문장 위에 마우스를 올리면 빈칸·받아쓰기·따라 말하기 문제로 바로 넣을 수 있어요.',
+    'tr.count': '{b}문장 중 {a}개',
+    'st.topic': '주제', 'st.length': '길이', 'st.sentences': '문장', 'st.words': '단어 수',
+    'st.speed': '말하기 속도', 'st.easy': '짧은 문장', 'st.level': '레벨',
+    'sheet.kind': '듣기 학습지', 'sheet.goal': '이 에피소드의 단어 {n}개를 익히고, 내 문장 3개를 말해 봅시다.',
+    'sheet.name': '이름', 'sheet.date': '날짜', 'sheet.score': '점수', 'sheet.goalLabel': '학습 목표',
+    'sheet.key': '정답', 'sheet.keyHint': '학생용으로 인쇄할 때는 “정답지 붙이기” 체크를 해제하세요.',
+    'sheet.add': '섹션 추가', 'sheet.wordbox': '단어 상자', 'sheet.times': '회',
+    'tbl.word': '단어', 'tbl.meaning': '뜻', 'tbl.example': '나오는 부분',
+    'match.left': '앞부분', 'match.right': '뒷부분',
+    'sec.before': '듣기 전에', 'sec.words': '오늘의 단어', 'sec.phrases': '자주 나오는 표현',
+    'sec.blanks': '듣고 단어 쓰기', 'sec.truefalse': '맞으면 T, 틀리면 F', 'sec.match': '문장 반쪽 잇기',
+    'sec.order': '단어 순서 맞추기', 'sec.dictation': '듣고 문장 쓰기',
+    'sec.repeat': '따라 말하기', 'sec.choose': '알맞은 단어 고르기', 'sec.yourturn': '내 이야기 쓰기',
+    'sec.notes': '메모',
+    'inst.before': '제목과 단어를 보고 짧게 답해 보세요.',
+    'inst.words': '에피소드에 나오는 단어입니다. 들릴 때마다 체크하고, 뜻을 적어 보세요.',
+    'inst.phrases': 'Ben과 Mia가 여러 번 말하는 표현입니다. 각각 세 번씩 소리 내어 읽으세요.',
+    'inst.blanks': '잘 듣고 빈칸에 한 단어씩 쓰세요.',
+    'inst.truefalse': '내용과 같으면 T, 다르면 F에 동그라미 하세요.',
+    'inst.match': '문장의 앞부분과 뒷부분을 이어 보세요. 네모 안에 기호를 쓰세요.',
+    'inst.order': '단어를 바른 순서로 놓고 문장을 쓰세요.',
+    'inst.dictation': '해당 시각을 듣고 문장을 그대로 쓰세요.',
+    'inst.repeat': '음원과 동시에 따라 말하세요. 세 번 말하고 네모에 체크하세요.',
+    'inst.choose': '잘 듣고 빈칸에 알맞은 단어에 동그라미 하세요.',
+    'inst.yourturn': '영어로 답을 쓰고, 소리 내어 말해 보세요.',
+    'inst.notes': '숙제나 수업 메모를 자유롭게 적는 공간입니다.',
+    'q.title': '이번 에피소드의 제목은 “{t}” 입니다. 어떤 이야기가 나올까요?',
+    'q.words': '아는 단어에 체크해 보세요: {w}',
+    'q.you': '{t}, 좋아하나요? 한 문장으로 이유를 말해 보세요.',
+    'q.about': '{t}에 대해 두 문장을 써 보세요.',
+    'q.use': '다음 표현을 넣어 내 문장을 만들어 보세요: {p}',
+    'q.best': '이번 에피소드에서 가장 좋았던 생각은 무엇인가요? 한 문장으로 쓰세요.',
+    'q.week': '이번 주에 무엇을 해 볼까요? 한 문장으로 쓰세요.',
+    'msg.made': '학습지를 새로 만들었어요', 'msg.again': '다시 만들면 편집한 내용이 사라집니다. 계속할까요?',
+    'msg.delSec': '“{t}” 섹션을 지울까요?', 'msg.loaded': '학습지를 불러왔어요', 'msg.badFile': '파일을 읽을 수 없습니다',
+    'msg.copied': '학습지 텍스트를 복사했어요', 'msg.saved': '{f} 저장됨', 'msg.declined': '저장을 취소했어요',
+    'msg.clip': '저장할 수 없어 클립보드로 복사했어요', 'msg.audio': '음원 연결 완료 — 타임코드를 누르면 재생돼요',
+    'msg.needAudio': '먼저 음원 파일을 연결하세요 (오른쪽 아래)', 'msg.loopOn': '문장 구간만 재생합니다',
+    'msg.loopOff': '이어서 재생합니다', 'msg.srt': '{n}개 파일을 불러왔어요', 'msg.level': '레벨 변경 — 다시 생성하면 반영돼요',
+    'msg.added': '“{t}”에 추가했어요', 'msg.empty': '왼쪽에서 SRT 파일을 열면 학습지가 만들어집니다.'
+  }
+};
+let LANG = 'en';
+function T(key, vars) {
+  let s = (I18N[LANG] && I18N[LANG][key]) || I18N.en[key] || key;
+  if (vars) for (const k in vars) s = s.replace(new RegExp('\\{' + k + '\\}', 'g'), vars[k]);
+  return s;
+}
+
+/* ---------- making the worksheet ---------- */
+const SIZE = {
+  s: { before: 2, words: 6, phrases: 3, blanks: 4, truefalse: 4, match: 3, order: 3, dictation: 2, repeat: 4, choose: 3, yourturn: 2 },
+  m: { before: 3, words: 8, phrases: 4, blanks: 6, truefalse: 5, match: 4, order: 4, dictation: 3, repeat: 5, choose: 4, yourturn: 3 },
+  l: { before: 3, words: 12, phrases: 6, blanks: 9, truefalse: 7, match: 5, order: 6, dictation: 5, repeat: 7, choose: 6, yourturn: 4 }
+};
+const LEVEL = { 1: { min: 3, max: 9, blanks: 1, bank: true }, 2: { min: 4, max: 12, blanks: 1, bank: true }, 3: { min: 5, max: 16, blanks: 2, bank: false } };
+const ANT = { small: 'big', big: 'small', slow: 'fast', fast: 'slow', morning: 'evening', evening: 'morning', hard: 'easy', easy: 'hard', long: 'short', short: 'long', dark: 'bright', bright: 'dark', first: 'last', last: 'first', new: 'old', old: 'new', good: 'bad', bad: 'good', always: 'never', never: 'always', start: 'stop', heavy: 'light', quiet: 'loud', warm: 'cold', cold: 'warm', more: 'less', less: 'more', many: 'few', few: 'many', before: 'after', after: 'before', happy: 'sad', sad: 'happy', full: 'empty', empty: 'full', up: 'down', down: 'up', inside: 'outside', outside: 'inside', open: 'closed', hot: 'cold' };
+const NUM = { one: 'four', two: 'six', three: 'eight', four: 'nine', five: 'two', six: 'three', ten: 'twenty', twenty: 'fifty', thirty: 'fifteen', hundred: 'thousand' };
+const SPLITWORD = /^(and|but|so|because|when|if|before|after|with|in|on|at|for|to|that|then)$/;
+
 function stripEnd(t) { return t.replace(/\s*[.!?]+["'”]?\s*$/, ''); }
 function deVocative(t, names) {
   let x = t;
-  names.forEach((n) => {
-    x = x.replace(new RegExp(',\\s*' + n + '\\b', 'g'), '').replace(new RegExp('^' + n + ',\\s*', 'i'), '');
-  });
-  x = x.replace(/^(And|But|So|Well|Okay|Oh|Yes|No),?\s+/i, (m, w) => (/^(yes|no)$/i.test(w) ? m : '')).trim();
+  names.forEach((n) => { x = x.replace(new RegExp(',\\s*' + n + '\\b', 'gi'), '').replace(new RegExp('^' + n + ',\\s*', 'i'), ''); });
+  x = x.replace(/^(And|But|So|Well|Okay|Oh),?\s+/i, '').trim();
   return x.charAt(0).toUpperCase() + x.slice(1);
 }
 function titleCase(s) { return s.replace(/\b([a-z])/g, (m) => m.toUpperCase()); }
-
-/* candidate sentences, evenly spread over the episode */
 function pool(an, opt) {
-  const { min = 5, max = 20 } = opt || {};
+  const { min = 4, max = 14 } = opt || {};
   return an.sents.filter((s) => s.n >= min && s.n <= max && !/^[-–—]/.test(s.text) && /[a-z]/.test(s.text));
 }
 function spread(cands, n, r, used) {
@@ -596,76 +719,53 @@ function spread(cands, n, r, used) {
   for (const s of src) { if (picks.length >= n) break; if (!seen.has(s.i)) { seen.add(s.i); picks.push(s); } }
   return picks.sort((a, b) => a.i - b.i).slice(0, n);
 }
-function targetWords(an, k) { return an.vocab.slice(0, Math.max(k, 14)).map((v) => v); }
-function exampleFor(an, v, used) {
-  const cands = v.sents.map((i) => an.sents[i]).filter((s) => s && s.n >= 5 && s.n <= 16);
-  return cands.find((s) => !used.has(s.i)) || cands[0] || an.sents[v.sents[0]];
-}
+function shell(type) { return { id: uid(), type, title: null, inst: null, items: [], used: [] }; }
 
-function blockShell(type, extra) {
-  const t = TYPES[type];
-  return Object.assign({ id: uid(), type, title: t.label, titleEn: t.en, inst: '', items: [], used: [], seed: (Math.random() * 1e9) | 0 }, extra || {});
-}
-
-function genWarmup(c) {
-  const b = blockShell('warmup');
+function genBefore(c) {
+  const b = shell('before');
   const topic = c.an.topic, words = c.an.vocab.slice(0, 6).map((v) => v.word);
-  b.inst = ins('듣기 전에 짝과 이야기하거나 한국어로 간단히 적어 보세요.', 'Before you listen, talk with a partner or write short answers.', c.s.lang);
-  const bank = [
-    { q: `오늘의 주제는 <b>“${esc(titleCase(topic))}”</b> 입니다. 어떤 이야기가 나올지 예상해서 적어 보세요.` },
-    { q: `아래 단어 중 아는 것에 체크하고, 뜻을 아는 단어는 한국어로 적어 보세요.<br><span class="tstamp">${words.map(esc).join(' · ')}</span>` },
-    { q: `What do you think about <b>${esc(topic)}</b>? Write one English sentence.` },
-    { q: `이 주제와 관련해 내 경험을 한 문장으로 적어 보세요.` }
-  ];
-  b.items = bank.slice(0, c.n.warmup);
+  b.items = [
+    { qk: 'q.title', vars: { t: esc(titleCase(topic)) }, lines: 1 },
+    { qk: 'q.words', vars: { w: `<span class="tstamp">${words.map(esc).join(' · ')}</span>` }, lines: 1 },
+    { qk: 'q.you', vars: { t: esc(topic) }, lines: 1 }
+  ].slice(0, c.n.before);
   return b;
 }
-function genVocab(c) {
-  const b = blockShell('vocab');
-  b.inst = ins('들으면서 단어에 표시하고, 수업 후 뜻을 채워 넣으세요.', 'Tick the words you hear, then write the meanings.', c.s.lang);
+function genWords(c) {
+  const b = shell('words');
   const used = new Set(c.used);
-  b.items = c.an.vocab.slice(0, c.n.vocab).map((v) => {
-    const s = exampleFor(c.an, v, used);
+  b.items = c.an.vocab.slice(0, c.n.words).map((v) => {
+    const ex = v.sents.map((i) => c.an.sents[i]).filter((s) => s && s.n >= 4 && s.n <= 12);
+    const s = ex.find((x) => !used.has(x.i)) || ex[0] || c.an.sents[v.sents[0]];
     if (s) { used.add(s.i); b.used.push(s.i); }
     return { word: v.word, count: v.count, meaning: '', ex: s ? s.text : '', time: s ? s.start : 0 };
   });
   return b;
 }
 function genPhrases(c) {
-  const b = blockShell('phrases');
-  b.inst = ins('에피소드에서 여러 번 반복된 표현입니다. 소리 내어 3번씩 읽어 보세요.', 'These expressions repeat in the episode. Read each one aloud three times.', c.s.lang);
+  const b = shell('phrases');
   b.items = c.an.phrases.slice(0, c.n.phrases).map((p) => {
     const s = c.an.sents[p.sents[0]];
-    return { phrase: p.text, count: p.count, ex: s ? s.text : '', time: s ? s.start : 0, meaning: '' };
+    return { phrase: p.text, count: p.count, ex: s ? s.text : '', time: s ? s.start : 0 };
   });
   return b;
 }
-function genCloze(c) {
-  const b = blockShell('cloze');
-  b.inst = ins('음원을 들으며 빈칸을 채우세요. 두 번 듣고, 세 번째에 확인합니다.', 'Listen and fill in the blanks. Listen twice, then check.', c.s.lang);
-  const targets = new Set(targetWords(c.an, c.n.vocab).flatMap((v) => [v.word, v.key]));
+function genBlanks(c) {
+  const b = shell('blanks');
   const lv = LEVEL[c.s.level];
-  const cands = pool(c.an, { min: Math.max(6, lv.min), max: lv.max }).filter((s) => s.words.some((w) => targets.has(w) || targets.has(stem(w))));
-  const picks = spread(cands, c.n.cloze, c.rand, new Set(c.used));
-  const answers = [], seenAns = new Map();
+  const targets = new Set(c.an.vocab.slice(0, 24).flatMap((v) => [v.word, v.key]));
+  const cands = pool(c.an, { min: lv.min + 1, max: lv.max }).filter((s) => s.words.some((w) => targets.has(w) || targets.has(stem(w))));
+  const picks = spread(cands, c.n.blanks, c.rand, new Set(c.used));
+  const answers = [], seen = new Map();
   b.items = picks.map((s) => {
     const toks = s.text.split(/(\s+)/);
-    const wordAt = (i) => stem(toks[i].toLowerCase().replace(/[^a-z']/g, ''));
+    const at = (i) => stem(toks[i].toLowerCase().replace(/[^a-z']/g, ''));
     const idx = [];
-    toks.forEach((t, i) => {
-      const w = t.toLowerCase().replace(/[^a-z']/g, '');
-      const key = targets.has(w) || targets.has(stem(w));
-      if (w.length > 3 && (key || !STOP.has(w))) idx.push(i);
-    });
-    /* spread the blanks over different words: unused first, key words before the rest */
-    const score = (i) => {
-      const w = toks[i].toLowerCase().replace(/[^a-z']/g, '');
-      const seen = seenAns.get(wordAt(i)) || 0;
-      return seen * 10 + (targets.has(w) || targets.has(stem(w)) ? 0 : 3);
-    };
-    const chosen = shuffle(idx, c.rand).sort((a, z) => score(a) - score(z))
-      .slice(0, Math.max(1, Math.min(lv.blanks, idx.length))).sort((a, z) => a - z);
-    chosen.forEach((i) => seenAns.set(wordAt(i), (seenAns.get(wordAt(i)) || 0) + 1));
+    toks.forEach((t, i) => { const w = t.toLowerCase().replace(/[^a-z']/g, ''); if (w.length > 2 && (targets.has(w) || targets.has(stem(w)))) idx.push(i); });
+    if (!idx.length) toks.forEach((t, i) => { const w = t.toLowerCase().replace(/[^a-z']/g, ''); if (w.length > 3 && !STOP.has(w)) idx.push(i); });
+    const chosen = shuffle(idx, c.rand).sort((x, y) => (seen.get(at(x)) || 0) - (seen.get(at(y)) || 0))
+      .slice(0, Math.max(1, Math.min(lv.blanks, idx.length))).sort((x, y) => x - y);
+    chosen.forEach((i) => seen.set(at(i), (seen.get(at(i)) || 0) + 1));
     const parts = toks.map((t, i) => {
       if (!chosen.includes(i)) return { t };
       const m = t.match(/^([^A-Za-z']*)([A-Za-z'][A-Za-z']*)(.*)$/);
@@ -674,92 +774,87 @@ function genCloze(c) {
       return { t: m[1], a: m[2], tail: m[3] };
     });
     b.used.push(s.i);
-    return { parts, time: s.start, plain: s.text };
+    return { parts, time: s.start };
   });
-  b.bank = c.s.bank && c.s.level < 3 ? shuffle(answers, c.rand) : null;
+  b.bank = c.s.bank ? shuffle(answers, c.rand) : null;
   return b;
 }
-function genMcq(c) {
-  const b = blockShell('mcq');
-  b.inst = ins('들으면서 빈칸에 알맞은 단어를 고르세요.', 'Listen and choose the correct word for each blank.', c.s.lang);
-  const vocab = targetWords(c.an, c.n.vocab + 6);
-  const cands = pool(c.an, { min: 6, max: 16 });
-  const picks = spread(cands.filter((s) => vocab.some((v) => s.stems.has(v.key))), c.n.mcq, c.rand, new Set(c.used));
-  b.items = picks.map((s) => {
-    const hit = vocab.find((v) => s.stems.has(v.key));
-    const form = (s.text.match(new RegExp('\\b' + hit.word + '\\b', 'i')) || [hit.word])[0];
-    const distract = shuffle(vocab.filter((v) => v.key !== hit.key && !s.stems.has(v.key)), c.rand).slice(0, 3).map((v) => v.word);
-    const opts = shuffle([form.toLowerCase()].concat(distract), c.rand);
-    b.used.push(s.i);
-    return { q: s.text.replace(new RegExp('\\b' + form + '\\b'), '______'), opts, ans: opts.indexOf(form.toLowerCase()), time: s.start };
-  });
-  return b;
-}
-function genDict(c) {
+function genTrueFalse(c) {
+  const b = shell('truefalse');
   const lv = LEVEL[c.s.level];
-  const b = blockShell('dictation');
-  b.inst = ins('해당 구간을 듣고 문장을 그대로 받아쓰세요.', 'Listen to each time code and write the sentence you hear.', c.s.lang);
-  const picks = spread(pool(c.an, { min: lv.min + 1, max: lv.max }), c.n.dictation, c.rand, new Set(c.used));
-  b.items = picks.map((s) => { b.used.push(s.i); return { time: s.start, ans: s.text, lines: s.n > 12 ? 3 : 2 }; });
-  return b;
-}
-function genTf(c) {
-  const b = blockShell('tf');
-  b.inst = ins('들은 내용과 같으면 T, 다르면 F에 표시하세요.', 'Mark T if the sentence matches the episode, F if it does not.', c.s.lang);
-  const names = Array.from(c.an.proper).slice(0, 4);
-  const cands = pool(c.an, { min: 6, max: 18 }).filter((s) => !/\?/.test(s.text) && !/^(what|how|why|do|did|are|is|can)\b/i.test(s.text));
-  const picks = spread(cands, c.n.tf, c.rand, new Set(c.used));
-  const flags = shuffle(picks.map((_, k) => k % 2 === 1), c.rand);
-  b.items = picks.map((s, k) => {
+  const names = c.an.names;
+  const cands = pool(c.an, { min: lv.min + 2, max: lv.max }).filter((s) =>
+    !/\?/.test(s.text) && !/^(what|how|why|do|did|are|is|can|yes|no|okay|oh)\b/i.test(s.text) &&
+    !/^(i (love|like|think|know|see)|that is|this is|it is) (that|it|so|true|right)/i.test(s.text));
+  /* half the statements must be false, so pick the ones that can be changed */
+  const picks = spread(cands, c.n.truefalse * 2, c.rand, new Set(c.used));
+  const wrong = [], right = [];
+  for (const s of picks) {
     const base = deVocative(s.text, names);
-    let text = base, ans = 'T';
-    if (flags[k]) {
-      const flipped = falsify(base, c.an, c.rand);
-      if (flipped) { text = flipped; ans = 'F'; }
-    }
-    b.used.push(s.i);
-    return { text, ans, src: s.text, time: s.start };
-  });
+    const f = falsify(base, c.an, c.rand);
+    (f ? wrong : right).push({ s, text: f || base, ans: f ? 'F' : 'T', base });
+  }
+  const wantF = Math.floor(c.n.truefalse / 2);
+  const chosen = wrong.slice(0, wantF)
+    .concat(right.slice(0, c.n.truefalse - Math.min(wantF, wrong.length)))
+    .concat(wrong.slice(wantF).map((x) => ({ s: x.s, text: x.base, ans: 'T' })))
+    .slice(0, c.n.truefalse)
+    .sort((a, z) => a.s.i - z.s.i);
+  b.items = chosen.map((x) => { b.used.push(x.s.i); return { text: x.text, ans: x.ans, time: x.s.start }; });
   return b;
 }
 function falsify(text, an, r) {
-  const toks = text.split(/(\s+)/);
-  const pos = [];
-  toks.forEach((t, i) => { const w = t.toLowerCase().replace(/[^a-z']/g, ''); if (ANT[w] || NUM[w]) pos.push(i); });
+  const toks = text.split(/(\s+)/), pos = [];
+  toks.forEach((t, i) => {
+    const w = t.toLowerCase().replace(/[^a-z']/g, '');
+    if (ANT[w]) return pos.push(i);
+    const next = (toks[i + 2] || ''), prev = (toks[i - 2] || '').toLowerCase().replace(/[^a-z']/g, '');
+    if (NUM[w] && /^[a-z]/.test(next) && !/[.,!?]$/.test(t) && !/^(the|that|this|my|your|his|her|our|their)$/.test(prev)) pos.push(i);
+  });
   if (pos.length) {
     const i = pos[Math.floor(r() * pos.length)];
     const w = toks[i].toLowerCase().replace(/[^a-z']/g, '');
-    const rep = ANT[w] || NUM[w];
-    toks[i] = toks[i].replace(new RegExp(w, 'i'), rep);
+    toks[i] = toks[i].replace(new RegExp(w, 'i'), ANT[w] || NUM[w]);
     return toks.join('');
-  }
-  const vocab = an.vocab.slice(0, 18);
-  const hit = vocab.find((v) => new RegExp('\\b' + v.word + '\\b', 'i').test(text));
-  if (hit) {
-    const other = vocab.filter((v) => v.key !== hit.key)[Math.floor(r() * Math.max(1, vocab.length - 1))];
-    if (other) return text.replace(new RegExp('\\b' + hit.word + '\\b', 'i'), other.word);
   }
   if (/\bis\b/.test(text)) return text.replace(/\bis\b/, 'is not');
   if (/\bwas\b/.test(text)) return text.replace(/\bwas\b/, 'was not');
+  if (/\bare\b/.test(text)) return text.replace(/\bare\b/, 'are not');
   return null;
 }
-function genSeq(c) {
-  const b = blockShell('sequence');
-  b.inst = ins('에피소드에서 일어난 순서대로 번호를 쓰세요.', 'Number the sentences in the order you hear them.', c.s.lang);
-  const names = Array.from(c.an.proper).slice(0, 4);
-  const cands = pool(c.an, { min: 6, max: 16 }).filter((s) => !/\?/.test(s.text));
-  const picks = spread(cands, c.n.sequence, c.rand, new Set(c.used));
-  const order = picks.map((s, i) => ({ text: deVocative(s.text, names), ans: i + 1, time: s.start }));
-  picks.forEach((s) => b.used.push(s.i));
-  b.items = shuffle(order, c.rand);
+function genMatch(c) {
+  const b = shell('match');
+  const names = c.an.names;
+  const cands = pool(c.an, { min: 6, max: 13 });
+  const picks = spread(cands, c.n.match, c.rand, new Set(c.used));
+  const pairs = picks.map((s) => {
+    const ws = deVocative(s.text, names).split(/\s+/);
+    let cut = Math.round(ws.length / 2);
+    for (let d = 0; d < 3; d++) {
+      if (SPLITWORD.test((ws[cut - d] || '').toLowerCase())) { cut = cut - d; break; }
+      if (SPLITWORD.test((ws[cut + d] || '').toLowerCase())) { cut = cut + d; break; }
+    }
+    cut = clamp(cut, 2, ws.length - 2);
+    b.used.push(s.i);
+    return { left: ws.slice(0, cut).join(' '), right: ws.slice(cut).join(' '), time: s.start };
+  });
+  const rights = shuffle(pairs.map((p, i) => ({ text: p.right, from: i })), c.rand);
+  b.items = pairs.map((p, i) => ({ left: p.left, ans: rights.findIndex((r) => r.from === i), time: p.time }));
+  b.rights = rights.map((r) => r.text);
   return b;
 }
-function genScramble(c) {
-  const b = blockShell('scramble');
-  b.inst = ins('단어를 바른 순서로 배열해 문장을 완성하세요.', 'Put the words in the correct order.', c.s.lang);
-  const picks = spread(pool(c.an, { min: 5, max: 9 }), c.n.scramble, c.rand, new Set(c.used));
+function genOrder(c) {
+  const b = shell('order');
+  const names = c.an.names;
+  const top = c.s.level > 1 ? 9 : 7;
+  const cands = pool(c.an, { min: 4, max: top + 2 }).filter((s) => {
+    if (/[?"“]/.test(s.text)) return false;
+    const n = stripEnd(deVocative(s.text, names)).split(/\s+/).length;
+    return n >= 4 && n <= top;
+  });
+  const picks = spread(cands, c.n.order, c.rand, new Set(c.used));
   b.items = picks.map((s) => {
-    const plain = stripEnd(deVocative(s.text, Array.from(c.an.proper).slice(0, 4)));
+    const plain = stripEnd(deVocative(s.text, names));
     const ws = plain.split(/\s+/);
     let mix = shuffle(ws, c.rand);
     if (mix.join(' ') === ws.join(' ')) mix = mix.reverse();
@@ -768,82 +863,75 @@ function genScramble(c) {
   });
   return b;
 }
-function genShadow(c) {
-  const b = blockShell('shadow');
-  b.inst = ins('음원을 따라 같은 속도로 세 번 읽으세요. 끊어 읽기와 강세에 표시해 두면 좋아요.', 'Shadow each line three times at the same speed as the audio.', c.s.lang);
-  const picks = spread(pool(c.an, { min: 6, max: 16 }), c.n.shadow, c.rand, new Set(c.used));
+function genDictation(c) {
+  const lv = LEVEL[c.s.level];
+  const b = shell('dictation');
+  const picks = spread(pool(c.an, { min: lv.min, max: lv.max - 2 }), c.n.dictation, c.rand, new Set(c.used));
+  b.items = picks.map((s) => { b.used.push(s.i); return { time: s.start, ans: s.text, lines: s.n > 9 ? 2 : 1 }; });
+  return b;
+}
+function genRepeat(c) {
+  const lv = LEVEL[c.s.level];
+  const b = shell('repeat');
+  const picks = spread(pool(c.an, { min: lv.min, max: lv.max }), c.n.repeat, c.rand, new Set(c.used));
   b.items = picks.map((s) => { b.used.push(s.i); return { text: s.text, time: s.start }; });
   return b;
 }
-function genOpen(c) {
-  const b = blockShell('open');
-  const topic = c.an.topic;
-  const ph = c.an.phrases.slice(0, 3).map((p) => p.text);
-  b.inst = ins('영어로 3~5문장 써 보고, 소리 내어 읽어 보세요.', 'Write 3–5 sentences in English, then read them aloud.', c.s.lang);
-  const bank = [
-    { q: `<b>${esc(titleCase(topic))}</b> — 나의 경험을 영어로 써 보세요.`, lines: 4 },
-    { q: `다음 표현을 모두 사용해 짧은 글을 쓰세요: ${ph.map((p) => `<span class="chip">${esc(p)}</span>`).join(' ')}`, lines: 4 },
-    { q: `Ben과 Mia가 말한 내용 중 가장 마음에 든 부분은 무엇인가요? 이유도 함께 쓰세요.`, lines: 3 },
-    { q: `이번 주에 실천할 나의 계획을 영어 한 문장으로 쓰고, 짝에게 말해 보세요.`, lines: 2 }
-  ];
-  b.items = bank.slice(0, c.n.open);
+function genChoose(c) {
+  const b = shell('choose');
+  const vocab = c.an.vocab.slice(0, 20);
+  const cands = pool(c.an, { min: 5, max: 12 }).filter((s) => vocab.some((v) => s.stems.has(v.key)));
+  const picks = spread(cands, c.n.choose, c.rand, new Set(c.used));
+  b.items = picks.map((s) => {
+    const hit = vocab.find((v) => s.stems.has(v.key));
+    const form = (s.text.match(new RegExp('\\b' + hit.word + '\\b', 'i')) || [hit.word])[0];
+    const others = shuffle(vocab.filter((v) => v.key !== hit.key && !s.stems.has(v.key)), c.rand).slice(0, 2).map((v) => v.word);
+    const opts = shuffle([form.toLowerCase()].concat(others), c.rand);
+    b.used.push(s.i);
+    return { q: s.text.replace(new RegExp('\\b' + form + '\\b'), '______'), opts, ans: opts.indexOf(form.toLowerCase()), time: s.start };
+  });
   return b;
 }
-function genNote(c) {
-  const b = blockShell('note');
-  b.inst = ins('메모, 숙제 안내, 수업 규칙 등 자유롭게 입력하세요.', 'Free space for notes or homework.', c.s.lang);
-  b.items = [{ text: '' }];
+function genYourTurn(c) {
+  const b = shell('yourturn');
+  const topic = esc(c.an.topic);
+  const ph = c.an.phrases.slice(0, 3).map((p) => `<span class="chip">${esc(p.text)}</span>`).join(' ');
+  b.items = [
+    { qk: 'q.about', vars: { t: topic }, lines: 3 },
+    { qk: 'q.use', vars: { p: ph }, lines: 3 },
+    { qk: 'q.best', lines: 2 },
+    { qk: 'q.week', lines: 2 }
+  ].slice(0, c.n.yourturn);
   return b;
 }
+function genNotes(c) { const b = shell('notes'); b.items = [{ text: '' }]; return b; }
 
 const TYPES = {
-  warmup: { label: '워밍업 · 배경 질문', en: 'Warm-up', gen: genWarmup, on: true },
-  vocab: { label: '핵심 단어', en: 'Key Vocabulary', gen: genVocab, on: true },
-  phrases: { label: '반복 표현', en: 'Key Expressions', gen: genPhrases, on: true },
-  cloze: { label: '빈칸 듣기', en: 'Listen & Fill In', gen: genCloze, on: true },
-  mcq: { label: '알맞은 단어 고르기', en: 'Choose the Word', gen: genMcq, on: false },
-  dictation: { label: '받아쓰기', en: 'Dictation', gen: genDict, on: true },
-  tf: { label: '내용 확인 T / F', en: 'True or False', gen: genTf, on: true },
-  sequence: { label: '사건 순서 배열', en: 'Put in Order', gen: genSeq, on: true },
-  scramble: { label: '단어 배열', en: 'Word Order', gen: genScramble, on: false },
-  shadow: { label: '쉐도잉 연습', en: 'Shadowing', gen: genShadow, on: true },
-  open: { label: '말하기 · 쓰기', en: 'Speak & Write', gen: genOpen, on: true },
-  note: { label: '메모 · 자유 입력', en: 'Notes', gen: genNote, on: false }
+  before: { gen: genBefore, on: true }, words: { gen: genWords, on: true }, phrases: { gen: genPhrases, on: true },
+  blanks: { gen: genBlanks, on: true }, truefalse: { gen: genTrueFalse, on: true }, match: { gen: genMatch, on: true },
+  order: { gen: genOrder, on: true }, dictation: { gen: genDictation, on: true }, repeat: { gen: genRepeat, on: true },
+  choose: { gen: genChoose, on: false }, yourturn: { gen: genYourTurn, on: true }, notes: { gen: genNotes, on: false }
 };
+const ORDER = ['before', 'words', 'phrases', 'blanks', 'choose', 'truefalse', 'match', 'order', 'dictation', 'repeat', 'yourturn', 'notes'];
 
 /* ---------- state ---------- */
 const state = {
-  eps: [],
-  active: 0,
-  answers: false,
-  settings: {
-    level: 2, size: 'm', lang: 'ko', stamp: true, bank: true, key: true,
-    sections: Object.fromEntries(Object.entries(TYPES).map(([k, v]) => [k, v.on]))
-  },
+  eps: [], active: 0, answers: false, sheets: {},
+  settings: { level: 1, size: 'm', lang: 'en', stamp: true, bank: true, key: true, sections: Object.fromEntries(ORDER.map((k) => [k, TYPES[k].on])) },
   sheet: null
 };
 const ep = () => state.eps[state.active];
 
 function ctxFor(sheet, seed) {
   const e = ep(), an = analyze(e), s = state.settings;
-  const used = new Set(sheet ? sheet.blocks.flatMap((b) => b.used || []) : []);
-  return { ep: e, an, s, n: SIZE[s.size], used, rand: rng(seed || hash(e.code + ':' + Date.now())) };
+  return { ep: e, an, s, n: SIZE[s.size], used: new Set(sheet ? sheet.blocks.flatMap((b) => b.used || []) : []), rand: rng(seed || ((Math.random() * 1e9) | 0)) };
 }
 function buildSheet() {
   const e = ep(), an = analyze(e), s = state.settings;
-  const sheet = {
-    code: e.code,
-    meta: {
-      title: titleCase(an.topic),
-      sub: `Two Cups English · ${e.code} · ${mmss(an.stats.dur)} · ${an.stats.wordCount} words`,
-      goal: `핵심 단어 ${SIZE[s.size].vocab}개와 반복 표현을 듣고, 받아쓰고, 내 문장으로 말할 수 있다.`
-    },
-    blocks: []
-  };
-  for (const [type, def] of Object.entries(TYPES)) {
+  const sheet = { code: e.code, meta: { title: titleCase(an.topic), sub: null, goal: null, goalN: SIZE[s.size].words, level: s.level, dur: an.stats.dur }, blocks: [] };
+  for (const type of ORDER) {
     if (!s.sections[type]) continue;
-    const c = ctxFor(sheet, hash(e.code + type + s.size + s.level));
-    const b = def.gen(c);
+    const b = TYPES[type].gen(ctxFor(sheet, hash(e.code + type + s.size + s.level)));
     if (b.items.length) sheet.blocks.push(b);
   }
   state.sheet = sheet;
@@ -851,143 +939,140 @@ function buildSheet() {
   return sheet;
 }
 function regenBlock(id) {
-  const sheet = state.sheet, i = sheet.blocks.findIndex((b) => b.id === id);
+  const blocks = state.sheet.blocks, i = blocks.findIndex((b) => b.id === id);
   if (i < 0) return;
-  const old = sheet.blocks[i];
+  const old = blocks[i];
   old.used = [];
-  const c = ctxFor(sheet, (Math.random() * 1e9) | 0);
-  const nb = TYPES[old.type].gen(c);
-  nb.id = old.id;
-  sheet.blocks[i] = nb;
-  render();
+  const nb = TYPES[old.type].gen(ctxFor(state.sheet, (Math.random() * 1e9) | 0));
+  nb.id = old.id; nb.title = old.title; nb.inst = old.inst;
+  blocks[i] = nb;
+  render(); saveLocal();
 }
 
 /* ---------- rendering ---------- */
-const ed = (path, val, ph, cls) =>
-  `<span class="edit ${cls || ''}" contenteditable="true" spellcheck="false" data-p="${path}" data-ph="${esc(ph || '')}">${val == null ? '' : val}</span>`;
-const stampHtml = (t) => state.settings.stamp ? `<span class="tstamp"><button type="button" data-seek="${t}">${mmss(t)}</button></span>` : '';
+const ed = (path, val, ph) => `<span class="edit" contenteditable="true" spellcheck="false" data-p="${path}" data-ph="${esc(ph || '')}">${val == null ? '' : val}</span>`;
+const stamp = (t) => state.settings.stamp ? `<span class="tstamp"><button type="button" data-seek="${t}">${mmss(t)}</button></span>` : '';
+const lines = (n) => Array.from({ length: n || 1 }, () => '<div class="writeline"></div>').join('');
+const title = (b) => b.title != null ? b.title : T('sec.' + b.type);
+const inst = (b) => b.inst != null ? b.inst : T('inst.' + b.type);
+const prompt = (it) => it.q != null ? it.q : T(it.qk, it.vars);
 
 function render() {
-  const sheet = state.sheet;
-  const p = $('#paper');
-  if (!sheet) { p.innerHTML = '<p class="hint">에피소드를 선택하고 <b>학습지 생성</b>을 누르세요.</p>'; return; }
+  const p = $('#paper'), sheet = state.sheet;
+  if (!sheet) { p.innerHTML = `<p class="hint">${T('msg.empty')}</p>`; return; }
   const m = sheet.meta;
+  const sub = m.sub != null ? m.sub : `${T('sheet.kind')} · ${mmss(m.dur || 0)} · ${T('lv.' + (m.level || 1))}`;
+  const goal = m.goal != null ? m.goal : T('sheet.goal', { n: m.goalN || 8 });
   let h = `<header class="sheet-head">
-      <div class="eyebrow">${esc(sheet.code)} · English Listening Workbook</div>
-      <h1 class="sheet-title">${ed(m.id0 || 'meta|title', m.title, '학습지 제목')}</h1>
-      <p class="sheet-sub">${ed('meta|sub', m.sub, '부제 · 출처')}</p>
+      <div class="eyebrow">${esc(sheet.code)} · Two Cups English</div>
+      <h1 class="sheet-title">${ed('meta|title', m.title, 'Title')}</h1>
+      <p class="sheet-sub">${ed('meta|sub', sub)}</p>
       <div class="namebar">
-        <span><i>Name</i><u>&nbsp;</u></span><span><i>Date</i><u>&nbsp;</u></span><span><i>Score</i><u>&nbsp;</u></span>
+        <span><i>${T('sheet.name')}</i><u>&nbsp;</u></span><span><i>${T('sheet.date')}</i><u>&nbsp;</u></span><span><i>${T('sheet.score')}</i><u>&nbsp;</u></span>
       </div>
     </header>
-    <div class="goalbox"><b>학습 목표</b> · ${ed('meta|goal', m.goal, '학습 목표')}</div>`;
-
+    <div class="goalbox"><b>${T('sheet.goalLabel')}</b> · ${ed('meta|goal', goal)}</div>`;
   sheet.blocks.forEach((b, i) => { h += renderBlock(b, i + 1); });
-
   if (state.settings.key) h += renderKey(sheet);
-
-  h += `<div class="footer-note"><span>Two Cups English · ${esc(sheet.code)}</span><span>Workbook Studio</span></div>`;
-  h += `<div class="addbar"><b>섹션 추가</b>` +
-    Object.entries(TYPES).map(([k, v]) => `<button class="btn" data-add="${k}">+ ${esc(v.label)}</button>`).join('') + `</div>`;
+  h += `<div class="footer-note"><span>Two Cups English · ${esc(sheet.code)}</span><span>Workbook Studio</span></div>
+    <div class="addbar"><b>${T('sheet.add')}</b>` +
+    ORDER.map((k) => `<button class="btn" data-add="${k}">+ ${esc(T('sec.' + k))}</button>`).join('') + `</div>`;
   p.innerHTML = h;
 }
-
 function renderBlock(b, num) {
-  const ctl = `<span class="block-ctl">
-      <button class="icon" data-act="up" data-id="${b.id}" title="위로">↑</button>
-      <button class="icon" data-act="down" data-id="${b.id}" title="아래로">↓</button>
-      <button class="icon" data-act="regen" data-id="${b.id}" title="다른 문항으로 다시 생성">↻</button>
-      <button class="icon" data-act="add" data-id="${b.id}" title="문항 추가">＋</button>
-      <button class="icon" data-act="del" data-id="${b.id}" title="섹션 삭제">✕</button>
-    </span>`;
   return `<section class="block" data-block="${b.id}">
     <div class="block-head">
       <span class="block-num">${String(num).padStart(2, '0')}</span>
-      <h2 class="block-title">${ed(b.id + '|title', b.title, '제목')}</h2>
-      <span class="block-en">${esc(b.titleEn)}</span>${ctl}
+      <h2 class="block-title">${ed(b.id + '|title', title(b))}</h2>
+      <span class="block-ctl">
+        <button class="icon" data-act="up" data-id="${b.id}" title="Move up">↑</button>
+        <button class="icon" data-act="down" data-id="${b.id}" title="Move down">↓</button>
+        <button class="icon" data-act="regen" data-id="${b.id}" title="Make this part again">↻</button>
+        <button class="icon" data-act="add" data-id="${b.id}" title="Add an item">＋</button>
+        <button class="icon" data-act="del" data-id="${b.id}" title="Delete this part">✕</button>
+      </span>
     </div>
-    <p class="block-inst">${ed(b.id + '|inst', b.inst, '지시문')}</p>
+    <p class="block-inst">${ed(b.id + '|inst', inst(b))}</p>
     ${BODY[b.type] ? BODY[b.type](b) : ''}
   </section>`;
 }
-const li = (b, i, body) => `<li>${body}<button class="item-del" data-act="delitem" data-id="${b.id}" data-i="${i}" title="문항 삭제">✕</button></li>`;
+const li = (b, i, body) => `<li>${body}<button class="item-del" data-act="delitem" data-id="${b.id}" data-i="${i}" title="Delete">✕</button></li>`;
 const P = (b, i, f) => `${b.id}|items|${i}|${f}`;
+const boxes = (n) => Array.from({ length: n }, () => '<span class="tick"></span>').join('');
 
 const BODY = {
-  warmup: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
-    `<div class="item-body">${ed(P(b, i, 'q'), it.q, '질문')}<span class="writeline"></span></div>`)).join('')}</ol>`,
+  before: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${ed(P(b, i, 'q'), prompt(it))}${lines(it.lines)}</div>`)).join('')}</ol>`,
 
-  vocab: (b) => `<table class="vocab-tbl"><thead><tr><th>Word</th><th>뜻 (한국어)</th><th>Example from the episode</th></tr></thead><tbody>` +
-    b.items.map((it, i) => `<tr><td class="w">${ed(P(b, i, 'word'), it.word, '단어')}<small>×${it.count}</small></td>
-      <td class="m">${ed(P(b, i, 'meaning'), it.meaning, '')}</td>
-      <td class="ex">${ed(P(b, i, 'ex'), esc(it.ex), '예문')} ${stampHtml(it.time)}
-      <button class="item-del" data-act="delitem" data-id="${b.id}" data-i="${i}">✕</button></td></tr>`).join('') +
-    `</tbody></table>`,
+  words: (b) => `<table class="vocab-tbl"><thead><tr><th>${T('tbl.word')}</th><th>${T('tbl.meaning')}</th><th>${T('tbl.example')}</th></tr></thead><tbody>` +
+    b.items.map((it, i) => `<tr>
+      <td class="w"><span class="tick"></span> ${ed(P(b, i, 'word'), esc(it.word))}<small>×${it.count}</small></td>
+      <td class="m">${ed(P(b, i, 'meaning'), it.meaning)}</td>
+      <td class="ex">${ed(P(b, i, 'ex'), esc(it.ex))} ${stamp(it.time)}
+        <button class="item-del" data-act="delitem" data-id="${b.id}" data-i="${i}">✕</button></td></tr>`).join('') + `</tbody></table>`,
 
   phrases: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
-    `<div class="item-body"><b>${ed(P(b, i, 'phrase'), esc(it.phrase), '표현')}</b>
-      <span class="tstamp">· ${it.count}회 반복</span>
-      <span class="tick" aria-hidden="true"></span><span class="tick" aria-hidden="true"></span><span class="tick" aria-hidden="true"></span>
-      <br><span style="color:var(--ink-2);font-size:13px">${ed(P(b, i, 'ex'), esc(it.ex), '예문')}</span> ${stampHtml(it.time)}</div>`)).join('')}</ol>`,
+    `<div class="item-body"><b>${ed(P(b, i, 'phrase'), esc(it.phrase))}</b>
+      <span class="repeat"><b>${it.count} ${T('sheet.times')}</b>${boxes(3)}</span><br>
+      <span style="color:var(--ink-2);font-size:13px">${ed(P(b, i, 'ex'), esc(it.ex))}</span> ${stamp(it.time)}</div>`)).join('')}</ol>`,
 
-  cloze: (b) => (b.bank && b.bank.length
-    ? `<div class="wordbank"><b>Word bank</b>${b.bank.map((w) => `<span class="chip">${esc(w)}</span>`).join('')}</div>` : '') +
+  blanks: (b) => (b.bank && b.bank.length
+    ? `<div class="wordbank"><b>${T('sheet.wordbox')}</b>${b.bank.map((w) => `<span class="chip">${esc(w)}</span>`).join('')}</div>` : '') +
     `<ol class="items">${b.items.map((it, i) => li(b, i,
       `<div class="item-body">` + it.parts.map((pt, j) => pt.a == null
         ? ed(`${b.id}|items|${i}|parts|${j}|t`, esc(pt.t))
-        : `<span class="blank"><span class="a">${esc(pt.a)}</span></span>${esc(pt.tail || '')}`).join('') +
-      ` ${stampHtml(it.time)}</div>`)).join('')}</ol>`,
+        : `<span class="blank"><span class="a">${esc(pt.a)}</span></span>${esc(pt.tail || '')}`).join('') + ` ${stamp(it.time)}</div>`)).join('')}</ol>`,
 
-  mcq: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
-    `<div class="item-body">${ed(P(b, i, 'q'), esc(it.q), '문장')} ${stampHtml(it.time)}
-      <div class="opts">${it.opts.map((o, k) => `<span class="${k === it.ans ? 'ok' : ''}"><i>${'ABCD'[k]}</i>${ed(`${b.id}|items|${i}|opts|${k}`, esc(o))}</span>`).join('')}</div></div>`)).join('')}</ol>`,
+  choose: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${ed(P(b, i, 'q'), esc(it.q))} ${stamp(it.time)}
+      <div class="opts">${it.opts.map((o, k) => `<span class="${k === it.ans ? 'ok' : ''}"><i>${'abc'[k]}</i>${ed(`${b.id}|items|${i}|opts|${k}`, esc(o))}</span>`).join('')}</div></div>`)).join('')}</ol>`,
 
-  dictation: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
-    `<div class="item-body">${stampHtml(it.time)}
-      ${Array.from({ length: it.lines || 2 }, () => '<div class="writeline"></div>').join('')}
-      <div class="reveal">${esc(it.ans)}</div></div>`)).join('')}</ol>`,
-
-  tf: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
-    `<div class="item-body">${ed(P(b, i, 'text'), esc(it.text), '문장')}</div>
+  truefalse: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${ed(P(b, i, 'text'), esc(it.text))}</div>
      <span class="tfmark"><span class="${it.ans === 'T' ? 'ok' : ''}">T</span><span class="${it.ans === 'F' ? 'ok' : ''}">F</span></span>`)).join('')}</ol>`,
 
-  sequence: (b) => `<ol class="items" style="counter-reset:none">${b.items.map((it, i) =>
-    `<li style="grid-template-columns:minmax(0,1fr) auto"><div class="item-body"><span class="seq-box">${it.ans}</span>${ed(P(b, i, 'text'), esc(it.text), '문장')}</div>
-     <button class="item-del" data-act="delitem" data-id="${b.id}" data-i="${i}">✕</button></li>`).join('')}</ol>`,
+  match: (b) => `<div class="match">
+      <div><h4>${T('match.left')}</h4><ol>${b.items.map((it, i) =>
+    `<li><span class="tag">${i + 1}</span><span>${ed(P(b, i, 'left'), esc(it.left))}
+        <span class="slot">${'abcdefgh'[it.ans]}</span></span></li>`).join('')}</ol></div>
+      <div><h4>${T('match.right')}</h4><ol>${(b.rights || []).map((r, k) =>
+      `<li><span class="tag">${'abcdefgh'[k]}</span><span>${ed(`${b.id}|rights|${k}`, esc(r))}</span></li>`).join('')}</ol></div>
+    </div>`,
 
-  scramble: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+  order: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
     `<div class="item-body"><div class="scram">${it.words.map((w) => `<span class="chip">${esc(w)}</span>`).join('')}</div>
       <span class="ansline"></span><div class="reveal">${esc(it.ans)}</div></div>`)).join('')}</ol>`,
 
-  shadow: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
-    `<div class="item-body shadow-row"><div>${ed(P(b, i, 'text'), esc(it.text), '문장')} ${stampHtml(it.time)}</div>
-      <span class="shadow-checks"><span class="tick"></span><span class="tick"></span><span class="tick"></span></span></div>`)).join('')}</ol>`,
+  dictation: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${stamp(it.time)}${lines(it.lines)}<div class="reveal">${esc(it.ans)}</div></div>`)).join('')}</ol>`,
 
-  open: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
-    `<div class="item-body">${ed(P(b, i, 'q'), it.q, '과제')}
-      ${Array.from({ length: it.lines || 3 }, () => '<div class="writeline"></div>').join('')}</div>`)).join('')}</ol>`,
+  repeat: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body say"><div>${ed(P(b, i, 'text'), esc(it.text))} ${stamp(it.time)}</div><span class="shadow-checks">${boxes(3)}</span></div>`)).join('')}</ol>`,
 
-  note: (b) => `<div class="item-body">${ed(b.id + '|items|0|text', b.items[0] ? b.items[0].text : '', '여기에 자유롭게 입력하세요')}
-      <div class="writeline"></div><div class="writeline"></div></div>`
+  yourturn: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${ed(P(b, i, 'q'), prompt(it))}${lines(it.lines)}</div>`)).join('')}</ol>`,
+
+  notes: (b) => `<div class="item-body">${ed(b.id + '|items|0|text', b.items[0] ? b.items[0].text : '')}${lines(3)}</div>`
 };
 
+function keyLine(b) {
+  const n = (k) => `${k + 1}.`;
+  if (b.type === 'blanks') return b.items.map((it, k) => `${n(k)} ` + it.parts.filter((p) => p.a).map((p) => p.a).join(' / ')).join('　　');
+  if (b.type === 'choose') return b.items.map((it, k) => `${n(k)} ${'abc'[it.ans]} (${esc(it.opts[it.ans])})`).join('　　');
+  if (b.type === 'truefalse') return b.items.map((it, k) => `${n(k)} ${it.ans}`).join('　　');
+  if (b.type === 'match') return b.items.map((it, k) => `${n(k)} ${'abcdefgh'[it.ans]}`).join('　　');
+  if (b.type === 'order') return b.items.map((it, k) => `${n(k)} ${esc(it.ans)}`).join('<br>');
+  if (b.type === 'dictation') return b.items.map((it, k) => `${n(k)} ${esc(it.ans)}`).join('<br>');
+  return '';
+}
 function renderKey(sheet) {
-  const groups = [];
-  sheet.blocks.forEach((b, i) => {
-    const n = String(i + 1).padStart(2, '0');
-    let line = '';
-    if (b.type === 'cloze') line = b.items.map((it, k) => `${k + 1}. ` + it.parts.filter((p) => p.a).map((p) => p.a).join(' / ')).join('　　');
-    else if (b.type === 'mcq') line = b.items.map((it, k) => `${k + 1}. ${'ABCD'[it.ans]} (${esc(it.opts[it.ans])})`).join('　　');
-    else if (b.type === 'tf') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('　　');
-    else if (b.type === 'sequence') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('　　');
-    else if (b.type === 'scramble') line = b.items.map((it, k) => `${k + 1}. ${esc(it.ans)}`).join('<br>');
-    else if (b.type === 'dictation') line = b.items.map((it, k) => `${k + 1}. ${esc(it.ans)}`).join('<br>');
-    if (line) groups.push(`<div class="kgrp"><b>${n} ${esc(b.title)}</b><p>${line}</p></div>`);
-  });
+  const groups = sheet.blocks.map((b, i) => {
+    const line = keyLine(b);
+    return line ? `<div class="kgrp"><b>${String(i + 1).padStart(2, '0')} ${esc(title(b))}</b><p>${line}</p></div>` : '';
+  }).filter(Boolean);
   if (!groups.length) return '';
-  return `<section class="key"><h3>정답 · Answer Key</h3>
-    <p class="hint" style="color:var(--ink-2)">학생용으로 인쇄할 때는 왼쪽 <b>마지막에 정답지 붙이기</b> 체크를 해제하세요.</p>
-    ${groups.join('')}</section>`;
+  return `<section class="key"><h3>${T('sheet.key')}</h3>
+    <p class="hint" style="color:var(--ink-2)">${T('sheet.keyHint')}</p>${groups.join('')}</section>`;
 }
 
 /* ---------- editing ---------- */
@@ -1002,146 +1087,141 @@ function setPath(path, val) {
   saveLocal();
 }
 const BLANKITEM = {
-  warmup: () => ({ q: '' }), vocab: () => ({ word: '', meaning: '', ex: '', time: 0, count: 0 }),
-  phrases: () => ({ phrase: '', ex: '', count: 0, time: 0 }), cloze: () => ({ parts: [{ t: '' }], time: 0 }),
-  mcq: () => ({ q: '', opts: ['', '', '', ''], ans: 0, time: 0 }), dictation: () => ({ time: 0, ans: '', lines: 2 }),
-  tf: () => ({ text: '', ans: 'T', time: 0 }), sequence: () => ({ text: '', ans: 1, time: 0 }),
-  scramble: () => ({ words: [], ans: '', time: 0 }), shadow: () => ({ text: '', time: 0 }),
-  open: () => ({ q: '', lines: 3 }), note: () => ({ text: '' })
+  before: () => ({ q: '', lines: 1 }), words: () => ({ word: '', meaning: '', ex: '', time: 0, count: 0 }),
+  phrases: () => ({ phrase: '', ex: '', count: 0, time: 0 }), blanks: () => ({ parts: [{ t: '' }], time: 0 }),
+  choose: () => ({ q: '', opts: ['', '', ''], ans: 0, time: 0 }), truefalse: () => ({ text: '', ans: 'T', time: 0 }),
+  match: () => ({ left: '', ans: 0, time: 0 }), order: () => ({ words: [], ans: '', time: 0 }),
+  dictation: () => ({ time: 0, ans: '', lines: 2 }), repeat: () => ({ text: '', time: 0 }),
+  yourturn: () => ({ q: '', lines: 3 }), notes: () => ({ text: '' })
 };
-function itemFromSentence(type, s) {
+function itemFromSentence(type, s, b) {
   const an = analyze(ep());
-  const names = Array.from(an.proper).slice(0, 4);
+  const names = an.names;
   const r = rng(hash(s.text));
   switch (type) {
-    case 'cloze': {
+    case 'blanks': {
       const targets = new Set(an.vocab.slice(0, 30).flatMap((v) => [v.word, v.key]));
-      const toks = s.text.split(/(\s+)/);
       let done = false;
-      const parts = toks.map((t) => {
+      const parts = s.text.split(/(\s+)/).map((t) => {
         const w = t.toLowerCase().replace(/[^a-z']/g, '');
         if (!done && w.length > 3 && (targets.has(w) || targets.has(stem(w)))) {
           const m = t.match(/^([^A-Za-z']*)([A-Za-z'][A-Za-z']*)(.*)$/);
-          if (m) { done = true; return { t: m[1], a: m[2], tail: m[3] }; }
+          if (m) { done = true; if (b && b.bank) b.bank.push(m[2]); return { t: m[1], a: m[2], tail: m[3] }; }
         }
         return { t };
       });
-      return { parts, time: s.start, plain: s.text };
+      return { parts, time: s.start };
     }
-    case 'dictation': return { time: s.start, ans: s.text, lines: s.n > 12 ? 3 : 2 };
-    case 'shadow': return { text: s.text, time: s.start };
-    case 'tf': return { text: deVocative(s.text, names), ans: 'T', src: s.text, time: s.start };
-    case 'sequence': return { text: deVocative(s.text, names), ans: 1, time: s.start };
-    case 'scramble': { const plain = stripEnd(deVocative(s.text, names)); return { words: shuffle(plain.split(/\s+/), r), ans: plain, time: s.start }; }
-    case 'mcq': {
-      const v = an.vocab.find((x) => s.stems.has(x.key)) || an.vocab[0];
-      const form = (s.text.match(new RegExp('\\b' + v.word + '\\b', 'i')) || [v.word])[0];
-      const opts = shuffle([form.toLowerCase()].concat(an.vocab.filter((x) => x.key !== v.key).slice(0, 3).map((x) => x.word)), r);
-      return { q: s.text.replace(new RegExp('\\b' + form + '\\b'), '______'), opts, ans: opts.indexOf(form.toLowerCase()), time: s.start };
+    case 'dictation': return { time: s.start, ans: s.text, lines: s.n > 9 ? 2 : 1 };
+    case 'repeat': return { text: s.text, time: s.start };
+    case 'truefalse': return { text: deVocative(s.text, names), ans: 'T', time: s.start };
+    case 'order': { const plain = stripEnd(deVocative(s.text, names)); return { words: shuffle(plain.split(/\s+/), r), ans: plain, time: s.start }; }
+    case 'match': {
+      const ws = deVocative(s.text, names).split(/\s+/);
+      const cut = clamp(Math.round(ws.length / 2), 2, Math.max(2, ws.length - 2));
+      if (b) { b.rights = b.rights || []; b.rights.push(ws.slice(cut).join(' ')); }
+      return { left: ws.slice(0, cut).join(' '), ans: b && b.rights ? b.rights.length - 1 : 0, time: s.start };
     }
     default: return Object.assign(BLANKITEM[type](), { text: s.text, q: s.text, time: s.start });
   }
 }
-function blockOfType(type, create) {
+function blockOfType(type) {
   let b = state.sheet.blocks.find((x) => x.type === type);
-  if (!b && create) {
-    const c = ctxFor(state.sheet, (Math.random() * 1e9) | 0);
-    b = TYPES[type].gen(c);
-    b.items = [];
-    b.used = [];
-    state.sheet.blocks.push(b);
+  if (!b) {
+    b = TYPES[type].gen(ctxFor(state.sheet, (Math.random() * 1e9) | 0));
+    b.items = []; b.used = [];
+    if (b.rights) b.rights = [];
+    if (b.bank) b.bank = [];
+    const at = ORDER.indexOf(type);
+    const i = state.sheet.blocks.findIndex((x) => ORDER.indexOf(x.type) > at);
+    i < 0 ? state.sheet.blocks.push(b) : state.sheet.blocks.splice(i, 0, b);
   }
   return b;
 }
 function addFromTranscript(type, idx) {
   if (!state.sheet) buildSheet();
   const s = analyze(ep()).sents[idx];
-  const b = blockOfType(type, true);
-  b.items.push(itemFromSentence(type, s));
-  if (type === 'sequence') b.items.forEach((it, i) => { it.ans = i + 1; });
+  const b = blockOfType(type);
+  b.items.push(itemFromSentence(type, s, b));
   b.used.push(idx);
   render(); saveLocal();
-  toast(`“${s.text.slice(0, 24)}…” → ${TYPES[type].label}`);
+  toast(T('msg.added', { t: title(b) }));
 }
 
-/* ---------- persistence ---------- */
-const LSKEY = 'twocups.workbook.v1';
-state.sheets = {};
+/* ---------- saving ---------- */
+const LSKEY = 'twocups.workbook.v2';
 function saveLocal() {
   if (state.sheet) state.sheets[state.sheet.code] = state.sheet;
-  try {
-    localStorage.setItem(LSKEY, JSON.stringify({ settings: state.settings, sheets: state.sheets, active: ep() ? ep().code : null }));
-  } catch (e) { /* private mode or quota - the sheet still lives in memory */ }
+  try { localStorage.setItem(LSKEY, JSON.stringify({ settings: state.settings, sheets: state.sheets, active: ep() ? ep().code : null })); }
+  catch (e) { /* private mode or quota: the sheet still lives in memory */ }
 }
 function loadLocal() {
   try {
-    const raw = localStorage.getItem(LSKEY);
-    if (!raw) return null;
-    const d = JSON.parse(raw);
+    const d = JSON.parse(localStorage.getItem(LSKEY) || 'null');
+    if (!d) return null;
     if (d.settings) Object.assign(state.settings, d.settings, { sections: Object.assign({}, state.settings.sections, d.settings.sections || {}) });
     state.sheets = d.sheets || {};
     return d;
   } catch (e) { return null; }
 }
-/* Published on claude.ai the page cannot save a file by itself; the host
-   asks the viewer instead. Locally the anchor path still works. */
+/* Published on claude.ai a page cannot save a file by itself; the host asks
+   the viewer instead. Opened locally, the plain anchor still works. */
 let dlCap;
 async function downloads() {
   if (dlCap !== undefined) return dlCap;
-  try { dlCap = window.claude && window.claude.use ? await window.claude.use('downloads') : null; }
-  catch (e) { dlCap = null; }
+  try { dlCap = window.claude && window.claude.use ? await window.claude.use('downloads') : null; } catch (e) { dlCap = null; }
   return dlCap;
 }
 async function download(name, text, mime) {
   const cap = await downloads();
   if (cap) {
-    try { await cap.save({ filename: name, data: text }); toast(name + ' 저장됨'); }
-    catch (err) { toast(err && err.code === 'declined' ? '저장을 취소했어요' : '저장할 수 없어 클립보드로 복사했어요'); if (!err || err.code !== 'declined') { try { await navigator.clipboard.writeText(text); } catch (e) { } } }
+    try { await cap.save({ filename: name, data: text }); toast(T('msg.saved', { f: name })); }
+    catch (err) {
+      if (err && err.code === 'declined') return toast(T('msg.declined'));
+      try { await navigator.clipboard.writeText(text); } catch (e) { }
+      toast(T('msg.clip'));
+    }
     return;
   }
   try {
-    const blob = new Blob([text], { type: (mime || 'text/plain') + ';charset=utf-8' });
     const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob);
+    a.href = URL.createObjectURL(new Blob([text], { type: (mime || 'text/plain') + ';charset=utf-8' }));
     a.download = name;
     document.body.appendChild(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-    toast(name + ' 저장됨');
+    toast(T('msg.saved', { f: name }));
   } catch (e) {
-    navigator.clipboard && navigator.clipboard.writeText(text);
-    toast('다운로드가 막혀 클립보드로 복사했어요');
+    if (navigator.clipboard) navigator.clipboard.writeText(text);
+    toast(T('msg.clip'));
   }
 }
 function sheetToText(sheet) {
-  const plain = (s) => String(s).replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').trim();
-  const L = [`# ${plain(sheet.meta.title)}`, plain(sheet.meta.sub), `학습 목표: ${plain(sheet.meta.goal)}`, ''];
+  const plain = (s) => String(s == null ? '' : s).replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').trim();
+  const m = sheet.meta;
+  const L = [`# ${plain(m.title)}`, `${sheet.code} · Two Cups English`, '', plain(m.goal != null ? m.goal : T('sheet.goal', { n: m.goalN || 8 })), ''];
   sheet.blocks.forEach((b, i) => {
-    L.push(`## ${String(i + 1).padStart(2, '0')} ${plain(b.title)} (${b.titleEn})`, plain(b.inst), '');
+    L.push(`## ${String(i + 1).padStart(2, '0')} ${plain(title(b))}`, plain(inst(b)), '');
+    if (b.type === 'blanks' && b.bank) L.push(`[${T('sheet.wordbox')}] ${b.bank.join('  ')}`);
     b.items.forEach((it, k) => {
       const n = `${k + 1}. `;
-      if (b.type === 'vocab') L.push(`${n}${it.word} — ${it.meaning || '________'}  · ${plain(it.ex)}`);
-      else if (b.type === 'phrases') L.push(`${n}${it.phrase} (${it.count}회) · ${plain(it.ex)}`);
-      else if (b.type === 'cloze') L.push(n + it.parts.map((p) => (p.a ? '________' + (p.tail || '') : p.t)).join(''));
-      else if (b.type === 'mcq') L.push(`${n}${plain(it.q)}  [ ${it.opts.join(' / ')} ]`);
-      else if (b.type === 'dictation') L.push(`${n}(${mmss(it.time)}) ____________________________`);
-      else if (b.type === 'tf') L.push(`${n}${plain(it.text)}   T / F`);
-      else if (b.type === 'sequence') L.push(`${n}(   ) ${plain(it.text)}`);
-      else if (b.type === 'scramble') L.push(`${n}${it.words.join(' / ')}`);
-      else if (b.type === 'shadow') L.push(`${n}(${mmss(it.time)}) ${plain(it.text)}`);
-      else L.push(n + plain(it.q || it.text));
+      if (b.type === 'words') L.push(`${n}${it.word} — ____________  (${plain(it.ex)})`);
+      else if (b.type === 'phrases') L.push(`${n}${it.phrase}  □□□   ${plain(it.ex)}`);
+      else if (b.type === 'blanks') L.push(n + it.parts.map((p) => (p.a ? '________' + (p.tail || '') : p.t)).join(''));
+      else if (b.type === 'choose') L.push(`${n}${plain(it.q)}   a) ${it.opts[0]}  b) ${it.opts[1]}  c) ${it.opts[2]}`);
+      else if (b.type === 'truefalse') L.push(`${n}${plain(it.text)}    T / F`);
+      else if (b.type === 'match') L.push(`${n}${plain(it.left)} ... (   )`);
+      else if (b.type === 'order') L.push(`${n}${it.words.join(' / ')}`);
+      else if (b.type === 'dictation') L.push(`${n}(${mmss(it.time)}) ______________________________`);
+      else if (b.type === 'repeat') L.push(`${n}(${mmss(it.time)}) ${plain(it.text)}  □□□`);
+      else L.push(n + plain(prompt(it)));
     });
+    if (b.type === 'match') (b.rights || []).forEach((r, k) => L.push(`   ${'abcdefgh'[k]}) ${plain(r)}`));
     L.push('');
   });
-  L.push('## 정답 Answer Key');
+  L.push(`## ${T('sheet.key')}`);
   sheet.blocks.forEach((b, i) => {
-    let line = '';
-    if (b.type === 'cloze') line = b.items.map((it, k) => `${k + 1}. ` + it.parts.filter((p) => p.a).map((p) => p.a).join(' / ')).join('   ');
-    else if (b.type === 'mcq') line = b.items.map((it, k) => `${k + 1}. ${'ABCD'[it.ans]}`).join('   ');
-    else if (b.type === 'tf') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('   ');
-    else if (b.type === 'sequence') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('   ');
-    else if (b.type === 'scramble') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('\n');
-    else if (b.type === 'dictation') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('\n');
-    if (line) L.push(`[${String(i + 1).padStart(2, '0')} ${plain(b.title)}] ${line}`);
+    const line = keyLine(b);
+    if (line) L.push(`[${String(i + 1).padStart(2, '0')} ${plain(title(b))}] ${plain(line.replace(/<br>/g, ' | '))}`);
   });
   return L.join('\n');
 }
@@ -1151,25 +1231,25 @@ function exportHtml() {
   $$('[contenteditable]', clone).forEach((n) => n.removeAttribute('contenteditable'));
   $$('button[data-seek]', clone).forEach((n) => { n.outerHTML = esc(n.textContent); });
   const css = $$('style').map((s) => s.textContent).join('\n');
-  const doc = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>${esc(state.sheet.meta.title)}</title>
+  const doc = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${esc(state.sheet.meta.title)}</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
 <style>${css}</style><style>body{background:var(--desk);padding:24px}.paper{margin:0 auto}</style></head>
 <body class="${state.answers ? 'answers' : ''}"><div class="stage">${clone.outerHTML}</div></body></html>`;
-  download(`${state.sheet.code}-workbook.html`, doc, 'text/html');
+  download(`${state.sheet.code}-worksheet.html`, doc, 'text/html');
 }
 
-/* ---------- transcript ---------- */
-const TR_ACTS = [['cloze', '빈칸'], ['dictation', '받아쓰기'], ['shadow', '쉐도잉'], ['tf', 'T/F'], ['sequence', '순서'], ['scramble', '배열']];
+/* ---------- script panel ---------- */
+const TR_ACTS = ['blanks', 'dictation', 'repeat', 'truefalse', 'match', 'order'];
 function renderTranscript() {
   const an = analyze(ep());
   const q = $('#trSearch').value.trim().toLowerCase();
   const rows = an.sents.filter((s) => !q || s.text.toLowerCase().includes(q));
-  $('#trCount').textContent = `${rows.length} / ${an.sents.length} 문장`;
+  $('#trCount').textContent = T('tr.count', { a: rows.length, b: an.sents.length });
   $('#trList').innerHTML = rows.slice(0, 900).map((s) => {
     let t = esc(s.text);
     if (q) t = t.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>');
-    return `<div class="tr-row"><time><button type="button" class="pl" data-seek="${s.start}" data-end="${s.end}">${mmss(s.start)}</button></time>
-      <div><p>${t}</p><div class="tr-acts">${TR_ACTS.map(([k, l]) => `<button data-put="${k}" data-i="${s.i}">${l}</button>`).join('')}</div></div></div>`;
+    return `<div class="tr-row"><time><button type="button" data-seek="${s.start}" data-end="${s.end}">${mmss(s.start)}</button></time>
+      <div><p>${t}</p><div class="tr-acts">${TR_ACTS.map((k) => `<button data-put="${k}" data-i="${s.i}">${esc(T('sec.' + k))}</button>`).join('')}</div></div></div>`;
   }).join('');
 }
 
@@ -1178,13 +1258,13 @@ let loopEnd = null;
 const player = $('#player');
 player.addEventListener('timeupdate', () => { if (loopEnd != null && player.currentTime >= loopEnd) { player.pause(); loopEnd = null; } });
 function seek(t, end) {
-  if (!player.src) { toast('먼저 음원 파일을 연결하세요 (오른쪽 아래)'); return; }
+  if (!player.src) return toast(T('msg.needAudio'));
   player.currentTime = Math.max(0, t - 0.25);
   loopEnd = $('#btnLoop').getAttribute('aria-pressed') === 'true' && end ? end + 0.2 : null;
   player.play().catch(() => { });
 }
 
-/* ---------- rails / settings UI ---------- */
+/* ---------- panels ---------- */
 function epLabel(e) {
   if (e._an) return titleCase(e._an.topic);
   if (e._label) return e._label;
@@ -1193,36 +1273,46 @@ function epLabel(e) {
   return e._label;
 }
 function renderEpList() {
-  $('#epList').innerHTML = state.eps.map((e, i) => {
-    const label = epLabel(e);
-    return `<button class="ep" data-ep="${i}" aria-current="${i === state.active}"><code>${esc(e.code)}</code><em>${esc(label)}</em></button>`;
-  }).join('');
+  $('#epList').innerHTML = state.eps.map((e, i) =>
+    `<button class="ep" data-ep="${i}" aria-current="${i === state.active}"><code>${esc(e.code)}</code><em>${esc(epLabel(e))}</em></button>`).join('');
 }
 function renderStats() {
   const an = analyze(ep()), st = an.stats;
+  const easy = an.sents.filter((s) => s.n >= 3 && s.n <= 9).length;
   $('#epStats').innerHTML = [
-    ['주제', titleCase(an.topic)], ['길이', mmss(st.dur)], ['문장', st.sentCount + '개'],
-    ['단어 수', st.wordCount.toLocaleString()], ['말하기 속도', st.wpm + ' wpm'],
-    ['핵심 단어 후보', an.vocab.length + '개'], ['반복 표현', an.phrases.length + '개']
-  ].map(([k, v]) => `<div class="stat-row"><span>${k}</span><b>${esc(String(v))}</b></div>`).join('');
+    [T('st.topic'), titleCase(an.topic)], [T('st.length'), mmss(st.dur)], [T('st.sentences'), st.sentCount],
+    [T('st.words'), st.wordCount.toLocaleString()], [T('st.speed'), st.wpm + ' wpm'], [T('st.easy'), easy]
+  ].map(([k, v]) => `<div class="stat-row"><span>${esc(k)}</span><b>${esc(String(v))}</b></div>`).join('');
   $('#brandSub').textContent = ep().code + ' · ' + titleCase(an.topic);
 }
 function renderToggles() {
-  $('#secToggles').innerHTML = Object.entries(TYPES).map(([k, v]) =>
-    `<label class="check"><input type="checkbox" data-sec="${k}" ${state.settings.sections[k] ? 'checked' : ''}> ${esc(v.label)}</label>`).join('');
+  $('#secToggles').innerHTML = ORDER.map((k) =>
+    `<label class="check"><input type="checkbox" data-sec="${k}" ${state.settings.sections[k] ? 'checked' : ''}> ${esc(T('sec.' + k))}</label>`).join('');
 }
 function syncSettingsUI() {
   const s = state.settings;
-  $('#setLevel').value = s.level; $('#setSize').value = s.size; $('#setLang').value = s.lang;
-  $('#setStamp').value = s.stamp ? '1' : '0'; $('#setBank').checked = s.bank; $('#setKey').checked = s.key;
+  $('#setLevel').value = s.level; $('#setSize').value = s.size;
+  $('#setStamp').checked = s.stamp; $('#setBank').checked = s.bank; $('#setKey').checked = s.key;
 }
-function selectEpisode(i, keepSheet) {
+function setText(el, txt) {
+  const first = el.firstChild;
+  if (first && first.nodeType === 3) first.nodeValue = txt; else el.textContent = txt;
+}
+function applyLang(lang) {
+  LANG = lang; state.settings.lang = lang;
+  document.documentElement.lang = lang;
+  $$('[data-t]').forEach((el) => setText(el, T(el.dataset.t)));
+  $('#trSearch').placeholder = T('tr.search');
+  $('#btnLang').textContent = lang === 'en' ? '한국어' : 'EN';
+  renderToggles(); renderStats(); renderTranscript(); render();
+  saveLocal();
+}
+function selectEpisode(i) {
   state.active = clamp(i, 0, state.eps.length - 1);
   renderEpList(); renderStats(); renderTranscript();
-  const code = ep().code;
-  if (keepSheet && state.sheets[code]) { state.sheet = state.sheets[code]; render(); }
-  else { state.sheet = state.sheets[code] || null; state.sheet ? render() : (buildSheet(), render()); }
-  saveLocal();
+  state.sheet = state.sheets[ep().code] || null;
+  if (!state.sheet) buildSheet();
+  render(); saveLocal();
 }
 
 /* ---------- events ---------- */
@@ -1234,30 +1324,35 @@ $('#paper').addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && e.target.closest('.edit') && !e.shiftKey) { e.preventDefault(); document.execCommand('insertLineBreak'); }
 });
 $('#paper').addEventListener('click', (e) => {
-  const seekBtn = e.target.closest('[data-seek]');
-  if (seekBtn) { seek(+seekBtn.dataset.seek, seekBtn.dataset.end ? +seekBtn.dataset.end : null); return; }
+  const s = e.target.closest('[data-seek]');
+  if (s) return seek(+s.dataset.seek, s.dataset.end ? +s.dataset.end : null);
   const add = e.target.closest('[data-add]');
   if (add) {
-    const c = ctxFor(state.sheet, (Math.random() * 1e9) | 0);
-    const b = TYPES[add.dataset.add].gen(c);
+    const b = TYPES[add.dataset.add].gen(ctxFor(state.sheet, (Math.random() * 1e9) | 0));
     if (!b.items.length) b.items.push(BLANKITEM[b.type]());
     state.sheet.blocks.push(b); render(); saveLocal();
-    $(`[data-block="${b.id}"]`).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    const node = $(`[data-block="${b.id}"]`);
+    if (node) node.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
   const act = e.target.closest('[data-act]');
   if (!act) return;
-  const id = act.dataset.id, blocks = state.sheet.blocks, i = blocks.findIndex((b) => b.id === id);
+  const blocks = state.sheet.blocks, i = blocks.findIndex((b) => b.id === act.dataset.id);
   if (i < 0) return;
   switch (act.dataset.act) {
-    case 'up': if (i > 0) { [blocks[i - 1], blocks[i]] = [blocks[i], blocks[i - 1]]; } break;
-    case 'down': if (i < blocks.length - 1) { [blocks[i + 1], blocks[i]] = [blocks[i], blocks[i + 1]]; } break;
-    case 'del': if (confirm(`“${blocks[i].title}” 섹션을 지울까요?`)) blocks.splice(i, 1); break;
-    case 'regen': return regenBlock(id);
+    case 'up': if (i > 0) [blocks[i - 1], blocks[i]] = [blocks[i], blocks[i - 1]]; break;
+    case 'down': if (i < blocks.length - 1) [blocks[i + 1], blocks[i]] = [blocks[i], blocks[i + 1]]; break;
+    case 'del': if (!confirm(T('msg.delSec', { t: title(blocks[i]) }))) return; blocks.splice(i, 1); break;
+    case 'regen': return regenBlock(act.dataset.id);
     case 'add': blocks[i].items.push(BLANKITEM[blocks[i].type]()); break;
     case 'delitem': {
-      blocks[i].items.splice(+act.dataset.i, 1);
-      if (blocks[i].type === 'sequence') blocks[i].items.slice().sort((a, b) => a.time - b.time).forEach((it, k) => { it.ans = k + 1; });
+      const b = blocks[i], k = +act.dataset.i;
+      if (b.type === 'match') {
+        const gone = b.items[k].ans;
+        (b.rights || []).splice(gone, 1);
+        b.items.forEach((it) => { if (it.ans > gone) it.ans--; });
+      }
+      b.items.splice(k, 1);
       break;
     }
   }
@@ -1265,8 +1360,8 @@ $('#paper').addEventListener('click', (e) => {
 });
 
 $('#btnGen').addEventListener('click', () => {
-  if (state.sheets[ep().code] && !confirm('현재 학습지를 새로 만들면 편집한 내용이 사라집니다. 계속할까요?')) return;
-  buildSheet(); render(); toast('학습지를 새로 만들었어요');
+  if (state.sheets[ep().code] && !confirm(T('msg.again'))) return;
+  buildSheet(); render(); toast(T('msg.made'));
 });
 $('#btnAnswers').addEventListener('click', (e) => {
   state.answers = !state.answers;
@@ -1274,8 +1369,8 @@ $('#btnAnswers').addEventListener('click', (e) => {
   e.currentTarget.setAttribute('aria-pressed', String(state.answers));
 });
 $('#btnPrint').addEventListener('click', () => { document.body.dataset.rail = 'off'; document.body.dataset.tr = 'off'; setTimeout(() => window.print(), 60); });
-$('#btnSave').addEventListener('click', () => download(`${state.sheet.code}-workbook.json`,
-  JSON.stringify({ app: 'twocups-workbook', v: 1, code: state.sheet.code, settings: state.settings, sheet: state.sheet }, null, 1), 'application/json'));
+$('#btnSave').addEventListener('click', () => download(`${state.sheet.code}-worksheet.json`,
+  JSON.stringify({ app: 'twocups-workbook', v: 2, settings: state.settings, sheet: state.sheet }, null, 1), 'application/json'));
 $('#btnLoad').addEventListener('click', () => $('#fileJson').click());
 $('#fileJson').addEventListener('change', (e) => {
   const f = e.target.files[0]; if (!f) return;
@@ -1286,11 +1381,12 @@ $('#fileJson').addEventListener('change', (e) => {
       if (!d.sheet) throw 0;
       if (d.settings) Object.assign(state.settings, d.settings);
       state.sheet = d.sheet; state.sheets[d.sheet.code] = d.sheet;
-      const idx = state.eps.findIndex((x) => x.code === d.sheet.code);
-      if (idx >= 0) state.active = idx;
-      syncSettingsUI(); renderToggles(); renderEpList(); renderStats(); renderTranscript(); render(); saveLocal();
-      toast('학습지를 불러왔어요');
-    } catch (err) { toast('학습지 파일을 읽을 수 없습니다'); }
+      const i = state.eps.findIndex((x) => x.code === d.sheet.code);
+      if (i >= 0) state.active = i;
+      applyLang(state.settings.lang || 'en');
+      syncSettingsUI(); renderEpList();
+      toast(T('msg.loaded'));
+    } catch (err) { toast(T('msg.badFile')); }
   };
   rd.readAsText(f); e.target.value = '';
 });
@@ -1298,20 +1394,19 @@ $('#btnHtml').addEventListener('click', exportHtml);
 $('#btnMd').addEventListener('click', () => {
   const txt = sheetToText(state.sheet);
   (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject())
-    .then(() => toast('학습지 텍스트를 복사했어요'))
-    .catch(() => download(`${state.sheet.code}-workbook.txt`, txt));
+    .then(() => toast(T('msg.copied')))
+    .catch(() => download(`${state.sheet.code}-worksheet.txt`, txt));
 });
+$('#btnLang').addEventListener('click', () => applyLang(LANG === 'en' ? 'ko' : 'en'));
 $('#btnTheme').addEventListener('click', () => {
   const cur = document.documentElement.getAttribute('data-theme');
   const dark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
   document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
 });
 
-/* settings inputs */
-$('#setLevel').addEventListener('change', (e) => { state.settings.level = +e.target.value; saveLocal(); toast('레벨 변경 — 새로 생성하면 반영돼요'); });
+$('#setLevel').addEventListener('change', (e) => { state.settings.level = +e.target.value; saveLocal(); toast(T('msg.level')); });
 $('#setSize').addEventListener('change', (e) => { state.settings.size = e.target.value; saveLocal(); });
-$('#setLang').addEventListener('change', (e) => { state.settings.lang = e.target.value; saveLocal(); });
-$('#setStamp').addEventListener('change', (e) => { state.settings.stamp = e.target.value === '1'; render(); saveLocal(); });
+$('#setStamp').addEventListener('change', (e) => { state.settings.stamp = e.target.checked; render(); saveLocal(); });
 $('#setBank').addEventListener('change', (e) => { state.settings.bank = e.target.checked; saveLocal(); });
 $('#setKey').addEventListener('change', (e) => { state.settings.key = e.target.checked; render(); saveLocal(); });
 $('#secToggles').addEventListener('change', (e) => {
@@ -1320,11 +1415,9 @@ $('#secToggles').addEventListener('change', (e) => {
 });
 $('#epList').addEventListener('click', (e) => {
   const b = e.target.closest('[data-ep]'); if (!b) return;
-  selectEpisode(+b.dataset.ep, true);
+  selectEpisode(+b.dataset.ep);
   document.body.dataset.rail = 'off';
 });
-
-/* transcript */
 $('#trSearch').addEventListener('input', renderTranscript);
 $('#trList').addEventListener('click', (e) => {
   const pl = e.target.closest('[data-seek]');
@@ -1335,28 +1428,23 @@ $('#trList').addEventListener('click', (e) => {
 $('#btnLoop').addEventListener('click', (e) => {
   const on = e.currentTarget.getAttribute('aria-pressed') !== 'true';
   e.currentTarget.setAttribute('aria-pressed', String(on));
-  toast(on ? '문장 구간만 재생합니다' : '이어서 재생합니다');
+  toast(T(on ? 'msg.loopOn' : 'msg.loopOff'));
 });
 $('#btnAudio').addEventListener('click', () => $('#fileAudio').click());
 $('#fileAudio').addEventListener('change', (e) => {
   const f = e.target.files[0]; if (!f) return;
   player.src = URL.createObjectURL(f);
   $('#btnAudio').textContent = f.name.length > 22 ? f.name.slice(0, 20) + '…' : f.name;
-  toast('음원 연결 완료 — 타임스탬프를 누르면 그 구간이 재생돼요');
+  toast(T('msg.audio'));
 });
-
-/* srt import */
 function addEpisodes(files) {
-  let added = 0;
-  const done = () => { if (added) { renderEpList(); selectEpisode(state.eps.length - added, true); toast(`${added}개 자막을 불러왔어요`); } };
-  let pending = files.length;
+  let added = 0, pending = files.length;
+  const done = () => { if (added) { renderEpList(); selectEpisode(state.eps.length - added); toast(T('msg.srt', { n: added })); } };
   Array.from(files).forEach((f) => {
     const rd = new FileReader();
     rd.onload = () => {
-      const code = f.name.replace(/\.(srt|vtt|txt)$/i, '');
-      state.eps.push({ code, file: f.name, srt: String(rd.result) });
-      added++;
-      if (--pending === 0) done();
+      state.eps.push({ code: f.name.replace(/\.(srt|vtt|txt)$/i, ''), file: f.name, srt: String(rd.result) });
+      added++; if (--pending === 0) done();
     };
     rd.onerror = () => { if (--pending === 0) done(); };
     rd.readAsText(f);
@@ -1367,34 +1455,29 @@ $('#fileSrt').addEventListener('change', (e) => { addEpisodes(e.target.files); e
 ['dragenter', 'dragover'].forEach((ev) => $('#drop').addEventListener(ev, (e) => { e.preventDefault(); $('#drop').classList.add('over'); }));
 ['dragleave', 'drop'].forEach((ev) => $('#drop').addEventListener(ev, (e) => { e.preventDefault(); $('#drop').classList.remove('over'); }));
 $('#drop').addEventListener('drop', (e) => { if (e.dataTransfer.files.length) addEpisodes(e.dataTransfer.files); });
-
-/* panes */
 $('#tabRail').addEventListener('click', () => { document.body.dataset.rail = document.body.dataset.rail === 'on' ? 'off' : 'on'; });
 $('#tabTr').addEventListener('click', () => { document.body.dataset.tr = document.body.dataset.tr === 'on' ? 'off' : 'on'; });
 $('#trClose').addEventListener('click', () => { document.body.dataset.tr = 'off'; });
 $('#scrim').addEventListener('click', () => { document.body.dataset.rail = 'off'; document.body.dataset.tr = 'off'; });
 
-/* ---------- boot ---------- */
+/* ---------- start ---------- */
 function boot() {
-  const built = (window.WORKBOOK_EPISODES || []).slice();
-  state.eps = built.length ? built : [];
+  state.eps = (window.WORKBOOK_EPISODES || []).slice();
   const saved = loadLocal();
+  LANG = state.settings.lang || 'en';
   if (!state.eps.length) {
-    $('#paper').innerHTML = `<p class="hint">왼쪽에서 SRT 자막 파일을 열면 학습지가 만들어집니다.</p>`;
-    renderToggles(); syncSettingsUI();
+    applyLang(LANG); syncSettingsUI();
+    $('#paper').innerHTML = `<p class="hint">${T('msg.empty')}</p>`;
     return;
   }
-  let start = 0;
   if (saved && saved.active) {
     const i = state.eps.findIndex((e) => e.code === saved.active);
-    if (i >= 0) start = i;
+    if (i >= 0) state.active = i;
   }
-  state.active = start;
-  renderToggles(); syncSettingsUI(); renderEpList(); renderStats(); renderTranscript();
-  const code = ep().code;
-  state.sheet = state.sheets[code] || null;
+  syncSettingsUI(); renderEpList();
+  state.sheet = state.sheets[ep().code] || null;
   if (!state.sheet) buildSheet();
-  render();
+  applyLang(LANG);
 }
 boot();
 })();
