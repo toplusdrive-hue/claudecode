@@ -1083,7 +1083,22 @@ function loadLocal() {
     return d;
   } catch (e) { return null; }
 }
-function download(name, text, mime) {
+/* Published on claude.ai the page cannot save a file by itself; the host
+   asks the viewer instead. Locally the anchor path still works. */
+let dlCap;
+async function downloads() {
+  if (dlCap !== undefined) return dlCap;
+  try { dlCap = window.claude && window.claude.use ? await window.claude.use('downloads') : null; }
+  catch (e) { dlCap = null; }
+  return dlCap;
+}
+async function download(name, text, mime) {
+  const cap = await downloads();
+  if (cap) {
+    try { await cap.save({ filename: name, data: text }); toast(name + ' 저장됨'); }
+    catch (err) { toast(err && err.code === 'declined' ? '저장을 취소했어요' : '저장할 수 없어 클립보드로 복사했어요'); if (!err || err.code !== 'declined') { try { await navigator.clipboard.writeText(text); } catch (e) { } } }
+    return;
+  }
   try {
     const blob = new Blob([text], { type: (mime || 'text/plain') + ';charset=utf-8' });
     const a = document.createElement('a');
