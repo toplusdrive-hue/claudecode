@@ -8,8 +8,8 @@
 import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, basename, extname } from 'node:path';
 
-const srtDir = process.argv[2] || new URL('./srt', import.meta.url).pathname;
-const outFile = process.argv[3] || new URL('./episodes.js', import.meta.url).pathname;
+const srtDir = process.argv[2] || new URL('../data/srt', import.meta.url).pathname;
+const outFile = process.argv[3] || new URL('../public/episodes.js', import.meta.url).pathname;
 
 const files = readdirSync(srtDir)
   .filter((f) => extname(f).toLowerCase() === '.srt')

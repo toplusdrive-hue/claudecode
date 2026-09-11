@@ -1,0 +1,16 @@
+{
+  "name": "two-cups-workbook-studio",
+  "version": "1.0.0",
+  "description": "Turn a podcast SRT into a printable English worksheet, then edit it in place. Static frontend + a small Node backend.",
+  "type": "module",
+  "private": true,
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "start": "node server.mjs",
+    "dev": "node --watch server.mjs",
+    "build:episodes": "node tools/build-episodes.mjs",
+    "build:artifact": "node tools/make-artifact.mjs",
+    "zip": "node tools/make-zip.mjs"
+  },
+  "license": "MIT"
+}

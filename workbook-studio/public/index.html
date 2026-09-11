@@ -99,6 +99,8 @@ label.field>select,label.field>input{font-size:13px;color:var(--ink)}
 .drop:hover,.drop.over{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
 .stat-row{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2);padding:2px 0}
 .stat-row b{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums}
+.dot{width:8px;height:8px;border-radius:99px;background:var(--muted);display:inline-block;flex:none}
+.dot.on{background:var(--accent)}
 
 /* ---------- transcript ---------- */
 .tr-head{padding:12px 14px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:8px}
@@ -353,6 +355,12 @@ body.answers .match .slot{color:var(--accent-ink);border-bottom-color:var(--acce
       </section>
 
       <section>
+        <h2 data-t="rail.server">Storage</h2>
+        <div class="stat-row" style="gap:8px"><span class="dot" id="serverDot"></span>
+          <span id="serverState" style="flex:1;text-align:left"></span></div>
+      </section>
+
+      <section>
         <h2 data-t="rail.export">Export</h2>
         <div class="tool" style="flex-wrap:wrap;gap:6px">
           <button class="btn" id="btnHtml" data-t="ui.html">Export HTML</button>
@@ -576,7 +584,9 @@ const I18N = {
     'rail.episodes': 'Episodes', 'rail.open': 'Open your own SRT', 'rail.openSub': 'click or drop files here',
     'rail.about': 'This episode', 'rail.level': 'Level and length', 'rail.levelLabel': 'Level', 'rail.sizeLabel': 'Length',
     'rail.stamp': 'Show time codes', 'rail.bank': 'Give a word box for blanks', 'rail.key': 'Add the answer key',
-    'rail.parts': 'Parts of the worksheet', 'rail.export': 'Export',
+    'rail.parts': 'Parts of the worksheet', 'rail.export': 'Export', 'rail.server': 'Storage',
+    'server.on': 'Server connected · worksheets saved in data/sheets',
+    'server.off': 'Standalone · worksheets saved in this browser',
     'rail.partsHint': 'Only the ticked parts are made. You can still edit, add or delete anything afterwards.',
     'rail.printHint': 'In the print window choose “Save as PDF”. The answer key prints on its own page.',
     'lv.1': 'Beginner A1', 'lv.2': 'Elementary A2', 'lv.3': 'Intermediate B1',
@@ -634,7 +644,9 @@ const I18N = {
     'rail.episodes': '에피소드', 'rail.open': '내 SRT 파일 열기', 'rail.openSub': '클릭 또는 드래그 & 드롭',
     'rail.about': '에피소드 정보', 'rail.level': '난이도 · 분량', 'rail.levelLabel': '레벨', 'rail.sizeLabel': '분량',
     'rail.stamp': '타임코드 표시', 'rail.bank': '빈칸에 단어 상자 제공', 'rail.key': '정답지 붙이기',
-    'rail.parts': '수록 섹션', 'rail.export': '내보내기',
+    'rail.parts': '수록 섹션', 'rail.export': '내보내기', 'rail.server': '저장 위치',
+    'server.on': '서버 연결됨 · 학습지가 data/sheets에 저장됩니다',
+    'server.off': '단독 실행 · 학습지가 이 브라우저에 저장됩니다',
     'rail.partsHint': '체크한 섹션만 생성됩니다. 생성 후에도 자유롭게 고치고 추가할 수 있어요.',
     'rail.printHint': '인쇄 창에서 “PDF로 저장”을 고르세요. 정답지는 다음 장에 인쇄됩니다.',
     'lv.1': '입문 A1', 'lv.2': '초급 A2', 'lv.3': '중급 B1',
@@ -951,7 +963,7 @@ const ORDER = ['before', 'copy', 'words', 'phrases', 'blanks', 'choose', 'truefa
 
 /* ---------- state ---------- */
 const state = {
-  eps: [], active: 0, answers: false, sheets: {},
+  eps: [], active: 0, answers: false, sheets: {}, server: false,
   settings: { level: 1, size: 'm', lang: 'en', stamp: true, bank: true, key: true, sections: Object.fromEntries(ORDER.map((k) => [k, TYPES[k].on])) },
   sheet: null
 };
@@ -1202,12 +1214,61 @@ function addFromTranscript(type, idx) {
   toast(T('msg.added', { t: title(b) }));
 }
 
+/* ---------- the backend, when server.mjs is running ---------- */
+const API = 'api/';
+let syncTimer = null;
+function setServerState(on) {
+  state.server = on;
+  const dot = $('#serverDot'), label = $('#serverState');
+  if (dot) dot.classList.toggle('on', on);
+  if (label) label.textContent = T(on ? 'server.on' : 'server.off');
+}
+function syncSheet() {
+  if (!state.server || !state.sheet) return;
+  clearTimeout(syncTimer);
+  const sheet = state.sheet;
+  syncTimer = setTimeout(() => {
+    fetch(API + 'sheets/' + encodeURIComponent(sheet.code), {
+      method: 'PUT', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(sheet)
+    }).catch(() => { });
+  }, 1200);
+}
+async function connectServer() {
+  if (location.protocol === 'file:') return setServerState(false);
+  try {
+    const ctl = new AbortController();
+    const timer = setTimeout(() => ctl.abort(), 2500);
+    const r = await fetch(API + 'episodes', { signal: ctl.signal });
+    clearTimeout(timer);
+    if (!r.ok) throw new Error('no api');
+    const list = await r.json();
+    if (!Array.isArray(list)) throw new Error('bad api');
+    setServerState(true);
+    let added = 0;
+    list.forEach((e) => {
+      if (e && e.srt && !state.eps.some((x) => x.code === e.code)) { state.eps.push({ code: e.code, file: e.file, srt: e.srt }); added++; }
+    });
+    if (added) renderEpList();
+    const code = ep() && ep().code;
+    if (code && !state.sheets[code]) {
+      const sr = await fetch(API + 'sheets/' + encodeURIComponent(code)).catch(() => null);
+      if (sr && sr.ok) {
+        const sheet = await sr.json().catch(() => null);
+        if (sheet && sheet.blocks) { state.sheet = sheet; state.sheets[code] = sheet; render(); }
+      }
+    }
+  } catch (e) {
+    setServerState(false);            /* no backend: the page works on its own */
+  }
+}
+
 /* ---------- saving ---------- */
 const LSKEY = 'twocups.workbook.v2';
 function saveLocal() {
   if (state.sheet) state.sheets[state.sheet.code] = state.sheet;
   try { localStorage.setItem(LSKEY, JSON.stringify({ settings: state.settings, sheets: state.sheets, active: ep() ? ep().code : null })); }
   catch (e) { /* private mode or quota: the sheet still lives in memory */ }
+  syncSheet();
 }
 function loadLocal() {
   try {
@@ -1360,6 +1421,7 @@ function applyLang(lang) {
   $('#trSearch').placeholder = T('tr.search');
   $('#btnLang').textContent = lang === 'en' ? '한국어' : 'EN';
   $('#btnWhole').title = T('ui.wholeTip');
+  setServerState(state.server);
   renderToggles(); renderStats(); renderTranscript(); render();
   saveLocal();
 }
@@ -1506,7 +1568,10 @@ function addEpisodes(files) {
   Array.from(files).forEach((f) => {
     const rd = new FileReader();
     rd.onload = () => {
-      state.eps.push({ code: f.name.replace(/\.(srt|vtt|txt)$/i, ''), file: f.name, srt: String(rd.result) });
+      const code = f.name.replace(/\.(srt|vtt|txt)$/i, '');
+      const srt = String(rd.result);
+      state.eps.push({ code, file: f.name, srt });
+      if (state.server) fetch(API + 'episodes/' + encodeURIComponent(code), { method: 'PUT', headers: { 'Content-Type': 'text/plain' }, body: srt }).catch(() => { });
       added++; if (--pending === 0) done();
     };
     rd.onerror = () => { if (--pending === 0) done(); };
@@ -1531,6 +1596,7 @@ function boot() {
   if (!state.eps.length) {
     applyLang(LANG); syncSettingsUI();
     $('#paper').innerHTML = `<p class="hint">${T('msg.empty')}</p>`;
+    connectServer().then(() => { if (state.eps.length) { renderEpList(); selectEpisode(0); } });
     return;
   }
   if (saved && saved.active) {
@@ -1541,6 +1607,7 @@ function boot() {
   state.sheet = state.sheets[ep().code] || null;
   if (!state.sheet) buildSheet();
   applyLang(LANG);
+  connectServer();
 }
 boot();
 })();
