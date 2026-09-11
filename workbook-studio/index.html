@@ -134,6 +134,8 @@ label.field>select,label.field>input{font-size:13px;color:var(--ink)}
 .goalbox{margin-top:16px;background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 14px;font-size:13px;color:var(--ink)}
 
 .block{margin-top:34px;break-inside:avoid}
+.block.long{break-inside:auto}
+ol.items>li{break-inside:avoid}
 .block-head{display:flex;align-items:flex-end;gap:10px;border-bottom:1px solid var(--rule-strong);padding-bottom:6px}
 .block-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;padding-bottom:3px}
 .block-title{font-family:var(--serif);font-size:19px;font-weight:600;margin:0;flex:1 1 auto}
@@ -293,6 +295,7 @@ body.answers .match .slot{color:var(--accent-ink);border-bottom-color:var(--acce
     <div class="spacer"></div>
     <div class="tool">
       <button class="btn primary" id="btnGen" data-t="ui.make">Make worksheet</button>
+      <button class="btn" id="btnWhole" data-t="ui.whole" title="Every line of the episode as copying practice">Whole script</button>
       <button class="btn" id="btnAnswers" aria-pressed="false" data-t="ui.answers">Answers</button>
       <button class="btn" id="btnPrint" data-t="ui.print">Print · PDF</button>
       <button class="btn" id="btnSave" data-t="ui.save">Save</button>
@@ -568,6 +571,7 @@ function analyze(ep) {
 const I18N = {
   en: {
     'ui.make': 'Make worksheet', 'ui.answers': 'Answers', 'ui.print': 'Print · PDF', 'ui.save': 'Save', 'ui.open': 'Open',
+    'ui.whole': 'Whole script', 'ui.wholeTip': 'Every line of the episode as copying practice',
     'ui.html': 'Export HTML', 'ui.copy': 'Copy as text', 'ui.script': 'Script',
     'rail.episodes': 'Episodes', 'rail.open': 'Open your own SRT', 'rail.openSub': 'click or drop files here',
     'rail.about': 'This episode', 'rail.level': 'Level and length', 'rail.levelLabel': 'Level', 'rail.sizeLabel': 'Length',
@@ -582,7 +586,9 @@ const I18N = {
     'tr.count': '{a} of {b} sentences',
     'st.topic': 'Topic', 'st.length': 'Length', 'st.sentences': 'Sentences', 'st.words': 'Words',
     'st.speed': 'Speaking speed', 'st.easy': 'Short sentences', 'st.level': 'Level',
-    'sheet.kind': 'Listening worksheet', 'sheet.goal': 'Learn {n} words from this episode. Then say three sentences of your own.',
+    'sheet.kind': 'Listening worksheet',
+    'sheet.wholeSub': 'Copy the whole script · {n} lines · {d}',
+    'sheet.wholeGoal': 'Read and copy every line of this episode. Say each line out loud as you write it.', 'sheet.goal': 'Learn {n} words from this episode. Then say three sentences of your own.',
     'sheet.name': 'Name', 'sheet.date': 'Date', 'sheet.score': 'Score', 'sheet.goalLabel': 'Goal',
     'sheet.key': 'Answer Key', 'sheet.keyHint': 'Untick “Add the answer key” before you print the student copy.',
     'sheet.add': 'Add a part', 'sheet.wordbox': 'Word box', 'sheet.times': 'times',
@@ -613,7 +619,7 @@ const I18N = {
     'q.use': 'Use these phrases in your own sentences: {p}',
     'q.best': 'What was the best idea in this episode? Write one sentence.',
     'q.week': 'What will you do this week? Write one sentence.',
-    'msg.made': 'New worksheet made', 'msg.again': 'Make it again? Your edits will be lost.',
+    'msg.made': 'New worksheet made', 'msg.whole': 'Whole script ready — {n} lines', 'msg.again': 'Make it again? Your edits will be lost.',
     'msg.delSec': 'Delete “{t}”?', 'msg.loaded': 'Worksheet opened', 'msg.badFile': 'That file could not be read',
     'msg.copied': 'Worksheet copied as text', 'msg.saved': '{f} saved', 'msg.declined': 'Save cancelled',
     'msg.clip': 'Could not save, so it is on your clipboard', 'msg.audio': 'Audio linked — tap a time code to hear it',
@@ -623,6 +629,7 @@ const I18N = {
   },
   ko: {
     'ui.make': '학습지 생성', 'ui.answers': '정답 보기', 'ui.print': '인쇄 · PDF', 'ui.save': '저장', 'ui.open': '불러오기',
+    'ui.whole': '대본 전체', 'ui.wholeTip': '에피소드의 모든 문장을 따라쓰기로',
     'ui.html': 'HTML 내보내기', 'ui.copy': '텍스트 복사', 'ui.script': '대본',
     'rail.episodes': '에피소드', 'rail.open': '내 SRT 파일 열기', 'rail.openSub': '클릭 또는 드래그 & 드롭',
     'rail.about': '에피소드 정보', 'rail.level': '난이도 · 분량', 'rail.levelLabel': '레벨', 'rail.sizeLabel': '분량',
@@ -637,7 +644,9 @@ const I18N = {
     'tr.count': '{b}문장 중 {a}개',
     'st.topic': '주제', 'st.length': '길이', 'st.sentences': '문장', 'st.words': '단어 수',
     'st.speed': '말하기 속도', 'st.easy': '짧은 문장', 'st.level': '레벨',
-    'sheet.kind': '듣기 학습지', 'sheet.goal': '이 에피소드의 단어 {n}개를 익히고, 내 문장 3개를 말해 봅시다.',
+    'sheet.kind': '듣기 학습지',
+    'sheet.wholeSub': '대본 전체 따라 쓰기 · {n}줄 · {d}',
+    'sheet.wholeGoal': '이 에피소드의 모든 문장을 소리 내어 읽고 그대로 따라 쓰세요.', 'sheet.goal': '이 에피소드의 단어 {n}개를 익히고, 내 문장 3개를 말해 봅시다.',
     'sheet.name': '이름', 'sheet.date': '날짜', 'sheet.score': '점수', 'sheet.goalLabel': '학습 목표',
     'sheet.key': '정답', 'sheet.keyHint': '학생용으로 인쇄할 때는 “정답지 붙이기” 체크를 해제하세요.',
     'sheet.add': '섹션 추가', 'sheet.wordbox': '단어 상자', 'sheet.times': '회',
@@ -668,7 +677,7 @@ const I18N = {
     'q.use': '다음 표현을 넣어 내 문장을 만들어 보세요: {p}',
     'q.best': '이번 에피소드에서 가장 좋았던 생각은 무엇인가요? 한 문장으로 쓰세요.',
     'q.week': '이번 주에 무엇을 해 볼까요? 한 문장으로 쓰세요.',
-    'msg.made': '학습지를 새로 만들었어요', 'msg.again': '다시 만들면 편집한 내용이 사라집니다. 계속할까요?',
+    'msg.made': '학습지를 새로 만들었어요', 'msg.whole': '대본 전체 {n}줄을 학습지로 만들었어요', 'msg.again': '다시 만들면 편집한 내용이 사라집니다. 계속할까요?',
     'msg.delSec': '“{t}” 섹션을 지울까요?', 'msg.loaded': '학습지를 불러왔어요', 'msg.badFile': '파일을 읽을 수 없습니다',
     'msg.copied': '학습지 텍스트를 복사했어요', 'msg.saved': '{f} 저장됨', 'msg.declined': '저장을 취소했어요',
     'msg.clip': '저장할 수 없어 클립보드로 복사했어요', 'msg.audio': '음원 연결 완료 — 타임코드를 누르면 재생돼요',
@@ -964,6 +973,19 @@ function buildSheet() {
   saveLocal();
   return sheet;
 }
+function buildWholeSheet() {
+  const e = ep(), an = analyze(e);
+  const b = shell('copy');
+  b.items = an.sents.map((s) => ({ text: s.text, time: s.start, lines: s.n > 9 ? 2 : 1 }));
+  b.used = an.sents.map((s) => s.i);
+  state.sheet = {
+    code: e.code,
+    meta: { title: titleCase(an.topic), sub: null, goal: null, whole: true, lineCount: b.items.length, level: state.settings.level, dur: an.stats.dur },
+    blocks: [b]
+  };
+  saveLocal();
+  return state.sheet;
+}
 function regenBlock(id) {
   const blocks = state.sheet.blocks, i = blocks.findIndex((b) => b.id === id);
   if (i < 0) return;
@@ -987,8 +1009,10 @@ function render() {
   const p = $('#paper'), sheet = state.sheet;
   if (!sheet) { p.innerHTML = `<p class="hint">${T('msg.empty')}</p>`; return; }
   const m = sheet.meta;
-  const sub = m.sub != null ? m.sub : `${T('sheet.kind')} · ${mmss(m.dur || 0)} · ${T('lv.' + (m.level || 1))}`;
-  const goal = m.goal != null ? m.goal : T('sheet.goal', { n: m.goalN || 8 });
+  const sub = m.sub != null ? m.sub
+    : m.whole ? T('sheet.wholeSub', { n: m.lineCount, d: mmss(m.dur || 0) })
+      : `${T('sheet.kind')} · ${mmss(m.dur || 0)} · ${T('lv.' + (m.level || 1))}`;
+  const goal = m.goal != null ? m.goal : m.whole ? T('sheet.wholeGoal') : T('sheet.goal', { n: m.goalN || 8 });
   let h = `<header class="sheet-head">
       <div class="eyebrow">${esc(sheet.code)} · Two Cups English</div>
       <h1 class="sheet-title">${ed('meta|title', m.title, 'Title')}</h1>
@@ -1006,7 +1030,7 @@ function render() {
   p.innerHTML = h;
 }
 function renderBlock(b, num) {
-  return `<section class="block" data-block="${b.id}">
+  return `<section class="block${b.items.length > 24 ? ' long' : ''}" data-block="${b.id}">
     <div class="block-head">
       <span class="block-num">${String(num).padStart(2, '0')}</span>
       <h2 class="block-title">${ed(b.id + '|title', title(b))}</h2>
@@ -1335,6 +1359,7 @@ function applyLang(lang) {
   $$('[data-t]').forEach((el) => setText(el, T(el.dataset.t)));
   $('#trSearch').placeholder = T('tr.search');
   $('#btnLang').textContent = lang === 'en' ? '한국어' : 'EN';
+  $('#btnWhole').title = T('ui.wholeTip');
   renderToggles(); renderStats(); renderTranscript(); render();
   saveLocal();
 }
@@ -1393,6 +1418,13 @@ $('#paper').addEventListener('click', (e) => {
 $('#btnGen').addEventListener('click', () => {
   if (state.sheets[ep().code] && !confirm(T('msg.again'))) return;
   buildSheet(); render(); toast(T('msg.made'));
+});
+$('#btnWhole').addEventListener('click', () => {
+  if (state.sheets[ep().code] && !confirm(T('msg.again'))) return;
+  const sheet = buildWholeSheet();
+  render();
+  $('#stage').scrollTop = 0;
+  toast(T('msg.whole', { n: sheet.meta.lineCount }));
 });
 $('#btnAnswers').addEventListener('click', (e) => {
   state.answers = !state.answers;

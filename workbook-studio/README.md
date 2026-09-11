@@ -10,6 +10,8 @@ itself can switch between English and Korean with the language button.
 1. Open `index.html` in a browser. (`episodes.js` carries CUP01–CUP15, so a
    worksheet is on screen straight away.)
 2. Pick an episode, a level and a length on the left, then **Make worksheet**.
+   **Whole script** next to it makes a copying sheet of the entire episode —
+   every line of the script, in order, each with a line to write it again.
 3. Every word on the sheet is editable. Each part has ↑ ↓ move, ↻ make again,
    ＋ add an item, ✕ delete.
 4. The **Script** panel on the right turns any sentence into a blank, a
