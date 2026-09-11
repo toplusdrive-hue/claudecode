@@ -167,6 +167,8 @@ li:hover .item-del,li:focus-within .item-del{opacity:1}
 body.answers .blank .a{color:var(--accent-ink)}
 body.answers .blank{border-bottom-color:var(--accent)}
 .writeline{border-bottom:1px solid var(--rule-strong);height:26px;margin-top:6px}
+.writeline.copy{border-bottom-style:dashed;height:30px}
+.copy-src{display:block;color:var(--ink);font-size:14px}
 .wordbank{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;padding:11px 13px;border:1px solid var(--rule);
   border-radius:6px;background:var(--panel)}
 .wordbank b{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
@@ -586,11 +588,12 @@ const I18N = {
     'sheet.add': 'Add a part', 'sheet.wordbox': 'Word box', 'sheet.times': 'times',
     'tbl.word': 'Word', 'tbl.meaning': 'Meaning (your language)', 'tbl.example': 'You hear it here',
     'match.left': 'Match this...', 'match.right': '...with this',
-    'sec.before': 'Before You Listen', 'sec.words': 'Words to Know', 'sec.phrases': 'Useful Phrases',
+    'sec.copy': 'Copy the Script', 'sec.before': 'Before You Listen', 'sec.words': 'Words to Know', 'sec.phrases': 'Useful Phrases',
     'sec.blanks': 'Listen and Write the Word', 'sec.truefalse': 'True or False', 'sec.match': 'Match the Two Halves',
     'sec.order': 'Put the Words in Order', 'sec.dictation': 'Listen and Write the Sentence',
     'sec.repeat': 'Say It with Ben and Mia', 'sec.choose': 'Choose the Right Word', 'sec.yourturn': 'Your Turn',
     'sec.notes': 'Notes',
+    'inst.copy': 'Read each line out loud. Then write the same line on the line below.',
     'inst.before': 'Look at the title and the words. Think, then write short answers.',
     'inst.words': 'These words are in the episode. Tick each word when you hear it, then write what it means.',
     'inst.phrases': 'Ben and Mia say these again and again. Say each one three times.',
@@ -640,11 +643,12 @@ const I18N = {
     'sheet.add': '섹션 추가', 'sheet.wordbox': '단어 상자', 'sheet.times': '회',
     'tbl.word': '단어', 'tbl.meaning': '뜻', 'tbl.example': '나오는 부분',
     'match.left': '앞부분', 'match.right': '뒷부분',
-    'sec.before': '듣기 전에', 'sec.words': '오늘의 단어', 'sec.phrases': '자주 나오는 표현',
+    'sec.copy': '대본 따라 쓰기', 'sec.before': '듣기 전에', 'sec.words': '오늘의 단어', 'sec.phrases': '자주 나오는 표현',
     'sec.blanks': '듣고 단어 쓰기', 'sec.truefalse': '맞으면 T, 틀리면 F', 'sec.match': '문장 반쪽 잇기',
     'sec.order': '단어 순서 맞추기', 'sec.dictation': '듣고 문장 쓰기',
     'sec.repeat': '따라 말하기', 'sec.choose': '알맞은 단어 고르기', 'sec.yourturn': '내 이야기 쓰기',
     'sec.notes': '메모',
+    'inst.copy': '한 줄씩 소리 내어 읽고, 아래 줄에 그대로 따라 쓰세요.',
     'inst.before': '제목과 단어를 보고 짧게 답해 보세요.',
     'inst.words': '에피소드에 나오는 단어입니다. 들릴 때마다 체크하고, 뜻을 적어 보세요.',
     'inst.phrases': 'Ben과 Mia가 여러 번 말하는 표현입니다. 각각 세 번씩 소리 내어 읽으세요.',
@@ -682,9 +686,9 @@ function T(key, vars) {
 
 /* ---------- making the worksheet ---------- */
 const SIZE = {
-  s: { before: 2, words: 6, phrases: 3, blanks: 4, truefalse: 4, match: 3, order: 3, dictation: 2, repeat: 4, choose: 3, yourturn: 2 },
-  m: { before: 3, words: 8, phrases: 4, blanks: 6, truefalse: 5, match: 4, order: 4, dictation: 3, repeat: 5, choose: 4, yourturn: 3 },
-  l: { before: 3, words: 12, phrases: 6, blanks: 9, truefalse: 7, match: 5, order: 6, dictation: 5, repeat: 7, choose: 6, yourturn: 4 }
+  s: { copy: 5, before: 2, words: 6, phrases: 3, blanks: 4, truefalse: 4, match: 3, order: 3, dictation: 2, repeat: 4, choose: 3, yourturn: 2 },
+  m: { copy: 8, before: 3, words: 8, phrases: 4, blanks: 6, truefalse: 5, match: 4, order: 4, dictation: 3, repeat: 5, choose: 4, yourturn: 3 },
+  l: { copy: 12, before: 3, words: 12, phrases: 6, blanks: 9, truefalse: 7, match: 5, order: 6, dictation: 5, repeat: 7, choose: 6, yourturn: 4 }
 };
 const LEVEL = { 1: { min: 3, max: 9, blanks: 1, bank: true }, 2: { min: 4, max: 12, blanks: 1, bank: true }, 3: { min: 5, max: 16, blanks: 2, bank: false } };
 const ANT = { small: 'big', big: 'small', slow: 'fast', fast: 'slow', morning: 'evening', evening: 'morning', hard: 'easy', easy: 'hard', long: 'short', short: 'long', dark: 'bright', bright: 'dark', first: 'last', last: 'first', new: 'old', old: 'new', good: 'bad', bad: 'good', always: 'never', never: 'always', start: 'stop', heavy: 'light', quiet: 'loud', warm: 'cold', cold: 'warm', more: 'less', less: 'more', many: 'few', few: 'many', before: 'after', after: 'before', happy: 'sad', sad: 'happy', full: 'empty', empty: 'full', up: 'down', down: 'up', inside: 'outside', outside: 'inside', open: 'closed', hot: 'cold' };
@@ -721,6 +725,28 @@ function spread(cands, n, r, used) {
 }
 function shell(type) { return { id: uid(), type, title: null, inst: null, items: [], used: [] }; }
 
+function genCopy(c) {
+  const b = shell('copy');
+  const lv = LEVEL[c.s.level], sents = c.an.sents, n = c.n.copy;
+  const wins = [];
+  for (let i = 0; i + n <= sents.length; i++) {
+    const run = sents.slice(i, i + n);
+    if (run.every((s) => s.n >= 2 && s.n <= lv.max && !/["“]/.test(s.text))) {
+      wins.push({ i, avg: run.reduce((t, s) => t + s.n, 0) / n });
+    }
+  }
+  let run;
+  if (wins.length) {
+    wins.sort((a, z) => a.avg - z.avg);
+    const easiest = wins.slice(0, Math.max(1, Math.ceil(wins.length * 0.35)));
+    const w = easiest[Math.floor(c.rand() * easiest.length)];
+    run = sents.slice(w.i, w.i + n);
+  } else {
+    run = sents.slice(0, n);
+  }
+  b.items = run.map((s) => { b.used.push(s.i); return { text: s.text, time: s.start, lines: s.n > 9 ? 2 : 1 }; });
+  return b;
+}
 function genBefore(c) {
   const b = shell('before');
   const topic = c.an.topic, words = c.an.vocab.slice(0, 6).map((v) => v.word);
@@ -907,12 +933,12 @@ function genYourTurn(c) {
 function genNotes(c) { const b = shell('notes'); b.items = [{ text: '' }]; return b; }
 
 const TYPES = {
-  before: { gen: genBefore, on: true }, words: { gen: genWords, on: true }, phrases: { gen: genPhrases, on: true },
+  copy: { gen: genCopy, on: true }, before: { gen: genBefore, on: true }, words: { gen: genWords, on: true }, phrases: { gen: genPhrases, on: true },
   blanks: { gen: genBlanks, on: true }, truefalse: { gen: genTrueFalse, on: true }, match: { gen: genMatch, on: true },
   order: { gen: genOrder, on: true }, dictation: { gen: genDictation, on: true }, repeat: { gen: genRepeat, on: true },
   choose: { gen: genChoose, on: false }, yourturn: { gen: genYourTurn, on: true }, notes: { gen: genNotes, on: false }
 };
-const ORDER = ['before', 'words', 'phrases', 'blanks', 'choose', 'truefalse', 'match', 'order', 'dictation', 'repeat', 'yourturn', 'notes'];
+const ORDER = ['before', 'copy', 'words', 'phrases', 'blanks', 'choose', 'truefalse', 'match', 'order', 'dictation', 'repeat', 'yourturn', 'notes'];
 
 /* ---------- state ---------- */
 const state = {
@@ -1001,6 +1027,10 @@ const P = (b, i, f) => `${b.id}|items|${i}|${f}`;
 const boxes = (n) => Array.from({ length: n }, () => '<span class="tick"></span>').join('');
 
 const BODY = {
+  copy: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body"><span class="copy-src">${ed(P(b, i, 'text'), esc(it.text))} ${stamp(it.time)}</span>` +
+    Array.from({ length: it.lines || 1 }, () => '<div class="writeline copy"></div>').join('') + `</div>`)).join('')}</ol>`,
+
   before: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
     `<div class="item-body">${ed(P(b, i, 'q'), prompt(it))}${lines(it.lines)}</div>`)).join('')}</ol>`,
 
@@ -1087,7 +1117,7 @@ function setPath(path, val) {
   saveLocal();
 }
 const BLANKITEM = {
-  before: () => ({ q: '', lines: 1 }), words: () => ({ word: '', meaning: '', ex: '', time: 0, count: 0 }),
+  copy: () => ({ text: '', time: 0, lines: 1 }), before: () => ({ q: '', lines: 1 }), words: () => ({ word: '', meaning: '', ex: '', time: 0, count: 0 }),
   phrases: () => ({ phrase: '', ex: '', count: 0, time: 0 }), blanks: () => ({ parts: [{ t: '' }], time: 0 }),
   choose: () => ({ q: '', opts: ['', '', ''], ans: 0, time: 0 }), truefalse: () => ({ text: '', ans: 'T', time: 0 }),
   match: () => ({ left: '', ans: 0, time: 0 }), order: () => ({ words: [], ans: '', time: 0 }),
@@ -1113,7 +1143,7 @@ function itemFromSentence(type, s, b) {
       return { parts, time: s.start };
     }
     case 'dictation': return { time: s.start, ans: s.text, lines: s.n > 9 ? 2 : 1 };
-    case 'repeat': return { text: s.text, time: s.start };
+    case 'repeat': case 'copy': return { text: s.text, time: s.start, lines: s.n > 9 ? 2 : 1 };
     case 'truefalse': return { text: deVocative(s.text, names), ans: 'T', time: s.start };
     case 'order': { const plain = stripEnd(deVocative(s.text, names)); return { words: shuffle(plain.split(/\s+/), r), ans: plain, time: s.start }; }
     case 'match': {
@@ -1204,7 +1234,8 @@ function sheetToText(sheet) {
     if (b.type === 'blanks' && b.bank) L.push(`[${T('sheet.wordbox')}] ${b.bank.join('  ')}`);
     b.items.forEach((it, k) => {
       const n = `${k + 1}. `;
-      if (b.type === 'words') L.push(`${n}${it.word} — ____________  (${plain(it.ex)})`);
+      if (b.type === 'copy') L.push(`${n}${plain(it.text)}\n   ______________________________`);
+      else if (b.type === 'words') L.push(`${n}${it.word} — ____________  (${plain(it.ex)})`);
       else if (b.type === 'phrases') L.push(`${n}${it.phrase}  □□□   ${plain(it.ex)}`);
       else if (b.type === 'blanks') L.push(n + it.parts.map((p) => (p.a ? '________' + (p.tail || '') : p.t)).join(''));
       else if (b.type === 'choose') L.push(`${n}${plain(it.q)}   a) ${it.opts[0]}  b) ${it.opts[1]}  c) ${it.opts[2]}`);
@@ -1239,7 +1270,7 @@ function exportHtml() {
 }
 
 /* ---------- script panel ---------- */
-const TR_ACTS = ['blanks', 'dictation', 'repeat', 'truefalse', 'match', 'order'];
+const TR_ACTS = ['copy', 'blanks', 'dictation', 'repeat', 'truefalse', 'match', 'order'];
 function renderTranscript() {
   const an = analyze(ep());
   const q = $('#trSearch').value.trim().toLowerCase();

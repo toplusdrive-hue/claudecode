@@ -25,6 +25,7 @@ button that plays one sentence only).
 | Part | The task | How it is built |
 | --- | --- | --- |
 | Before You Listen | predict, tick known words, one question | from the episode topic line |
+| Copy the Script | read a line, write the same line under it | a real run of the script, shortest passage first |
 | Words to Know | word · meaning · example, with a tick box | stemmed frequency, stopwords and names removed |
 | Useful Phrases | phrases said again and again, 3 repeat boxes | 2–4 word n-grams, the longer form kept |
 | Listen and Write the Word | one blank per sentence + word box | key words first, spread so no word repeats |
