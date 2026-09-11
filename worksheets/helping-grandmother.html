@@ -1,0 +1,427 @@
+<title>Helping Grandmother</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600&family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+  :root{
+    --paper:#f3f5f8;
+    --sheet:#ffffff;
+    --ink:#141c27;
+    --ink-soft:#4d5a6b;
+    --ink-faint:#8a95a4;
+    --rule:#dde3ea;
+    --rule-strong:#c2ccd8;
+    --accent:#bf2b35;
+    --accent-soft:#fbeaea;
+    --ok:#12705a;
+    --ok-soft:#e2f2ec;
+    --focus:#2f6fd0;
+    --shadow:0 1px 2px rgba(20,28,39,.05), 0 12px 32px -20px rgba(20,28,39,.35);
+    --serif:"Noto Serif KR", Georgia, "Times New Roman", serif;
+    --sans:"IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+    --mono:"IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#0f141a;
+      --sheet:#171d25;
+      --ink:#e5eaf0;
+      --ink-soft:#9aa6b4;
+      --ink-faint:#6c7787;
+      --rule:#28313c;
+      --rule-strong:#3b4653;
+      --accent:#ff7d74;
+      --accent-soft:#35211f;
+      --ok:#57c79d;
+      --ok-soft:#15302a;
+      --focus:#84b3ff;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 36px -22px rgba(0,0,0,.9);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0f141a;
+    --sheet:#171d25;
+    --ink:#e5eaf0;
+    --ink-soft:#9aa6b4;
+    --ink-faint:#6c7787;
+    --rule:#28313c;
+    --rule-strong:#3b4653;
+    --accent:#ff7d74;
+    --accent-soft:#35211f;
+    --ok:#57c79d;
+    --ok-soft:#15302a;
+    --focus:#84b3ff;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 14px 36px -22px rgba(0,0,0,.9);
+  }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-size:16px;
+    line-height:1.6;
+    padding-block:40px 72px;
+    padding-inline:20px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:800px;margin-inline:auto;display:flex;flex-direction:column;gap:28px;}
+
+  /* ---------- masthead ---------- */
+  .masthead{display:flex;flex-direction:column;gap:14px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--accent);display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::after{content:"";flex:1;height:1px;background:var(--rule-strong);}
+  h1{
+    font-family:var(--serif);font-weight:600;font-size:clamp(28px,5.4vw,40px);
+    line-height:1.2;margin:0;text-wrap:balance;letter-spacing:-.01em;
+  }
+  h1 .ko{display:block;font-size:.52em;font-weight:400;color:var(--ink-soft);margin-top:.5em;letter-spacing:0;}
+  .facts{
+    display:flex;flex-wrap:wrap;gap:8px 22px;font-size:13px;color:var(--ink-soft);
+    border-top:1px solid var(--rule);padding-top:14px;
+  }
+  .facts b{font-family:var(--mono);font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;}
+
+  /* ---------- scorebar ---------- */
+  .scorebar{
+    position:sticky;top:0;z-index:5;
+    background:var(--sheet);border:1px solid var(--rule);border-radius:2px;
+    box-shadow:var(--shadow);
+    display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px;
+    padding:12px 16px;
+  }
+  .score{font-family:var(--mono);font-size:13px;color:var(--ink-soft);font-variant-numeric:tabular-nums;}
+  .score b{color:var(--ink);font-size:17px;}
+  .ticks{display:flex;gap:6px;margin-inline-end:auto;}
+  .tick{
+    width:26px;height:6px;border-radius:1px;background:var(--rule);
+    transition:background .18s ease;
+  }
+  .tick[data-state="correct"]{background:var(--ok);}
+  .tick[data-state="wrong"]{background:var(--accent);}
+  .tools{display:flex;gap:8px;}
+  button.tool{
+    font-family:var(--sans);font-size:12.5px;font-weight:500;color:var(--ink-soft);
+    background:transparent;border:1px solid var(--rule-strong);border-radius:2px;
+    padding:6px 12px;cursor:pointer;transition:color .15s,border-color .15s;
+  }
+  button.tool:hover{color:var(--ink);border-color:var(--ink-faint);}
+  :is(button,.choice):focus-visible{outline:2px solid var(--focus);outline-offset:2px;}
+
+  /* ---------- passage ---------- */
+  .passage{
+    background:var(--sheet);border:1px solid var(--rule);border-radius:2px;
+    box-shadow:var(--shadow);padding:28px 26px 30px;
+    display:flex;flex-direction:column;gap:18px;
+  }
+  .sheet-label{
+    font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  .para{display:grid;grid-template-columns:2.4rem 1fr;gap:0 12px;align-items:baseline;}
+  .para-mark{
+    font-family:var(--mono);font-size:11px;color:var(--ink-faint);
+    border-inline-end:1px solid var(--rule);padding-inline-end:12px;
+  }
+  .para p{
+    margin:0;font-family:var(--serif);font-size:16.5px;line-height:1.85;
+    max-width:66ch;
+  }
+  @media (max-width:520px){
+    .para{grid-template-columns:1fr;gap:6px;}
+    .para-mark{border-inline-end:0;padding-inline-end:0;}
+  }
+
+  /* ---------- questions ---------- */
+  .questions{display:flex;flex-direction:column;gap:0;}
+  .q{
+    background:var(--sheet);border:1px solid var(--rule);border-block-end:0;
+    padding:24px 26px 26px;display:flex;flex-direction:column;gap:14px;
+  }
+  .q:first-child{border-start-start-radius:2px;border-start-end-radius:2px;}
+  .q:last-child{border-block-end:1px solid var(--rule);border-end-start-radius:2px;border-end-end-radius:2px;}
+  .q-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+  .q-num{
+    font-family:var(--mono);font-size:12px;font-weight:500;letter-spacing:.06em;
+    color:var(--accent);
+  }
+  .q-tag{
+    font-size:11.5px;letter-spacing:.04em;color:var(--ink-soft);
+    background:var(--paper);border:1px solid var(--rule);border-radius:999px;padding:2px 10px;
+  }
+  .q-stem{margin:0;font-size:15.5px;font-weight:500;}
+  .q-stem .ko{display:block;font-weight:400;font-size:14px;color:var(--ink-soft);margin-top:3px;}
+  .q-prompt{
+    margin:0;font-family:var(--serif);font-size:16px;line-height:1.7;
+    border-inline-start:2px solid var(--rule-strong);padding-inline-start:14px;
+  }
+  .blank{border-block-end:1px solid var(--ink-faint);display:inline-block;min-width:6.5em;}
+
+  .choices{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px;}
+  .choice{
+    width:100%;display:flex;gap:12px;align-items:flex-start;text-align:start;
+    font-family:var(--sans);font-size:15px;line-height:1.5;color:var(--ink);
+    background:transparent;border:1px solid transparent;border-radius:2px;
+    padding:9px 12px;cursor:pointer;
+    transition:background .15s ease,border-color .15s ease;
+  }
+  .choice:hover:not(:disabled){background:var(--paper);}
+  .choice:disabled{cursor:default;}
+  .choice .mark{font-family:var(--mono);font-size:13px;color:var(--ink-faint);padding-top:2px;}
+  .choice.is-correct{background:var(--ok-soft);border-color:var(--ok);}
+  .choice.is-correct .mark,.choice.is-answer .mark{color:var(--ok);}
+  .choice.is-answer{border-color:var(--ok);border-style:dashed;}
+  .choice.is-wrong{background:var(--accent-soft);border-color:var(--accent);}
+  .choice.is-wrong .mark{color:var(--accent);}
+  .choice .verdict{
+    margin-inline-start:auto;font-family:var(--mono);font-size:11px;letter-spacing:.08em;
+    opacity:0;padding-top:3px;
+  }
+  .choice.is-correct .verdict,.choice.is-answer .verdict{opacity:1;color:var(--ok);}
+  .choice.is-wrong .verdict{opacity:1;color:var(--accent);}
+
+  .answer{
+    border-top:1px dashed var(--rule-strong);padding-top:14px;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .answer-key{
+    font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;color:var(--ok);
+    display:flex;align-items:center;gap:8px;
+  }
+  .answer-key::before{content:"정답";font-family:var(--sans);font-size:10.5px;letter-spacing:.1em;
+    background:var(--ok);color:var(--sheet);padding:2px 7px;border-radius:2px;}
+  .expl{margin:0;font-size:14.5px;line-height:1.75;color:var(--ink-soft);}
+  .expl b{color:var(--ink);font-weight:500;}
+
+  .colophon{
+    font-size:12.5px;color:var(--ink-faint);line-height:1.7;
+    border-top:1px solid var(--rule);padding-top:14px;
+  }
+  .colophon b{color:var(--ink-soft);font-weight:500;}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition-duration:.001ms !important;}
+  }
+  @media print{
+    :root{--paper:#fff;--sheet:#fff;--ink:#000;--ink-soft:#333;--rule:#bbb;}
+    body{padding:0;}
+    .scorebar,.tools{display:none !important;}
+    .q,.passage{box-shadow:none;break-inside:avoid;}
+    .answer[hidden]{display:flex !important;}
+    .choice{border-color:transparent !important;background:none !important;}
+  }
+</style>
+
+<div class="wrap">
+  <header class="masthead">
+    <div class="eyebrow">Reading Comprehension · 독해</div>
+    <h1>Helping Grandmother<span class="ko">지호의 하루 — 지문 읽고 5문항 풀기</span></h1>
+    <div class="facts">
+      <span>본문 <b>3</b>단락</span>
+      <span>문항 <b>5</b>개</span>
+      <span>유형 <b>내용·어휘·어법·목적</b></span>
+      <span>정답·해설 <b>포함</b></span>
+    </div>
+  </header>
+
+  <div class="scorebar">
+    <div class="ticks" id="ticks" aria-hidden="true"></div>
+    <p class="score" id="score">맞힌 문항 <b>0</b> / 5</p>
+    <div class="tools">
+      <button class="tool" id="show-all" type="button">정답 모두 보기</button>
+      <button class="tool" id="reset" type="button">다시 풀기</button>
+    </div>
+  </div>
+
+  <article class="passage">
+    <p class="sheet-label">Source Text</p>
+    <div class="para">
+      <span class="para-mark">¶ 1</span>
+      <p>Hi, I am Jiho. My grandmother asked me to help her today. She lives alone, so I often visit her. She gave me some cookies when I arrived at her house. I gave a thank-you note to her, and she was very happy. She told me to sit on the sofa and rest for a while. Everything in her house looked very peaceful and warm.</p>
+    </div>
+    <div class="para">
+      <span class="para-mark">¶ 2</span>
+      <p>I wanted to do something special for her. I made her a delicious sandwich for lunch. I also bought some fresh flowers for her at the market. I had her taste the sandwich, and she loved it. She made me feel very proud with her bright smile. I let her choose the music for our lunch. How proud I was! To me, helping her is more important than playing games.</p>
+    </div>
+    <div class="para">
+      <span class="para-mark">¶ 3</span>
+      <p>While we were eating, I saw her smiling at me. I heard her singing a beautiful song, too. This work helped me become a better person. It also helped me to understand my family more. I want my grandmother to stay healthy for a long time. I will make her happy every weekend. Love and trust make our family strong. I won't forget this wonderful day!</p>
+    </div>
+  </article>
+
+  <section class="questions" id="questions">
+
+    <div class="q" id="q1">
+      <div class="q-head"><span class="q-num">Q1</span><span class="q-tag">내용 일치 · True or False</span></div>
+      <p class="q-stem">Read the sentence and choose True or False.<span class="ko">문장을 읽고 내용과 일치하는지 고르세요.</span></p>
+      <p class="q-prompt">Jiho bought fresh flowers for his grandmother at the market.</p>
+      <ul class="choices" data-answer="1">
+        <li><button class="choice" type="button" data-i="1"><span class="mark">①</span><span>True</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="2"><span class="mark">②</span><span>False</span><span class="verdict"></span></button></li>
+      </ul>
+      <div class="answer" hidden>
+        <p class="answer-key">① True</p>
+        <p class="expl">Jiho는 할머니를 위해 시장에서 신선한 꽃을 샀다고 했으므로 <b>①번</b>이 정답입니다. (¶ 2 — <i>I also bought some fresh flowers for her at the market.</i>)</p>
+      </div>
+    </div>
+
+    <div class="q" id="q2">
+      <div class="q-head"><span class="q-num">Q2</span><span class="q-tag">위치 파악 · Location</span></div>
+      <p class="q-stem">Where did Jiho buy the flowers for his grandmother?<span class="ko">Jiho는 할머니를 위한 꽃을 어디에서 샀나요?</span></p>
+      <ul class="choices" data-answer="1">
+        <li><button class="choice" type="button" data-i="1"><span class="mark">①</span><span>at the market</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="2"><span class="mark">②</span><span>at his grandmother's house</span><span class="verdict"></span></button></li>
+      </ul>
+      <div class="answer" hidden>
+        <p class="answer-key">① at the market</p>
+        <p class="expl">Jiho는 시장에서 할머니를 위한 신선한 꽃을 샀다고 했으므로 <b>①번</b>이 정답입니다.</p>
+      </div>
+    </div>
+
+    <div class="q" id="q3">
+      <div class="q-head"><span class="q-num">Q3</span><span class="q-tag">문맥상 쓰임 · Contextual Usage</span></div>
+      <p class="q-stem">What does "alone" mean in the passage?<span class="ko">글에서 "alone"은 어떤 의미인가요?</span></p>
+      <ul class="choices" data-answer="4">
+        <li><button class="choice" type="button" data-i="1"><span class="mark">①</span><span>with many friends</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="2"><span class="mark">②</span><span>for a short time</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="3"><span class="mark">③</span><span>in a new place</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="4"><span class="mark">④</span><span>without other people</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="5"><span class="mark">⑤</span><span>with her family</span><span class="verdict"></span></button></li>
+      </ul>
+      <div class="answer" hidden>
+        <p class="answer-key">④ without other people</p>
+        <p class="expl">할머니가 혼자 살기 때문에 Jiho가 자주 찾아간다는 문맥이므로 alone은 '다른 사람 없이 혼자'라는 의미입니다. 따라서 <b>④번</b>이 정답입니다.</p>
+      </div>
+    </div>
+
+    <div class="q" id="q4">
+      <div class="q-head"><span class="q-num">Q4</span><span class="q-tag">빈칸 채우기 · Gap-Fill</span></div>
+      <p class="q-stem">Choose the correct word to fill in the blank.<span class="ko">빈칸에 들어갈 알맞은 단어를 고르세요.</span></p>
+      <p class="q-prompt">My grandmother <span class="blank"></span> alone.</p>
+      <ul class="choices" data-answer="2">
+        <li><button class="choice" type="button" data-i="1"><span class="mark">①</span><span>live</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="2"><span class="mark">②</span><span>lives</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="3"><span class="mark">③</span><span>living</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="4"><span class="mark">④</span><span>lived</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="5"><span class="mark">⑤</span><span>to live</span><span class="verdict"></span></button></li>
+      </ul>
+      <div class="answer" hidden>
+        <p class="answer-key">② lives</p>
+        <p class="expl">주어 My grandmother는 3인칭 단수이고, alone은 부사입니다. 1형식 문장에서 현재시제 동사는 lives가 알맞으므로 <b>②번</b>이 정답입니다.</p>
+      </div>
+    </div>
+
+    <div class="q" id="q5">
+      <div class="q-head"><span class="q-num">Q5</span><span class="q-tag">글의 목적 파악 · Purpose</span></div>
+      <p class="q-stem">What is the purpose of the passage?<span class="ko">이 글의 목적은 무엇인가요?</span></p>
+      <ul class="choices" data-answer="1">
+        <li><button class="choice" type="button" data-i="1"><span class="mark">①</span><span>to describe how Jiho spent a special day helping his grandmother</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="2"><span class="mark">②</span><span>to explain how to make a sandwich</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="3"><span class="mark">③</span><span>to introduce different kinds of flowers</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="4"><span class="mark">④</span><span>to teach people how to shop at a market</span><span class="verdict"></span></button></li>
+        <li><button class="choice" type="button" data-i="5"><span class="mark">⑤</span><span>to explain why Jiho likes playing games</span><span class="verdict"></span></button></li>
+      </ul>
+      <div class="answer" hidden>
+        <p class="answer-key">① to describe how Jiho spent a special day helping his grandmother</p>
+        <p class="expl">Jiho가 할머니를 찾아가 음식과 꽃을 준비하고 함께 시간을 보내며 할머니를 도운 하루를 소개하는 글이므로 <b>①번</b>이 가장 알맞습니다.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <p class="colophon">
+    선택지를 누르면 정답과 해설이 바로 나타납니다. <b>정답 모두 보기</b>로 전체 해설을 펼치거나, <b>다시 풀기</b>로 처음부터 다시 풀 수 있습니다. 인쇄하면 모든 해설이 함께 출력됩니다.
+  </p>
+</div>
+
+<script>
+(function(){
+  var questions = Array.prototype.slice.call(document.querySelectorAll('.q'));
+  var ticksEl = document.getElementById('ticks');
+  var scoreEl = document.getElementById('score');
+  var results = {};
+
+  questions.forEach(function(q, idx){
+    var tick = document.createElement('span');
+    tick.className = 'tick';
+    tick.id = 'tick-' + q.id;
+    tick.title = 'Q' + (idx + 1);
+    ticksEl.appendChild(tick);
+  });
+
+  function update(){
+    var correct = 0;
+    questions.forEach(function(q){
+      var state = results[q.id];
+      var tick = document.getElementById('tick-' + q.id);
+      if(state === true){ correct++; tick.dataset.state = 'correct'; }
+      else if(state === false){ tick.dataset.state = 'wrong'; }
+      else { delete tick.dataset.state; }
+    });
+    var answered = Object.keys(results).length;
+    scoreEl.innerHTML = answered === questions.length
+      ? '5문항 중 <b>' + correct + '</b>문항 정답'
+      : '맞힌 문항 <b>' + correct + '</b> / ' + questions.length;
+  }
+
+  function lock(q){
+    q.querySelectorAll('.choice').forEach(function(b){ b.disabled = true; });
+    q.querySelector('.answer').hidden = false;
+  }
+
+  questions.forEach(function(q){
+    var list = q.querySelector('.choices');
+    var answer = Number(list.dataset.answer);
+    list.querySelectorAll('.choice').forEach(function(btn){
+      btn.addEventListener('click', function(){
+        if(q.dataset.done === 'true') return;
+        q.dataset.done = 'true';
+        var picked = Number(btn.dataset.i);
+        var ok = picked === answer;
+        btn.classList.add(ok ? 'is-correct' : 'is-wrong');
+        btn.querySelector('.verdict').textContent = ok ? '정답' : '오답';
+        if(!ok){
+          var right = list.querySelector('.choice[data-i="' + answer + '"]');
+          right.classList.add('is-answer');
+          right.querySelector('.verdict').textContent = '정답';
+        }
+        results[q.id] = ok;
+        lock(q);
+        update();
+      });
+    });
+  });
+
+  document.getElementById('show-all').addEventListener('click', function(){
+    questions.forEach(function(q){
+      var list = q.querySelector('.choices');
+      var answer = Number(list.dataset.answer);
+      if(q.dataset.done !== 'true'){
+        var right = list.querySelector('.choice[data-i="' + answer + '"]');
+        right.classList.add('is-answer');
+        right.querySelector('.verdict').textContent = '정답';
+        q.dataset.done = 'true';
+        lock(q);
+      }
+    });
+  });
+
+  document.getElementById('reset').addEventListener('click', function(){
+    results = {};
+    questions.forEach(function(q){
+      delete q.dataset.done;
+      q.querySelector('.answer').hidden = true;
+      q.querySelectorAll('.choice').forEach(function(b){
+        b.disabled = false;
+        b.classList.remove('is-correct','is-wrong','is-answer');
+        b.querySelector('.verdict').textContent = '';
+      });
+    });
+    update();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  update();
+})();
+</script>
