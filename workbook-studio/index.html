@@ -1,0 +1,1388 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Two Cups Workbook Studio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>
+/* ---------- tokens ---------- */
+:root{
+  --desk:#e7ebe8; --panel:#f3f6f4; --panel-2:#e9eeeb; --paper:#ffffff;
+  --ink:#14201d; --ink-2:#465650; --muted:#7a8a84;
+  --rule:#d2dad6; --rule-strong:#adbbb5; --line:#8fa09a;
+  --accent:#0d6b60; --accent-ink:#0a564d; --accent-soft:#d9ece8;
+  --amber:#8d5c11; --amber-soft:#f5ead6;
+  --red:#a43226;
+  --shadow:0 1px 2px rgba(18,40,36,.07), 0 10px 30px rgba(18,40,36,.09);
+  --sans:"IBM Plex Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif;
+  --serif:"Newsreader","IBM Plex Sans KR",Georgia,serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+:root:not([data-theme="light"]){ }
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --desk:#0e1413; --panel:#151d1b; --panel-2:#1b2422; --paper:#18211f;
+    --ink:#e6ede9; --ink-2:#b2c1bb; --muted:#7e908a;
+    --rule:#293432; --rule-strong:#3c4a47; --line:#5d6d69;
+    --accent:#4dc4b3; --accent-ink:#7fd8c9; --accent-soft:#10332f;
+    --amber:#dcae66; --amber-soft:#33290f;
+    --red:#e0776a;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --desk:#0e1413; --panel:#151d1b; --panel-2:#1b2422; --paper:#18211f;
+  --ink:#e6ede9; --ink-2:#b2c1bb; --muted:#7e908a;
+  --rule:#293432; --rule-strong:#3c4a47; --line:#5d6d69;
+  --accent:#4dc4b3; --accent-ink:#7fd8c9; --accent-soft:#10332f;
+  --amber:#dcae66; --amber-soft:#33290f;
+  --red:#e0776a;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--desk);color:var(--ink);font-family:var(--sans);font-size:14px;line-height:1.55}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:3px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ---------- app frame ---------- */
+.app{display:grid;grid-template-rows:auto 1fr;height:100dvh;min-height:520px}
+.topbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:10px 16px;background:var(--panel);border-bottom:1px solid var(--rule)}
+.brand{display:flex;align-items:center;gap:9px;margin-right:4px}
+.brand svg{display:block}
+.brand b{font-family:var(--serif);font-weight:600;font-size:16px;letter-spacing:.01em}
+.brand span{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase}
+.spacer{flex:1 1 auto}
+.tool{display:flex;align-items:center;gap:6px}
+button.btn{background:var(--panel-2);border:1px solid var(--rule);border-radius:6px;padding:6px 11px;cursor:pointer;
+  color:var(--ink-2);white-space:nowrap}
+button.btn:hover{border-color:var(--rule-strong);color:var(--ink)}
+button.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:500}
+:root[data-theme="dark"] button.btn.primary,
+:root:not([data-theme="light"]) button.btn.primary{color:#06201c}
+@media (prefers-color-scheme: light){:root:not([data-theme="dark"]) button.btn.primary{color:#fff}}
+button.btn.primary:hover{filter:brightness(1.06)}
+button.btn[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-ink)}
+button.icon{background:none;border:1px solid transparent;border-radius:5px;padding:3px 6px;cursor:pointer;color:var(--muted);line-height:1}
+button.icon:hover{background:var(--panel-2);border-color:var(--rule);color:var(--ink)}
+select,input[type=text],input[type=number]{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:5px 8px}
+label.field{display:flex;flex-direction:column;gap:4px;font-size:11.5px;color:var(--muted)}
+label.field>select,label.field>input{font-size:13px;color:var(--ink)}
+
+.body{display:grid;grid-template-columns:270px minmax(0,1fr) 340px;min-height:0}
+.rail{background:var(--panel);border-right:1px solid var(--rule);overflow:auto;padding:16px 14px 40px}
+.rail.right{border-right:none;border-left:1px solid var(--rule);padding:0;display:flex;flex-direction:column}
+.stage{overflow:auto;padding:26px 20px 72px;display:flex;justify-content:center;align-items:flex-start}
+
+/* ---------- rail ---------- */
+.rail h2{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 9px;font-weight:500}
+.rail section+section{margin-top:22px;padding-top:20px;border-top:1px solid var(--rule)}
+.ep-list{display:flex;flex-direction:column;gap:1px;margin:0 -6px}
+.ep{display:grid;grid-template-columns:auto 1fr;gap:9px;align-items:baseline;text-align:left;width:100%;
+  background:none;border:0;border-radius:6px;padding:6px;cursor:pointer;color:var(--ink-2)}
+.ep:hover{background:var(--panel-2)}
+.ep[aria-current="true"]{background:var(--accent-soft);color:var(--accent-ink)}
+.ep code{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.ep[aria-current="true"] code{color:var(--accent)}
+.ep em{font-style:normal;font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.check{display:flex;align-items:center;gap:8px;padding:3px 0;cursor:pointer;color:var(--ink-2);font-size:13px}
+.check input{accent-color:var(--accent);width:15px;height:15px}
+.sec-toggles{display:flex;flex-direction:column}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.45}
+.drop{border:1px dashed var(--rule-strong);border-radius:8px;padding:12px;text-align:center;color:var(--muted);font-size:12px;cursor:pointer}
+.drop:hover,.drop.over{border-color:var(--accent);color:var(--accent-ink);background:var(--accent-soft)}
+.stat-row{display:flex;justify-content:space-between;font-size:12px;color:var(--ink-2);padding:2px 0}
+.stat-row b{font-family:var(--mono);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* ---------- transcript ---------- */
+.tr-head{padding:12px 14px;border-bottom:1px solid var(--rule);display:flex;flex-direction:column;gap:8px}
+.tr-head input[type=text]{width:100%}
+.tr-list{overflow:auto;flex:1 1 auto;padding:4px 0 24px}
+.tr-row{display:grid;grid-template-columns:auto 1fr;gap:10px;padding:7px 14px;border-bottom:1px solid var(--rule);align-items:start}
+.tr-row:hover{background:var(--panel-2)}
+.tr-row time{font-family:var(--mono);font-size:10.5px;color:var(--muted);padding-top:2px;font-variant-numeric:tabular-nums}
+.tr-row p{margin:0;font-size:13px;line-height:1.5}
+.tr-row mark{background:var(--accent-soft);color:var(--accent-ink);padding:0 1px}
+.tr-acts{display:flex;flex-wrap:wrap;gap:4px;margin-top:5px;opacity:0;transition:opacity .12s}
+.tr-row:hover .tr-acts,.tr-row:focus-within .tr-acts{opacity:1}
+.tr-acts button{font-size:11px;padding:2px 7px;border:1px solid var(--rule);border-radius:99px;background:var(--paper);
+  color:var(--ink-2);cursor:pointer}
+.tr-acts button:hover{border-color:var(--accent);color:var(--accent-ink)}
+.audio-dock{border-top:1px solid var(--rule);padding:10px 14px;display:flex;flex-direction:column;gap:8px;background:var(--panel)}
+.audio-dock audio{width:100%;height:32px}
+</style>
+<style>
+/* ---------- worksheet paper ---------- */
+.paper{background:var(--paper);width:100%;max-width:860px;box-shadow:var(--shadow);border:1px solid var(--rule);
+  border-radius:3px;padding:46px 52px 60px}
+.sheet-head{border-bottom:2px solid var(--ink);padding-bottom:14px;margin-bottom:8px}
+.eyebrow{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.sheet-title{font-family:var(--serif);font-size:31px;font-weight:600;line-height:1.15;margin:0;text-wrap:balance}
+.sheet-sub{font-size:14px;color:var(--ink-2);margin:7px 0 0}
+.sheet-meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:14px;font-size:12px;color:var(--muted);
+  font-family:var(--mono);font-variant-numeric:tabular-nums}
+.namebar{display:flex;gap:26px;flex-wrap:wrap;margin:14px 0 0;font-size:12.5px;color:var(--ink-2)}
+.namebar span{display:flex;align-items:baseline;gap:8px}
+.namebar i{font-style:normal;color:var(--muted);font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.namebar u{text-decoration:none;border-bottom:1px solid var(--line);min-width:92px;display:inline-block}
+.goalbox{margin-top:16px;background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 14px;font-size:13px;color:var(--ink)}
+
+.block{margin-top:34px;break-inside:avoid}
+.block-head{display:flex;align-items:flex-end;gap:10px;border-bottom:1px solid var(--rule-strong);padding-bottom:6px}
+.block-num{font-family:var(--mono);font-size:11px;color:var(--accent);letter-spacing:.1em;padding-bottom:3px}
+.block-title{font-family:var(--serif);font-size:19px;font-weight:600;margin:0;flex:1 1 auto}
+.block-en{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;padding-bottom:4px}
+.block-inst{font-size:12.5px;color:var(--ink-2);margin:8px 0 14px}
+.block-ctl{display:flex;gap:2px;opacity:0;transition:opacity .12s}
+.block:hover .block-ctl,.block:focus-within .block-ctl{opacity:1}
+
+ol.items{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px;counter-reset:it}
+ol.items>li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:4px 8px;align-items:start}
+ol.items>li::before{counter-increment:it;content:counter(it) ".";font-family:var(--mono);font-size:12px;color:var(--muted);
+  padding-top:2px;font-variant-numeric:tabular-nums}
+.item-body{min-width:0;font-size:14px;line-height:1.75}
+.item-del{opacity:0;background:none;border:0;color:var(--muted);cursor:pointer;font-size:15px;line-height:1;padding:2px 4px}
+li:hover .item-del,li:focus-within .item-del{opacity:1}
+.item-del:hover{color:var(--red)}
+
+/* editable text */
+.edit{outline:none;border-radius:3px;padding:0 2px;margin:0 -2px}
+.edit:hover{background:var(--panel-2)}
+.edit:focus{background:var(--accent-soft);box-shadow:0 0 0 1px var(--accent)}
+.edit:empty::before{content:attr(data-ph);color:var(--muted)}
+
+/* exercise atoms */
+.tstamp{font-family:var(--mono);font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.tstamp button{background:none;border:0;color:inherit;cursor:pointer;font:inherit;padding:0}
+.tstamp button:hover{color:var(--accent-ink);text-decoration:underline}
+.blank{display:inline-block;min-width:78px;border-bottom:1px solid var(--line);text-align:center;margin:0 3px;
+  font-family:var(--mono);font-size:13px;color:transparent;position:relative;vertical-align:baseline}
+.blank .a{color:transparent}
+body.answers .blank .a{color:var(--accent-ink)}
+body.answers .blank{border-bottom-color:var(--accent)}
+.writeline{border-bottom:1px solid var(--rule-strong);height:26px;margin-top:6px}
+.wordbank{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 16px;padding:11px 13px;border:1px solid var(--rule);
+  border-radius:6px;background:var(--panel)}
+.wordbank b{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+  align-self:center;margin-right:4px;font-weight:500}
+.chip{font-family:var(--mono);font-size:12.5px;border:1px solid var(--rule-strong);border-radius:99px;padding:2px 10px;background:var(--paper)}
+.opts{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:5px;font-size:13.5px}
+.opts span{display:flex;gap:6px}
+.opts i{font-style:normal;font-family:var(--mono);font-size:11.5px;color:var(--muted);padding-top:2px}
+body.answers .opts .ok{color:var(--accent-ink);font-weight:600}
+body.answers .opts .ok i{color:var(--accent)}
+.tfmark{display:inline-flex;gap:12px;font-family:var(--mono);font-size:12px;color:var(--muted);white-space:nowrap}
+body.answers .tfmark .ok{color:var(--accent-ink);font-weight:600;text-decoration:underline}
+.scram{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+.scram .chip{background:var(--panel)}
+.ansline{display:block;border-bottom:1px solid var(--rule-strong);height:24px;margin-top:7px}
+.reveal{display:none;font-size:12.5px;color:var(--accent-ink);margin-top:5px;font-family:var(--mono)}
+body.answers .reveal{display:block}
+.seq-box{display:inline-block;width:26px;height:26px;border:1px solid var(--line);border-radius:4px;margin-right:9px;
+  vertical-align:middle;text-align:center;font-family:var(--mono);font-size:13px;line-height:24px;color:transparent}
+body.answers .seq-box{color:var(--accent-ink);border-color:var(--accent)}
+.vocab-tbl{width:100%;border-collapse:collapse;font-size:13.5px}
+.vocab-tbl th{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  text-align:left;font-weight:500;border-bottom:1px solid var(--rule-strong);padding:0 8px 6px 0}
+.vocab-tbl td{border-bottom:1px solid var(--rule);padding:9px 8px 9px 0;vertical-align:top}
+.vocab-tbl td.w{font-weight:600;white-space:nowrap;width:1%}
+.vocab-tbl td.w small{display:block;font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:400}
+.vocab-tbl td.m{width:26%;color:var(--ink-2)}
+.vocab-tbl td.ex{color:var(--ink-2);font-size:13px}
+.shadow-row{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:start}
+.shadow-checks{display:flex;gap:7px;padding-top:3px}
+.tick{width:15px;height:15px;border:1px solid var(--line);border-radius:3px;display:inline-block}
+.key{background:var(--amber-soft);border:1px solid color-mix(in srgb,var(--amber) 35%,transparent);border-radius:6px;padding:16px 20px;margin-top:34px;break-before:page}
+.key h3{font-family:var(--serif);font-size:17px;margin:0 0 4px}
+.key .kgrp{margin-top:12px}
+.key .kgrp b{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);display:block;margin-bottom:3px}
+.key .kgrp p{margin:0;font-size:12.5px;color:var(--ink-2);line-height:1.7}
+.footer-note{margin-top:38px;padding-top:10px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:10px;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:flex;justify-content:space-between;gap:12px}
+.addbar{display:flex;flex-wrap:wrap;gap:6px;margin-top:30px;padding-top:16px;border-top:1px dashed var(--rule-strong)}
+.addbar b{font-size:11.5px;color:var(--muted);align-self:center;margin-right:4px;font-weight:500}
+
+/* mobile panes */
+.tabs{display:none;gap:4px}
+@media (max-width:1080px){
+  .body{grid-template-columns:250px minmax(0,1fr)}
+  .rail.right{position:fixed;top:0;right:0;bottom:0;width:min(360px,88vw);z-index:30;box-shadow:var(--shadow);
+    background:var(--panel);transform:translateX(101%);transition:transform .18s ease}
+  body[data-tr="on"] .rail.right{transform:none}
+  .paper{padding:38px 34px 50px}
+}
+@media (max-width:760px){
+  .body{grid-template-columns:minmax(0,1fr);min-width:0}
+  .stage{min-width:0}
+  .app{width:100%;max-width:100vw;overflow-x:hidden}
+  .tool{flex-wrap:wrap;justify-content:flex-end;gap:5px}
+  .tool .btn{padding:5px 9px}
+  .tabs{display:flex}
+  .rail.left{position:fixed;top:0;left:0;bottom:0;width:min(320px,88vw);z-index:30;transform:translateX(-101%);
+    transition:transform .18s ease;box-shadow:var(--shadow)}
+  body[data-rail="on"] .rail.left{transform:none}
+  .stage{padding:14px 10px 60px}
+  .paper{padding:26px 18px 40px;border-radius:0}
+  .sheet-title{font-size:25px}
+  ol.items>li{grid-template-columns:20px minmax(0,1fr) auto}
+}
+@media print{
+  @page{size:A4;margin:14mm}
+  body{background:#fff;color:#000}
+  .topbar,.rail,.addbar,.block-ctl,.item-del,.tr-acts,.scrim{display:none!important}
+  .edit:empty::before{content:""!important}
+  .app{display:block;height:auto}
+  .body{display:block}
+  .stage{display:block;overflow:visible;padding:0}
+  .paper{max-width:none;box-shadow:none;border:0;padding:0;background:#fff}
+  .block{margin-top:22px}
+  .goalbox{background:#f2f2f2;border-left-color:#000}
+  .key{background:#fff;border:1px solid #999}
+  a{color:#000}
+}
+.scrim{position:fixed;inset:0;background:rgba(10,20,18,.36);z-index:20;display:none}
+body[data-rail="on"] .scrim,body[data-tr="on"] .scrim{display:block}
+@media (min-width:1081px){body[data-tr="on"] .scrim{display:none}}
+@media (min-width:761px){body[data-rail="on"] .scrim{display:none}}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:var(--ink);color:var(--paper);
+  padding:9px 16px;border-radius:99px;font-size:13px;z-index:60;box-shadow:var(--shadow);opacity:0;pointer-events:none;transition:opacity .18s}
+.toast.on{opacity:1}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="tabs">
+      <button class="icon" id="tabRail" title="자료·설정 열기">☰</button>
+    </div>
+    <div class="brand">
+      <svg width="26" height="18" viewBox="0 0 26 18" aria-hidden="true">
+        <circle cx="8" cy="9" r="6.2" fill="none" stroke="var(--accent)" stroke-width="1.6"/>
+        <circle cx="18" cy="9" r="6.2" fill="none" stroke="var(--line)" stroke-width="1.6"/>
+      </svg>
+      <div>
+        <b>Workbook Studio</b><br>
+        <span id="brandSub">Two Cups English</span>
+      </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="tool">
+      <button class="btn primary" id="btnGen">학습지 생성</button>
+      <button class="btn" id="btnAnswers" aria-pressed="false">정답 보기</button>
+      <button class="btn" id="btnPrint">인쇄 · PDF</button>
+      <button class="btn" id="btnSave">저장</button>
+      <button class="btn" id="btnLoad">불러오기</button>
+      <button class="icon" id="btnTheme" title="라이트/다크 전환">◐</button>
+      <button class="icon" id="tabTr" title="대본 열기">대본</button>
+    </div>
+  </header>
+
+  <div class="body">
+    <aside class="rail left" id="railLeft">
+      <section>
+        <h2>에피소드</h2>
+        <div class="ep-list" id="epList"></div>
+        <div class="drop" id="drop" style="margin-top:10px">
+          SRT 파일 열기<br><span style="opacity:.75">클릭 또는 드래그 &amp; 드롭 · 여러 개 가능</span>
+        </div>
+        <input type="file" id="fileSrt" accept=".srt,.vtt,.txt" multiple hidden>
+        <input type="file" id="fileJson" accept=".json" hidden>
+      </section>
+
+      <section>
+        <h2>에피소드 정보</h2>
+        <div id="epStats"></div>
+      </section>
+
+      <section>
+        <h2>난이도 · 분량</h2>
+        <div class="grid2">
+          <label class="field">레벨
+            <select id="setLevel">
+              <option value="1">초급 A1–A2</option>
+              <option value="2" selected>중급 A2–B1</option>
+              <option value="3">고급 B1+</option>
+            </select>
+          </label>
+          <label class="field">문항 수
+            <select id="setSize">
+              <option value="s">짧게 (10분)</option>
+              <option value="m" selected>보통 (25분)</option>
+              <option value="l">길게 (40분)</option>
+            </select>
+          </label>
+          <label class="field">안내문
+            <select id="setLang">
+              <option value="ko" selected>한국어</option>
+              <option value="both">한국어 + English</option>
+              <option value="en">English</option>
+            </select>
+          </label>
+          <label class="field">타임스탬프
+            <select id="setStamp">
+              <option value="1" selected>표시</option>
+              <option value="0">숨김</option>
+            </select>
+          </label>
+        </div>
+        <label class="check" style="margin-top:10px"><input type="checkbox" id="setBank" checked> 빈칸 문제에 단어 상자 제공</label>
+        <label class="check"><input type="checkbox" id="setKey" checked> 마지막에 정답지 붙이기</label>
+      </section>
+
+      <section>
+        <h2>수록 섹션</h2>
+        <div class="sec-toggles" id="secToggles"></div>
+        <p class="hint" style="margin:10px 0 0">체크한 섹션만 <b>학습지 생성</b> 시 만들어집니다. 만든 뒤에도 섹션·문항을 직접 고치거나 추가할 수 있어요.</p>
+      </section>
+
+      <section>
+        <h2>내보내기</h2>
+        <div class="tool" style="flex-wrap:wrap;gap:6px">
+          <button class="btn" id="btnHtml">HTML로 내보내기</button>
+          <button class="btn" id="btnMd">텍스트 복사</button>
+        </div>
+        <p class="hint" style="margin:10px 0 0">인쇄 창에서 <b>대상: PDF로 저장</b>을 고르면 학습지 PDF가 됩니다. 정답지는 자동으로 다음 장에 인쇄돼요.</p>
+      </section>
+    </aside>
+
+    <main class="stage" id="stage">
+      <div class="paper" id="paper"></div>
+    </main>
+
+    <aside class="rail right" id="railRight">
+      <div class="tr-head">
+        <div style="display:flex;align-items:center;gap:8px">
+          <h2 style="margin:0;flex:1">대본 <span id="trCount" class="tstamp"></span></h2>
+          <button class="icon" id="trClose" title="닫기">✕</button>
+        </div>
+        <input type="text" id="trSearch" placeholder="문장 검색 (예: morning)">
+        <p class="hint" style="margin:0">문장 위에 마우스를 올리면 그 문장을 빈칸·받아쓰기·쉐도잉 문제로 바로 넣을 수 있어요.</p>
+      </div>
+      <div class="tr-list" id="trList"></div>
+      <div class="audio-dock">
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="btn" id="btnAudio" style="flex:1">음원 파일 연결</button>
+          <button class="icon" id="btnLoop" aria-pressed="false" title="문장 구간만 재생">구간</button>
+        </div>
+        <input type="file" id="fileAudio" accept="audio/*" hidden>
+        <audio id="player" controls preload="none"></audio>
+      </div>
+    </aside>
+  </div>
+</div>
+<div class="scrim" id="scrim"></div>
+<div class="toast" id="toast"></div>
+
+<script src="episodes.js"></script>
+<script>
+/* =====================================================================
+   Two Cups Workbook Studio
+   SRT  ->  printable English workbook  ->  editable in place
+   ===================================================================== */
+(function () {
+'use strict';
+
+/* ---------- tiny helpers ---------- */
+const $ = (s, r) => (r || document).querySelector(s);
+const $$ = (s, r) => Array.from((r || document).querySelectorAll(s));
+const esc = (s) => String(s == null ? '' : s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const uid = () => Math.random().toString(36).slice(2, 9);
+function rng(seed) { let a = seed >>> 0; return () => { a += 0x6D2B79F5; let t = a; t = Math.imul(t ^ (t >>> 15), t | 1); t ^= t + Math.imul(t ^ (t >>> 7), t | 61); return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function shuffle(arr, r) { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(r() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; }
+function hash(str) { let h = 2166136261; for (let i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
+function mmss(sec) { sec = Math.max(0, sec); const m = Math.floor(sec / 60), s = Math.floor(sec % 60); return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0'); }
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(toast._t); toast._t = setTimeout(() => t.classList.remove('on'), 2200); }
+
+/* ---------- SRT / VTT parsing ---------- */
+function tcToSec(tc) {
+  const m = tc.trim().match(/(\d+):(\d{2}):(\d{2})[.,](\d{1,3})/) || tc.trim().match(/(\d+):(\d{2})[.,](\d{1,3})/);
+  if (!m) return 0;
+  return m.length === 5
+    ? (+m[1]) * 3600 + (+m[2]) * 60 + (+m[3]) + (+m[4]) / 1000
+    : (+m[1]) * 60 + (+m[2]) + (+m[3]) / 1000;
+}
+function parseSRT(text) {
+  const cues = [];
+  const chunks = text.replace(/\r/g, '').replace(/^WEBVTT.*\n/, '').split(/\n{2,}/);
+  for (const chunk of chunks) {
+    const lines = chunk.split('\n').filter((l) => l.trim() !== '');
+    if (!lines.length) continue;
+    const ti = lines.findIndex((l) => l.includes('-->'));
+    if (ti < 0) continue;
+    const [a, b] = lines[ti].split('-->');
+    const body = lines.slice(ti + 1).join(' ').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+    if (!body) continue;
+    cues.push({ start: tcToSec(a), end: tcToSec(b), text: body });
+  }
+  return cues;
+}
+/* Cues cut sentences in half; stitch them back, then re-split on real
+   sentence ends and share the cue's time across the pieces by length. */
+function buildSentences(cues) {
+  const out = [];
+  let buf = '', st = 0, en = 0;
+  const flush = () => {
+    if (!buf.trim()) return;
+    const parts = buf.trim().split(/(?<=[.!?]["'”]?)\s+(?=["'“(]?[A-Z0-9])/).filter((p) => p.trim());
+    const total = parts.reduce((n, p) => n + p.length, 0) || 1;
+    let t = st;
+    for (const p of parts) {
+      const d = (en - st) * (p.length / total);
+      out.push(mkSentence(out.length, p.trim(), t, t + d));
+      t += d;
+    }
+    buf = '';
+  };
+  for (const c of cues) {
+    if (!buf) st = c.start;
+    buf = buf ? buf + ' ' + c.text : c.text;
+    en = c.end;
+    if (/[.!?]["'”)]?$/.test(c.text)) flush();
+  }
+  flush();
+  return out;
+}
+function mkSentence(i, text, start, end) {
+  const words = text.toLowerCase().match(/[a-z][a-z']*/g) || [];
+  return { i, text, start, end, words, n: words.length, stems: new Set(words.map(stem)) };
+}
+
+/* ---------- vocabulary machinery ---------- */
+const STOP = new Set(('a an the and or but so if then than that this these those there here it its it\'s is am are was were be been being do does did done doing have has had having will would can could shall should may might must of in on at to for with from by about into over under again very just too also not no nor only own same as such i you he she we they me him her us them my your his our their mine yours what which who whom when where why how all any both each few more most other some one two three ' +
+  'now well okay yes yah yeah oh hi hello ok get got go goes going went come came like say said says know knew think thought want wanted make made take took see saw look looked feel felt because while during after before up down out off again still even ever never always maybe really much many little lot day today tomorrow yesterday time thing things people person you\'re i\'m don\'t doesn\'t didn\'t can\'t won\'t that\'s let\'s we\'re they\'re i\'ve we\'ve isn\'t wasn\'t there\'s he\'s she\'s').split(/\s+/));
+const TAILSTOP = new Set('a an the of to and but or in on at my your his her our their is are was were for with from by that this it as if so not no do does did be been'.split(' '));
+function stem(w) {
+  if (w.length <= 3) return w;
+  if (/thing$/.test(w) || /ing$/.test(w) === false) { /* fallthrough */ }
+  if (/ies$/.test(w)) return w.slice(0, -3) + 'y';
+  if (/(sses|shes|ches|xes)$/.test(w)) return w.slice(0, -2);
+  if (/[^su]s$/.test(w)) return w.slice(0, -1);
+  if (/ied$/.test(w)) return w.slice(0, -3) + 'y';
+  if (/ing$/.test(w) && w.length > 5 && !/thing$/.test(w)) { let b = w.slice(0, -3); if (/([bdgklmnprt])\1$/.test(b)) b = b.slice(0, -1); return b.length > 2 ? b : w; }
+  if (/ed$/.test(w) && w.length > 4) { let b = w.slice(0, -2); if (/([bdgklmnprt])\1$/.test(b)) b = b.slice(0, -1); return b; }
+  return w;
+}
+function analyze(ep) {
+  if (ep._an) return ep._an;
+  const cues = parseSRT(ep.srt);
+  const sents = buildSentences(cues);
+  /* proper nouns: capitalised away from the start of a sentence */
+  const capMid = new Map(), seen = new Map();
+  for (const s of sents) {
+    const toks = s.text.match(/[A-Za-z][A-Za-z']*/g) || [];
+    toks.forEach((t, idx) => {
+      const low = t.toLowerCase();
+      seen.set(low, (seen.get(low) || 0) + 1);
+      if (idx > 0 && /^[A-Z]/.test(t)) capMid.set(low, (capMid.get(low) || 0) + 1);
+    });
+  }
+  const proper = new Set();
+  for (const [w, c] of capMid) if (c >= 2 && c >= (seen.get(w) || 1) * 0.6) proper.add(w);
+
+  /* word frequency, grouped by stem */
+  const groups = new Map();
+  for (const s of sents) {
+    for (const w of s.words) {
+      if (w.length < 3 || STOP.has(w) || proper.has(w) || /^\d+$/.test(w)) continue;
+      const k = stem(w);
+      let g = groups.get(k);
+      if (!g) { g = { key: k, count: 0, forms: new Map(), sents: [] }; groups.set(k, g); }
+      g.count++;
+      g.forms.set(w, (g.forms.get(w) || 0) + 1);
+      if (g.sents[g.sents.length - 1] !== s.i) g.sents.push(s.i);
+    }
+  }
+  const vocab = Array.from(groups.values())
+    .filter((g) => g.count >= 2 && g.sents.length >= 2)
+    .map((g) => {
+      const form = Array.from(g.forms.entries()).sort((a, b) => b[1] - a[1])[0][0];
+      return { key: g.key, word: form, count: g.count, sents: g.sents, spread: g.sents.length };
+    })
+    .sort((a, b) => b.count * Math.log(1 + b.spread) - a.count * Math.log(1 + a.spread));
+
+  /* repeated multi-word expressions */
+  const ng = new Map();
+  for (const s of sents) {
+    const ws = s.words;
+    for (let n = 2; n <= 4; n++) {
+      for (let i = 0; i + n <= ws.length; i++) {
+        const g = ws.slice(i, i + n);
+        if (TAILSTOP.has(g[0]) && n < 3) continue;
+        if (TAILSTOP.has(g[g.length - 1])) continue;
+        if (g.every((w) => STOP.has(w))) continue;
+        if (g.some((w) => proper.has(w))) continue;
+        const t = g.join(' ');
+        let e = ng.get(t);
+        if (!e) { e = { text: t, n, count: 0, sents: [] }; ng.set(t, e); }
+        e.count++;
+        if (e.sents[e.sents.length - 1] !== s.i) e.sents.push(s.i);
+      }
+    }
+  }
+  let phrases = Array.from(ng.values())
+    .filter((p) => p.count >= 3 && p.sents.length >= 2)
+    .sort((a, b) => b.count * (b.n - 1) - a.count * (a.n - 1));
+  /* drop a short phrase that only ever appears inside a longer, kept one */
+  const kept = [], skey = (t) => ' ' + t.split(' ').map(stem).join(' ') + ' ';
+  for (const p of phrases) {
+    const kp = skey(p.text);
+    if (kept.some((k) => skey(k.text).includes(kp) || kp.includes(skey(k.text)))) continue;
+    kept.push(p);
+    if (kept.length >= 40) break;
+  }
+  phrases = kept;
+
+  const dur = sents.length ? sents[sents.length - 1].end : 0;
+  const wordCount = sents.reduce((n, s) => n + s.n, 0);
+  const topicLine = sents.find((s) => /our topic is/i.test(s.text));
+  const topic = topicLine
+    ? topicLine.text.replace(/^.*our topic is\s*/i, '').replace(/[.!?]+$/, '').trim()
+    : (sents.find((s) => s.n >= 7) || { text: ep.code }).text.replace(/[.!?]+$/, '');
+
+  ep._an = {
+    sents, vocab, phrases, proper, topic,
+    stats: { dur, wordCount, sentCount: sents.length, cueCount: cues.length, wpm: dur ? Math.round(wordCount / (dur / 60)) : 0 }
+  };
+  return ep._an;
+}
+
+/* ---------- generation ---------- */
+const SIZE = {
+  s: { vocab: 6, phrases: 4, cloze: 5, mcq: 3, dictation: 3, tf: 4, sequence: 4, scramble: 3, shadow: 4, open: 2, warmup: 2 },
+  m: { vocab: 10, phrases: 6, cloze: 8, mcq: 4, dictation: 5, tf: 6, sequence: 5, scramble: 4, shadow: 6, open: 3, warmup: 3 },
+  l: { vocab: 14, phrases: 8, cloze: 12, mcq: 6, dictation: 7, tf: 8, sequence: 6, scramble: 6, shadow: 8, open: 4, warmup: 3 }
+};
+const LEVEL = { 1: { min: 5, max: 12, blanks: 1 }, 2: { min: 6, max: 16, blanks: 2 }, 3: { min: 8, max: 24, blanks: 3 } };
+const ANT = { small: 'big', big: 'small', slow: 'fast', fast: 'slow', morning: 'evening', evening: 'morning', hard: 'easy', easy: 'hard', long: 'short', short: 'long', dark: 'bright', bright: 'dark', first: 'last', last: 'first', new: 'old', old: 'new', good: 'bad', bad: 'good', always: 'never', never: 'always', start: 'finish', finish: 'start', open: 'close', closed: 'open', heavy: 'light', quiet: 'loud', warm: 'cold', cold: 'warm', more: 'less', less: 'more', many: 'few', few: 'many', before: 'after', after: 'before', remember: 'forget', forget: 'remember', happy: 'sad', sad: 'happy', full: 'empty', empty: 'full', up: 'down', down: 'up', inside: 'outside', outside: 'inside' };
+const NUM = { one: 'four', two: 'six', three: 'eight', four: 'nine', five: 'two', six: 'three', ten: 'twenty', twenty: 'fifty', thirty: 'fifteen', hundred: 'thousand' };
+
+function ins(ko, en, lang) { return lang === 'ko' ? ko : lang === 'en' ? en : ko + '  /  ' + en; }
+function stripEnd(t) { return t.replace(/\s*[.!?]+["'”]?\s*$/, ''); }
+function deVocative(t, names) {
+  let x = t;
+  names.forEach((n) => {
+    x = x.replace(new RegExp(',\\s*' + n + '\\b', 'g'), '').replace(new RegExp('^' + n + ',\\s*', 'i'), '');
+  });
+  x = x.replace(/^(And|But|So|Well|Okay|Oh|Yes|No),?\s+/i, (m, w) => (/^(yes|no)$/i.test(w) ? m : '')).trim();
+  return x.charAt(0).toUpperCase() + x.slice(1);
+}
+function titleCase(s) { return s.replace(/\b([a-z])/g, (m) => m.toUpperCase()); }
+
+/* candidate sentences, evenly spread over the episode */
+function pool(an, opt) {
+  const { min = 5, max = 20 } = opt || {};
+  return an.sents.filter((s) => s.n >= min && s.n <= max && !/^[-–—]/.test(s.text) && /[a-z]/.test(s.text));
+}
+function spread(cands, n, r, used) {
+  const free = cands.filter((s) => !used.has(s.i));
+  const src = free.length >= n ? free : cands;
+  if (!src.length) return [];
+  const lo = src[0].i, hi = src[src.length - 1].i || 1;
+  const picks = [], seen = new Set();
+  for (let b = 0; b < n; b++) {
+    const a = lo + ((hi - lo) * b) / n, z = lo + ((hi - lo) * (b + 1)) / n;
+    const bucket = src.filter((s) => s.i >= a && s.i < z && !seen.has(s.i));
+    if (!bucket.length) continue;
+    const pick = bucket[Math.floor(r() * bucket.length)];
+    seen.add(pick.i); picks.push(pick);
+  }
+  for (const s of src) { if (picks.length >= n) break; if (!seen.has(s.i)) { seen.add(s.i); picks.push(s); } }
+  return picks.sort((a, b) => a.i - b.i).slice(0, n);
+}
+function targetWords(an, k) { return an.vocab.slice(0, Math.max(k, 14)).map((v) => v); }
+function exampleFor(an, v, used) {
+  const cands = v.sents.map((i) => an.sents[i]).filter((s) => s && s.n >= 5 && s.n <= 16);
+  return cands.find((s) => !used.has(s.i)) || cands[0] || an.sents[v.sents[0]];
+}
+
+function blockShell(type, extra) {
+  const t = TYPES[type];
+  return Object.assign({ id: uid(), type, title: t.label, titleEn: t.en, inst: '', items: [], used: [], seed: (Math.random() * 1e9) | 0 }, extra || {});
+}
+
+function genWarmup(c) {
+  const b = blockShell('warmup');
+  const topic = c.an.topic, words = c.an.vocab.slice(0, 6).map((v) => v.word);
+  b.inst = ins('듣기 전에 짝과 이야기하거나 한국어로 간단히 적어 보세요.', 'Before you listen, talk with a partner or write short answers.', c.s.lang);
+  const bank = [
+    { q: `오늘의 주제는 <b>“${esc(titleCase(topic))}”</b> 입니다. 어떤 이야기가 나올지 예상해서 적어 보세요.` },
+    { q: `아래 단어 중 아는 것에 체크하고, 뜻을 아는 단어는 한국어로 적어 보세요.<br><span class="tstamp">${words.map(esc).join(' · ')}</span>` },
+    { q: `What do you think about <b>${esc(topic)}</b>? Write one English sentence.` },
+    { q: `이 주제와 관련해 내 경험을 한 문장으로 적어 보세요.` }
+  ];
+  b.items = bank.slice(0, c.n.warmup);
+  return b;
+}
+function genVocab(c) {
+  const b = blockShell('vocab');
+  b.inst = ins('들으면서 단어에 표시하고, 수업 후 뜻을 채워 넣으세요.', 'Tick the words you hear, then write the meanings.', c.s.lang);
+  const used = new Set(c.used);
+  b.items = c.an.vocab.slice(0, c.n.vocab).map((v) => {
+    const s = exampleFor(c.an, v, used);
+    if (s) { used.add(s.i); b.used.push(s.i); }
+    return { word: v.word, count: v.count, meaning: '', ex: s ? s.text : '', time: s ? s.start : 0 };
+  });
+  return b;
+}
+function genPhrases(c) {
+  const b = blockShell('phrases');
+  b.inst = ins('에피소드에서 여러 번 반복된 표현입니다. 소리 내어 3번씩 읽어 보세요.', 'These expressions repeat in the episode. Read each one aloud three times.', c.s.lang);
+  b.items = c.an.phrases.slice(0, c.n.phrases).map((p) => {
+    const s = c.an.sents[p.sents[0]];
+    return { phrase: p.text, count: p.count, ex: s ? s.text : '', time: s ? s.start : 0, meaning: '' };
+  });
+  return b;
+}
+function genCloze(c) {
+  const b = blockShell('cloze');
+  b.inst = ins('음원을 들으며 빈칸을 채우세요. 두 번 듣고, 세 번째에 확인합니다.', 'Listen and fill in the blanks. Listen twice, then check.', c.s.lang);
+  const targets = new Set(targetWords(c.an, c.n.vocab).flatMap((v) => [v.word, v.key]));
+  const lv = LEVEL[c.s.level];
+  const cands = pool(c.an, { min: Math.max(6, lv.min), max: lv.max }).filter((s) => s.words.some((w) => targets.has(w) || targets.has(stem(w))));
+  const picks = spread(cands, c.n.cloze, c.rand, new Set(c.used));
+  const answers = [], seenAns = new Map();
+  b.items = picks.map((s) => {
+    const toks = s.text.split(/(\s+)/);
+    const wordAt = (i) => stem(toks[i].toLowerCase().replace(/[^a-z']/g, ''));
+    const idx = [];
+    toks.forEach((t, i) => {
+      const w = t.toLowerCase().replace(/[^a-z']/g, '');
+      const key = targets.has(w) || targets.has(stem(w));
+      if (w.length > 3 && (key || !STOP.has(w))) idx.push(i);
+    });
+    /* spread the blanks over different words: unused first, key words before the rest */
+    const score = (i) => {
+      const w = toks[i].toLowerCase().replace(/[^a-z']/g, '');
+      const seen = seenAns.get(wordAt(i)) || 0;
+      return seen * 10 + (targets.has(w) || targets.has(stem(w)) ? 0 : 3);
+    };
+    const chosen = shuffle(idx, c.rand).sort((a, z) => score(a) - score(z))
+      .slice(0, Math.max(1, Math.min(lv.blanks, idx.length))).sort((a, z) => a - z);
+    chosen.forEach((i) => seenAns.set(wordAt(i), (seenAns.get(wordAt(i)) || 0) + 1));
+    const parts = toks.map((t, i) => {
+      if (!chosen.includes(i)) return { t };
+      const m = t.match(/^([^A-Za-z']*)([A-Za-z'][A-Za-z']*)(.*)$/);
+      if (!m) return { t };
+      answers.push(m[2]);
+      return { t: m[1], a: m[2], tail: m[3] };
+    });
+    b.used.push(s.i);
+    return { parts, time: s.start, plain: s.text };
+  });
+  b.bank = c.s.bank && c.s.level < 3 ? shuffle(answers, c.rand) : null;
+  return b;
+}
+function genMcq(c) {
+  const b = blockShell('mcq');
+  b.inst = ins('들으면서 빈칸에 알맞은 단어를 고르세요.', 'Listen and choose the correct word for each blank.', c.s.lang);
+  const vocab = targetWords(c.an, c.n.vocab + 6);
+  const cands = pool(c.an, { min: 6, max: 16 });
+  const picks = spread(cands.filter((s) => vocab.some((v) => s.stems.has(v.key))), c.n.mcq, c.rand, new Set(c.used));
+  b.items = picks.map((s) => {
+    const hit = vocab.find((v) => s.stems.has(v.key));
+    const form = (s.text.match(new RegExp('\\b' + hit.word + '\\b', 'i')) || [hit.word])[0];
+    const distract = shuffle(vocab.filter((v) => v.key !== hit.key && !s.stems.has(v.key)), c.rand).slice(0, 3).map((v) => v.word);
+    const opts = shuffle([form.toLowerCase()].concat(distract), c.rand);
+    b.used.push(s.i);
+    return { q: s.text.replace(new RegExp('\\b' + form + '\\b'), '______'), opts, ans: opts.indexOf(form.toLowerCase()), time: s.start };
+  });
+  return b;
+}
+function genDict(c) {
+  const lv = LEVEL[c.s.level];
+  const b = blockShell('dictation');
+  b.inst = ins('해당 구간을 듣고 문장을 그대로 받아쓰세요.', 'Listen to each time code and write the sentence you hear.', c.s.lang);
+  const picks = spread(pool(c.an, { min: lv.min + 1, max: lv.max }), c.n.dictation, c.rand, new Set(c.used));
+  b.items = picks.map((s) => { b.used.push(s.i); return { time: s.start, ans: s.text, lines: s.n > 12 ? 3 : 2 }; });
+  return b;
+}
+function genTf(c) {
+  const b = blockShell('tf');
+  b.inst = ins('들은 내용과 같으면 T, 다르면 F에 표시하세요.', 'Mark T if the sentence matches the episode, F if it does not.', c.s.lang);
+  const names = Array.from(c.an.proper).slice(0, 4);
+  const cands = pool(c.an, { min: 6, max: 18 }).filter((s) => !/\?/.test(s.text) && !/^(what|how|why|do|did|are|is|can)\b/i.test(s.text));
+  const picks = spread(cands, c.n.tf, c.rand, new Set(c.used));
+  const flags = shuffle(picks.map((_, k) => k % 2 === 1), c.rand);
+  b.items = picks.map((s, k) => {
+    const base = deVocative(s.text, names);
+    let text = base, ans = 'T';
+    if (flags[k]) {
+      const flipped = falsify(base, c.an, c.rand);
+      if (flipped) { text = flipped; ans = 'F'; }
+    }
+    b.used.push(s.i);
+    return { text, ans, src: s.text, time: s.start };
+  });
+  return b;
+}
+function falsify(text, an, r) {
+  const toks = text.split(/(\s+)/);
+  const pos = [];
+  toks.forEach((t, i) => { const w = t.toLowerCase().replace(/[^a-z']/g, ''); if (ANT[w] || NUM[w]) pos.push(i); });
+  if (pos.length) {
+    const i = pos[Math.floor(r() * pos.length)];
+    const w = toks[i].toLowerCase().replace(/[^a-z']/g, '');
+    const rep = ANT[w] || NUM[w];
+    toks[i] = toks[i].replace(new RegExp(w, 'i'), rep);
+    return toks.join('');
+  }
+  const vocab = an.vocab.slice(0, 18);
+  const hit = vocab.find((v) => new RegExp('\\b' + v.word + '\\b', 'i').test(text));
+  if (hit) {
+    const other = vocab.filter((v) => v.key !== hit.key)[Math.floor(r() * Math.max(1, vocab.length - 1))];
+    if (other) return text.replace(new RegExp('\\b' + hit.word + '\\b', 'i'), other.word);
+  }
+  if (/\bis\b/.test(text)) return text.replace(/\bis\b/, 'is not');
+  if (/\bwas\b/.test(text)) return text.replace(/\bwas\b/, 'was not');
+  return null;
+}
+function genSeq(c) {
+  const b = blockShell('sequence');
+  b.inst = ins('에피소드에서 일어난 순서대로 번호를 쓰세요.', 'Number the sentences in the order you hear them.', c.s.lang);
+  const names = Array.from(c.an.proper).slice(0, 4);
+  const cands = pool(c.an, { min: 6, max: 16 }).filter((s) => !/\?/.test(s.text));
+  const picks = spread(cands, c.n.sequence, c.rand, new Set(c.used));
+  const order = picks.map((s, i) => ({ text: deVocative(s.text, names), ans: i + 1, time: s.start }));
+  picks.forEach((s) => b.used.push(s.i));
+  b.items = shuffle(order, c.rand);
+  return b;
+}
+function genScramble(c) {
+  const b = blockShell('scramble');
+  b.inst = ins('단어를 바른 순서로 배열해 문장을 완성하세요.', 'Put the words in the correct order.', c.s.lang);
+  const picks = spread(pool(c.an, { min: 5, max: 9 }), c.n.scramble, c.rand, new Set(c.used));
+  b.items = picks.map((s) => {
+    const plain = stripEnd(deVocative(s.text, Array.from(c.an.proper).slice(0, 4)));
+    const ws = plain.split(/\s+/);
+    let mix = shuffle(ws, c.rand);
+    if (mix.join(' ') === ws.join(' ')) mix = mix.reverse();
+    b.used.push(s.i);
+    return { words: mix, ans: plain, time: s.start };
+  });
+  return b;
+}
+function genShadow(c) {
+  const b = blockShell('shadow');
+  b.inst = ins('음원을 따라 같은 속도로 세 번 읽으세요. 끊어 읽기와 강세에 표시해 두면 좋아요.', 'Shadow each line three times at the same speed as the audio.', c.s.lang);
+  const picks = spread(pool(c.an, { min: 6, max: 16 }), c.n.shadow, c.rand, new Set(c.used));
+  b.items = picks.map((s) => { b.used.push(s.i); return { text: s.text, time: s.start }; });
+  return b;
+}
+function genOpen(c) {
+  const b = blockShell('open');
+  const topic = c.an.topic;
+  const ph = c.an.phrases.slice(0, 3).map((p) => p.text);
+  b.inst = ins('영어로 3~5문장 써 보고, 소리 내어 읽어 보세요.', 'Write 3–5 sentences in English, then read them aloud.', c.s.lang);
+  const bank = [
+    { q: `<b>${esc(titleCase(topic))}</b> — 나의 경험을 영어로 써 보세요.`, lines: 4 },
+    { q: `다음 표현을 모두 사용해 짧은 글을 쓰세요: ${ph.map((p) => `<span class="chip">${esc(p)}</span>`).join(' ')}`, lines: 4 },
+    { q: `Ben과 Mia가 말한 내용 중 가장 마음에 든 부분은 무엇인가요? 이유도 함께 쓰세요.`, lines: 3 },
+    { q: `이번 주에 실천할 나의 계획을 영어 한 문장으로 쓰고, 짝에게 말해 보세요.`, lines: 2 }
+  ];
+  b.items = bank.slice(0, c.n.open);
+  return b;
+}
+function genNote(c) {
+  const b = blockShell('note');
+  b.inst = ins('메모, 숙제 안내, 수업 규칙 등 자유롭게 입력하세요.', 'Free space for notes or homework.', c.s.lang);
+  b.items = [{ text: '' }];
+  return b;
+}
+
+const TYPES = {
+  warmup: { label: '워밍업 · 배경 질문', en: 'Warm-up', gen: genWarmup, on: true },
+  vocab: { label: '핵심 단어', en: 'Key Vocabulary', gen: genVocab, on: true },
+  phrases: { label: '반복 표현', en: 'Key Expressions', gen: genPhrases, on: true },
+  cloze: { label: '빈칸 듣기', en: 'Listen & Fill In', gen: genCloze, on: true },
+  mcq: { label: '알맞은 단어 고르기', en: 'Choose the Word', gen: genMcq, on: false },
+  dictation: { label: '받아쓰기', en: 'Dictation', gen: genDict, on: true },
+  tf: { label: '내용 확인 T / F', en: 'True or False', gen: genTf, on: true },
+  sequence: { label: '사건 순서 배열', en: 'Put in Order', gen: genSeq, on: true },
+  scramble: { label: '단어 배열', en: 'Word Order', gen: genScramble, on: false },
+  shadow: { label: '쉐도잉 연습', en: 'Shadowing', gen: genShadow, on: true },
+  open: { label: '말하기 · 쓰기', en: 'Speak & Write', gen: genOpen, on: true },
+  note: { label: '메모 · 자유 입력', en: 'Notes', gen: genNote, on: false }
+};
+
+/* ---------- state ---------- */
+const state = {
+  eps: [],
+  active: 0,
+  answers: false,
+  settings: {
+    level: 2, size: 'm', lang: 'ko', stamp: true, bank: true, key: true,
+    sections: Object.fromEntries(Object.entries(TYPES).map(([k, v]) => [k, v.on]))
+  },
+  sheet: null
+};
+const ep = () => state.eps[state.active];
+
+function ctxFor(sheet, seed) {
+  const e = ep(), an = analyze(e), s = state.settings;
+  const used = new Set(sheet ? sheet.blocks.flatMap((b) => b.used || []) : []);
+  return { ep: e, an, s, n: SIZE[s.size], used, rand: rng(seed || hash(e.code + ':' + Date.now())) };
+}
+function buildSheet() {
+  const e = ep(), an = analyze(e), s = state.settings;
+  const sheet = {
+    code: e.code,
+    meta: {
+      title: titleCase(an.topic),
+      sub: `Two Cups English · ${e.code} · ${mmss(an.stats.dur)} · ${an.stats.wordCount} words`,
+      goal: `핵심 단어 ${SIZE[s.size].vocab}개와 반복 표현을 듣고, 받아쓰고, 내 문장으로 말할 수 있다.`
+    },
+    blocks: []
+  };
+  for (const [type, def] of Object.entries(TYPES)) {
+    if (!s.sections[type]) continue;
+    const c = ctxFor(sheet, hash(e.code + type + s.size + s.level));
+    const b = def.gen(c);
+    if (b.items.length) sheet.blocks.push(b);
+  }
+  state.sheet = sheet;
+  saveLocal();
+  return sheet;
+}
+function regenBlock(id) {
+  const sheet = state.sheet, i = sheet.blocks.findIndex((b) => b.id === id);
+  if (i < 0) return;
+  const old = sheet.blocks[i];
+  old.used = [];
+  const c = ctxFor(sheet, (Math.random() * 1e9) | 0);
+  const nb = TYPES[old.type].gen(c);
+  nb.id = old.id;
+  sheet.blocks[i] = nb;
+  render();
+}
+
+/* ---------- rendering ---------- */
+const ed = (path, val, ph, cls) =>
+  `<span class="edit ${cls || ''}" contenteditable="true" spellcheck="false" data-p="${path}" data-ph="${esc(ph || '')}">${val == null ? '' : val}</span>`;
+const stampHtml = (t) => state.settings.stamp ? `<span class="tstamp"><button type="button" data-seek="${t}">${mmss(t)}</button></span>` : '';
+
+function render() {
+  const sheet = state.sheet;
+  const p = $('#paper');
+  if (!sheet) { p.innerHTML = '<p class="hint">에피소드를 선택하고 <b>학습지 생성</b>을 누르세요.</p>'; return; }
+  const m = sheet.meta;
+  let h = `<header class="sheet-head">
+      <div class="eyebrow">${esc(sheet.code)} · English Listening Workbook</div>
+      <h1 class="sheet-title">${ed(m.id0 || 'meta|title', m.title, '학습지 제목')}</h1>
+      <p class="sheet-sub">${ed('meta|sub', m.sub, '부제 · 출처')}</p>
+      <div class="namebar">
+        <span><i>Name</i><u>&nbsp;</u></span><span><i>Date</i><u>&nbsp;</u></span><span><i>Score</i><u>&nbsp;</u></span>
+      </div>
+    </header>
+    <div class="goalbox"><b>학습 목표</b> · ${ed('meta|goal', m.goal, '학습 목표')}</div>`;
+
+  sheet.blocks.forEach((b, i) => { h += renderBlock(b, i + 1); });
+
+  if (state.settings.key) h += renderKey(sheet);
+
+  h += `<div class="footer-note"><span>Two Cups English · ${esc(sheet.code)}</span><span>Workbook Studio</span></div>`;
+  h += `<div class="addbar"><b>섹션 추가</b>` +
+    Object.entries(TYPES).map(([k, v]) => `<button class="btn" data-add="${k}">+ ${esc(v.label)}</button>`).join('') + `</div>`;
+  p.innerHTML = h;
+}
+
+function renderBlock(b, num) {
+  const ctl = `<span class="block-ctl">
+      <button class="icon" data-act="up" data-id="${b.id}" title="위로">↑</button>
+      <button class="icon" data-act="down" data-id="${b.id}" title="아래로">↓</button>
+      <button class="icon" data-act="regen" data-id="${b.id}" title="다른 문항으로 다시 생성">↻</button>
+      <button class="icon" data-act="add" data-id="${b.id}" title="문항 추가">＋</button>
+      <button class="icon" data-act="del" data-id="${b.id}" title="섹션 삭제">✕</button>
+    </span>`;
+  return `<section class="block" data-block="${b.id}">
+    <div class="block-head">
+      <span class="block-num">${String(num).padStart(2, '0')}</span>
+      <h2 class="block-title">${ed(b.id + '|title', b.title, '제목')}</h2>
+      <span class="block-en">${esc(b.titleEn)}</span>${ctl}
+    </div>
+    <p class="block-inst">${ed(b.id + '|inst', b.inst, '지시문')}</p>
+    ${BODY[b.type] ? BODY[b.type](b) : ''}
+  </section>`;
+}
+const li = (b, i, body) => `<li>${body}<button class="item-del" data-act="delitem" data-id="${b.id}" data-i="${i}" title="문항 삭제">✕</button></li>`;
+const P = (b, i, f) => `${b.id}|items|${i}|${f}`;
+
+const BODY = {
+  warmup: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${ed(P(b, i, 'q'), it.q, '질문')}<span class="writeline"></span></div>`)).join('')}</ol>`,
+
+  vocab: (b) => `<table class="vocab-tbl"><thead><tr><th>Word</th><th>뜻 (한국어)</th><th>Example from the episode</th></tr></thead><tbody>` +
+    b.items.map((it, i) => `<tr><td class="w">${ed(P(b, i, 'word'), it.word, '단어')}<small>×${it.count}</small></td>
+      <td class="m">${ed(P(b, i, 'meaning'), it.meaning, '')}</td>
+      <td class="ex">${ed(P(b, i, 'ex'), esc(it.ex), '예문')} ${stampHtml(it.time)}
+      <button class="item-del" data-act="delitem" data-id="${b.id}" data-i="${i}">✕</button></td></tr>`).join('') +
+    `</tbody></table>`,
+
+  phrases: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body"><b>${ed(P(b, i, 'phrase'), esc(it.phrase), '표현')}</b>
+      <span class="tstamp">· ${it.count}회 반복</span>
+      <span class="tick" aria-hidden="true"></span><span class="tick" aria-hidden="true"></span><span class="tick" aria-hidden="true"></span>
+      <br><span style="color:var(--ink-2);font-size:13px">${ed(P(b, i, 'ex'), esc(it.ex), '예문')}</span> ${stampHtml(it.time)}</div>`)).join('')}</ol>`,
+
+  cloze: (b) => (b.bank && b.bank.length
+    ? `<div class="wordbank"><b>Word bank</b>${b.bank.map((w) => `<span class="chip">${esc(w)}</span>`).join('')}</div>` : '') +
+    `<ol class="items">${b.items.map((it, i) => li(b, i,
+      `<div class="item-body">` + it.parts.map((pt, j) => pt.a == null
+        ? ed(`${b.id}|items|${i}|parts|${j}|t`, esc(pt.t))
+        : `<span class="blank"><span class="a">${esc(pt.a)}</span></span>${esc(pt.tail || '')}`).join('') +
+      ` ${stampHtml(it.time)}</div>`)).join('')}</ol>`,
+
+  mcq: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${ed(P(b, i, 'q'), esc(it.q), '문장')} ${stampHtml(it.time)}
+      <div class="opts">${it.opts.map((o, k) => `<span class="${k === it.ans ? 'ok' : ''}"><i>${'ABCD'[k]}</i>${ed(`${b.id}|items|${i}|opts|${k}`, esc(o))}</span>`).join('')}</div></div>`)).join('')}</ol>`,
+
+  dictation: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${stampHtml(it.time)}
+      ${Array.from({ length: it.lines || 2 }, () => '<div class="writeline"></div>').join('')}
+      <div class="reveal">${esc(it.ans)}</div></div>`)).join('')}</ol>`,
+
+  tf: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${ed(P(b, i, 'text'), esc(it.text), '문장')}</div>
+     <span class="tfmark"><span class="${it.ans === 'T' ? 'ok' : ''}">T</span><span class="${it.ans === 'F' ? 'ok' : ''}">F</span></span>`)).join('')}</ol>`,
+
+  sequence: (b) => `<ol class="items" style="counter-reset:none">${b.items.map((it, i) =>
+    `<li style="grid-template-columns:minmax(0,1fr) auto"><div class="item-body"><span class="seq-box">${it.ans}</span>${ed(P(b, i, 'text'), esc(it.text), '문장')}</div>
+     <button class="item-del" data-act="delitem" data-id="${b.id}" data-i="${i}">✕</button></li>`).join('')}</ol>`,
+
+  scramble: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body"><div class="scram">${it.words.map((w) => `<span class="chip">${esc(w)}</span>`).join('')}</div>
+      <span class="ansline"></span><div class="reveal">${esc(it.ans)}</div></div>`)).join('')}</ol>`,
+
+  shadow: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body shadow-row"><div>${ed(P(b, i, 'text'), esc(it.text), '문장')} ${stampHtml(it.time)}</div>
+      <span class="shadow-checks"><span class="tick"></span><span class="tick"></span><span class="tick"></span></span></div>`)).join('')}</ol>`,
+
+  open: (b) => `<ol class="items">${b.items.map((it, i) => li(b, i,
+    `<div class="item-body">${ed(P(b, i, 'q'), it.q, '과제')}
+      ${Array.from({ length: it.lines || 3 }, () => '<div class="writeline"></div>').join('')}</div>`)).join('')}</ol>`,
+
+  note: (b) => `<div class="item-body">${ed(b.id + '|items|0|text', b.items[0] ? b.items[0].text : '', '여기에 자유롭게 입력하세요')}
+      <div class="writeline"></div><div class="writeline"></div></div>`
+};
+
+function renderKey(sheet) {
+  const groups = [];
+  sheet.blocks.forEach((b, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    let line = '';
+    if (b.type === 'cloze') line = b.items.map((it, k) => `${k + 1}. ` + it.parts.filter((p) => p.a).map((p) => p.a).join(' / ')).join('　　');
+    else if (b.type === 'mcq') line = b.items.map((it, k) => `${k + 1}. ${'ABCD'[it.ans]} (${esc(it.opts[it.ans])})`).join('　　');
+    else if (b.type === 'tf') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('　　');
+    else if (b.type === 'sequence') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('　　');
+    else if (b.type === 'scramble') line = b.items.map((it, k) => `${k + 1}. ${esc(it.ans)}`).join('<br>');
+    else if (b.type === 'dictation') line = b.items.map((it, k) => `${k + 1}. ${esc(it.ans)}`).join('<br>');
+    if (line) groups.push(`<div class="kgrp"><b>${n} ${esc(b.title)}</b><p>${line}</p></div>`);
+  });
+  if (!groups.length) return '';
+  return `<section class="key"><h3>정답 · Answer Key</h3>
+    <p class="hint" style="color:var(--ink-2)">학생용으로 인쇄할 때는 왼쪽 <b>마지막에 정답지 붙이기</b> 체크를 해제하세요.</p>
+    ${groups.join('')}</section>`;
+}
+
+/* ---------- editing ---------- */
+function setPath(path, val) {
+  const parts = path.split('|');
+  if (parts[0] === 'meta') { state.sheet.meta[parts[1]] = val; return saveLocal(); }
+  const b = state.sheet.blocks.find((x) => x.id === parts[0]);
+  if (!b) return;
+  let cur = b;
+  for (let i = 1; i < parts.length - 1; i++) { cur = cur[parts[i]]; if (cur == null) return; }
+  cur[parts[parts.length - 1]] = val;
+  saveLocal();
+}
+const BLANKITEM = {
+  warmup: () => ({ q: '' }), vocab: () => ({ word: '', meaning: '', ex: '', time: 0, count: 0 }),
+  phrases: () => ({ phrase: '', ex: '', count: 0, time: 0 }), cloze: () => ({ parts: [{ t: '' }], time: 0 }),
+  mcq: () => ({ q: '', opts: ['', '', '', ''], ans: 0, time: 0 }), dictation: () => ({ time: 0, ans: '', lines: 2 }),
+  tf: () => ({ text: '', ans: 'T', time: 0 }), sequence: () => ({ text: '', ans: 1, time: 0 }),
+  scramble: () => ({ words: [], ans: '', time: 0 }), shadow: () => ({ text: '', time: 0 }),
+  open: () => ({ q: '', lines: 3 }), note: () => ({ text: '' })
+};
+function itemFromSentence(type, s) {
+  const an = analyze(ep());
+  const names = Array.from(an.proper).slice(0, 4);
+  const r = rng(hash(s.text));
+  switch (type) {
+    case 'cloze': {
+      const targets = new Set(an.vocab.slice(0, 30).flatMap((v) => [v.word, v.key]));
+      const toks = s.text.split(/(\s+)/);
+      let done = false;
+      const parts = toks.map((t) => {
+        const w = t.toLowerCase().replace(/[^a-z']/g, '');
+        if (!done && w.length > 3 && (targets.has(w) || targets.has(stem(w)))) {
+          const m = t.match(/^([^A-Za-z']*)([A-Za-z'][A-Za-z']*)(.*)$/);
+          if (m) { done = true; return { t: m[1], a: m[2], tail: m[3] }; }
+        }
+        return { t };
+      });
+      return { parts, time: s.start, plain: s.text };
+    }
+    case 'dictation': return { time: s.start, ans: s.text, lines: s.n > 12 ? 3 : 2 };
+    case 'shadow': return { text: s.text, time: s.start };
+    case 'tf': return { text: deVocative(s.text, names), ans: 'T', src: s.text, time: s.start };
+    case 'sequence': return { text: deVocative(s.text, names), ans: 1, time: s.start };
+    case 'scramble': { const plain = stripEnd(deVocative(s.text, names)); return { words: shuffle(plain.split(/\s+/), r), ans: plain, time: s.start }; }
+    case 'mcq': {
+      const v = an.vocab.find((x) => s.stems.has(x.key)) || an.vocab[0];
+      const form = (s.text.match(new RegExp('\\b' + v.word + '\\b', 'i')) || [v.word])[0];
+      const opts = shuffle([form.toLowerCase()].concat(an.vocab.filter((x) => x.key !== v.key).slice(0, 3).map((x) => x.word)), r);
+      return { q: s.text.replace(new RegExp('\\b' + form + '\\b'), '______'), opts, ans: opts.indexOf(form.toLowerCase()), time: s.start };
+    }
+    default: return Object.assign(BLANKITEM[type](), { text: s.text, q: s.text, time: s.start });
+  }
+}
+function blockOfType(type, create) {
+  let b = state.sheet.blocks.find((x) => x.type === type);
+  if (!b && create) {
+    const c = ctxFor(state.sheet, (Math.random() * 1e9) | 0);
+    b = TYPES[type].gen(c);
+    b.items = [];
+    b.used = [];
+    state.sheet.blocks.push(b);
+  }
+  return b;
+}
+function addFromTranscript(type, idx) {
+  if (!state.sheet) buildSheet();
+  const s = analyze(ep()).sents[idx];
+  const b = blockOfType(type, true);
+  b.items.push(itemFromSentence(type, s));
+  if (type === 'sequence') b.items.forEach((it, i) => { it.ans = i + 1; });
+  b.used.push(idx);
+  render(); saveLocal();
+  toast(`“${s.text.slice(0, 24)}…” → ${TYPES[type].label}`);
+}
+
+/* ---------- persistence ---------- */
+const LSKEY = 'twocups.workbook.v1';
+state.sheets = {};
+function saveLocal() {
+  if (state.sheet) state.sheets[state.sheet.code] = state.sheet;
+  try {
+    localStorage.setItem(LSKEY, JSON.stringify({ settings: state.settings, sheets: state.sheets, active: ep() ? ep().code : null }));
+  } catch (e) { /* private mode or quota - the sheet still lives in memory */ }
+}
+function loadLocal() {
+  try {
+    const raw = localStorage.getItem(LSKEY);
+    if (!raw) return null;
+    const d = JSON.parse(raw);
+    if (d.settings) Object.assign(state.settings, d.settings, { sections: Object.assign({}, state.settings.sections, d.settings.sections || {}) });
+    state.sheets = d.sheets || {};
+    return d;
+  } catch (e) { return null; }
+}
+function download(name, text, mime) {
+  try {
+    const blob = new Blob([text], { type: (mime || 'text/plain') + ';charset=utf-8' });
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = name;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    toast(name + ' 저장됨');
+  } catch (e) {
+    navigator.clipboard && navigator.clipboard.writeText(text);
+    toast('다운로드가 막혀 클립보드로 복사했어요');
+  }
+}
+function sheetToText(sheet) {
+  const plain = (s) => String(s).replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').trim();
+  const L = [`# ${plain(sheet.meta.title)}`, plain(sheet.meta.sub), `학습 목표: ${plain(sheet.meta.goal)}`, ''];
+  sheet.blocks.forEach((b, i) => {
+    L.push(`## ${String(i + 1).padStart(2, '0')} ${plain(b.title)} (${b.titleEn})`, plain(b.inst), '');
+    b.items.forEach((it, k) => {
+      const n = `${k + 1}. `;
+      if (b.type === 'vocab') L.push(`${n}${it.word} — ${it.meaning || '________'}  · ${plain(it.ex)}`);
+      else if (b.type === 'phrases') L.push(`${n}${it.phrase} (${it.count}회) · ${plain(it.ex)}`);
+      else if (b.type === 'cloze') L.push(n + it.parts.map((p) => (p.a ? '________' + (p.tail || '') : p.t)).join(''));
+      else if (b.type === 'mcq') L.push(`${n}${plain(it.q)}  [ ${it.opts.join(' / ')} ]`);
+      else if (b.type === 'dictation') L.push(`${n}(${mmss(it.time)}) ____________________________`);
+      else if (b.type === 'tf') L.push(`${n}${plain(it.text)}   T / F`);
+      else if (b.type === 'sequence') L.push(`${n}(   ) ${plain(it.text)}`);
+      else if (b.type === 'scramble') L.push(`${n}${it.words.join(' / ')}`);
+      else if (b.type === 'shadow') L.push(`${n}(${mmss(it.time)}) ${plain(it.text)}`);
+      else L.push(n + plain(it.q || it.text));
+    });
+    L.push('');
+  });
+  L.push('## 정답 Answer Key');
+  sheet.blocks.forEach((b, i) => {
+    let line = '';
+    if (b.type === 'cloze') line = b.items.map((it, k) => `${k + 1}. ` + it.parts.filter((p) => p.a).map((p) => p.a).join(' / ')).join('   ');
+    else if (b.type === 'mcq') line = b.items.map((it, k) => `${k + 1}. ${'ABCD'[it.ans]}`).join('   ');
+    else if (b.type === 'tf') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('   ');
+    else if (b.type === 'sequence') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('   ');
+    else if (b.type === 'scramble') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('\n');
+    else if (b.type === 'dictation') line = b.items.map((it, k) => `${k + 1}. ${it.ans}`).join('\n');
+    if (line) L.push(`[${String(i + 1).padStart(2, '0')} ${plain(b.title)}] ${line}`);
+  });
+  return L.join('\n');
+}
+function exportHtml() {
+  const clone = $('#paper').cloneNode(true);
+  $$('.block-ctl,.item-del,.addbar', clone).forEach((n) => n.remove());
+  $$('[contenteditable]', clone).forEach((n) => n.removeAttribute('contenteditable'));
+  $$('button[data-seek]', clone).forEach((n) => { n.outerHTML = esc(n.textContent); });
+  const css = $$('style').map((s) => s.textContent).join('\n');
+  const doc = `<!doctype html><html lang="ko"><head><meta charset="utf-8"><title>${esc(state.sheet.meta.title)}</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+KR:wght@400;500;600&family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&display=swap">
+<style>${css}</style><style>body{background:var(--desk);padding:24px}.paper{margin:0 auto}</style></head>
+<body class="${state.answers ? 'answers' : ''}"><div class="stage">${clone.outerHTML}</div></body></html>`;
+  download(`${state.sheet.code}-workbook.html`, doc, 'text/html');
+}
+
+/* ---------- transcript ---------- */
+const TR_ACTS = [['cloze', '빈칸'], ['dictation', '받아쓰기'], ['shadow', '쉐도잉'], ['tf', 'T/F'], ['sequence', '순서'], ['scramble', '배열']];
+function renderTranscript() {
+  const an = analyze(ep());
+  const q = $('#trSearch').value.trim().toLowerCase();
+  const rows = an.sents.filter((s) => !q || s.text.toLowerCase().includes(q));
+  $('#trCount').textContent = `${rows.length} / ${an.sents.length} 문장`;
+  $('#trList').innerHTML = rows.slice(0, 900).map((s) => {
+    let t = esc(s.text);
+    if (q) t = t.replace(new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'ig'), '<mark>$1</mark>');
+    return `<div class="tr-row"><time><button type="button" class="pl" data-seek="${s.start}" data-end="${s.end}">${mmss(s.start)}</button></time>
+      <div><p>${t}</p><div class="tr-acts">${TR_ACTS.map(([k, l]) => `<button data-put="${k}" data-i="${s.i}">${l}</button>`).join('')}</div></div></div>`;
+  }).join('');
+}
+
+/* ---------- audio ---------- */
+let loopEnd = null;
+const player = $('#player');
+player.addEventListener('timeupdate', () => { if (loopEnd != null && player.currentTime >= loopEnd) { player.pause(); loopEnd = null; } });
+function seek(t, end) {
+  if (!player.src) { toast('먼저 음원 파일을 연결하세요 (오른쪽 아래)'); return; }
+  player.currentTime = Math.max(0, t - 0.25);
+  loopEnd = $('#btnLoop').getAttribute('aria-pressed') === 'true' && end ? end + 0.2 : null;
+  player.play().catch(() => { });
+}
+
+/* ---------- rails / settings UI ---------- */
+function epLabel(e) {
+  if (e._an) return titleCase(e._an.topic);
+  if (e._label) return e._label;
+  const m = e.srt.match(/our topic is\s*([^\n]+?)\s*[.!?]/i);
+  e._label = m ? titleCase(m[1]) : (e.title || (e.file || e.code).replace(/\.[a-z]+$/i, ''));
+  return e._label;
+}
+function renderEpList() {
+  $('#epList').innerHTML = state.eps.map((e, i) => {
+    const label = epLabel(e);
+    return `<button class="ep" data-ep="${i}" aria-current="${i === state.active}"><code>${esc(e.code)}</code><em>${esc(label)}</em></button>`;
+  }).join('');
+}
+function renderStats() {
+  const an = analyze(ep()), st = an.stats;
+  $('#epStats').innerHTML = [
+    ['주제', titleCase(an.topic)], ['길이', mmss(st.dur)], ['문장', st.sentCount + '개'],
+    ['단어 수', st.wordCount.toLocaleString()], ['말하기 속도', st.wpm + ' wpm'],
+    ['핵심 단어 후보', an.vocab.length + '개'], ['반복 표현', an.phrases.length + '개']
+  ].map(([k, v]) => `<div class="stat-row"><span>${k}</span><b>${esc(String(v))}</b></div>`).join('');
+  $('#brandSub').textContent = ep().code + ' · ' + titleCase(an.topic);
+}
+function renderToggles() {
+  $('#secToggles').innerHTML = Object.entries(TYPES).map(([k, v]) =>
+    `<label class="check"><input type="checkbox" data-sec="${k}" ${state.settings.sections[k] ? 'checked' : ''}> ${esc(v.label)}</label>`).join('');
+}
+function syncSettingsUI() {
+  const s = state.settings;
+  $('#setLevel').value = s.level; $('#setSize').value = s.size; $('#setLang').value = s.lang;
+  $('#setStamp').value = s.stamp ? '1' : '0'; $('#setBank').checked = s.bank; $('#setKey').checked = s.key;
+}
+function selectEpisode(i, keepSheet) {
+  state.active = clamp(i, 0, state.eps.length - 1);
+  renderEpList(); renderStats(); renderTranscript();
+  const code = ep().code;
+  if (keepSheet && state.sheets[code]) { state.sheet = state.sheets[code]; render(); }
+  else { state.sheet = state.sheets[code] || null; state.sheet ? render() : (buildSheet(), render()); }
+  saveLocal();
+}
+
+/* ---------- events ---------- */
+$('#paper').addEventListener('input', (e) => {
+  const el = e.target.closest('.edit');
+  if (el && el.dataset.p) setPath(el.dataset.p, el.innerHTML);
+});
+$('#paper').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && e.target.closest('.edit') && !e.shiftKey) { e.preventDefault(); document.execCommand('insertLineBreak'); }
+});
+$('#paper').addEventListener('click', (e) => {
+  const seekBtn = e.target.closest('[data-seek]');
+  if (seekBtn) { seek(+seekBtn.dataset.seek, seekBtn.dataset.end ? +seekBtn.dataset.end : null); return; }
+  const add = e.target.closest('[data-add]');
+  if (add) {
+    const c = ctxFor(state.sheet, (Math.random() * 1e9) | 0);
+    const b = TYPES[add.dataset.add].gen(c);
+    if (!b.items.length) b.items.push(BLANKITEM[b.type]());
+    state.sheet.blocks.push(b); render(); saveLocal();
+    $(`[data-block="${b.id}"]`).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+  const act = e.target.closest('[data-act]');
+  if (!act) return;
+  const id = act.dataset.id, blocks = state.sheet.blocks, i = blocks.findIndex((b) => b.id === id);
+  if (i < 0) return;
+  switch (act.dataset.act) {
+    case 'up': if (i > 0) { [blocks[i - 1], blocks[i]] = [blocks[i], blocks[i - 1]]; } break;
+    case 'down': if (i < blocks.length - 1) { [blocks[i + 1], blocks[i]] = [blocks[i], blocks[i + 1]]; } break;
+    case 'del': if (confirm(`“${blocks[i].title}” 섹션을 지울까요?`)) blocks.splice(i, 1); break;
+    case 'regen': return regenBlock(id);
+    case 'add': blocks[i].items.push(BLANKITEM[blocks[i].type]()); break;
+    case 'delitem': {
+      blocks[i].items.splice(+act.dataset.i, 1);
+      if (blocks[i].type === 'sequence') blocks[i].items.slice().sort((a, b) => a.time - b.time).forEach((it, k) => { it.ans = k + 1; });
+      break;
+    }
+  }
+  render(); saveLocal();
+});
+
+$('#btnGen').addEventListener('click', () => {
+  if (state.sheets[ep().code] && !confirm('현재 학습지를 새로 만들면 편집한 내용이 사라집니다. 계속할까요?')) return;
+  buildSheet(); render(); toast('학습지를 새로 만들었어요');
+});
+$('#btnAnswers').addEventListener('click', (e) => {
+  state.answers = !state.answers;
+  document.body.classList.toggle('answers', state.answers);
+  e.currentTarget.setAttribute('aria-pressed', String(state.answers));
+});
+$('#btnPrint').addEventListener('click', () => { document.body.dataset.rail = 'off'; document.body.dataset.tr = 'off'; setTimeout(() => window.print(), 60); });
+$('#btnSave').addEventListener('click', () => download(`${state.sheet.code}-workbook.json`,
+  JSON.stringify({ app: 'twocups-workbook', v: 1, code: state.sheet.code, settings: state.settings, sheet: state.sheet }, null, 1), 'application/json'));
+$('#btnLoad').addEventListener('click', () => $('#fileJson').click());
+$('#fileJson').addEventListener('change', (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  const rd = new FileReader();
+  rd.onload = () => {
+    try {
+      const d = JSON.parse(rd.result);
+      if (!d.sheet) throw 0;
+      if (d.settings) Object.assign(state.settings, d.settings);
+      state.sheet = d.sheet; state.sheets[d.sheet.code] = d.sheet;
+      const idx = state.eps.findIndex((x) => x.code === d.sheet.code);
+      if (idx >= 0) state.active = idx;
+      syncSettingsUI(); renderToggles(); renderEpList(); renderStats(); renderTranscript(); render(); saveLocal();
+      toast('학습지를 불러왔어요');
+    } catch (err) { toast('학습지 파일을 읽을 수 없습니다'); }
+  };
+  rd.readAsText(f); e.target.value = '';
+});
+$('#btnHtml').addEventListener('click', exportHtml);
+$('#btnMd').addEventListener('click', () => {
+  const txt = sheetToText(state.sheet);
+  (navigator.clipboard ? navigator.clipboard.writeText(txt) : Promise.reject())
+    .then(() => toast('학습지 텍스트를 복사했어요'))
+    .catch(() => download(`${state.sheet.code}-workbook.txt`, txt));
+});
+$('#btnTheme').addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  const dark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', dark ? 'light' : 'dark');
+});
+
+/* settings inputs */
+$('#setLevel').addEventListener('change', (e) => { state.settings.level = +e.target.value; saveLocal(); toast('레벨 변경 — 새로 생성하면 반영돼요'); });
+$('#setSize').addEventListener('change', (e) => { state.settings.size = e.target.value; saveLocal(); });
+$('#setLang').addEventListener('change', (e) => { state.settings.lang = e.target.value; saveLocal(); });
+$('#setStamp').addEventListener('change', (e) => { state.settings.stamp = e.target.value === '1'; render(); saveLocal(); });
+$('#setBank').addEventListener('change', (e) => { state.settings.bank = e.target.checked; saveLocal(); });
+$('#setKey').addEventListener('change', (e) => { state.settings.key = e.target.checked; render(); saveLocal(); });
+$('#secToggles').addEventListener('change', (e) => {
+  const k = e.target.dataset.sec; if (!k) return;
+  state.settings.sections[k] = e.target.checked; saveLocal();
+});
+$('#epList').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-ep]'); if (!b) return;
+  selectEpisode(+b.dataset.ep, true);
+  document.body.dataset.rail = 'off';
+});
+
+/* transcript */
+$('#trSearch').addEventListener('input', renderTranscript);
+$('#trList').addEventListener('click', (e) => {
+  const pl = e.target.closest('[data-seek]');
+  if (pl) return seek(+pl.dataset.seek, +pl.dataset.end);
+  const put = e.target.closest('[data-put]');
+  if (put) addFromTranscript(put.dataset.put, +put.dataset.i);
+});
+$('#btnLoop').addEventListener('click', (e) => {
+  const on = e.currentTarget.getAttribute('aria-pressed') !== 'true';
+  e.currentTarget.setAttribute('aria-pressed', String(on));
+  toast(on ? '문장 구간만 재생합니다' : '이어서 재생합니다');
+});
+$('#btnAudio').addEventListener('click', () => $('#fileAudio').click());
+$('#fileAudio').addEventListener('change', (e) => {
+  const f = e.target.files[0]; if (!f) return;
+  player.src = URL.createObjectURL(f);
+  $('#btnAudio').textContent = f.name.length > 22 ? f.name.slice(0, 20) + '…' : f.name;
+  toast('음원 연결 완료 — 타임스탬프를 누르면 그 구간이 재생돼요');
+});
+
+/* srt import */
+function addEpisodes(files) {
+  let added = 0;
+  const done = () => { if (added) { renderEpList(); selectEpisode(state.eps.length - added, true); toast(`${added}개 자막을 불러왔어요`); } };
+  let pending = files.length;
+  Array.from(files).forEach((f) => {
+    const rd = new FileReader();
+    rd.onload = () => {
+      const code = f.name.replace(/\.(srt|vtt|txt)$/i, '');
+      state.eps.push({ code, file: f.name, srt: String(rd.result) });
+      added++;
+      if (--pending === 0) done();
+    };
+    rd.onerror = () => { if (--pending === 0) done(); };
+    rd.readAsText(f);
+  });
+}
+$('#drop').addEventListener('click', () => $('#fileSrt').click());
+$('#fileSrt').addEventListener('change', (e) => { addEpisodes(e.target.files); e.target.value = ''; });
+['dragenter', 'dragover'].forEach((ev) => $('#drop').addEventListener(ev, (e) => { e.preventDefault(); $('#drop').classList.add('over'); }));
+['dragleave', 'drop'].forEach((ev) => $('#drop').addEventListener(ev, (e) => { e.preventDefault(); $('#drop').classList.remove('over'); }));
+$('#drop').addEventListener('drop', (e) => { if (e.dataTransfer.files.length) addEpisodes(e.dataTransfer.files); });
+
+/* panes */
+$('#tabRail').addEventListener('click', () => { document.body.dataset.rail = document.body.dataset.rail === 'on' ? 'off' : 'on'; });
+$('#tabTr').addEventListener('click', () => { document.body.dataset.tr = document.body.dataset.tr === 'on' ? 'off' : 'on'; });
+$('#trClose').addEventListener('click', () => { document.body.dataset.tr = 'off'; });
+$('#scrim').addEventListener('click', () => { document.body.dataset.rail = 'off'; document.body.dataset.tr = 'off'; });
+
+/* ---------- boot ---------- */
+function boot() {
+  const built = (window.WORKBOOK_EPISODES || []).slice();
+  state.eps = built.length ? built : [];
+  const saved = loadLocal();
+  if (!state.eps.length) {
+    $('#paper').innerHTML = `<p class="hint">왼쪽에서 SRT 자막 파일을 열면 학습지가 만들어집니다.</p>`;
+    renderToggles(); syncSettingsUI();
+    return;
+  }
+  let start = 0;
+  if (saved && saved.active) {
+    const i = state.eps.findIndex((e) => e.code === saved.active);
+    if (i >= 0) start = i;
+  }
+  state.active = start;
+  renderToggles(); syncSettingsUI(); renderEpList(); renderStats(); renderTranscript();
+  const code = ep().code;
+  state.sheet = state.sheets[code] || null;
+  if (!state.sheet) buildSheet();
+  render();
+}
+boot();
+})();
+</script>
+</body>
+</html>
