@@ -441,12 +441,130 @@ _VIDEO_SEGMENT_OWN_KEYS = {
 }
 
 
-def bundled_template() -> Dict[str, Any]:
-    """pyCapCut이 들고 있는 드래프트 템플릿. 최소한 이 키들은 있어야 합니다."""
+# 캡컷 9.4.0 이 실제로 만든 빈 드래프트에서 뽑은 기준 템플릿입니다.
+# (개인 식별 정보 device_id / mac_address / os_version 은 지워 두었습니다)
+#
+# pyCapCut 번들 템플릿은 캡컷 6.7.0 시절 것이라 9.x가 요구하는 필드가 없습니다.
+# 실물 비교로 확인한 차이:
+#     없는 최상위 키 5개  draft_type, function_assistant_info, mixed_track_mode_on,
+#                         smart_ads_info, uneven_animation_template_info
+#     없는 materials 키 11개
+#     render_index_track_mode_on  캡컷 true  / pyCapCut false
+#     color_space                 캡컷 -1    / pyCapCut 0
+#     new_version                 캡컷 185.0.0 / pyCapCut 140.0.0
+#     platform.app_version        캡컷 9.4.0 / pyCapCut 6.7.0
+CAPCUT_BASE_TEMPLATE = Path(__file__).resolve().parent.parent / "assets" / "capcut_draft_base.json"
+
+
+def pycapcut_template() -> Dict[str, Any]:
+    """pyCapCut이 들고 있는 템플릿 (캡컷 6.7.0 시절)."""
     from pycapcut import assets
 
     with open(assets.get_asset_path("DRAFT_CONTENT_TEMPLATE"), "r", encoding="utf-8") as f:
         return json.load(f)
+
+
+def bundled_template() -> Dict[str, Any]:
+    """기준으로 삼을 빈 드래프트.
+
+    1) 캘리브레이션으로 사용자의 실제 캡컷 드래프트를 잡아 두었으면 그것
+    2) 없으면 저장소에 넣어 둔 캡컷 9.4 실물 템플릿
+    3) 그것도 못 읽으면 pyCapCut 번들 (최후)
+    """
+    from ..config import load_style_profile
+
+    profile = load_style_profile() or {}
+    base = (profile.get("draft_skeleton") or {}).get("base")
+    if isinstance(base, dict) and base:
+        return copy.deepcopy(base)
+
+    try:
+        with CAPCUT_BASE_TEMPLATE.open("r", encoding="utf-8") as f:
+            return json.load(f)
+    except (OSError, json.JSONDecodeError) as exc:
+        log.warning("캡컷 기준 템플릿을 읽지 못해 pyCapCut 번들을 씁니다: %s", exc)
+        return pycapcut_template()
+
+
+# 값이 "pyCapCut이 남긴 기본값 그대로"면 기준 템플릿 값으로 바꿉니다.
+# 우리가 의도적으로 정한 값(duration, fps, canvas 크기 등)은 건드리지 않습니다.
+_BASE_SCALAR_FIELDS = (
+    "color_space", "render_index_track_mode_on", "mixed_track_mode_on",
+    "free_render_index_mode_on", "new_version", "version", "draft_type", "source",
+)
+
+# platform 은 통째로 갈아 끼우지 않습니다. 기기 식별자(device_id 등)는 그 PC의 값이
+# 맞을 수 있으므로 그대로 두고, "어느 캡컷이 만들었는가"만 바꿉니다.
+_PLATFORM_VERSION_FIELDS = ("app_version", "app_id", "app_source", "os")
+
+
+def align_with_base(content: Dict[str, Any]) -> Dict[str, Any]:
+    """pyCapCut이 남긴 기본값을 캡컷 실물 값으로 교체합니다.
+
+    우리가 채운 값과 pyCapCut 기본값이 같을 때만 바꿉니다. 사용자가 캘리브레이션으로
+    잡아 둔 값이나 우리가 계산한 값은 그대로 둡니다.
+    """
+    try:
+        legacy = pycapcut_template()
+    except Exception:
+        return {}
+    base = bundled_template()
+
+    changed: Dict[str, Any] = {}
+    for key in _BASE_SCALAR_FIELDS:
+        if key not in base:
+            continue
+        current = content.get(key)
+        if key in legacy and current != legacy[key]:
+            continue  # 우리가(또는 캘리브레이션이) 따로 정한 값이므로 존중합니다
+        if current == base[key]:
+            continue
+        content[key] = copy.deepcopy(base[key])
+        changed[key] = base[key]
+
+    # platform / last_modified_platform — 버전 정보만 실물 값으로 맞춥니다.
+    for key in ("platform", "last_modified_platform"):
+        base_block = base.get(key)
+        if not isinstance(base_block, dict):
+            continue
+        block = content.setdefault(key, {})
+        if not isinstance(block, dict):
+            content[key] = block = {}
+        legacy_block = legacy.get(key) if isinstance(legacy.get(key), dict) else {}
+        for field, value in base_block.items():
+            if field in _PLATFORM_VERSION_FIELDS:
+                current = block.get(field)
+                # 이미 우리가(또는 캘리브레이션이) 정한 값이면 존중합니다.
+                if field in legacy_block and current not in (None, legacy_block[field]):
+                    continue
+                if current != value:
+                    block[field] = value
+                    changed.setdefault(key, {})[field] = value
+            elif field not in block:
+                block[field] = copy.deepcopy(value)
+
+    # 드래프트마다 달라야 하는 키가 아예 없으면 기준 템플릿의 빈 값으로 채웁니다.
+    for key in _CONTENT_SPECIFIC_KEYS:
+        if key in base and key not in content:
+            content[key] = copy.deepcopy(base[key])
+            changed.setdefault("filled_empty", []).append(key)
+
+    # draft_content 의 id — pyCapCut 템플릿은 고정 상수라 모든 드래프트가 같아집니다.
+    legacy_id = str(legacy.get("id") or "")
+    current_id = str(content.get("id") or "")
+    if not current_id or (legacy_id and current_id == legacy_id):
+        content["id"] = str(uuid.uuid4()).upper()
+        changed["id"] = content["id"]
+
+    # config 는 하위 키만 채웁니다
+    base_config = base.get("config")
+    if isinstance(base_config, dict):
+        config = content.setdefault("config", {})
+        for key, value in base_config.items():
+            if key not in config:
+                config[key] = copy.deepcopy(value)
+                changed.setdefault("config", []).append(key)
+    return changed
 
 
 def extract_skeleton(content: Dict[str, Any]) -> Dict[str, Any]:
@@ -470,8 +588,25 @@ def extract_skeleton(content: Dict[str, Any]) -> Dict[str, Any]:
         if sample_segment is not None:
             break
 
+    # 참조 드래프트 전체를 '빈 드래프트' 형태로 보관합니다.
+    base = copy.deepcopy(content)
+    base["tracks"] = []
+    base["duration"] = 0
+    base["id"] = ""
+    base["name"] = ""
+    base["path"] = ""
+    for key, value in (base.get("materials") or {}).items():
+        if isinstance(value, list):
+            base["materials"][key] = []
+    for key in ("platform", "last_modified_platform"):
+        block = base.get(key)
+        if isinstance(block, dict):
+            for field in ("device_id", "mac_address", "hard_disk_id"):
+                block.pop(field, None)
+
     canvas = content.get("canvas_config") or {}
     return {
+        "base": base,
         "top_level": {
             key: copy.deepcopy(value)
             for key, value in content.items()
@@ -1424,6 +1559,7 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
     ratio_fixed = fix_canvas_ratio(content)
     legacy_removed = strip_legacy_marker(content)
     version_applied = apply_reference_version(content)
+    aligned = align_with_base(content)          # pyCapCut 기본값 → 캡컷 실물 값
     restored = restore_missing_fields(content)  # pyCapCut이 떨어뜨린 필드 복원
     refs_fixed = fix_dangling_refs(content)     # 자막의 끊어진 소재 참조 복구
     write_content(draft_path, content)
@@ -1440,6 +1576,7 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
         "ratio_fixed": ratio_fixed,
         "legacy_marker_removed": legacy_removed,
         "version_applied": version_applied,
+        "aligned_with_base": aligned,
         "restored_fields": restored,
         "refs_fixed": refs_fixed,
         "meta": meta,

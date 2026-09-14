@@ -375,22 +375,28 @@ def test_finalize_applies_reference_version(tmp_path, monkeypatch):
 
     result = cd.finalize_draft(path)
     assert result["version_applied"]["platform"]["app_version"] == "9.3.0"
+    # 캘리브레이션 값이 번들 기준값보다 우선해야 합니다
     assert cd.read_content(path)["platform"]["app_version"] == "9.3.0"
     assert cd.read_content(path)["new_version"] == "63.0.0"
 
 
-def test_finalize_without_profile_leaves_version_alone(tmp_path, monkeypatch):
+def test_finalize_without_profile_uses_bundled_capcut_base(tmp_path, monkeypatch):
+    """캘리브레이션이 없어도 pyCapCut의 6.7.0 값으로 두지 않습니다.
+
+    저장소에 넣어 둔 캡컷 9.x 실물 템플릿을 기준으로 맞춥니다.
+    """
     from app import config
 
     monkeypatch.setattr(config, "load_style_profile", lambda: None)
     path = make_draft(tmp_path)
     content = cd.read_content(path)
-    content["platform"] = {"app_version": "6.7.0"}
+    content["platform"] = dict(cd.pycapcut_template()["platform"])
     cd.write_content(path, content)
 
     result = cd.finalize_draft(path)
-    assert result["version_applied"] == {}
-    assert cd.read_content(path)["platform"]["app_version"] == "6.7.0"
+    assert result["version_applied"] == {}  # 프로파일 기반 적용은 없음
+    # 대신 번들 기준 템플릿으로 맞춰집니다
+    assert cd.read_content(path)["platform"]["app_version"] == cd.bundled_template()["platform"]["app_version"]
 
 
 # ── 레지스트리 안전장치 ──────────────────────────────────────────────────
@@ -653,3 +659,91 @@ def test_valid_refs_are_left_alone(tmp_path):
     result = cd.finalize_draft(path)
     assert result["refs_fixed"] == {"added_speeds": 0, "dropped_refs": 0, "broken_material_ids": []}
     assert cd.read_content(path)["tracks"][0]["segments"][0]["extra_material_refs"] == ["speed1"]
+
+
+# ── 캡컷 9.x 실물 스키마에 맞추기 ────────────────────────────────────────
+# ⚠️ pyCapCut 번들 템플릿은 캡컷 6.7.0 시절 것입니다. 사용자의 캡컷 9.4 실물과
+#    비교해 보니 최상위 키 5개, materials 키 11개가 없고 값도 여럿 달랐습니다.
+def test_base_template_is_capcut_9(tmp_path):
+    base = cd.bundled_template()
+    assert base["platform"]["app_version"].startswith("9."), "기준 템플릿이 캡컷 9.x 여야 합니다"
+    for key in ("draft_type", "function_assistant_info", "mixed_track_mode_on",
+                "smart_ads_info", "uneven_animation_template_info"):
+        assert key in base, f"캡컷 9.x 의 {key} 가 기준 템플릿에 없습니다"
+    assert base["render_index_track_mode_on"] is True
+    assert base["color_space"] == -1
+
+
+def test_base_template_has_no_personal_identifiers():
+    """저장소에 올라가는 파일입니다. 기기 식별자가 남아 있으면 안 됩니다."""
+    raw = cd.CAPCUT_BASE_TEMPLATE.read_text(encoding="utf-8")
+    base = json.loads(raw)
+    for key in ("platform", "last_modified_platform"):
+        for field in ("device_id", "mac_address", "hard_disk_id", "os_version"):
+            assert base[key].get(field, "") == "", f"{key}.{field} 가 비어 있지 않습니다"
+    assert base["tracks"] == [] and base["duration"] == 0 and base["id"] == ""
+
+
+def test_align_replaces_pycapcut_defaults(tmp_path):
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    legacy = cd.pycapcut_template()
+    # pyCapCut 이 남기는 값들을 그대로 심습니다
+    for key in ("color_space", "render_index_track_mode_on", "new_version"):
+        if key in legacy:
+            content[key] = legacy[key]
+    content["platform"] = dict(legacy["platform"])
+    cd.write_content(path, content)
+
+    cd.finalize_draft(path)
+    fixed = cd.read_content(path)
+    base = cd.bundled_template()
+    assert fixed["color_space"] == base["color_space"]
+    assert fixed["render_index_track_mode_on"] == base["render_index_track_mode_on"]
+    assert fixed["new_version"] == base["new_version"]
+    assert fixed["platform"]["app_version"] == base["platform"]["app_version"]
+    assert fixed["draft_type"] == base["draft_type"]
+
+
+def test_align_keeps_our_own_values(tmp_path):
+    """우리가(또는 캘리브레이션이) 따로 정한 값은 존중해야 합니다."""
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    content["new_version"] = "999.0.0"
+    content["platform"] = {"app_version": "9.9.9", "app_id": 1, "app_source": "cc", "os": "windows",
+                           "device_id": "내기기"}
+    cd.write_content(path, content)
+
+    cd.finalize_draft(path)
+    fixed = cd.read_content(path)
+    assert fixed["new_version"] == "999.0.0", "우리가 정한 값을 덮어썼습니다"
+    # 기기 식별자는 보존합니다
+    assert fixed["platform"]["device_id"] == "내기기"
+
+
+def test_finalize_matches_capcut_structure(tmp_path):
+    """마무리를 거친 드래프트는 캡컷 9.x 기준 템플릿과 키 구성이 같아야 합니다."""
+    path = make_draft(tmp_path)
+    cd.finalize_draft(path)
+    content = cd.read_content(path)
+    base = cd.bundled_template()
+
+    assert not (set(base) - set(content)), f"빠진 최상위 키: {sorted(set(base) - set(content))}"
+    # 드래프트 id 는 템플릿 고정값이 아니라 새로 발급되어야 합니다
+    assert content["id"] and content["id"] != cd.pycapcut_template().get("id")
+    assert not (set(base["materials"]) - set(content["materials"])), \
+        f"빠진 materials 키: {sorted(set(base['materials']) - set(content['materials']))}"
+    assert not (set(base["config"]) - set(content["config"])), \
+        f"빠진 config 키: {sorted(set(base['config']) - set(content['config']))}"
+
+
+def test_calibration_stores_full_base(tmp_path):
+    path = make_capcut_style_draft(tmp_path)
+    profile = cd.calibrate_text_style(path).profile
+    base = profile["draft_skeleton"]["base"]
+    assert base["tracks"] == [] and base["duration"] == 0
+    assert base["canvas_config"]["width"] == 1080
+    # 기기 식별자는 저장하지 않습니다
+    for key in ("platform", "last_modified_platform"):
+        block = base.get(key) or {}
+        assert "device_id" not in block and "mac_address" not in block
