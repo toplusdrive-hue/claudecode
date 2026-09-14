@@ -244,3 +244,58 @@ self.vertical_offset   = vertical_offset   * 2 - 1
 | 세로 오버레이 scale 1.8 / y -0.078125 | 실물 확인 불가. 요청서 실측값 채택 |
 
 이 표의 항목은 `README.md`의 **미검증 항목**에 그대로 옮겨 적었습니다.
+
+
+---
+
+## 5. 캡컷 9.4 실물과의 대조 결과 (사용자 파일로 확인)
+
+사용자가 보내 준 캡컷 9.4.0 드래프트 두 개(빈 프로젝트 / 사진+오디오+자막)와
+우리 결과물을 필드 단위로 대조했습니다.
+
+### 5.1 요청서 3.3 은 이 버전에서 틀렸습니다
+
+요청서는 "캡컷은 `track_render_index` 를 트랙 순서대로 0, 1, 2, 3… 으로 둔다"고 했지만,
+캡컷 9.4 실물은 이렇습니다.
+
+| 트랙 | track_render_index | render_index | enable_adjust / enable_lut |
+|---|---|---|---|
+| video | 0 | 0 | true |
+| audio | 0 | 0 | false |
+| text  | 0 | **14000, 14001, 14002 …** | false |
+
+- 모든 트랙이 `track_render_index = 0` 입니다.
+- 레이어는 **`render_index`** 로 구분하고, 텍스트는 세그먼트마다 1씩 올라갑니다.
+- **트랙 객체에는 `track_render_index` 키 자체가 없습니다.** 우리가 넣고 있었습니다.
+- pyCapCut은 텍스트 `render_index` 를 15000 으로 씁니다
+  (`track.py` 주석: "原本是14000, 避免与sticker冲突改为15000"). 실물은 14000 입니다.
+
+→ 값을 추측하지 않고 기준 템플릿의 표본을 그대로 따르도록 했습니다.
+
+### 5.2 소재·세그먼트 필드 수
+
+| | 캡컷 9.4 | pyCapCut 결과 |
+|---|---|---|
+| 비디오 소재 | 68 | 17 |
+| 비디오 세그먼트 | 52 | 25 |
+| 오디오 소재 | 63 | (미확인) |
+| 텍스트 소재 | 126 | 126 ← 캘리브레이션 덕분에 일치 |
+| 텍스트 세그먼트 | 52 | 52 ← 캘리브레이션 덕분에 일치 |
+
+빠져 있던 비디오 소재 필드에는 `has_audio`, `stable`, `matting`, `video_algorithm`,
+`source`, `source_platform`, `extra_type_option` 등이 있었고, 세그먼트에는
+`render_timerange`, `responsive_layout`, `state`, `template_scene`, `enable_video_mask`,
+`source: "segmentsourcenormal"` 등이 빠져 있었습니다.
+
+**텍스트만 일치했다는 점이 핵심입니다.** 요청서 3.5의 "원본 소재를 통째로 저장해 두고
+텍스트만 갈아 끼운다"가 정확히 동작했다는 뜻입니다. 그래서 같은 방식을
+비디오·오디오 소재와 세그먼트까지 확장했습니다.
+
+### 5.3 platform 은 "만든 버전"이지 "여는 버전"이 아닙니다
+
+사진 프로젝트는 `platform.app_version = 6.7.0`, `last_modified_platform = 9.4.0` 이었습니다.
+캡컷 6.7.0 에서 만들어져 9.4 로 열린 것이고, **9.4 는 그 드래프트를 문제없이 엽니다.**
+
+→ 버전 문자열 자체는 여는 데 영향이 없습니다. 그래도 새로 만드는 드래프트는
+  9.4 가 새 프로젝트에 쓰는 값(`app_version 9.4.0`, `color_space -1`,
+  `render_index_track_mode_on true`)을 따르게 했습니다.

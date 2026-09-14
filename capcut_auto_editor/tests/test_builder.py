@@ -164,11 +164,20 @@ def test_apply_subtitles_injects_calibrated_style(draft_root, timeline, profile,
         # 3.5 — 원본에만 있던 필드가 살아 있어야 합니다
         assert material["template_scene"] == "default"
 
-    # 3.3 — 텍스트 트랙이 영상 트랙보다 위 레이어
+    # 레이어 — 캡컷 9.4 실물은 track_render_index 를 전부 0으로 두고
+    # render_index 로 구분합니다 (텍스트는 14000부터 세그먼트마다 +1).
     text_track = next(t for t in content["tracks"] if t["type"] == "text")
-    text_index = content["tracks"].index(text_track)
-    assert all(s["track_render_index"] == text_index for s in text_track["segments"])
-    assert text_index > 0
+    video_track = next(t for t in content["tracks"] if t["type"] == "video")
+    assert all(s["track_render_index"] == 0 for s in text_track["segments"])
+    assert all(s["track_render_index"] == 0 for s in video_track["segments"])
+    assert [s["render_index"] for s in text_track["segments"]] == [14000, 14001]
+    assert all(s["render_index"] == 0 for s in video_track["segments"])
+    # 자막이 영상보다 위에 그려져야 합니다
+    assert min(s["render_index"] for s in text_track["segments"]) > max(
+        s["render_index"] for s in video_track["segments"]
+    )
+    # 캡컷이 쓰지 않는 트랙 키는 없어야 합니다
+    assert all("track_render_index" not in t for t in content["tracks"])
 
     # 세그먼트에도 원본 필드가 채워졌습니다
     assert text_track["segments"][0]["enable_video_mask"] is True

@@ -879,13 +879,14 @@ function showVerified(verified) {
       h('dt', {}, '이미지 소재'), h('dd', {}, String(verified.photo_material_count))),
     h('h3', {}, '트랙별 레이어 확인'),
     h('div', { class: 'table-wrap' }, h('table', {},
-      h('thead', {}, h('tr', {}, h('th', {}, '#'), h('th', {}, '종류'), h('th', {}, '이름'), h('th', {}, '세그먼트'), h('th', {}, 'track_render_index'))),
+      h('thead', {}, h('tr', {}, h('th', {}, '#'), h('th', {}, '종류'), h('th', {}, '이름'), h('th', {}, '세그먼트'), h('th', {}, 'track_render_index'), h('th', {}, 'render_index'))),
       h('tbody', {}, verified.tracks.map((t) => h('tr', {},
         h('td', {}, String(t.index)), h('td', {}, t.type), h('td', {}, t.name || '-'),
         h('td', {}, String(t.segment_count)),
-        h('td', {}, t.layered_correctly
+        h('td', {}, t.track_render_index_ok
           ? h('span', { class: 'badge ok' }, JSON.stringify(t.track_render_index))
-          : h('span', { class: 'badge repeat' }, JSON.stringify(t.track_render_index)))))))),
+          : h('span', { class: 'badge repeat' }, JSON.stringify(t.track_render_index))),
+        h('td', { class: 'mono' }, JSON.stringify(t.render_index))))))),
   ];
   if (verified.problems && verified.problems.length) body.unshift(banner('danger', '문제가 남아 있습니다', verified.problems));
   else body.unshift(banner('ok', '파일을 다시 읽어 확인했습니다', ['레이어와 캔버스 비율이 올바릅니다.']));

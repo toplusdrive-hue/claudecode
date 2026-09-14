@@ -65,17 +65,29 @@ def test_fix_track_render_index_prevents_hidden_subtitles(tmp_path):
     before = [s["track_render_index"] for t in content["tracks"] for s in t["segments"]]
     assert before == [0, 0, 0]  # pyCapCut 상태: 비디오와 텍스트가 같은 레이어
 
-    changed = cd.fix_track_render_index(content)
+    report = cd.align_tracks_with_base(content)
     after = [[s["track_render_index"] for s in t["segments"]] for t in content["tracks"]]
-    assert after == [[0, 0], [1]]  # 트랙 순서대로 다시 매겨졌습니다
-    assert changed == 1
+    # 캡컷 9.4 실물: 모든 트랙이 0. 레이어는 render_index 로 구분합니다.
+    assert after == [[0, 0], [0]]
+    render = [[s["render_index"] for s in t["segments"]] for t in content["tracks"]]
+    assert render[0] == [0, 0]
+    assert render[1] == [14000]
+    assert report["render_index_set"] == 3
+    # 트랙 객체의 track_render_index 는 캡컷에 없으므로 떼어냅니다
+    assert all("track_render_index" not in t for t in content["tracks"])
 
 
 def test_inspect_draft_reports_layer_problem(tmp_path):
+    """캡컷 실물은 모든 트랙에서 track_render_index 가 0입니다."""
     path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    for segment in content["tracks"][1]["segments"]:
+        segment["track_render_index"] = 7  # 실물과 다른 값
+    cd.write_content(path, content)
+
     report = cd.inspect_draft(path)
     assert any("track_render_index" in p for p in report["problems"])
-    assert report["tracks"][1]["layered_correctly"] is False
+    assert report["tracks"][1]["track_render_index_ok"] is False
 
 
 # ── 3.10 캔버스 비율 ─────────────────────────────────────────────────────
@@ -134,7 +146,7 @@ def test_register_in_registry_is_idempotent(tmp_path):
 def test_finalize_draft_fixes_everything_and_verifies(tmp_path):
     path = make_draft(tmp_path, "세로", ratio="original", width=1080, height=1920)
     result = cd.finalize_draft(path, marker={"session_id": "s1"})
-    assert result["layer_fixes"] == 1
+    assert result["layer_fixes"]["render_index_set"] == 3
     assert result["ratio_fixed"] is True
     assert result["registry"]["registered"] is True
     assert result["verified"]["problems"] == []
@@ -681,7 +693,15 @@ def test_base_template_has_no_personal_identifiers():
     for key in ("platform", "last_modified_platform"):
         for field in ("device_id", "mac_address", "hard_disk_id", "os_version"):
             assert base[key].get(field, "") == "", f"{key}.{field} 가 비어 있지 않습니다"
-    assert base["tracks"] == [] and base["duration"] == 0 and base["id"] == ""
+    assert base["duration"] == 0 and base["id"] == ""
+    # 트랙은 '표본'으로 남겨 두지만 식별 정보는 비어 있어야 합니다
+    for track in base["tracks"]:
+        assert track["id"] == ""
+        for segment in track["segments"]:
+            assert segment["id"] == "" and segment["material_id"] == ""
+    for key in ("videos", "audios", "texts"):
+        for item in base["materials"][key]:
+            assert item.get("path", "") == "" and item.get("id", "") == ""
 
 
 def test_align_replaces_pycapcut_defaults(tmp_path):

@@ -323,6 +323,96 @@ def restore_backup(backup_path: Path, draft_path: Path) -> Dict[str, Any]:
 
 
 # ── 후처리 교정 ──────────────────────────────────────────────────────────────
+# 세그먼트에서 우리가 직접 정하는 값. 표본에서 덮어쓰면 안 됩니다.
+_SEGMENT_OWN_KEYS = {
+    "id", "material_id", "target_timerange", "source_timerange", "clip", "speed",
+    "volume", "extra_material_refs", "common_keyframes", "keyframe_refs",
+    "uniform_scale", "visible",
+}
+
+
+def extract_track_profiles(content: Dict[str, Any]) -> Dict[str, Dict[str, Any]]:
+    """트랙 종류별로 세그먼트 표본과 레이어 규칙을 뽑습니다.
+
+    캡컷 9.4 실물에서 확인한 규칙:
+        track_render_index  모든 트랙이 0
+        render_index        video 0 / audio 0 / text 14000, 14001, 14002 …
+        enable_adjust, enable_lut   video 만 true, audio·text 는 false
+        트랙 객체에는 track_render_index 가 **없습니다**
+    """
+    profiles: Dict[str, Dict[str, Any]] = {}
+    for track in content.get("tracks") or []:
+        track_type = str(track.get("type") or "")
+        segments = track.get("segments") or []
+        if not track_type or not segments or track_type in profiles:
+            continue
+        indexes = [int(seg.get("render_index", 0) or 0) for seg in segments]
+        step = 0
+        if len(indexes) > 1:
+            gaps = {b - a for a, b in zip(indexes, indexes[1:])}
+            step = 1 if gaps == {1} else 0
+        profiles[track_type] = {
+            "segment": copy.deepcopy(segments[0]),
+            "track_keys": sorted(k for k in track if k != "segments"),
+            "render_index_base": indexes[0],
+            "render_index_step": step,
+            "track_render_index": int(segments[0].get("track_render_index", 0) or 0),
+        }
+    return profiles
+
+
+def _base_track_profiles() -> Dict[str, Dict[str, Any]]:
+    try:
+        return extract_track_profiles(bundled_template())
+    except Exception as exc:
+        log.warning("기준 템플릿의 트랙 표본을 읽지 못했습니다: %s", exc)
+        return {}
+
+
+def align_tracks_with_base(content: Dict[str, Any]) -> Dict[str, Any]:
+    """트랙과 세그먼트를 캡컷 실물 모양으로 맞춥니다.
+
+    ⚠️ 요청서 3.3 은 "캡컷은 track_render_index 를 트랙 순서대로 0,1,2,3… 으로 둔다"고
+       했지만, 사용자의 캡컷 9.4 실물에서는 **모든 트랙이 0**이었습니다.
+       레이어는 render_index 로 구분합니다 (text 는 14000 부터 세그먼트마다 +1).
+       그래서 값을 추측하지 않고 기준 템플릿의 표본을 그대로 따릅니다.
+    """
+    profiles = _base_track_profiles()
+    report = {"filled_fields": 0, "tracks_cleaned": 0, "render_index_set": 0}
+    if not profiles:
+        return report
+
+    for track in content.get("tracks") or []:
+        profile = profiles.get(str(track.get("type") or ""))
+        if profile is None:
+            continue
+
+        # 트랙 객체에 캡컷이 쓰지 않는 키가 있으면 떼어냅니다 (track_render_index 등)
+        for key in [k for k in track if k != "segments" and k not in profile["track_keys"]]:
+            track.pop(key, None)
+            report["tracks_cleaned"] += 1
+
+        sample = profile["segment"]
+        for position, segment in enumerate(track.get("segments") or []):
+            for key, value in sample.items():
+                if key in _SEGMENT_OWN_KEYS:
+                    continue
+                if key in ("render_index", "track_render_index"):
+                    continue
+                if key not in segment:
+                    segment[key] = copy.deepcopy(value)
+                    report["filled_fields"] += 1
+                elif key in ("enable_adjust", "enable_lut"):
+                    # 레이어 동작에 영향을 주는 값은 표본을 따릅니다
+                    if segment[key] != value:
+                        segment[key] = value
+                        report["filled_fields"] += 1
+            segment["track_render_index"] = profile["track_render_index"]
+            segment["render_index"] = profile["render_index_base"] + profile["render_index_step"] * position
+            report["render_index_set"] += 1
+    return report
+
+
 def fix_track_render_index(content: Dict[str, Any]) -> int:
     """⚠️ 요청서 3.3 — 자막이 안 보이는 가장 흔한 원인.
 
@@ -1472,9 +1562,12 @@ def inspect_draft(draft_path: Path) -> Dict[str, Any]:
     text_count = 0
     transition_ids: set[str] = set()
 
+    profiles = _base_track_profiles()
     for index, track in enumerate(content.get("tracks", []) or []):
         segments = track.get("segments", []) or []
         render_indexes = sorted({int(s.get("track_render_index", 0) or 0) for s in segments})
+        profile = profiles.get(str(track.get("type") or "")) or {}
+        expected_tri = int(profile.get("track_render_index", 0))
         if track.get("type") == "text":
             text_count += len(segments)
         tracks_info.append(
@@ -1484,7 +1577,8 @@ def inspect_draft(draft_path: Path) -> Dict[str, Any]:
                 "name": track.get("name") or "",
                 "segment_count": len(segments),
                 "track_render_index": render_indexes,
-                "layered_correctly": render_indexes in ([index], []),
+                "track_render_index_ok": render_indexes in ([expected_tri], []),
+                "render_index": sorted({int(s.get("render_index", 0) or 0) for s in segments}),
             }
         )
 
@@ -1497,10 +1591,10 @@ def inspect_draft(draft_path: Path) -> Dict[str, Any]:
 
     problems: List[str] = []
     for info in tracks_info:
-        if not info["layered_correctly"]:
+        if not info["track_render_index_ok"]:
             problems.append(
                 f"{info['index']}번 트랙({info['type']})의 track_render_index가 {info['track_render_index']} 입니다. "
-                f"{info['index']} 이어야 자막이 영상 위에 보입니다 (요청서 3.3)."
+                f"캡컷 실물은 모든 트랙에서 0을 쓰고 레이어는 render_index로 구분합니다."
             )
     # pyCapCut이 떨어뜨리기 쉬운 필드가 실제로 남아 있는지 확인합니다.
     try:
@@ -1555,7 +1649,7 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
     draft_path = Path(draft_path)
     content = read_content(draft_path)
 
-    layer_fixes = fix_track_render_index(content)
+    layer_fixes = align_tracks_with_base(content)
     ratio_fixed = fix_canvas_ratio(content)
     legacy_removed = strip_legacy_marker(content)
     version_applied = apply_reference_version(content)
