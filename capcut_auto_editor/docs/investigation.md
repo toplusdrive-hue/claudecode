@@ -182,7 +182,41 @@ track_list.sort(key=lambda track: track.render_index)
 후처리에서 `track_render_index`를 다시 매길 때는 이 **최종 정렬 결과 순서**를 기준으로
 해야 합니다. 따라서 교정은 반드시 **`save()` 이후 파일을 다시 읽어** 수행합니다.
 
-### 3.5 `TextBorder`와 `TextBackground`는 입력값을 재매핑함
+### 3.5 ⚠️ TextSegment가 존재하지 않는 소재를 가리킴 (캡컷이 종료되는 원인)
+
+`MediaSegment.__init__`은 Speed 객체를 만들고 그 id를 `extra_material_refs`에 넣습니다.
+
+```python
+# segment.py:174
+self.extra_material_refs = [self.speed.global_id]
+```
+
+그런데 `ScriptFile.add_segment`가 `materials.speeds`를 채우는 건 **비디오와 오디오뿐**입니다.
+
+```python
+if isinstance(segment, VideoSegment):
+    self.materials.speeds.append(segment.speed)
+elif isinstance(segment, AudioSegment):
+    self.materials.speeds.append(segment.speed)
+elif isinstance(segment, TextSegment):
+    self.materials.texts.append(segment.export_material())   # speeds 없음
+```
+
+10줄로 재현됩니다.
+
+```
+세그먼트 extra_material_refs: ['ce0d7b74aba34949986cd670fccdd043']
+materials.speeds            : []
+>>> 끊어진 참조: ['ce0d7b74aba34949986cd670fccdd043']
+```
+
+**자막 하나당 끊어진 참조 하나**가 생깁니다. 캡컷은 이 참조를 따라 소재를 찾으려다
+드래프트를 여는 도중 종료됩니다. 실제 사용자 파일에서 자막 15개 → 끊어진 참조 15건이었습니다.
+
+→ 대응: 저장 후 모든 `extra_material_refs`를 검사해, 텍스트 트랙이면 빠진 speed 소재를
+  캡컷 형식 그대로 만들어 넣고, 그 밖의 풀리지 않는 참조는 떼어냅니다.
+
+### 3.6 `TextBorder`와 `TextBackground`는 입력값을 재매핑함
 
 ```python
 self.width = width / 100.0 * 0.2                 # TextBorder

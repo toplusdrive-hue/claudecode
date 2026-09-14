@@ -565,6 +565,114 @@ def restore_missing_fields(content: Dict[str, Any]) -> Dict[str, Any]:
     return report
 
 
+def fix_dangling_refs(content: Dict[str, Any]) -> Dict[str, Any]:
+    """⚠️ pyCapCut 0.0.3 버그 — 자막이 존재하지 않는 소재를 가리킵니다.
+
+    재현:
+        TextSegment 는 MediaSegment 를 상속하므로 내부에 Speed 객체를 갖고,
+        그 id 를 extra_material_refs 에 넣습니다(segment.py:174).
+        그런데 ScriptFile.add_segment 는 VideoSegment 와 AudioSegment 에만
+        materials.speeds 를 채우고, TextSegment 에는 채우지 않습니다.
+
+        >>> seg = pycapcut.TextSegment("테스트", trange)
+        >>> script.add_segment(seg, "자막")
+        세그먼트 extra_material_refs: ['ce0d7b74...']
+        materials.speeds            : []          ← 비어 있음
+
+    캡컷은 이 참조를 따라가 소재를 찾으려다 드래프트를 여는 도중 종료됩니다.
+    자막 15개면 끊어진 참조가 15건 생깁니다.
+
+    → 저장 후 모든 참조를 검사해서, 텍스트 트랙이면 빠진 speed 소재를 만들어 넣고
+      그 밖의 풀리지 않는 참조는 떼어냅니다.
+    """
+    materials = content.setdefault("materials", {})
+    known: set[str] = set()
+    for items in materials.values():
+        if not isinstance(items, list):
+            continue
+        for item in items:
+            if isinstance(item, dict) and item.get("id"):
+                known.add(str(item["id"]))
+
+    speeds: List[Dict[str, Any]] = materials.setdefault("speeds", [])
+    added_speeds: List[str] = []
+    dropped: List[str] = []
+    broken_material_ids: List[str] = []
+
+    for track in content.get("tracks") or []:
+        is_text = track.get("type") == "text"
+        for segment in track.get("segments") or []:
+            material_id = str(segment.get("material_id") or "")
+            if material_id and material_id not in known:
+                broken_material_ids.append(material_id)
+
+            refs = segment.get("extra_material_refs") or []
+            kept: List[str] = []
+            for ref in refs:
+                ref = str(ref)
+                if ref in known:
+                    kept.append(ref)
+                    continue
+                if is_text:
+                    # pyCapCut이 빠뜨린 speed 소재를 그대로 만들어 넣습니다.
+                    speeds.append(
+                        {
+                            "curve_speed": None,
+                            "id": ref,
+                            "mode": 0,
+                            "speed": float(segment.get("speed", 1.0) or 1.0),
+                            "type": "speed",
+                        }
+                    )
+                    known.add(ref)
+                    kept.append(ref)
+                    added_speeds.append(ref)
+                else:
+                    dropped.append(ref)
+            segment["extra_material_refs"] = kept
+
+    if added_speeds:
+        log.info("자막 세그먼트의 빠진 speed 소재 %d개를 채웠습니다 (pyCapCut 0.0.3 버그).", len(added_speeds))
+    if dropped:
+        log.warning("풀리지 않는 소재 참조 %d개를 떼어냈습니다: %s", len(dropped), dropped[:3])
+    if broken_material_ids:
+        log.error("세그먼트가 없는 소재를 가리킵니다: %s", broken_material_ids[:3])
+
+    return {
+        "added_speeds": len(added_speeds),
+        "dropped_refs": len(dropped),
+        "broken_material_ids": broken_material_ids,
+    }
+
+
+def find_dangling_refs(content: Dict[str, Any]) -> List[str]:
+    """검증용 — 끊어진 참조를 사람이 읽을 수 있는 문장으로 돌려줍니다."""
+    known: set[str] = set()
+    for items in (content.get("materials") or {}).values():
+        if not isinstance(items, list):
+            continue
+        for item in items:
+            if isinstance(item, dict) and item.get("id"):
+                known.add(str(item["id"]))
+
+    problems: List[str] = []
+    for index, track in enumerate(content.get("tracks") or []):
+        for position, segment in enumerate(track.get("segments") or []):
+            material_id = str(segment.get("material_id") or "")
+            if material_id and material_id not in known:
+                problems.append(
+                    f"{index}번 트랙 {position}번 세그먼트가 없는 소재({material_id[:8]}…)를 가리킵니다."
+                )
+            for ref in segment.get("extra_material_refs") or []:
+                if str(ref) not in known:
+                    problems.append(
+                        f"{index}번 트랙({track.get('type')}) {position}번 세그먼트의 "
+                        f"extra_material_refs 가 없는 소재({str(ref)[:8]}…)를 가리킵니다. "
+                        "캡컷이 드래프트를 여는 도중 종료될 수 있습니다."
+                    )
+    return problems
+
+
 def fix_meta_paths(draft_path: Path) -> Dict[str, Any]:
     """요청서 3.11 — draft_meta_info.json의 경로는 신뢰할 수 없습니다.
 
@@ -1279,6 +1387,8 @@ def inspect_draft(draft_path: Path) -> Dict[str, Any]:
             "pyCapCut이 자기가 아는 키만 내보내면서 빠진 것입니다."
         )
 
+    problems.extend(find_dangling_refs(content))
+
     expected_ratio = _ratio_name(int(canvas.get("width") or 0) or 1920, int(canvas.get("height") or 0) or 1080)
     if canvas.get("ratio") != expected_ratio:
         problems.append(
@@ -1315,6 +1425,7 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
     legacy_removed = strip_legacy_marker(content)
     version_applied = apply_reference_version(content)
     restored = restore_missing_fields(content)  # pyCapCut이 떨어뜨린 필드 복원
+    refs_fixed = fix_dangling_refs(content)     # 자막의 끊어진 소재 참조 복구
     write_content(draft_path, content)
 
     if marker is not None:
@@ -1330,6 +1441,7 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
         "legacy_marker_removed": legacy_removed,
         "version_applied": version_applied,
         "restored_fields": restored,
+        "refs_fixed": refs_fixed,
         "meta": meta,
         "registry": registry,
         "verified": verified,

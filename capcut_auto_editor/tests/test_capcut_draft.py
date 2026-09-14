@@ -548,3 +548,108 @@ def test_calibration_stores_draft_skeleton(tmp_path):
     assert "canvas_extra" in skeleton
     assert "materials_keys" in skeleton
     assert isinstance(skeleton["materials_keys"], list)
+
+
+# ── ⚠️ pyCapCut 0.0.3 — 자막이 없는 소재를 가리키는 버그 ────────────────
+def test_pycapcut_leaves_text_speed_dangling():
+    """버그를 소스 수준에서 재현합니다. 이게 캡컷이 꺼지는 원인이었습니다.
+
+    TextSegment 는 MediaSegment 를 상속해 Speed 객체를 갖고 그 id 를
+    extra_material_refs 에 넣지만, ScriptFile.add_segment 는 VideoSegment 와
+    AudioSegment 에만 materials.speeds 를 채웁니다.
+    """
+    import pycapcut
+
+    script = pycapcut.ScriptFile(1920, 1080, 30)
+    script.add_track(pycapcut.TrackType.text, "자막")
+    script.add_segment(pycapcut.TextSegment("테스트", pycapcut.Timerange(0, 1_000_000)), "자막")
+    content = json.loads(script.dumps())
+
+    refs = content["tracks"][0]["segments"][0]["extra_material_refs"]
+    assert refs, "TextSegment 는 speed id 를 참조합니다"
+    assert content["materials"]["speeds"] == [], "pyCapCut은 텍스트의 speed를 목록에 넣지 않습니다"
+    assert find_dangling(content), "끊어진 참조가 재현되어야 합니다"
+
+
+def find_dangling(content):
+    return cd.find_dangling_refs(content)
+
+
+def _text_draft(root, count=3):
+    """자막이 든 드래프트를 pyCapCut으로 만듭니다(끊어진 참조가 생깁니다)."""
+    import pycapcut
+
+    path = root / "자막드래프트"
+    path.mkdir(parents=True, exist_ok=True)
+    script = pycapcut.ScriptFile(1080, 1920, 30)
+    script.add_track(pycapcut.TrackType.text, "자동자막")
+    for i in range(count):
+        script.add_segment(
+            pycapcut.TextSegment(f"자막 {i}", pycapcut.Timerange(i * 2_000_000, 1_500_000)),
+            "자동자막",
+        )
+    (path / "draft_content.json").write_text(script.dumps(), encoding="utf-8")
+    (path / "draft_meta_info.json").write_text("{}", encoding="utf-8")
+    return path
+
+
+def test_finalize_repairs_dangling_text_refs(tmp_path):
+    path = _text_draft(tmp_path, count=5)
+    before = cd.read_content(path)
+    assert len(cd.find_dangling_refs(before)) == 5
+
+    result = cd.finalize_draft(path)
+    assert result["refs_fixed"]["added_speeds"] == 5
+    assert result["refs_fixed"]["dropped_refs"] == 0
+
+    after = cd.read_content(path)
+    assert cd.find_dangling_refs(after) == [], "끊어진 참조가 남아 있으면 캡컷이 꺼집니다"
+    # 채워 넣은 speed 소재가 실제로 있어야 합니다
+    speed_ids = {s["id"] for s in after["materials"]["speeds"]}
+    for track in after["tracks"]:
+        for segment in track["segments"]:
+            for ref in segment["extra_material_refs"]:
+                assert ref in speed_ids
+
+
+def test_added_speed_material_has_capcut_shape(tmp_path):
+    path = _text_draft(tmp_path, count=1)
+    cd.finalize_draft(path)
+    speed = cd.read_content(path)["materials"]["speeds"][0]
+    assert sorted(speed) == ["curve_speed", "id", "mode", "speed", "type"]
+    assert speed["type"] == "speed"
+    assert speed["speed"] == 1.0
+    assert speed["mode"] == 0
+    assert speed["curve_speed"] is None
+
+
+def test_unresolvable_ref_on_non_text_track_is_dropped(tmp_path):
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    content["tracks"][0]["segments"][0]["extra_material_refs"] = ["없는소재id"]
+    cd.write_content(path, content)
+
+    result = cd.finalize_draft(path)
+    assert result["refs_fixed"]["dropped_refs"] == 1
+    assert cd.read_content(path)["tracks"][0]["segments"][0]["extra_material_refs"] == []
+
+
+def test_inspect_reports_dangling_refs(tmp_path):
+    path = _text_draft(tmp_path, count=2)
+    report = cd.inspect_draft(path)
+    assert any("extra_material_refs" in p for p in report["problems"])
+    assert any("캡컷이 드래프트를 여는 도중 종료" in p for p in report["problems"])
+
+
+def test_valid_refs_are_left_alone(tmp_path):
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    content["materials"]["speeds"] = [
+        {"curve_speed": None, "id": "speed1", "mode": 0, "speed": 1.0, "type": "speed"}
+    ]
+    content["tracks"][0]["segments"][0]["extra_material_refs"] = ["speed1"]
+    cd.write_content(path, content)
+
+    result = cd.finalize_draft(path)
+    assert result["refs_fixed"] == {"added_speeds": 0, "dropped_refs": 0, "broken_material_ids": []}
+    assert cd.read_content(path)["tracks"][0]["segments"][0]["extra_material_refs"] == ["speed1"]
