@@ -472,6 +472,40 @@ function backupCard() {
     } catch (e) { list.innerHTML = ''; list.appendChild(banner('danger', null, [e.message])); }
   }
   if (S.session.draft_path) loadBackups(); else list.appendChild(h('p', { class: 'muted' }, '드래프트를 만들면 백업 목록이 표시됩니다.'));
+
+  // 캡컷 프로젝트 목록(root_meta_info.json) 백업 — 드래프트 폴더 밖에 있어 따로 다룹니다.
+  const registryBox = h('div', {});
+  card.appendChild(h('h3', {}, '캡컷 프로젝트 목록 백업'));
+  card.appendChild(registryBox);
+  api('/api/registry-backups').then((res) => {
+    registryBox.innerHTML = '';
+    registryBox.appendChild(h('p', { class: 'muted' }, res.note));
+    if (!res.backups.length) {
+      registryBox.appendChild(h('p', { class: 'faint' }, '아직 백업이 없습니다.'));
+      return;
+    }
+    const box = h('div', { class: 'list' });
+    for (const b of res.backups.slice(0, 8)) {
+      box.appendChild(h('div', { class: 'list-row' },
+        h('span', { class: 'grow' },
+          h('div', { class: 'name' }, b.created),
+          h('div', { class: 'meta' }, `${b.size_bytes.toLocaleString()} 바이트`)),
+        h('button', {
+          class: 'btn sm', onclick: async () => {
+            if (!confirm('캡컷 프로젝트 목록을 이 시점으로 되돌립니다. 캡컷을 완전히 종료한 상태여야 합니다. 계속할까요?')) return;
+            try {
+              await api('/api/registry-restore', { body: { backup_path: b.path } });
+              toast('프로젝트 목록을 되돌렸습니다. 캡컷을 다시 열어 확인해 주세요.', 'ok');
+            } catch (e) { toast(e.message, 'err'); }
+          }
+        }, '되돌리기')));
+    }
+    registryBox.appendChild(box);
+  }).catch(() => {
+    registryBox.innerHTML = '';
+    registryBox.appendChild(h('p', { class: 'faint' }, '백업 목록을 읽지 못했습니다.'));
+  });
+
   return card;
 }
 

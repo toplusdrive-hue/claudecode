@@ -20,13 +20,13 @@ from typing import Any, Dict, List, Optional, Sequence, Tuple
 from .capcut_draft import (
     AUTO_SFX_TRACK,
     AUTO_SUBTITLE_TRACK,
-    MARKER_KEY,
     ensure_capcut_closed,
     find_font_file,
     finalize_draft,
     inspect_draft,
     parse_font_name,
     read_content,
+    read_marker,
     require_root,
     to_capcut_path,
     transition_lookup,
@@ -407,8 +407,7 @@ class CutSignatureMismatch(RuntimeError):
 
 def check_cut_signature(draft_path: Path, cut_map: CutMap) -> None:
     """요청서 3.18 — 드래프트와 컷 설정이 어긋나면 자막이 통째로 밀립니다."""
-    content = read_content(draft_path)
-    marker = content.get(MARKER_KEY) or {}
+    marker = read_marker(draft_path)
     draft_sig = marker.get("cut_signature")
     if not draft_sig:
         raise CutSignatureMismatch({"kept_duration_us": 0, "span_count": 0}, cut_map.signature())
@@ -512,7 +511,7 @@ def apply_subtitles(
     content = read_content(draft_path)
     injected = _inject_text_style(content, material_ids, profile, font_path)
 
-    marker = content.get(MARKER_KEY) or {}
+    marker = read_marker(draft_path)
     marker.update(
         {
             "session_id": session_id,
@@ -520,7 +519,6 @@ def apply_subtitles(
             "subtitle_signature": cut_map.signature(),
         }
     )
-    content[MARKER_KEY] = marker
     write_content(draft_path, content)
 
     result = finalize_draft(draft_path, marker=marker)
@@ -723,7 +721,7 @@ def apply_transitions(
     materials["transitions"] = transitions
     write_content(draft_path, content)
 
-    marker = (read_content(draft_path).get(MARKER_KEY) or {})
+    marker = read_marker(draft_path)
     marker.update({"session_id": session_id, "transition_count": applied})
     result = finalize_draft(draft_path, marker=marker)
     warnings.extend(result["verified"]["problems"])
@@ -795,7 +793,7 @@ def apply_sfx(
         applied += 1
 
     script.save()
-    marker = (read_content(draft_path).get(MARKER_KEY) or {})
+    marker = read_marker(draft_path)
     marker.update({"session_id": session_id, "sfx_count": applied})
     result = finalize_draft(draft_path, marker=marker)
     warnings.extend(result["verified"]["problems"])

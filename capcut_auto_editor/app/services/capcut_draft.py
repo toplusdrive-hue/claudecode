@@ -6,6 +6,7 @@
 
 from __future__ import annotations
 
+import copy
 import json
 import os
 import re
@@ -36,8 +37,43 @@ ROOT_META = "root_meta_info.json"
 AUTO_SUBTITLE_TRACK = "자동자막"
 AUTO_SFX_TRACK = "자동효과음"
 
-# 세션과 드래프트를 잇는 표식. draft_content.json에 우리가 직접 넣습니다.
+# 세션과 드래프트를 잇는 표식.
+#
+# ⚠️ 예전에는 이 값을 draft_content.json 안에 직접 넣었습니다. 하지만 그 파일은
+#    캡컷이 파싱하는 파일이고, 캡컷에 없는 최상위 키를 넣으면 열 때 문제가 될 수
+#    있습니다. 그래서 드래프트 폴더 안의 **별도 파일**로 뺐습니다.
+#    캡컷은 자기가 모르는 파일은 건드리지 않습니다.
 MARKER_KEY = "capcut_auto_editor"
+MARKER_FILE = "capcut_auto_editor.json"
+
+
+def read_marker(draft_path: Path) -> Dict[str, Any]:
+    """드래프트에 남겨 둔 우리 표식을 읽습니다.
+
+    예전 버전이 draft_content.json 안에 넣어 둔 것도 함께 읽어 줍니다.
+    """
+    path = Path(draft_path) / MARKER_FILE
+    if path.is_file():
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            log.warning("'%s' 를 읽지 못했습니다.", path)
+    try:  # 예전 형식 폴백
+        return read_content(draft_path).get(MARKER_KEY) or {}
+    except Exception:
+        return {}
+
+
+def write_marker(draft_path: Path, marker: Dict[str, Any]) -> None:
+    path = Path(draft_path) / MARKER_FILE
+    merged = read_marker(draft_path)
+    merged.update(marker)
+    path.write_text(json.dumps(merged, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def strip_legacy_marker(content: Dict[str, Any]) -> bool:
+    """예전 버전이 draft_content.json 에 넣어 둔 키를 제거합니다."""
+    return content.pop(MARKER_KEY, None) is not None
 
 
 # ── 캡컷 실행 감지 (요청서 3.13) ─────────────────────────────────────────────
@@ -95,6 +131,14 @@ def verify_capcut_still_closed() -> Optional[str]:
 # ── 드래프트 폴더 / 목록 ─────────────────────────────────────────────────────
 class DraftRootMissing(RuntimeError):
     pass
+
+
+class RegistryUnreadable(RuntimeError):
+    """root_meta_info.json 을 해석하지 못했을 때.
+
+    이 파일은 캡컷의 **프로젝트 목록 정본**입니다. 읽지 못했다고 새로 만들어 덮어쓰면
+    사용자의 프로젝트 목록이 통째로 날아갑니다. 그래서 덮어쓰지 않고 중단합니다.
+    """
 
 
 def require_root() -> Path:
@@ -212,6 +256,56 @@ def list_backups(draft_name: Optional[str] = None) -> List[Dict[str, Any]]:
     return items
 
 
+def backup_registry(root: Path) -> Optional[str]:
+    """root_meta_info.json 을 건드리기 전에 따로 보관합니다.
+
+    드래프트 폴더 백업(`backup_draft`)은 드래프트 폴더만 복사하는데,
+    이 파일은 그 **부모 폴더**에 있어서 백업 대상에서 빠져 있었습니다.
+    """
+    registry_path = Path(root) / ROOT_META
+    if not registry_path.is_file():
+        return None
+    folder = BACKUP_DIR / "registry"
+    folder.mkdir(parents=True, exist_ok=True)
+    dest = folder / f"root_meta_info_{datetime.now():%Y%m%d_%H%M%S}.json"
+    counter = 1
+    while dest.exists():
+        dest = folder / f"root_meta_info_{datetime.now():%Y%m%d_%H%M%S}_{counter}.json"
+        counter += 1
+    shutil.copy2(registry_path, dest)
+    log.info("레지스트리 백업: %s (%d바이트)", dest, dest.stat().st_size)
+    return str(dest)
+
+
+def list_registry_backups() -> List[Dict[str, Any]]:
+    folder = BACKUP_DIR / "registry"
+    if not folder.is_dir():
+        return []
+    items = []
+    for child in sorted(folder.glob("root_meta_info_*.json"), reverse=True):
+        stat = child.stat()
+        items.append({
+            "path": str(child),
+            "name": child.name,
+            "size_bytes": stat.st_size,
+            "created": datetime.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d %H:%M:%S"),
+        })
+    return items
+
+
+def restore_registry(backup_path: Path, root: Path) -> Dict[str, Any]:
+    """레지스트리를 백업 시점으로 되돌립니다."""
+    ensure_capcut_closed()
+    backup_path = Path(backup_path)
+    registry_path = Path(root) / ROOT_META
+    if not backup_path.is_file():
+        raise FileNotFoundError(f"'{backup_path}' 백업 파일이 없습니다.")
+    json.loads(backup_path.read_text(encoding="utf-8"))  # 온전한지 먼저 확인
+    safety = backup_registry(root)
+    shutil.copy2(backup_path, registry_path)
+    return {"restored_from": str(backup_path), "safety_backup": safety}
+
+
 def restore_backup(backup_path: Path, draft_path: Path) -> Dict[str, Any]:
     """되돌리기. 되돌리기 전 현재 상태도 한 번 더 백업해 둡니다."""
     ensure_capcut_closed()
@@ -280,6 +374,35 @@ def _ratio_name(width: int, height: int) -> str:
     return known.get(key, "original")
 
 
+# draft_content.json 최상위에서 "이 드래프트를 만든 캡컷이 누구인지" 말해 주는 필드들.
+# pyCapCut 번들 템플릿은 app_version "6.7.0" 을 주장합니다. 검증 대상은 9.3.0.3969 라
+# 세 단계나 차이가 납니다. 추측해서 채우지 않고, 캘리브레이션 때 읽어 둔
+# **사용자의 실제 드래프트 값**을 그대로 씁니다.
+VERSION_FIELDS = ("version", "new_version", "platform", "last_modified_platform", "app_version")
+
+
+def extract_version_meta(content: Dict[str, Any]) -> Dict[str, Any]:
+    """실제 캡컷이 만든 드래프트에서 버전 관련 최상위 필드를 뽑습니다."""
+    return {key: copy.deepcopy(content[key]) for key in VERSION_FIELDS if key in content}
+
+
+def apply_reference_version(content: Dict[str, Any]) -> Dict[str, Any]:
+    """캘리브레이션으로 저장해 둔 버전 메타를 새 드래프트에 입힙니다.
+
+    저장된 값이 없으면 아무것도 하지 않습니다(번들 템플릿 값을 그대로 둡니다).
+    """
+    from ..config import load_style_profile
+
+    profile = load_style_profile() or {}
+    reference = profile.get("version_meta") or {}
+    applied: Dict[str, Any] = {}
+    for key, value in reference.items():
+        if key in VERSION_FIELDS and content.get(key) != value:
+            content[key] = copy.deepcopy(value)
+            applied[key] = value
+    return applied
+
+
 def fix_meta_paths(draft_path: Path) -> Dict[str, Any]:
     """요청서 3.11 — draft_meta_info.json의 경로는 신뢰할 수 없습니다.
 
@@ -325,13 +448,41 @@ def register_in_registry(draft_path: Path) -> Dict[str, Any]:
     root = draft_path.parent
     registry_path = root / ROOT_META
 
+    # ⚠️ 이 파일은 캡컷 프로젝트 목록의 정본입니다. 읽지 못했다고 새로 만들어
+    #    덮어쓰면 사용자의 프로젝트가 목록에서 통째로 사라집니다.
+    #    따라서 해석에 실패하면 **쓰지 않고 중단**합니다.
     registry: Dict[str, Any] = {}
+    existing_count = 0
     if registry_path.exists():
+        raw = registry_path.read_bytes()
         try:
-            registry = json.loads(registry_path.read_text(encoding="utf-8"))
-        except (OSError, json.JSONDecodeError) as exc:
-            log.warning("root_meta_info.json 을 읽지 못해 새로 만듭니다: %s", exc)
-            registry = {}
+            text = raw.decode("utf-8-sig")  # 캡컷이 BOM을 붙이는 경우 대비
+        except UnicodeDecodeError:
+            try:
+                text = raw.decode("cp949")
+            except UnicodeDecodeError as exc:
+                raise RegistryUnreadable(
+                    f"'{registry_path}' 의 인코딩을 알 수 없어 건드리지 않았습니다. "
+                    "이 파일은 캡컷 프로젝트 목록의 정본이라, 잘못 덮어쓰면 목록이 사라집니다. "
+                    f"({exc})"
+                ) from exc
+        try:
+            loaded = json.loads(text)
+        except json.JSONDecodeError as exc:
+            raise RegistryUnreadable(
+                f"'{registry_path}' 를 해석하지 못해 건드리지 않았습니다. "
+                "이 파일은 캡컷 프로젝트 목록의 정본입니다. 캡컷이 실행 중이면 완전히 종료한 뒤 "
+                f"다시 시도해 주세요. (JSON {exc.lineno}번째 줄: {exc.msg})"
+            ) from exc
+        if not isinstance(loaded, dict):
+            raise RegistryUnreadable(
+                f"'{registry_path}' 의 형식이 예상과 다릅니다(최상위가 객체가 아님). 건드리지 않았습니다."
+            )
+        registry = loaded
+        existing_count = len(registry.get("all_draft_store") or [])
+
+    # 고치기 전에 따로 보관해 둡니다.
+    registry_backup = backup_registry(root)
 
     meta = fix_meta_paths(draft_path)
     store: List[Dict[str, Any]] = list(registry.get("all_draft_store") or [])
@@ -391,8 +542,44 @@ def register_in_registry(draft_path: Path) -> Dict[str, Any]:
     tmp = registry_path.with_suffix(".json.tmp")
     tmp.write_text(json.dumps(registry, ensure_ascii=False, indent=4), encoding="utf-8")
     tmp.replace(registry_path)
-    log.info("드래프트 '%s' 를 캡컷 목록에 %s했습니다.", draft_path.name, "갱신" if replaced else "등록")
-    return {"registered": True, "updated": replaced, "draft_id": meta["draft_id"]}
+
+    # 쓴 뒤 다시 읽어 확인합니다. 기존 항목이 사라졌으면 즉시 되돌립니다.
+    try:
+        written = json.loads(registry_path.read_text(encoding="utf-8-sig"))
+        written_count = len(written.get("all_draft_store") or [])
+        found = any(
+            str(e.get("draft_fold_path", "")).lower() == str(draft_path).lower()
+            for e in written.get("all_draft_store") or []
+        )
+    except (OSError, json.JSONDecodeError) as exc:
+        written_count, found = -1, False
+        log.error("레지스트리를 다시 읽지 못했습니다: %s", exc)
+
+    expected = existing_count if replaced else existing_count + 1
+    if not found or written_count != expected:
+        if registry_backup:
+            shutil.copy2(registry_backup, registry_path)
+            raise RuntimeError(
+                f"캡컷 목록에 등록한 결과가 이상해서 되돌렸습니다 "
+                f"(기존 {existing_count}개 → 기대 {expected}개, 실제 {written_count}개). "
+                f"백업: {registry_backup}"
+            )
+        raise RuntimeError(
+            f"캡컷 목록 등록 결과가 이상합니다 (기존 {existing_count}개 → 실제 {written_count}개)."
+        )
+
+    log.info(
+        "드래프트 '%s' 를 캡컷 목록에 %s했습니다. (%d개 → %d개)",
+        draft_path.name, "갱신" if replaced else "등록", existing_count, written_count,
+    )
+    return {
+        "registered": True,
+        "updated": replaced,
+        "draft_id": meta["draft_id"],
+        "entries_before": existing_count,
+        "entries_after": written_count,
+        "registry_backup": registry_backup,
+    }
 
 
 # ── 폰트 파일 찾기 (요청서 3.6) ──────────────────────────────────────────────
@@ -644,6 +831,8 @@ def calibrate_text_style(draft_path: Path) -> CalibrationResult:
         "raw_segment": segment,
         "raw_material_field_count": len(material),
         "raw_segment_field_count": len(segment),
+        # 이 드래프트를 만든 캡컷이 주장하는 버전 정보. 새 드래프트에 그대로 씁니다.
+        "version_meta": extract_version_meta(content),
     }
 
     log.info(
@@ -922,7 +1111,7 @@ def inspect_draft(draft_path: Path) -> Dict[str, Any]:
         "text_segment_count": text_count,
         "transition_count": len(transition_ids),
         "photo_material_count": len(photo_clips),
-        "marker": content.get(MARKER_KEY),
+        "marker": read_marker(draft_path),
         "problems": problems,
     }
 
@@ -938,9 +1127,12 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
 
     layer_fixes = fix_track_render_index(content)
     ratio_fixed = fix_canvas_ratio(content)
-    if marker is not None:
-        content[MARKER_KEY] = marker
+    legacy_removed = strip_legacy_marker(content)
+    version_applied = apply_reference_version(content)
     write_content(draft_path, content)
+
+    if marker is not None:
+        write_marker(draft_path, marker)
 
     meta = fix_meta_paths(draft_path)
     registry = register_in_registry(draft_path)
@@ -949,6 +1141,8 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
     return {
         "layer_fixes": layer_fixes,
         "ratio_fixed": ratio_fixed,
+        "legacy_marker_removed": legacy_removed,
+        "version_applied": version_applied,
         "meta": meta,
         "registry": registry,
         "verified": verified,

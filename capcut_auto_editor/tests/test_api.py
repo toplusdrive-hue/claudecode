@@ -194,3 +194,17 @@ def test_media_tools_rejects_empty_path():
     res = client.post("/api/setup/media-tools", json={"path": "  "})
     assert res.status_code == 400
     assert "경로를 입력해" in res.json()["detail"]["message"]
+
+
+def test_registry_backup_endpoints_exist():
+    res = client.get("/api/registry-backups")
+    assert res.status_code == 200
+    body = res.json()
+    assert isinstance(body["backups"], list)
+    assert "프로젝트 목록" in body["note"]
+
+
+def test_registry_restore_requires_a_backup():
+    res = client.post("/api/registry-restore", json={})
+    assert res.status_code == 400
+    assert "백업을 골라" in str(res.json()["detail"])

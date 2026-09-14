@@ -99,8 +99,12 @@ def test_build_cut_draft_end_to_end(draft_root, timeline, clips):
     for index, track in enumerate(content["tracks"]):
         for segment in track["segments"]:
             assert segment["track_render_index"] == index
-    # 3.18 — 컷 서명 기록
-    marker = content[cd.MARKER_KEY]
+    # 3.18 — 컷 서명 기록. 단, draft_content.json 안이 아니라 별도 파일에 남깁니다.
+    assert cd.MARKER_KEY not in content, (
+        "캡컷이 파싱하는 파일에 우리 키를 넣으면 안 됩니다. 드래프트를 열 때 문제가 될 수 있습니다."
+    )
+    assert (path / cd.MARKER_FILE).is_file()
+    marker = cd.read_marker(path)
     assert marker["cut_signature"] == cut_map.signature()
     # 3.11 — 메타 경로
     meta = json.loads((path / "draft_meta_info.json").read_text(encoding="utf-8"))

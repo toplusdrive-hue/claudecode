@@ -296,3 +296,169 @@ def test_manual_profile_rejects_background_style_zero():
     result = cd.manual_style_profile({"background_style": 0})
     assert result.profile["background"]["style"] == 1
     assert any("background_style" in w for w in result.warnings)
+
+
+# ── 캡컷이 파싱하는 파일을 오염시키지 않기 ────────────────────────────────
+def test_marker_lives_outside_draft_content(tmp_path):
+    """draft_content.json 은 캡컷이 파싱하는 파일입니다.
+
+    캡컷에 없는 최상위 키를 넣으면 드래프트를 열 때 문제가 될 수 있으므로
+    우리 표식은 별도 파일에 둡니다.
+    """
+    path = make_draft(tmp_path)
+    cd.finalize_draft(path, marker={"session_id": "s1", "cut_signature": {"span_count": 3}})
+
+    content = cd.read_content(path)
+    assert cd.MARKER_KEY not in content
+    assert (path / cd.MARKER_FILE).is_file()
+
+    marker = cd.read_marker(path)
+    assert marker["session_id"] == "s1"
+    assert marker["cut_signature"]["span_count"] == 3
+
+
+def test_legacy_marker_inside_content_is_removed(tmp_path):
+    """예전 버전이 넣어 둔 키는 다음 저장 때 걷어냅니다."""
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    content[cd.MARKER_KEY] = {"session_id": "old", "cut_signature": {"span_count": 1}}
+    cd.write_content(path, content)
+
+    # 사이드카가 없어도 예전 값을 읽어 줍니다
+    assert cd.read_marker(path)["session_id"] == "old"
+
+    result = cd.finalize_draft(path)
+    assert result["legacy_marker_removed"] is True
+    assert cd.MARKER_KEY not in cd.read_content(path)
+
+
+def test_marker_updates_merge(tmp_path):
+    path = make_draft(tmp_path)
+    cd.write_marker(path, {"session_id": "s1", "cut_signature": {"span_count": 2}})
+    cd.write_marker(path, {"subtitle_count": 5})
+    marker = cd.read_marker(path)
+    assert marker["session_id"] == "s1"
+    assert marker["subtitle_count"] == 5
+
+
+# ── 캡컷 버전 메타 ────────────────────────────────────────────────────────
+def test_calibration_captures_version_meta(tmp_path):
+    """번들 템플릿은 app_version 6.7.0 을 주장합니다. 실물 값을 가져와야 합니다."""
+    path = make_capcut_style_draft(tmp_path)
+    content = cd.read_content(path)
+    content["version"] = 360000
+    content["new_version"] = "63.0.0"
+    content["platform"] = {"app_id": 359289, "app_source": "cc", "app_version": "9.3.0", "os": "windows"}
+    cd.write_content(path, content)
+
+    profile = cd.calibrate_text_style(path).profile
+    meta = profile["version_meta"]
+    assert meta["platform"]["app_version"] == "9.3.0"
+    assert meta["new_version"] == "63.0.0"
+    assert meta["version"] == 360000
+
+
+def test_finalize_applies_reference_version(tmp_path, monkeypatch):
+    from app import config
+
+    monkeypatch.setattr(
+        config, "load_style_profile",
+        lambda: {"version_meta": {
+            "platform": {"app_id": 359289, "app_source": "cc", "app_version": "9.3.0", "os": "windows"},
+            "new_version": "63.0.0",
+        }},
+    )
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    content["platform"] = {"app_version": "6.7.0"}  # pyCapCut 번들 값
+    cd.write_content(path, content)
+
+    result = cd.finalize_draft(path)
+    assert result["version_applied"]["platform"]["app_version"] == "9.3.0"
+    assert cd.read_content(path)["platform"]["app_version"] == "9.3.0"
+    assert cd.read_content(path)["new_version"] == "63.0.0"
+
+
+def test_finalize_without_profile_leaves_version_alone(tmp_path, monkeypatch):
+    from app import config
+
+    monkeypatch.setattr(config, "load_style_profile", lambda: None)
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    content["platform"] = {"app_version": "6.7.0"}
+    cd.write_content(path, content)
+
+    result = cd.finalize_draft(path)
+    assert result["version_applied"] == {}
+    assert cd.read_content(path)["platform"]["app_version"] == "6.7.0"
+
+
+# ── 레지스트리 안전장치 ──────────────────────────────────────────────────
+def test_registry_is_never_clobbered_when_unreadable(tmp_path, monkeypatch):
+    """⚠️ root_meta_info.json 은 캡컷 프로젝트 목록의 정본입니다.
+
+    읽지 못했다고 새로 만들어 덮어쓰면 사용자의 프로젝트가 통째로 사라집니다.
+    """
+    monkeypatch.setattr(cd, "BACKUP_DIR", tmp_path / "backups")
+    (tmp_path / "backups").mkdir()
+    path = make_draft(tmp_path)
+    registry = tmp_path / "root_meta_info.json"
+    broken = '{"all_draft_store": [{"draft_name": "중요한프로젝트"'  # 잘린 JSON
+    registry.write_text(broken, encoding="utf-8")
+
+    with pytest.raises(cd.RegistryUnreadable, match="해석하지 못해"):
+        cd.register_in_registry(path)
+
+    # 원본이 그대로 남아 있어야 합니다
+    assert registry.read_text(encoding="utf-8") == broken
+
+
+def test_registry_backup_is_taken_before_writing(tmp_path, monkeypatch):
+    monkeypatch.setattr(cd, "BACKUP_DIR", tmp_path / "backups")
+    (tmp_path / "backups").mkdir()
+    path = make_draft(tmp_path)
+    registry = tmp_path / "root_meta_info.json"
+    registry.write_text(
+        json.dumps({"all_draft_store": [{"draft_fold_path": "C:/기존", "draft_name": "기존"}]}),
+        encoding="utf-8",
+    )
+
+    result = cd.register_in_registry(path)
+    assert result["entries_before"] == 1
+    assert result["entries_after"] == 2
+    backup = Path(result["registry_backup"])
+    assert backup.is_file()
+    # 백업에는 등록 전 상태가 들어 있어야 합니다
+    assert len(json.loads(backup.read_text(encoding="utf-8"))["all_draft_store"]) == 1
+    # 기존 항목이 살아 있어야 합니다
+    written = json.loads(registry.read_text(encoding="utf-8"))
+    assert any(e["draft_name"] == "기존" for e in written["all_draft_store"])
+
+
+def test_registry_handles_bom(tmp_path, monkeypatch):
+    monkeypatch.setattr(cd, "BACKUP_DIR", tmp_path / "backups")
+    (tmp_path / "backups").mkdir()
+    path = make_draft(tmp_path)
+    registry = tmp_path / "root_meta_info.json"
+    registry.write_bytes(
+        b"\xef\xbb\xbf" + json.dumps({"all_draft_store": []}).encode("utf-8")
+    )
+    result = cd.register_in_registry(path)
+    assert result["entries_after"] == 1
+
+
+def test_restore_registry_roundtrip(tmp_path, monkeypatch):
+    monkeypatch.setattr(cd, "BACKUP_DIR", tmp_path / "backups")
+    (tmp_path / "backups").mkdir()
+    path = make_draft(tmp_path)
+    registry = tmp_path / "root_meta_info.json"
+    original = {"all_draft_store": [{"draft_fold_path": "C:/기존", "draft_name": "기존"}]}
+    registry.write_text(json.dumps(original), encoding="utf-8")
+
+    result = cd.register_in_registry(path)
+    assert len(json.loads(registry.read_text(encoding="utf-8"))["all_draft_store"]) == 2
+
+    cd.restore_registry(Path(result["registry_backup"]), tmp_path)
+    restored = json.loads(registry.read_text(encoding="utf-8"))
+    assert len(restored["all_draft_store"]) == 1
+    assert restored["all_draft_store"][0]["draft_name"] == "기존"

@@ -143,6 +143,31 @@ def restore(session_id: str, payload: Dict[str, Any] = Body(...)) -> Dict[str, A
     return {"ok": True, **result, "verified": capcut_draft.inspect_draft(Path(draft_path))}
 
 
+@router.get("/registry-backups")
+def registry_backups() -> Dict[str, Any]:
+    """캡컷 프로젝트 목록(root_meta_info.json)의 백업 목록."""
+    return {
+        "backups": capcut_draft.list_registry_backups(),
+        "note": (
+            "이 파일은 캡컷 프로젝트 목록의 정본입니다. 도구가 목록에 드래프트를 등록하기 전마다 "
+            "따로 보관해 둡니다. 캡컷 목록이 이상해졌다면 등록 직전 시점으로 되돌릴 수 있습니다."
+        ),
+    }
+
+
+@router.post("/registry-restore")
+def registry_restore(payload: Dict[str, Any] = Body(...)) -> Dict[str, Any]:
+    backup_path = str(payload.get("backup_path") or "")
+    if not backup_path:
+        raise HTTPException(status_code=400, detail={"message": "되돌릴 백업을 골라 주세요."})
+    try:
+        root = capcut_draft.require_root()
+        result = capcut_draft.restore_registry(Path(backup_path), root)
+    except Exception as exc:
+        raise friendly_error(exc) from exc
+    return {"ok": True, **result}
+
+
 @router.get("/sessions/{session_id}/draft-check")
 def draft_check(session_id: str) -> Dict[str, Any]:
     """드래프트를 다시 읽어 실제 상태를 확인합니다 (요청서 7절 — 적용 후 검증)."""
