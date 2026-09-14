@@ -1,0 +1,660 @@
+{
+  "date": "2026-09-14",
+  "meta": {
+    "keywords_total": 9,
+    "keywords_main": [
+      "영어",
+      "영어회화",
+      "영어 공부법",
+      "영어 스피킹"
+    ],
+    "keywords_sub": [
+      "영어 듣기",
+      "영어 발음",
+      "영어 독학",
+      "원어민 표현",
+      "영어 문법"
+    ],
+    "temp_keywords": [],
+    "api_calls_used": 40,
+    "api_call_budget": 40,
+    "quota_exceeded": false,
+    "collection_scope_note": "comment collection reduced from per-keyword(top10 views + top5 recent) to global top-10-by-views due to 40-call budget",
+    "raw_videos_fetched": 329,
+    "excluded_short": 139,
+    "excluded_word": 1,
+    "excluded_lowview": 5,
+    "filtered_videos": 184,
+    "our_channel_comparison": "skipped (OUR_CHANNEL_ID not set)",
+    "previous_briefing_compared": "briefings/2026-09-02.md (different methodology, direct rank comparison not possible)"
+  },
+  "keyword_stats": {
+    "영어": {
+      "tier": "main",
+      "count": 27,
+      "total_views": 19882146,
+      "median_views": 20227,
+      "top3_channel_share_pct": 60.0,
+      "top_channels": [
+        [
+          "두부우",
+          5092879
+        ],
+        [
+          "Princy Parikh",
+          4399593
+        ],
+        [
+          "Rosie",
+          2438530
+        ],
+        [
+          "여기야",
+          2276064
+        ],
+        [
+          "Ann Russell",
+          1755957
+        ]
+      ]
+    },
+    "영어회화": {
+      "tier": "main",
+      "count": 31,
+      "total_views": 3860326,
+      "median_views": 22789,
+      "top3_channel_share_pct": 81.6,
+      "top_channels": [
+        [
+          "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+          1238889
+        ],
+        [
+          "코믹한영어",
+          1124602
+        ],
+        [
+          "잉글리스트",
+          787748
+        ],
+        [
+          "주아쌤_소리튠영어",
+          210166
+        ],
+        [
+          "칩스영어",
+          123754
+        ]
+      ]
+    },
+    "영어 공부법": {
+      "tier": "main",
+      "count": 33,
+      "total_views": 2444558,
+      "median_views": 40178,
+      "top3_channel_share_pct": 53.7,
+      "top_channels": [
+        [
+          "주아쌤_소리튠영어",
+          637650
+        ],
+        [
+          "영어는V김지영",
+          344266
+        ],
+        [
+          "만다블_국내파통역사의 영어공부법",
+          331145
+        ],
+        [
+          "윤석종",
+          189377
+        ],
+        [
+          "제나쌤 | 영어독학",
+          185812
+        ]
+      ]
+    },
+    "영어 스피킹": {
+      "tier": "main",
+      "count": 33,
+      "total_views": 1646307,
+      "median_views": 25382,
+      "top3_channel_share_pct": 56.8,
+      "top_channels": [
+        [
+          "주아쌤_소리튠영어",
+          615310
+        ],
+        [
+          "제나쌤 | 영어독학",
+          185812
+        ],
+        [
+          "선샤인스쿨 - 영어 중국어 Sunshine School",
+          134221
+        ],
+        [
+          "영어식 사고ㅣ러너블 티처 케일라 & 아멜리아",
+          94479
+        ],
+        [
+          "쏘로그 | Tholog",
+          81468
+        ]
+      ]
+    },
+    "영어 듣기": {
+      "tier": "sub",
+      "count": 33,
+      "total_views": 1351247,
+      "median_views": 18875,
+      "top3_channel_share_pct": 53.7,
+      "top_channels": [
+        [
+          "주아쌤_소리튠영어",
+          319770
+        ],
+        [
+          "에스텔잉글리쉬EstellEnglish",
+          205775
+        ],
+        [
+          "월트영어 WALT",
+          200236
+        ],
+        [
+          "영어 루틴 쌤",
+          101994
+        ],
+        [
+          "듣고배우는영어",
+          101018
+        ]
+      ]
+    },
+    "영어 발음": {
+      "tier": "sub",
+      "count": 12,
+      "total_views": 3089201,
+      "median_views": 124396.5,
+      "top3_channel_share_pct": 81.2,
+      "top_channels": [
+        [
+          "짭쌀떡",
+          1552152
+        ],
+        [
+          "웰고티비",
+          487563
+        ],
+        [
+          "잉글리스트",
+          468429
+        ],
+        [
+          "어썸코리아 클립",
+          152596
+        ],
+        [
+          "𝗣𝘂𝗻𝗰𝗵𝗹𝗶𝗻𝗲 𝗘𝗻𝗴𝗹𝗶𝘀𝗵",
+          148968
+        ]
+      ]
+    },
+    "영어 독학": {
+      "tier": "sub",
+      "count": 32,
+      "total_views": 4806289,
+      "median_views": 31076.5,
+      "top3_channel_share_pct": 84.8,
+      "top_channels": [
+        [
+          "4800만",
+          3223228
+        ],
+        [
+          "주아쌤_소리튠영어",
+          550633
+        ],
+        [
+          "만다블_국내파통역사의 영어공부법",
+          299788
+        ],
+        [
+          "제나쌤 | 영어독학",
+          185812
+        ],
+        [
+          "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+          114419
+        ]
+      ]
+    },
+    "원어민 표현": {
+      "tier": "sub",
+      "count": 16,
+      "total_views": 301783,
+      "median_views": 6779.0,
+      "top3_channel_share_pct": 66.0,
+      "top_channels": [
+        [
+          "캘리쌤 브이로그 영어",
+          95916
+        ],
+        [
+          "칩스영어",
+          63525
+        ],
+        [
+          "구슬쌤",
+          39875
+        ],
+        [
+          "매일영어Study English",
+          32436
+        ],
+        [
+          "돈돈일본어 ",
+          29557
+        ]
+      ]
+    },
+    "영어 문법": {
+      "tier": "sub",
+      "count": 24,
+      "total_views": 704274,
+      "median_views": 10572.5,
+      "top3_channel_share_pct": 76.7,
+      "top_channels": [
+        [
+          "주아쌤_소리튠영어",
+          345943
+        ],
+        [
+          "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+          148373
+        ],
+        [
+          "김원장's [골라줄게 영어책]",
+          46154
+        ],
+        [
+          "영어 키위새",
+          44354
+        ],
+        [
+          "친절한 대학",
+          43836
+        ]
+      ]
+    }
+  },
+  "duration_bucket_stats": {
+    "4~10min": {
+      "count": 26,
+      "avg_views": 25661.6,
+      "avg_engagement_pct": 2.172
+    },
+    "1~4min": {
+      "count": 38,
+      "avg_views": 707332.1,
+      "avg_engagement_pct": 2.012
+    },
+    "20min+": {
+      "count": 73,
+      "avg_views": 55453.0,
+      "avg_engagement_pct": 1.799
+    },
+    "10~20min": {
+      "count": 47,
+      "avg_views": 50021.9,
+      "avg_engagement_pct": 1.733
+    }
+  },
+  "freshness_stats": {
+    "8~30일": {
+      "count": 113,
+      "avg_views": 281073.9
+    },
+    "7일이내": {
+      "count": 71,
+      "avg_views": 30754.6
+    }
+  },
+  "top_tags": [
+    [
+      "영어회화",
+      85
+    ],
+    [
+      "영어공부",
+      75
+    ],
+    [
+      "영어",
+      54
+    ],
+    [
+      "기초영어",
+      40
+    ],
+    [
+      "영어독학",
+      35
+    ],
+    [
+      "영어듣기",
+      33
+    ],
+    [
+      "영어공부혼자하기",
+      26
+    ],
+    [
+      "왕초보영어",
+      26
+    ],
+    [
+      "영어문장",
+      24
+    ],
+    [
+      "생활영어",
+      23
+    ],
+    [
+      "영어발음",
+      23
+    ],
+    [
+      "영어쉐도잉",
+      22
+    ],
+    [
+      "영어공부법",
+      20
+    ],
+    [
+      "영어스피킹",
+      20
+    ],
+    [
+      "영단어",
+      20
+    ]
+  ],
+  "emerging_channels": [
+    {
+      "channel": "캐나다형",
+      "subscribers": 1770,
+      "channel_ratio": 34.46,
+      "example": "영어 공부 다시 시작한다면 이 3권만 죽어라 볼겁니다"
+    },
+    {
+      "channel": "공부가 뭐길래 꼭쌤",
+      "subscribers": 17,
+      "channel_ratio": 18.88,
+      "example": "학원 없이도 상위권 가는 영어 공부법",
+      "note": "구독자 수 극소 — 데이터 재확인 필요"
+    },
+    {
+      "channel": "칩스영어",
+      "subscribers": 6840,
+      "channel_ratio": 18.09,
+      "example": "스몰토크 영어 표현 100개 | 영화·미드 500장면"
+    },
+    {
+      "channel": "쏘로그 | Tholog",
+      "subscribers": 5130,
+      "channel_ratio": 15.88,
+      "example": "영어로 길게 말하기, 이 책으로 했어요"
+    },
+    {
+      "channel": "Starting Today",
+      "subscribers": 3520,
+      "channel_ratio": 14.26,
+      "example": "장보기 전화 통화, 영어로 듣기"
+    }
+  ],
+  "monopoly_topics": [
+    "영어",
+    "영어회화",
+    "영어 공부법",
+    "영어 스피킹",
+    "영어 듣기",
+    "영어 발음",
+    "영어 독학",
+    "원어민 표현",
+    "영어 문법"
+  ],
+  "low_competition_sub_keywords": [],
+  "top20_videos": [
+    {
+      "rank": 1,
+      "title": "어른도 모르는 어려운 영어단어를 사용하는 하영이? #내아이의사생활 #02hby",
+      "channel": "두부우",
+      "views": 5092879,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 1.06,
+      "channel_ratio": 32.03,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 2,
+      "title": "Gujju Obsession with English Names | Princy Parikh #name #gujarati #gujarat #girl #baby #relatable",
+      "channel": "Princy Parikh",
+      "views": 4399593,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 2.916,
+      "channel_ratio": 1.18,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 3,
+      "title": "\"영어 나올 줄 알았는데?\" 할리우드 홍보장에서 완벽한 한국어 뱉어 외신 기자들 싹 다 얼게 만든 12살 독학 배우의 정체",
+      "channel": "4800만",
+      "views": 3223228,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 0.959,
+      "channel_ratio": 116.78,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 4,
+      "title": "Jisoo’s English moments😭✨#jisoo #jisoenglish #blackpink #kimjisoo #misskorea#blackpinkinyourarea#kim",
+      "channel": "Rosie",
+      "views": 2438530,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 3.582,
+      "channel_ratio": 376.32,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 5,
+      "title": "영어 답변 기다리던 외신 기자들 앞에서 한국어 쏟아낸 미국 배우가 충격적인 이유",
+      "channel": "여기야",
+      "views": 2276064,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 1.354,
+      "channel_ratio": 41.84,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 6,
+      "title": "American English is objectively better #language #uk",
+      "channel": "Ann Russell",
+      "views": 1755957,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 5.081,
+      "channel_ratio": 6.29,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 7,
+      "title": "미국 유학파 일본 군인이 영어가 안 늘었던 이유",
+      "channel": "영고찌",
+      "views": 1705557,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 0.608,
+      "channel_ratio": 168.87,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 8,
+      "title": "미치도록 웃기는 본토 발음 실수 모음집",
+      "channel": "짭쌀떡",
+      "views": 1552152,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 2.828,
+      "channel_ratio": 17.8,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 9,
+      "title": "Restaurant English: How to Make a Reservation",
+      "channel": "Jon Peng English",
+      "views": 1523207,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 1.331,
+      "channel_ratio": 1.32,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 10,
+      "title": "화려한 옷을 입은 그녀의 오싹한 직업? #standupcomedy #standupcomedian #영어회화 #comedy",
+      "channel": "코믹한영어",
+      "views": 911558,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 2.282,
+      "channel_ratio": 5.01,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 11,
+      "title": "이것만 죽어라 외우세요 l 세상 모든 해외여행 영어 문장 80%가 해결되는 앞대가리 공식 10개 5탄",
+      "channel": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "views": 886781,
+      "duration_bucket": "20min+",
+      "freshness": "8~30일",
+      "engagement_pct": 0.528,
+      "channel_ratio": 1.59,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 12,
+      "title": "대화중에 남친 몰래 영어 발음게임해보깈ㅋㅋㅋㅋ",
+      "channel": "웰고티비",
+      "views": 487563,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 0.976,
+      "channel_ratio": 40.97,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 13,
+      "title": "have been 1분 완벽정리  #영어회화 #영어공부 #기초영어",
+      "channel": "잉글리스트",
+      "views": 468429,
+      "duration_bucket": "1~4min",
+      "freshness": "8~30일",
+      "engagement_pct": 2.166,
+      "channel_ratio": 1.24,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 14,
+      "title": "영어가 늘기 시작한 건 이 방법을 알고부터였습니다",
+      "channel": "영어는V김지영",
+      "views": 344266,
+      "duration_bucket": "10~20min",
+      "freshness": "8~30일",
+      "engagement_pct": 2.538,
+      "channel_ratio": 2.89,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 15,
+      "title": "평범한 나를 통역사로 만들어 준 단 1권의 영어독학책 | 국내파통역사의 효율10배 올리는 영어공부법 | 국내파통역사의 인생역전 아웃풋 영어공부법",
+      "channel": "만다블_국내파통역사의 영어공부법",
+      "views": 299788,
+      "duration_bucket": "20min+",
+      "freshness": "8~30일",
+      "engagement_pct": 0.811,
+      "channel_ratio": 8.47,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 16,
+      "title": "\"I'm not big on~\" 1초 만에 해석 안 되면 꼭 보세요! | 원어민들이 정말 자주 쓰는 회화 5개",
+      "channel": "주아쌤_소리튠영어",
+      "views": 252194,
+      "duration_bucket": "20min+",
+      "freshness": "7일이내",
+      "engagement_pct": 0.565,
+      "channel_ratio": 0.29,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 17,
+      "title": "기초영어는 이 한편으로 끝난다고 보시면 됩니다. 틀어두고 주구장창 들으세요~!",
+      "channel": "잉글리스트",
+      "views": 235760,
+      "duration_bucket": "10~20min",
+      "freshness": "7일이내",
+      "engagement_pct": 1.283,
+      "channel_ratio": 0.62,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 18,
+      "title": "룸메 월세 함부로 올리면 안되는 이유? #standupcomedy #standupcomedian #영어회화 #lucydarling",
+      "channel": "코믹한영어",
+      "views": 213044,
+      "duration_bucket": "1~4min",
+      "freshness": "7일이내",
+      "engagement_pct": 2.11,
+      "channel_ratio": 1.17,
+      "is_pop_culture_noise": true
+    },
+    {
+      "rank": 19,
+      "title": "[페파피그 리스닝] 소리카피(발음 집중)➕문장카피(의미 집중)🟰무자막 영어 듣기 가능 훈련",
+      "channel": "에스텔잉글리쉬EstellEnglish",
+      "views": 205775,
+      "duration_bucket": "10~20min",
+      "freshness": "8~30일",
+      "engagement_pct": 1.026,
+      "channel_ratio": 0.3,
+      "is_pop_culture_noise": false
+    },
+    {
+      "rank": 20,
+      "title": "랜들 박의 자존감 셀프 충전법 #영어듣기 #영어연설",
+      "channel": "월트영어 WALT",
+      "views": 200236,
+      "duration_bucket": "1~4min",
+      "freshness": "7일이내",
+      "engagement_pct": 1.183,
+      "channel_ratio": 6.09,
+      "is_pop_culture_noise": false
+    }
+  ],
+  "key_points": [
+    "팝컬처 바이럴 클립(상위20 중 약 절반)과 학습 콘텐츠를 구분해서 벤치마크할 것 — 키워드 '영어' 중앙값 20,227회 vs 최상위 클립 5,092,879회(251배 차)",
+    "9개 키워드 전부 상위3채널 점유율 53.7~84.8%로 과점 — 신흥 채널(캐나다형 34.5배, Starting Today 14.3배 등)은 좁은 소재로 틈새 공략",
+    "20분+ 참여율 1.80% < 4~10분 참여율 2.17% — 압축형 포맷 + 자가진단/원어민표현 콕집기/인물스토리텔링 각도 시도 근거"
+  ]
+}
