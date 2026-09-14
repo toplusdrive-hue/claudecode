@@ -31,23 +31,47 @@ class MediaToolMissing(RuntimeError):
     pass
 
 
+def _missing_message(name: str) -> str:
+    """무엇이 왜 없고 무엇을 하면 되는지 한 번에 알려 줍니다 (요청서 5절).
+
+    ffmpeg과 ffprobe는 같은 zip에 들어 있으므로 하나가 없으면 보통 둘 다 없습니다.
+    한쪽만 찾은 경우에는 그 사실도 같이 알려야 사용자가 헤매지 않습니다.
+
+    (영문 이름 뒤에는 한글 조사를 붙이지 않습니다. "ffprobe을(를)"처럼 보입니다.)
+    """
+    from ..config import ffmpeg_path, ffprobe_path
+
+    other = "ffprobe" if name == "ffmpeg" else "ffmpeg"
+    other_path = ffprobe_path() if other == "ffprobe" else ffmpeg_path()
+
+    lines = [f"{name} 실행 파일을 찾을 수 없습니다."]
+    if other_path:
+        lines.append(
+            f"{other} 쪽은 '{other_path}' 에서 찾았는데 같은 폴더에 {name} 파일이 없습니다. "
+            "압축을 풀 때 일부만 복사되지 않았는지 확인해 주세요."
+        )
+    else:
+        lines.append(f"{other} 쪽도 찾지 못했습니다. 둘 다 같은 zip에 들어 있습니다.")
+    lines.append(
+        "gyan.dev/ffmpeg/builds 에서 essentials 빌드를 받아 압축을 푼 뒤, "
+        "0차 화면의 'ffmpeg 폴더를 직접 지정' 칸에 그 폴더를 넣어 주세요. "
+        "압축을 풀면 ffmpeg-9.x-essentials_build 같은 폴더가 한 겹 더 생기는데, "
+        "바깥 폴더를 골라도 안쪽 bin 폴더를 찾아냅니다."
+    )
+    return " ".join(lines)
+
+
 def require_ffmpeg() -> str:
     path = ffmpeg_path()
     if not path:
-        raise MediaToolMissing(
-            "ffmpeg을 찾을 수 없습니다. `winget install Gyan.FFmpeg` 로 설치한 뒤 "
-            "터미널을 새로 열거나, 설정에서 ffmpeg.exe 경로를 직접 지정해 주세요."
-        )
+        raise MediaToolMissing(_missing_message("ffmpeg"))
     return path
 
 
 def require_ffprobe() -> str:
     path = ffprobe_path()
     if not path:
-        raise MediaToolMissing(
-            "ffprobe를 찾을 수 없습니다. ffmpeg과 같은 폴더에 있습니다. "
-            "`winget install Gyan.FFmpeg` 로 설치하거나 설정에서 경로를 지정해 주세요."
-        )
+        raise MediaToolMissing(_missing_message("ffprobe"))
     return path
 
 

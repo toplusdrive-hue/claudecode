@@ -99,3 +99,29 @@ def test_expand_tool_dirs_does_not_recurse_forever(tmp_path):
 
 def test_expand_tool_dirs_on_missing_path():
     assert config.expand_tool_dirs(Path("/이런-경로는-없습니다")) == []
+
+
+def test_configured_file_must_match_requested_name(tmp_path, no_path_lookup):
+    """ffprobe 설정에 ffmpeg.exe 경로가 들어가도 엉뚱한 실행 파일을 돌려주면 안 됩니다.
+
+    조용히 잘못된 바이너리를 쓰면 그 뒤의 오류는 원인을 알 수 없게 됩니다.
+    """
+    bin_dir = tmp_path / "bin"
+    bin_dir.mkdir()
+    (bin_dir / "ffmpeg.exe").write_bytes(b"MZ")
+
+    wrong = bin_dir / "ffmpeg.exe"
+    assert config._find_binary("ffprobe", str(wrong)) is None
+    # 이름이 맞으면 그대로 돌려줍니다
+    assert config._find_binary("ffmpeg", str(wrong)) == str(wrong)
+
+
+def test_configured_file_falls_back_to_its_folder(tmp_path, no_path_lookup):
+    """ffmpeg.exe 를 지정했더라도 같은 폴더의 ffprobe.exe 는 찾아야 합니다."""
+    bin_dir = tmp_path / "bin"
+    bin_dir.mkdir()
+    (bin_dir / "ffmpeg.exe").write_bytes(b"MZ")
+    (bin_dir / "ffprobe.exe").write_bytes(b"MZ")
+
+    found = config._find_binary("ffprobe", str(bin_dir / "ffmpeg.exe"))
+    assert found is not None and found.endswith("ffprobe.exe")

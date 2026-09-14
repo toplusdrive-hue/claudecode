@@ -121,5 +121,40 @@ def test_concat_wavs_joins_in_order(speech_wav, tmp_path):
 
 def test_missing_ffprobe_gives_install_guidance(monkeypatch):
     monkeypatch.setattr(aa, "ffprobe_path", lambda: None)
-    with pytest.raises(aa.MediaToolMissing, match="winget install Gyan.FFmpeg"):
+    with pytest.raises(aa.MediaToolMissing) as exc:
         aa.require_ffprobe()
+    message = str(exc.value)
+    # 무엇이 / 왜 / 무엇을 하면 되는지 세 가지가 모두 있어야 합니다
+    assert "ffprobe 실행 파일을 찾을 수 없습니다" in message
+    assert "같은 zip" in message or "같은 폴더" in message
+    assert "0차 화면" in message
+
+
+# ── 없을 때의 안내 문구 ──────────────────────────────────────────────────
+@pytest.mark.skipif(False, reason="ffmpeg 유무와 무관하게 문구만 검사합니다")
+def test_missing_message_reports_both_tools(monkeypatch):
+    """한쪽만 찾은 경우와 둘 다 없는 경우를 구분해 알려야 합니다."""
+    from app import config
+
+    monkeypatch.setattr(config, "ffmpeg_path", lambda: r"C:\ffmpeg\bin\ffmpeg.exe")
+    monkeypatch.setattr(config, "ffprobe_path", lambda: None)
+    message = aa._missing_message("ffprobe")
+    assert "ffprobe 실행 파일을 찾을 수 없습니다" in message
+    assert r"C:\ffmpeg\bin\ffmpeg.exe" in message
+    assert "0차 화면" in message
+
+    monkeypatch.setattr(config, "ffmpeg_path", lambda: None)
+    both = aa._missing_message("ffprobe")
+    assert "둘 다 같은 zip" in both
+
+
+def test_missing_message_avoids_particle_placeholders(monkeypatch):
+    """영문 이름 뒤에 '을(를)' 같은 표기가 나오면 안 됩니다."""
+    from app import config
+
+    monkeypatch.setattr(config, "ffmpeg_path", lambda: None)
+    monkeypatch.setattr(config, "ffprobe_path", lambda: None)
+    for name in ("ffmpeg", "ffprobe"):
+        message = aa._missing_message(name)
+        for placeholder in ("을(를)", "이(가)", "은(는)", "과(와)"):
+            assert placeholder not in message, f"{name}: {placeholder} 가 들어 있습니다"

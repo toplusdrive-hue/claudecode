@@ -294,7 +294,12 @@ def _find_binary(name: str, configured: str) -> Optional[str]:
     if configured:
         target = Path(configured)
         if target.is_file():
-            return str(target)
+            # 파일을 직접 지정했더라도 **이름이 맞는지** 확인합니다.
+            # ffprobe 설정에 ffmpeg.exe 경로가 들어가면 엉뚱한 실행 파일을
+            # 조용히 돌려주게 되고, 그 뒤의 오류는 원인을 알 수 없게 됩니다.
+            if target.stem.lower() == name.lower():
+                return str(target)
+            target = target.parent
         for folder in expand_tool_dirs(target):
             found = _lookup_in(folder, name)
             if found:

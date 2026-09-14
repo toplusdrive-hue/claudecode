@@ -177,7 +177,7 @@ NVIDIA GPU가 없으면 CPU로 돕니다(Intel Arc는 CTranslate2 미지원). �
   양쪽에, 소재 필드 31개(pyCapCut 기본 15개), 캡컷 원본 필드 보존을 확인했습니다.
 - 컷 서명 불일치 시 자막 주입이 실제로 차단됩니다.
 - 세로 드래프트의 `canvas_config.ratio`가 `"9:16"`으로 교정됩니다.
-- 자동 테스트 113개가 통과합니다 (`py -3.11 -m pytest tests -q`).
+- 자동 테스트 117개가 통과합니다 (`py -3.11 -m pytest tests -q`).
 
 ---
 
