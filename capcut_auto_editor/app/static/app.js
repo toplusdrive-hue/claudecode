@@ -305,6 +305,54 @@ function viewStage0() {
         [`드래프트를 건드리는 작업은 캡컷을 완전히 종료해야 합니다. 캡컷은 프로젝트를 메모리에 들고 있다가 저장할 때 파일을 통째로 덮어씁니다. (감지된 프로세스 ${env.capcut.process_count}개)`]));
     }
     if (env.whisper.notice) card.appendChild(banner('info', '음성 인식 모델 안내', [env.whisper.notice]));
+
+    if (!env.ffmpeg || !env.ffprobe) {
+      const input = h('input', { type: 'text', placeholder: 'C:\\ffmpeg\\bin' });
+      const result = h('div', {});
+      card.appendChild(h('div', { class: 'banner warn' },
+        h('strong', {}, 'ffmpeg 폴더를 직접 지정'),
+        h('div', { class: 'faint', style: 'margin-bottom:var(--sp-2)' },
+          'ffmpeg.exe 와 ffprobe.exe 가 함께 들어 있는 bin 폴더 경로를 넣어 주세요. ' +
+          '설치하지 않았다면 gyan.dev/ffmpeg/builds 에서 essentials 빌드를 받아 압축을 푸십시오.'),
+        input,
+        h('div', { class: 'btn-row', style: 'margin-top:var(--sp-2)' },
+          h('button', {
+            class: 'btn sm', onclick: async () => {
+              try {
+                const res = await api('/api/setup/media-tools', { body: { path: input.value } });
+                toast('ffmpeg 경로를 저장했습니다.', 'ok');
+                result.innerHTML = '';
+                result.appendChild(h('div', { class: 'faint mono' }, res.ffmpeg));
+                await boot();
+              } catch (e) {
+                result.innerHTML = '';
+                result.appendChild(banner('danger', null, [e.message]));
+              }
+            }
+          }, '저장하고 확인'),
+          h('button', {
+            class: 'btn sm', onclick: async () => {
+              const res = await api('/api/files/native-pick', { body: { mode: 'folder' } }).catch(() => null);
+              if (res && res.ok && res.paths.length) input.value = res.paths[0];
+              else if (res && res.error) toast(res.error, 'err');
+            }
+          }, '폴더 찾아보기')),
+        result));
+    }
+
+    if (env.capcut.running) {
+      card.appendChild(h('div', { class: 'btn-row', style: 'margin-bottom:var(--sp-3)' },
+        h('button', {
+          class: 'btn sm', onclick: async () => {
+            const res = await api('/api/setup/capcut-running').catch(() => null);
+            if (!res) return;
+            toast(res.message, res.running ? 'err' : 'ok');
+            if (!res.running) await boot();
+          }
+        }, '캡컷을 껐습니다 — 다시 확인'),
+        h('button', { class: 'btn sm', onclick: () => boot() }, '환경 전체 다시 확인')));
+    }
+
     if (!env.draft_root) {
       const input = h('input', { type: 'text', placeholder: 'C:\\Users\\...\\com.lveditor.draft' });
       card.appendChild(h('div', { class: 'banner warn' },

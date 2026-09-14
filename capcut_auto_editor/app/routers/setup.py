@@ -122,6 +122,48 @@ def set_draft_root(payload: Dict[str, Any] = Body(...)) -> Dict[str, Any]:
     return {"ok": True, "draft_root": str(path), "drafts": capcut_draft.list_drafts(path)}
 
 
+@router.post("/media-tools")
+def set_media_tools(payload: Dict[str, Any] = Body(...)) -> Dict[str, Any]:
+    """ffmpeg / ffprobe 경로를 직접 지정합니다.
+
+    폴더(`C:\\ffmpeg\\bin`)를 넣으면 그 안에서 두 실행 파일을 찾고,
+    실행 파일 경로를 직접 넣어도 됩니다. 둘 다 찾지 못하면 저장하지 않고
+    **무엇을 못 찾았는지** 알려 줍니다.
+    """
+    raw = str(payload.get("path") or "").strip().strip('"')
+    if not raw:
+        raise HTTPException(status_code=400, detail={"message": "경로를 입력해 주세요."})
+
+    target = Path(raw)
+    if not target.exists():
+        raise HTTPException(
+            status_code=400,
+            detail={"message": f"'{raw}' 경로가 없습니다. ffmpeg.exe 가 들어 있는 bin 폴더를 넣어 주세요."},
+        )
+
+    folder = target if target.is_dir() else target.parent
+    config.save_settings({"ffmpeg": str(folder), "ffprobe": str(folder)})
+
+    ffmpeg = config.ffmpeg_path()
+    ffprobe = config.ffprobe_path()
+    missing = [name for name, found in (("ffmpeg", ffmpeg), ("ffprobe", ffprobe)) if not found]
+    if missing:
+        config.save_settings({"ffmpeg": "", "ffprobe": ""})
+        raise HTTPException(
+            status_code=400,
+            detail={
+                "message": (
+                    f"'{folder}' 안에서 {' 와 '.join(missing)} 을(를) 찾지 못했습니다. "
+                    "ffmpeg.exe 와 ffprobe.exe 는 같은 폴더에 있어야 합니다. "
+                    "압축을 푼 뒤 bin 폴더를 지정해 주세요."
+                ),
+                "found": {"ffmpeg": ffmpeg or "", "ffprobe": ffprobe or ""},
+            },
+        )
+
+    return {"ok": True, "ffmpeg": ffmpeg, "ffprobe": ffprobe, "folder": str(folder)}
+
+
 @router.get("/settings")
 def get_settings() -> Dict[str, Any]:
     return config.load_settings()

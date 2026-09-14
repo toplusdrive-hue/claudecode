@@ -130,3 +130,67 @@ def test_fillers_and_glossary_roundtrip():
 def test_capcut_running_endpoint():
     data = client.get("/api/setup/capcut-running").json()
     assert "running" in data and "message" in data
+
+
+# ── ffmpeg 경로 직접 지정 ────────────────────────────────────────────────
+# 0차 배너가 "아래에서 경로를 직접 지정해 주세요" 라고 안내하므로,
+# 그 수단이 실제로 있어야 합니다.
+def _restore_settings(saved):
+    from app import config
+
+    config.save_settings({"ffmpeg": saved.get("ffmpeg", ""), "ffprobe": saved.get("ffprobe", "")})
+
+
+def test_media_tools_accepts_folder_with_both_binaries(tmp_path):
+    from app import config
+
+    saved = config.load_settings()
+    bin_dir = tmp_path / "bin"
+    bin_dir.mkdir()
+    for name in ("ffmpeg", "ffprobe"):
+        target = bin_dir / name
+        target.write_text("#!/bin/sh\n")
+        target.chmod(0o755)
+    try:
+        res = client.post("/api/setup/media-tools", json={"path": str(bin_dir)})
+        assert res.status_code == 200, res.text
+        body = res.json()
+        assert body["ok"] is True
+        assert body["ffmpeg"].endswith("ffmpeg")
+        assert body["ffprobe"].endswith("ffprobe")
+    finally:
+        _restore_settings(saved)
+
+
+def test_media_tools_reports_which_binary_is_missing(tmp_path):
+    from app import config
+
+    saved = config.load_settings()
+    bin_dir = tmp_path / "half"
+    bin_dir.mkdir()
+    target = bin_dir / "ffmpeg"
+    target.write_text("#!/bin/sh\n")
+    target.chmod(0o755)
+    try:
+        res = client.post("/api/setup/media-tools", json={"path": str(bin_dir)})
+        assert res.status_code == 400
+        message = res.json()["detail"]["message"]
+        assert "ffprobe" in message
+        assert "같은 폴더" in message
+        assert "**" not in message  # 배너는 마크다운을 해석하지 않습니다
+        # 실패했으면 설정을 더럽히지 않아야 합니다
+        assert config.load_settings()["ffmpeg"] == ""
+    finally:
+        _restore_settings(saved)
+
+
+def test_media_tools_rejects_missing_path():
+    res = client.post("/api/setup/media-tools", json={"path": "C:/없는폴더/bin"})
+    assert res.status_code == 400
+    assert "경로가 없습니다" in res.json()["detail"]["message"]
+
+
+def test_media_tools_rejects_empty_path():
+    res = client.post("/api/setup/media-tools", json={"path": "  "})
+    assert res.status_code == 400
+    assert "경로를 입력해" in res.json()["detail"]["message"]
