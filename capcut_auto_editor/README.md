@@ -114,7 +114,8 @@ pyCapCut이 만드는 텍스트 소재는 캡컷 원본보다 **필드가 91개 
 | 자막 싱크가 안 맞음 | 드래프트와 컷 설정 불일치 | **컷 서명**을 대조해 어긋나면 자막 주입을 차단 |
 | `pip install -r` 이 `UnicodeDecodeError: 'cp949'` 로 실패 | pip가 requirements.txt를 로케일 코덱으로 읽음 | requirements.txt를 ASCII로만 유지 (§1.2) |
 | ffmpeg을 넣었는데 계속 "찾을 수 없습니다" | 압축을 풀면 `C:\ffmpeg\ffmpeg-9.x-essentials_build\bin` 처럼 한 겹 더 생김 | 지정한 폴더 아래 2단계까지 훑어 `bin` 을 찾습니다 |
-| 도구가 만든 드래프트를 열면 캡컷이 꺼짐 | ① `draft_content.json` 에 캡컷이 모르는 키가 들어감 ② 드래프트가 캡컷 6.7.0 산이라고 주장 | ① 표식을 `capcut_auto_editor.json` 별도 파일로 분리 ② 캘리브레이션 때 읽은 **실제 버전 값**을 새 드래프트에 적용 |
+| 도구가 만든 드래프트를 열면 캡컷이 꺼짐 | pyCapCut이 **자기가 아는 필드만 내보내고 나머지를 버립니다.** 실물 비교로 확인: `canvas_config.background`, `materials.common_mask` / `manual_beautys` / `placeholder_infos` / `digital_human_model_dressing` 가 사라짐 | 저장 후 번들 템플릿(및 캘리브레이션한 참조 드래프트)을 기준으로 **빠진 키를 되돌립니다.** 이미 있는 값은 건드리지 않습니다 |
+| 위와 함께 의심한 것 | ① 우리 표식을 `draft_content.json` 에 넣고 있었음 ② 드래프트가 캡컷 6.7.0 산이라고 주장 | ① 표식을 `capcut_auto_editor.json` 별도 파일로 분리 ② 캘리브레이션 때 읽은 **실제 버전 값**을 적용 |
 | 캡컷 프로젝트 목록이 비어 보임 | `root_meta_info.json` 을 읽지 못했을 때 새로 만들어 덮어썼음 | 읽지 못하면 **쓰지 않고 중단**. 등록 전마다 백업하고, 0차 화면에서 되돌릴 수 있습니다 |
 | 세로 영상 자막이 화면 가운데에 | 가로에서 읽은 정규화 좌표를 픽셀로 환산 | 세로 캔버스에서는 정규화 값을 유지 (실측 -0.7394) |
 
@@ -183,7 +184,7 @@ NVIDIA GPU가 없으면 CPU로 돕니다(Intel Arc는 CTranslate2 미지원). �
 - `root_meta_info.json` 이 깨져 있으면 쓰지 않고 중단하며, 등록 전 백업이 남고
   되돌리기가 동작하는 것을 확인했습니다.
 - 세로 드래프트의 `canvas_config.ratio`가 `"9:16"`으로 교정됩니다.
-- 자동 테스트 129개가 통과합니다 (`py -3.11 -m pytest tests -q`).
+- 자동 테스트 134개가 통과합니다 (`py -3.11 -m pytest tests -q`).
 
 ---
 

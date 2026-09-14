@@ -403,6 +403,168 @@ def apply_reference_version(content: Dict[str, Any]) -> Dict[str, Any]:
     return applied
 
 
+# ── pyCapCut이 버리는 필드 복원 ──────────────────────────────────────────
+#
+# ⚠️ 요청서 3.5는 "텍스트 소재에 필드가 91개 빠진다"고 했는데, 실제로는
+#    **드래프트 전체**가 같은 문제를 안고 있습니다. 실물 결과물을 번들 템플릿과
+#    필드 단위로 비교해 확인한 것:
+#
+#      canvas_config.background            사라짐  ← dumps()가 3개 키로 통째 교체
+#      materials.common_mask               사라짐  ┐
+#      materials.manual_beautys            사라짐  │ ScriptMaterial.export_json()이
+#      materials.placeholder_infos         사라짐  │ 자기가 아는 키만 내보냄
+#      materials.digital_human_model_dressing 사라짐 ┘
+#
+#    캡컷이 없다고 가정하는 필드를 읽으려 하면 드래프트를 여는 순간 죽습니다.
+#    그래서 저장 후 **번들 템플릿을 기준으로 빠진 키를 되돌려 놓습니다.**
+#    캘리브레이션한 참조 드래프트가 있으면 그쪽(사용자의 실제 캡컷 버전)을
+#    우선 기준으로 삼습니다.
+
+# 드래프트마다 달라야 하는 값. 참조 드래프트에서 복사해 오면 안 됩니다.
+_CONTENT_SPECIFIC_KEYS = {
+    "canvas_config", "cover", "create_time", "duration", "extra_info", "fps", "id",
+    "keyframe_graph_list", "keyframes", "materials", "name", "path", "retouch_cover",
+    "static_cover_image_path", "time_marks", "tracks", "update_time",
+}
+
+# 비디오 소재에서 우리가 직접 채우는 값. 참조 값으로 덮으면 안 됩니다.
+_VIDEO_MATERIAL_OWN_KEYS = {
+    "id", "material_id", "local_material_id", "material_name", "path", "media_path",
+    "duration", "width", "height", "type", "crop", "crop_ratio", "crop_scale",
+}
+
+# 비디오 세그먼트에서 우리가 직접 채우는 값.
+_VIDEO_SEGMENT_OWN_KEYS = {
+    "id", "material_id", "target_timerange", "source_timerange", "clip", "speed",
+    "volume", "extra_material_refs", "common_keyframes", "keyframe_refs",
+    "track_render_index", "render_index", "uniform_scale", "visible",
+}
+
+
+def bundled_template() -> Dict[str, Any]:
+    """pyCapCut이 들고 있는 드래프트 템플릿. 최소한 이 키들은 있어야 합니다."""
+    from pycapcut import assets
+
+    with open(assets.get_asset_path("DRAFT_CONTENT_TEMPLATE"), "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def extract_skeleton(content: Dict[str, Any]) -> Dict[str, Any]:
+    """실제 캡컷이 만든 드래프트에서 '뼈대'를 뽑습니다.
+
+    캘리브레이션 때 저장해 두었다가, 우리가 만든 드래프트에 빠진 필드를 채우는 데 씁니다.
+    """
+    materials = content.get("materials") or {}
+    videos = [v for v in (materials.get("videos") or []) if isinstance(v, dict)]
+    sample_material = next((v for v in videos if v.get("type") == "video"), None) or (videos[0] if videos else None)
+
+    sample_segment = None
+    track_keys: List[str] = []
+    for track in content.get("tracks") or []:
+        if track.get("type") != "video":
+            continue
+        track_keys = sorted(k for k in track if k != "segments")
+        segments = track.get("segments") or []
+        if segments and sample_segment is None:
+            sample_segment = segments[0]
+        if sample_segment is not None:
+            break
+
+    canvas = content.get("canvas_config") or {}
+    return {
+        "top_level": {
+            key: copy.deepcopy(value)
+            for key, value in content.items()
+            if key not in _CONTENT_SPECIFIC_KEYS
+        },
+        "canvas_extra": {
+            key: copy.deepcopy(value)
+            for key, value in canvas.items()
+            if key not in ("width", "height", "ratio")
+        },
+        "materials_keys": sorted(materials),
+        "video_material": copy.deepcopy(sample_material) if sample_material else None,
+        "video_segment": copy.deepcopy(sample_segment) if sample_segment else None,
+        "track_keys": track_keys,
+    }
+
+
+def _skeleton_from_profile() -> Optional[Dict[str, Any]]:
+    from ..config import load_style_profile
+
+    profile = load_style_profile() or {}
+    skeleton = profile.get("draft_skeleton")
+    return skeleton if isinstance(skeleton, dict) else None
+
+
+def restore_missing_fields(content: Dict[str, Any]) -> Dict[str, Any]:
+    """pyCapCut이 떨어뜨린 필드를 되돌립니다.
+
+    기준은 두 가지이고, 참조 드래프트가 더 정확하므로 우선합니다.
+      1) 캘리브레이션한 참조 드래프트 (사용자의 실제 캡컷 버전)
+      2) pyCapCut 번들 템플릿 (항상 있음)
+
+    **이미 있는 값은 건드리지 않습니다.** 빠진 키만 채웁니다.
+    """
+    report = {"top_level": [], "canvas": [], "materials": [], "video_material": 0, "video_segment": 0}
+
+    sources: List[Dict[str, Any]] = []
+    skeleton = _skeleton_from_profile()
+    if skeleton:
+        sources.append(skeleton)
+    try:
+        sources.append(extract_skeleton(bundled_template()))
+    except Exception as exc:  # 번들을 못 읽어도 진행은 해야 합니다
+        log.warning("pyCapCut 번들 템플릿을 읽지 못했습니다: %s", exc)
+
+    for source in sources:
+        # 최상위 키
+        for key, value in (source.get("top_level") or {}).items():
+            if key not in content:
+                content[key] = copy.deepcopy(value)
+                report["top_level"].append(key)
+
+        # canvas_config — dumps()가 background 같은 키를 떨어뜨립니다
+        canvas = content.setdefault("canvas_config", {})
+        for key, value in (source.get("canvas_extra") or {}).items():
+            if key not in canvas:
+                canvas[key] = copy.deepcopy(value)
+                report["canvas"].append(key)
+
+        # materials 하위 컨테이너
+        materials = content.setdefault("materials", {})
+        for key in source.get("materials_keys") or []:
+            if key not in materials:
+                materials[key] = []
+                report["materials"].append(key)
+
+        # 비디오 소재 / 세그먼트의 빠진 필드
+        sample_material = source.get("video_material")
+        if sample_material:
+            for material in materials.get("videos") or []:
+                if not isinstance(material, dict):
+                    continue
+                for key, value in sample_material.items():
+                    if key in _VIDEO_MATERIAL_OWN_KEYS or key in material:
+                        continue
+                    material[key] = copy.deepcopy(value)
+                    report["video_material"] += 1
+
+        sample_segment = source.get("video_segment")
+        if sample_segment:
+            for track in content.get("tracks") or []:
+                if track.get("type") != "video":
+                    continue
+                for segment in track.get("segments") or []:
+                    for key, value in sample_segment.items():
+                        if key in _VIDEO_SEGMENT_OWN_KEYS or key in segment:
+                            continue
+                        segment[key] = copy.deepcopy(value)
+                        report["video_segment"] += 1
+
+    return report
+
+
 def fix_meta_paths(draft_path: Path) -> Dict[str, Any]:
     """요청서 3.11 — draft_meta_info.json의 경로는 신뢰할 수 없습니다.
 
@@ -833,6 +995,9 @@ def calibrate_text_style(draft_path: Path) -> CalibrationResult:
         "raw_segment_field_count": len(segment),
         # 이 드래프트를 만든 캡컷이 주장하는 버전 정보. 새 드래프트에 그대로 씁니다.
         "version_meta": extract_version_meta(content),
+        # pyCapCut이 떨어뜨리는 필드를 채울 때 쓰는 뼈대 (canvas_config, materials 키,
+        # 비디오 소재/세그먼트 표본 등). 요청서 3.5를 드래프트 전체로 확장한 것입니다.
+        "draft_skeleton": extract_skeleton(content),
     }
 
     log.info(
@@ -1094,6 +1259,26 @@ def inspect_draft(draft_path: Path) -> Dict[str, Any]:
                 f"{info['index']}번 트랙({info['type']})의 track_render_index가 {info['track_render_index']} 입니다. "
                 f"{info['index']} 이어야 자막이 영상 위에 보입니다 (요청서 3.3)."
             )
+    # pyCapCut이 떨어뜨리기 쉬운 필드가 실제로 남아 있는지 확인합니다.
+    try:
+        template_skeleton = extract_skeleton(bundled_template())
+    except Exception:
+        template_skeleton = {"canvas_extra": {}, "materials_keys": []}
+    missing_canvas = [k for k in (template_skeleton.get("canvas_extra") or {}) if k not in canvas]
+    if missing_canvas:
+        problems.append(
+            f"canvas_config 에 {', '.join(missing_canvas)} 키가 없습니다. "
+            "pyCapCut의 dumps()가 떨어뜨린 것으로, 캡컷이 드래프트를 열 때 문제가 될 수 있습니다."
+        )
+    missing_material_keys = [
+        k for k in (template_skeleton.get("materials_keys") or []) if k not in materials
+    ]
+    if missing_material_keys:
+        problems.append(
+            f"materials 에 {', '.join(missing_material_keys)} 키가 없습니다. "
+            "pyCapCut이 자기가 아는 키만 내보내면서 빠진 것입니다."
+        )
+
     expected_ratio = _ratio_name(int(canvas.get("width") or 0) or 1920, int(canvas.get("height") or 0) or 1080)
     if canvas.get("ratio") != expected_ratio:
         problems.append(
@@ -1129,6 +1314,7 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
     ratio_fixed = fix_canvas_ratio(content)
     legacy_removed = strip_legacy_marker(content)
     version_applied = apply_reference_version(content)
+    restored = restore_missing_fields(content)  # pyCapCut이 떨어뜨린 필드 복원
     write_content(draft_path, content)
 
     if marker is not None:
@@ -1143,6 +1329,7 @@ def finalize_draft(draft_path: Path, *, marker: Optional[Dict[str, Any]] = None)
         "ratio_fixed": ratio_fixed,
         "legacy_marker_removed": legacy_removed,
         "version_applied": version_applied,
+        "restored_fields": restored,
         "meta": meta,
         "registry": registry,
         "verified": verified,

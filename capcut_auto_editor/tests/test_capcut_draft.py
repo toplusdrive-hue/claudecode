@@ -462,3 +462,89 @@ def test_restore_registry_roundtrip(tmp_path, monkeypatch):
     restored = json.loads(registry.read_text(encoding="utf-8"))
     assert len(restored["all_draft_store"]) == 1
     assert restored["all_draft_store"][0]["draft_name"] == "기존"
+
+
+# ── pyCapCut이 떨어뜨리는 필드 복원 ──────────────────────────────────────
+# ⚠️ 실제로 겪은 문제 — 이 도구가 만든 드래프트를 열면 캡컷이 종료됐습니다.
+#    결과물을 번들 템플릿과 필드 단위로 비교해 보니 아래가 사라져 있었습니다.
+def test_bundled_template_keys_are_restored(tmp_path):
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    # pyCapCut의 dumps()가 만들어 내는 상태를 재현합니다
+    content["canvas_config"] = {"width": 1080, "height": 1920, "ratio": "original"}
+    content["materials"].pop("common_mask", None)
+    cd.write_content(path, content)
+
+    cd.finalize_draft(path)
+    restored = cd.read_content(path)
+
+    assert "background" in restored["canvas_config"], "dumps()가 떨어뜨린 background 가 복원되지 않았습니다"
+    template = cd.extract_skeleton(cd.bundled_template())
+    for key in template["materials_keys"]:
+        assert key in restored["materials"], f"materials.{key} 가 복원되지 않았습니다"
+
+
+def test_restore_does_not_overwrite_our_values(tmp_path):
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    content["canvas_config"] = {"width": 1080, "height": 1920, "ratio": "original", "background": "우리값"}
+    cd.write_content(path, content)
+
+    cd.finalize_draft(path)
+    restored = cd.read_content(path)
+    assert restored["canvas_config"]["background"] == "우리값"
+    assert restored["canvas_config"]["width"] == 1080
+
+
+def test_inspect_reports_dropped_fields(tmp_path):
+    path = make_draft(tmp_path)
+    content = cd.read_content(path)
+    content["canvas_config"] = {"width": 1920, "height": 1080, "ratio": "original"}
+    content["materials"].pop("common_mask", None)
+    cd.write_content(path, content)
+
+    report = cd.inspect_draft(path)
+    assert any("canvas_config" in p and "background" in p for p in report["problems"])
+    assert any("materials" in p and "common_mask" in p for p in report["problems"])
+
+
+def test_skeleton_from_reference_fills_video_material_fields(tmp_path, monkeypatch):
+    """참조 드래프트의 비디오 소재에만 있는 필드를 새 드래프트에 채웁니다."""
+    reference = {
+        "canvas_config": {"width": 1080, "height": 1920, "ratio": "9:16", "background": None},
+        "materials": {
+            "videos": [{
+                "id": "ref", "type": "video", "path": "C:/ref.mp4", "duration": 1000,
+                "width": 100, "height": 100,
+                # 캡컷 실물에만 있는 필드들
+                "stable": {"matrix_path": "", "stable_level": 0}, "matting": {"flag": 0},
+                "video_algorithm": {}, "aigc_type": "none",
+            }],
+            "texts": [], "transitions": [],
+        },
+        "tracks": [{"type": "video", "name": "", "segments": [], "attribute": 0, "flag": 0}],
+    }
+    skeleton = cd.extract_skeleton(reference)
+    assert skeleton["video_material"]["aigc_type"] == "none"
+
+    from app import config
+
+    monkeypatch.setattr(config, "load_style_profile", lambda: {"draft_skeleton": skeleton})
+
+    path = make_draft(tmp_path)
+    cd.finalize_draft(path)
+    material = cd.read_content(path)["materials"]["videos"][0]
+    assert material["aigc_type"] == "none"
+    assert material["matting"] == {"flag": 0}
+    # 우리 값은 그대로여야 합니다
+    assert material["id"] == "v1"
+    assert material["path"] == "C:/a.mp4"
+
+
+def test_calibration_stores_draft_skeleton(tmp_path):
+    path = make_capcut_style_draft(tmp_path)
+    profile = cd.calibrate_text_style(path).profile
+    skeleton = profile["draft_skeleton"]
+    assert "canvas_extra" in skeleton
+    assert "materials_keys" in skeleton
+    assert isinstance(skeleton["materials_keys"], list)

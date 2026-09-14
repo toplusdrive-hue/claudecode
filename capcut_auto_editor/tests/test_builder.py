@@ -300,7 +300,10 @@ def test_build_vertical_draft_reverses_cut_map(draft_root, timeline, profile, mo
     assert any("컷 편집으로 잘려나간 구간" in w for w in report.warnings)
 
     content = cd.read_content(Path(report.draft_path))
-    assert content["canvas_config"] == {"width": 1080, "height": 1920, "ratio": "9:16"}
+    canvas = content["canvas_config"]
+    assert (canvas["width"], canvas["height"], canvas["ratio"]) == (1080, 1920, "9:16")
+    # dumps()가 떨어뜨리는 background 가 되살아나 있어야 합니다
+    assert "background" in canvas
 
     overlay = next(t for t in content["tracks"] if t.get("name") == "오버레이")
     for segment in overlay["segments"]:
