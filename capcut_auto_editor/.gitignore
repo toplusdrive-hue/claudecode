@@ -1,0 +1,17 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# 사용자 데이터 — 저장소에 올리지 않습니다
+data/settings.json
+data/style_profile.json
+data/channel_profile.json
+data/sessions/
+data/work/
+backups/*
+!backups/.gitkeep
+logs/*
+!logs/.gitkeep
+
+# 테스트가 만들어 두는 영상
+tests/media/

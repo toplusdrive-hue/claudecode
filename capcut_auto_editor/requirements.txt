@@ -1,0 +1,20 @@
+# 검증 조합: Python 3.11 / CapCut 9.3.0.3969 (beta) / Windows 11
+# torch는 쓰지 않습니다 (약 2.5GB 절감). faster-whisper가 Silero VAD를
+# onnxruntime으로 내장 실행합니다.
+
+fastapi
+uvicorn[standard]
+python-multipart
+
+pycapcut==0.0.3
+faster-whisper==1.2.1
+
+rapidfuzz
+psutil
+
+# pycapcut이 끌고 오는 의존성 (명시해 둡니다)
+pymediainfo
+imageio
+
+# 자동 내보내기(4차)를 쓸 때만 필요합니다. 윈도우 전용.
+uiautomation>=2 ; sys_platform == "win32"

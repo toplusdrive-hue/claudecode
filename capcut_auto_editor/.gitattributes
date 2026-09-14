@@ -1,0 +1,11 @@
+# 실행 bat은 CP949(ANSI) + CRLF로 저장되어야 합니다 (README §1.3).
+# git이 인코딩이나 줄바꿈을 건드리면 한국어 윈도우 cmd에서 창이 깜빡하고 사라집니다.
+*.bat -text -diff
+
+# 그 외 텍스트는 UTF-8 + LF
+*.py text eol=lf
+*.js text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+*.md text eol=lf
+*.json text eol=lf

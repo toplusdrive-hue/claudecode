@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>캡컷 자동 편집기</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <h1>캡컷 자동 편집기</h1>
+      <div class="session-name" id="sessionName">세션을 불러오는 중…</div>
+      <div class="spacer"></div>
+      <button class="btn sm" id="btnNewSession">새 세션</button>
+      <button class="btn sm" id="btnSessionList">세션 목록</button>
+    </header>
+
+    <div class="body">
+      <nav class="nav" id="nav"></nav>
+      <main class="main">
+        <div class="main-inner" id="view">
+          <div class="card"><p class="muted">불러오는 중…</p></div>
+        </div>
+      </main>
+    </div>
+
+    <section class="logs">
+      <div class="logs-head" id="logsHead">
+        <span id="logsToggle">▸</span>
+        <span>로그</span>
+        <span class="faint" id="logsCount"></span>
+      </div>
+      <div class="logs-body hidden" id="logsBody"></div>
+    </section>
+  </div>
+
+  <div id="modalRoot"></div>
+  <div id="toastRoot"></div>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>
