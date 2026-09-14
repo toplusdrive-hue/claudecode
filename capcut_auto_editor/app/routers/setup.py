@@ -46,8 +46,9 @@ def status() -> Dict[str, Any]:
     ffprobe = config.ffprobe_path()
     if not ffmpeg or not ffprobe:
         blocks.append(
-            "ffmpeg / ffprobe를 찾을 수 없습니다. `winget install Gyan.FFmpeg` 로 설치한 뒤 "
-            "터미널을 새로 열거나, 아래에서 경로를 직접 지정해 주세요."
+            "ffmpeg / ffprobe를 찾을 수 없습니다. gyan.dev 에서 essentials 빌드를 받아 압축을 푼 뒤, "
+            "아래에서 그 폴더를 지정해 주세요. 압축을 풀면 ffmpeg-9.x-essentials_build 같은 폴더가 "
+            "한 겹 더 생기는데, 바깥 폴더를 골라도 안쪽 bin 을 찾아냅니다."
         )
 
     if resolved is None:

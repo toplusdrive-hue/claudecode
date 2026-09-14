@@ -242,42 +242,102 @@ def resolve_draft_root() -> Optional[Path]:
 
 
 # ── ffmpeg / ffprobe 탐지 ────────────────────────────────────────────────────
-_FFMPEG_HINTS = [
-    r"C:\Program Files\ffmpeg\bin",
-    r"C:\ffmpeg\bin",
-    r"C:\Program Files (x86)\ffmpeg\bin",
+# ffmpeg을 흔히 두는 위치. 압축을 풀면 보통 한 겹이 더 생기므로
+# (예: C:\ffmpeg\ffmpeg-9.0.1-essentials_build\bin) 아래에서 한 단계 더 훑습니다.
+_FFMPEG_ROOT_HINTS = [
+    r"C:\ffmpeg",
+    r"C:\Program Files\ffmpeg",
+    r"C:\Program Files (x86)\ffmpeg",
+    r"C:\Tools\ffmpeg",
+    r"D:\ffmpeg",
 ]
+
+
+def expand_tool_dirs(base: Path, depth: int = 2) -> List[Path]:
+    """실행 파일이 있을 만한 폴더 후보를 만듭니다.
+
+    사용자가 `C:\ffmpeg` 를 지정하든, 압축을 푼 그대로
+    `C:\ffmpeg\ffmpeg-9.0.1-essentials_build` 를 지정하든,
+    `...\bin` 을 지정하든 모두 찾아야 합니다.
+    """
+    if not base.is_dir():
+        return []
+    seen: Dict[str, Path] = {}
+
+    def _add(path: Path) -> None:
+        if path.is_dir():
+            seen.setdefault(str(path).lower(), path)
+
+    _add(base)
+    _add(base / "bin")
+    if depth > 0:
+        try:
+            children = sorted(base.iterdir(), key=lambda c: c.name.lower())
+        except OSError:
+            children = []
+        for child in children:
+            if not child.is_dir() or child.name.startswith("."):
+                continue
+            for nested in expand_tool_dirs(child, depth - 1):
+                _add(nested)
+    return list(seen.values())
+
+
+def _lookup_in(folder: Path, name: str) -> Optional[str]:
+    for candidate in (folder / name, folder / f"{name}.exe"):
+        if candidate.is_file():
+            return str(candidate)
+    return None
 
 
 def _find_binary(name: str, configured: str) -> Optional[str]:
     if configured:
-        p = Path(configured)
-        if p.is_file():
-            return str(p)
-        if p.is_dir():
-            for candidate in (p / name, p / f"{name}.exe"):
-                if candidate.is_file():
-                    return str(candidate)
+        target = Path(configured)
+        if target.is_file():
+            return str(target)
+        for folder in expand_tool_dirs(target):
+            found = _lookup_in(folder, name)
+            if found:
+                return found
+
     found = shutil.which(name)
     if found:
         return found
-    # winget(Gyan.FFmpeg) 설치 위치
+
+    roots: List[Path] = [Path(hint) for hint in _FFMPEG_ROOT_HINTS]
+
     local = _local_appdata()
-    hints = list(_FFMPEG_HINTS)
     if local is not None:
-        hints.append(str(local / "Microsoft" / "WinGet" / "Links"))
+        # winget(Gyan.FFmpeg) 설치 위치
+        roots.append(local / "Microsoft" / "WinGet" / "Links")
         packages = local / "Microsoft" / "WinGet" / "Packages"
         if packages.is_dir():
             try:
-                for child in packages.iterdir():
-                    if "ffmpeg" in child.name.lower():
-                        hints.extend(str(p) for p in child.rglob("bin") if p.is_dir())
+                roots.extend(
+                    child for child in packages.iterdir()
+                    if child.is_dir() and "ffmpeg" in child.name.lower()
+                )
             except OSError:
                 pass
-    for hint in hints:
-        for candidate in (Path(hint) / name, Path(hint) / f"{name}.exe"):
-            if candidate.is_file():
-                return str(candidate)
+
+    # 사용자가 받은 그대로 두는 경우가 많은 위치
+    home = Path.home()
+    for folder in ("Downloads", "Desktop"):
+        candidate = home / folder
+        if candidate.is_dir():
+            try:
+                roots.extend(
+                    child for child in candidate.iterdir()
+                    if child.is_dir() and child.name.lower().startswith("ffmpeg")
+                )
+            except OSError:
+                pass
+
+    for root in roots:
+        for folder in expand_tool_dirs(root):
+            found = _lookup_in(folder, name)
+            if found:
+                return found
     return None
 
 

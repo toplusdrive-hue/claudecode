@@ -113,6 +113,7 @@ pyCapCut이 만드는 텍스트 소재는 캡컷 원본보다 **필드가 91개 
 | 말끝이 잘려 들림 | 무음 시작 쪽 여유 부족 | 앞뒤 여유를 **따로** 둠 (기본 꼬리 0.35초 / 머리 0.15초) |
 | 자막 싱크가 안 맞음 | 드래프트와 컷 설정 불일치 | **컷 서명**을 대조해 어긋나면 자막 주입을 차단 |
 | `pip install -r` 이 `UnicodeDecodeError: 'cp949'` 로 실패 | pip가 requirements.txt를 로케일 코덱으로 읽음 | requirements.txt를 ASCII로만 유지 (§1.2) |
+| ffmpeg을 넣었는데 계속 "찾을 수 없습니다" | 압축을 풀면 `C:\ffmpeg\ffmpeg-9.x-essentials_build\bin` 처럼 한 겹 더 생김 | 지정한 폴더 아래 2단계까지 훑어 `bin` 을 찾습니다 |
 | 세로 영상 자막이 화면 가운데에 | 가로에서 읽은 정규화 좌표를 픽셀로 환산 | 세로 캔버스에서는 정규화 값을 유지 (실측 -0.7394) |
 
 자세한 근거는 `docs/investigation.md` 에 있습니다.
@@ -176,7 +177,7 @@ NVIDIA GPU가 없으면 CPU로 돕니다(Intel Arc는 CTranslate2 미지원). �
   양쪽에, 소재 필드 31개(pyCapCut 기본 15개), 캡컷 원본 필드 보존을 확인했습니다.
 - 컷 서명 불일치 시 자막 주입이 실제로 차단됩니다.
 - 세로 드래프트의 `canvas_config.ratio`가 `"9:16"`으로 교정됩니다.
-- 자동 테스트 99개가 통과합니다 (`py -3.11 -m pytest tests -q`).
+- 자동 테스트 113개가 통과합니다 (`py -3.11 -m pytest tests -q`).
 
 ---
 

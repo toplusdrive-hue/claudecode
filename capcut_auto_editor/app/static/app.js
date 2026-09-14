@@ -312,8 +312,9 @@ function viewStage0() {
       card.appendChild(h('div', { class: 'banner warn' },
         h('strong', {}, 'ffmpeg 폴더를 직접 지정'),
         h('div', { class: 'faint', style: 'margin-bottom:var(--sp-2)' },
-          'ffmpeg.exe 와 ffprobe.exe 가 함께 들어 있는 bin 폴더 경로를 넣어 주세요. ' +
-          '설치하지 않았다면 gyan.dev/ffmpeg/builds 에서 essentials 빌드를 받아 압축을 푸십시오.'),
+          '압축을 푼 폴더 경로를 넣어 주세요. C:\\ffmpeg 처럼 바깥 폴더를 넣어도 ' +
+          '안쪽의 ffmpeg-9.x-essentials_build\\bin 을 찾아냅니다. ' +
+          '아직 없으면 gyan.dev/ffmpeg/builds 에서 essentials 빌드를 받으십시오.'),
         input,
         h('div', { class: 'btn-row', style: 'margin-top:var(--sp-2)' },
           h('button', {
