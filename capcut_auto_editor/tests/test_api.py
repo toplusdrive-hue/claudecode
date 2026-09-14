@@ -208,3 +208,33 @@ def test_registry_restore_requires_a_backup():
     res = client.post("/api/registry-restore", json={})
     assert res.status_code == 400
     assert "백업을 골라" in str(res.json()["detail"])
+
+
+def test_calibration_summary_flags_missing_skeleton():
+    """예전 버전으로 캘리브레이션한 프로파일은 뼈대가 없다는 사실이 드러나야 합니다."""
+    from app.routers.calibration import _skeleton_summary
+
+    old_profile = {"font": {}, "text": {}}  # draft_skeleton 없음
+    summary = _skeleton_summary(old_profile)
+    assert summary["captured"] is False
+    assert summary["video_material_fields"] == 0
+    assert "다시 캘리브레이션" in summary["note"]
+
+
+def test_calibration_summary_reports_captured_skeleton():
+    from app.routers.calibration import _skeleton_summary
+
+    profile = {
+        "draft_skeleton": {
+            "canvas_extra": {"background": None},
+            "materials_keys": ["videos", "texts", "common_mask"],
+            "video_material": {"id": "x", "stable": {}, "matting": {}},
+            "video_segment": {"id": "y", "hdr_settings": {}},
+        }
+    }
+    summary = _skeleton_summary(profile)
+    assert summary["captured"] is True
+    assert summary["canvas_extra_keys"] == ["background"]
+    assert summary["materials_key_count"] == 3
+    assert summary["video_material_fields"] == 3
+    assert summary["note"] == ""

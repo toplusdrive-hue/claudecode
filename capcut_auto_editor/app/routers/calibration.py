@@ -157,4 +157,27 @@ def _summary(profile: Dict[str, Any]) -> Dict[str, Any]:
         "raw_material_fields": profile.get("raw_material_field_count", 0),
         "raw_segment_fields": profile.get("raw_segment_field_count", 0),
         "manual": bool(profile.get("manual")),
+        # 드래프트 뼈대를 실제로 잡았는지 — 이게 비어 있으면 pyCapCut의 6.7.0 시절
+        # 템플릿만 기준으로 삼게 되어, 캡컷 9.3이 요구하는 필드가 빠질 수 있습니다.
+        "skeleton": _skeleton_summary(profile),
+        "version_meta": profile.get("version_meta") or {},
+    }
+
+
+def _skeleton_summary(profile: Dict[str, Any]) -> Dict[str, Any]:
+    skeleton = profile.get("draft_skeleton") or {}
+    material = skeleton.get("video_material") or {}
+    segment = skeleton.get("video_segment") or {}
+    return {
+        "captured": bool(skeleton),
+        "canvas_extra_keys": sorted(skeleton.get("canvas_extra") or {}),
+        "materials_key_count": len(skeleton.get("materials_keys") or []),
+        "video_material_fields": len(material),
+        "video_segment_fields": len(segment),
+        "note": (
+            ""
+            if material and segment
+            else "참조 드래프트에 비디오 클립이 없어 소재/세그먼트 표본을 잡지 못했습니다. "
+            "영상이 올라간 프로젝트로 다시 캘리브레이션하면 캡컷이 요구하는 필드를 더 정확히 채울 수 있습니다."
+        ),
     }

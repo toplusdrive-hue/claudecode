@@ -564,6 +564,28 @@ async function viewCalibration() {
       h('dt', {}, '저장한 원본 필드 수'), h('dd', {}, `소재 ${profile.raw_material_field_count}개 / 세그먼트 ${profile.raw_segment_field_count}개`),
     ));
 
+    // 드래프트 뼈대 — 캡컷이 요구하는 필드를 채우는 기준입니다.
+    const sk = profile.draft_skeleton || null;
+    const vm = (sk && sk.video_material) ? Object.keys(sk.video_material).length : 0;
+    const vs = (sk && sk.video_segment) ? Object.keys(sk.video_segment).length : 0;
+    if (!sk) {
+      summaryBox.appendChild(banner('danger', '드래프트 뼈대를 잡지 못했습니다', [
+        '예전 버전으로 캘리브레이션한 결과입니다. 이 상태로 드래프트를 만들면 pyCapCut의 옛 템플릿(캡컷 6.7.0 시절)만 기준으로 삼게 되어, 지금 쓰시는 캡컷이 요구하는 필드가 빠질 수 있습니다.',
+        '위에서 참조 드래프트를 다시 골라 가져오기를 눌러 주세요.',
+      ]));
+    } else {
+      summaryBox.appendChild(h('dl', { class: 'kv' },
+        h('dt', {}, '드래프트 뼈대'), h('dd', {}, `canvas 여분 키 ${(sk.canvas_extra ? Object.keys(sk.canvas_extra).length : 0)}개 · materials 키 ${(sk.materials_keys || []).length}개`),
+        h('dt', {}, '비디오 소재 표본'), h('dd', {}, vm ? `${vm}개 필드` : '없음'),
+        h('dt', {}, '비디오 세그먼트 표본'), h('dd', {}, vs ? `${vs}개 필드` : '없음'),
+        h('dt', {}, '캡컷 버전'), h('dd', {}, ((profile.version_meta || {}).platform || {}).app_version || '(못 읽음)')));
+      if (!vm || !vs) {
+        summaryBox.appendChild(banner('warn', '비디오 표본이 없습니다', [
+          '참조 드래프트에 영상 클립이 없어서 비디오 소재/세그먼트의 필드 구성을 알 수 없습니다. 영상이 올라간 프로젝트로 다시 캘리브레이션하면 더 정확해집니다.',
+        ]));
+      }
+    }
+
     if ((flag & 16) === 0) {
       summaryBox.appendChild(banner('danger', '배경이 표시되지 않습니다',
         ['check_flag에 배경 비트(+16)가 없습니다. background_color를 넣어도 무시됩니다.']));
