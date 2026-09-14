@@ -1,6 +1,11 @@
-# 검증 조합: Python 3.11 / CapCut 9.3.0.3969 (beta) / Windows 11
-# torch는 쓰지 않습니다 (약 2.5GB 절감). faster-whisper가 Silero VAD를
-# onnxruntime으로 내장 실행합니다.
+# NOTE: This file must stay ASCII-only.
+# pip reads requirements.txt with the system locale codec (cp949 on Korean
+# Windows), so non-ASCII bytes here crash the install with UnicodeDecodeError.
+# Korean notes for this file live in README.md, not here.
+#
+# Verified combination: Python 3.11 / CapCut 9.3.0.3969 (beta) / Windows 11
+# torch is NOT required (~2.5GB saved): faster-whisper runs Silero VAD
+# through onnxruntime.
 
 fastapi
 uvicorn[standard]
@@ -12,9 +17,9 @@ faster-whisper==1.2.1
 rapidfuzz
 psutil
 
-# pycapcut이 끌고 오는 의존성 (명시해 둡니다)
+# Pulled in by pycapcut; pinned here so a missing wheel is obvious.
 pymediainfo
 imageio
 
-# 자동 내보내기(4차)를 쓸 때만 필요합니다. 윈도우 전용.
+# Only needed for the auto-export step (4th stage). Windows only.
 uiautomation>=2 ; sys_platform == "win32"

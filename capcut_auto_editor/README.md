@@ -30,6 +30,22 @@ py -3.11 -m pip install -r requirements.txt
 `faster-whisper`는 Silero VAD를 onnxruntime으로 내장 실행하므로 **torch가 필요 없습니다**
 (약 2.5GB 절감).
 
+> **`requirements.txt`를 고칠 때 주의**: 이 파일은 **ASCII만** 써야 합니다.
+> pip는 이 파일을 **시스템 로케일 코덱**(한국어 윈도우는 cp949)으로 읽기 때문에,
+> UTF-8로 저장된 한글 주석이 들어 있으면 설치가 이렇게 실패합니다.
+>
+> ```
+> UnicodeDecodeError: 'cp949' codec can't decode byte 0x80 in position 4
+> ```
+>
+> 한국어 설명은 이 README에 두십시오. `tests/test_packaging.py` 가 이를 검사합니다.
+
+설치가 막히면 파일 없이 직접 지정해도 됩니다.
+
+```powershell
+py -3.11 -m pip install fastapi "uvicorn[standard]" python-multipart pycapcut==0.0.3 faster-whisper==1.2.1 rapidfuzz psutil pymediainfo imageio uiautomation
+```
+
 ### 1.3 실행
 
 ```powershell
@@ -96,6 +112,7 @@ pyCapCut이 만드는 텍스트 소재는 캡컷 원본보다 **필드가 91개 
 | bat 더블클릭하면 창만 깜빡 | UTF-8 저장 + 코드페이지 변경 | bat을 CP949로 저장, 코드페이지 변경 없음 |
 | 말끝이 잘려 들림 | 무음 시작 쪽 여유 부족 | 앞뒤 여유를 **따로** 둠 (기본 꼬리 0.35초 / 머리 0.15초) |
 | 자막 싱크가 안 맞음 | 드래프트와 컷 설정 불일치 | **컷 서명**을 대조해 어긋나면 자막 주입을 차단 |
+| `pip install -r` 이 `UnicodeDecodeError: 'cp949'` 로 실패 | pip가 requirements.txt를 로케일 코덱으로 읽음 | requirements.txt를 ASCII로만 유지 (§1.2) |
 | 세로 영상 자막이 화면 가운데에 | 가로에서 읽은 정규화 좌표를 픽셀로 환산 | 세로 캔버스에서는 정규화 값을 유지 (실측 -0.7394) |
 
 자세한 근거는 `docs/investigation.md` 에 있습니다.
@@ -159,7 +176,7 @@ NVIDIA GPU가 없으면 CPU로 돕니다(Intel Arc는 CTranslate2 미지원). �
   양쪽에, 소재 필드 31개(pyCapCut 기본 15개), 캡컷 원본 필드 보존을 확인했습니다.
 - 컷 서명 불일치 시 자막 주입이 실제로 차단됩니다.
 - 세로 드래프트의 `canvas_config.ratio`가 `"9:16"`으로 교정됩니다.
-- 자동 테스트 91개가 통과합니다 (`py -3.11 -m pytest tests -q`).
+- 자동 테스트 99개가 통과합니다 (`py -3.11 -m pytest tests -q`).
 
 ---
 
