@@ -1,0 +1,1330 @@
+{
+  "date": "2026-09-19",
+  "keywords": {
+    "primary": [
+      "영어",
+      "영어회화",
+      "영어 공부법",
+      "영어 스피킹"
+    ],
+    "secondary": [
+      "영어 듣기",
+      "영어 발음",
+      "영어 독학",
+      "원어민 표현",
+      "영어 문법"
+    ],
+    "temporary": []
+  },
+  "api_call_count": 40,
+  "api_call_budget": 40,
+  "quota_exceeded": false,
+  "search_pool_unique_video_ids": 314,
+  "filter_passed_count": 181,
+  "exclusion_stats": {
+    "shorts": 131,
+    "exclude_word": 0,
+    "low_view": 2
+  },
+  "keyword_summary": [
+    {
+      "keyword": "영어",
+      "n": 28,
+      "total_views": 11722502,
+      "median_views": 42336.0,
+      "top3_share_pct": 81.41971739480189
+    },
+    {
+      "keyword": "영어회화",
+      "n": 33,
+      "total_views": 4854801,
+      "median_views": 23625,
+      "top3_share_pct": 85.21265856211203
+    },
+    {
+      "keyword": "영어 공부법",
+      "n": 31,
+      "total_views": 2846079,
+      "median_views": 43000,
+      "top3_share_pct": 49.107667074596314
+    },
+    {
+      "keyword": "영어 스피킹",
+      "n": 37,
+      "total_views": 2082468,
+      "median_views": 32723,
+      "top3_share_pct": 54.29552819058925
+    },
+    {
+      "keyword": "영어 듣기",
+      "n": 36,
+      "total_views": 1923054,
+      "median_views": 36443.0,
+      "top3_share_pct": 50.97937967420572
+    },
+    {
+      "keyword": "영어 발음",
+      "n": 12,
+      "total_views": 1470602,
+      "median_views": 93920.5,
+      "top3_share_pct": 74.1254261860109
+    },
+    {
+      "keyword": "영어 독학",
+      "n": 25,
+      "total_views": 4262377,
+      "median_views": 32723,
+      "top3_share_pct": 88.19696146070608
+    },
+    {
+      "keyword": "원어민 표현",
+      "n": 17,
+      "total_views": 367684,
+      "median_views": 4420,
+      "top3_share_pct": 71.94737872738547
+    },
+    {
+      "keyword": "영어 문법",
+      "n": 28,
+      "total_views": 2118057,
+      "median_views": 35293.5,
+      "top3_share_pct": 53.81715411813752
+    }
+  ],
+  "top20": [
+    {
+      "title": "어른도 모르는 어려운 영어단어를 사용하는 하영이? #내아이의사생활 #02hby",
+      "channel": "두부우",
+      "views": 5201856,
+      "tags": [
+        "질문형"
+      ],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 1.0551810738321092
+    },
+    {
+      "title": "\"영어 나올 줄 알았는데?\" 할리우드 홍보장에서 완벽한 한국어 뱉어 외신 기자들 싹 다 얼게 만든 12살 독학 배우의 정체",
+      "channel": "4800만",
+      "views": 3324436,
+      "tags": [
+        "질문형"
+      ],
+      "hanEng": false,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 0.9415732473117244
+    },
+    {
+      "title": "\"영어 쓰면 눈치 보여요\", 미국의 한국 경기도 마을 직접 가봤습니다",
+      "channel": "영알남YAN",
+      "views": 1603361,
+      "tags": [],
+      "hanEng": false,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 0.7943314075869377
+    },
+    {
+      "title": "화려한 옷을 입은 그녀의 오싹한 직업? #standupcomedy #standupcomedian #영어회화 #comedy",
+      "channel": "코믹한영어",
+      "views": 1090783,
+      "tags": [
+        "질문형"
+      ],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 2.1916366500027964
+    },
+    {
+      "title": "이것만 죽어라 외우세요 l 세상 모든 해외여행 영어 문장 80%가 해결되는 앞대가리 공식 10개 5탄",
+      "channel": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "views": 980557,
+      "tags": [
+        "숫자형",
+        "권위·인용형"
+      ],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 0.5115459886574671
+    },
+    {
+      "title": "기껏공부한 영어를 써먹지 못하는 하영이 #내아이의사생활 #02hby",
+      "channel": "두부우",
+      "views": 966173,
+      "tags": [],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 1.0743417586705486
+    },
+    {
+      "title": "비밀스런 그 남자의 직업과 그의 철벽방어 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+      "channel": "코믹한영어",
+      "views": 682255,
+      "tags": [],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 1.9687653443360622
+    },
+    {
+      "title": "have been 1분 완벽정리  #영어회화 #영어공부 #기초영어",
+      "channel": "잉글리스트",
+      "views": 561355,
+      "tags": [],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 2.204843637270533
+    },
+    {
+      "title": "88세 할아버지가 미친듯이 영어 공부하는 반전 이유",
+      "channel": "사람숲",
+      "views": 478315,
+      "tags": [],
+      "hanEng": false,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 1.9865569760513468
+    },
+    {
+      "title": "기초영어는 이 한편으로 끝난다고 보시면 됩니다. 틀어두고 주구장창 들으세요~!",
+      "channel": "잉글리스트",
+      "views": 289418,
+      "tags": [
+        "결과·성과형"
+      ],
+      "hanEng": false,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 1.2411114719886116
+    },
+    {
+      "title": "\"I'm not big on~\" 1초 만에 해석 안 되면 꼭 보세요! | 원어민들이 정말 자주 쓰는 회화 5개",
+      "channel": "주아쌤_소리튠영어",
+      "views": 286617,
+      "tags": [
+        "숫자형"
+      ],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 0.5596318431914367
+    },
+    {
+      "title": "사랑하면 닮는다의 완벽한 예시 게이커플 #standupcomedy #standupcomedy #영어회화 #lucydarling",
+      "channel": "코믹한영어",
+      "views": 284399,
+      "tags": [],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 2.0270816704700088
+    },
+    {
+      "title": "수상한 심리학교수 그리고 그의 약혼녀🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+      "channel": "코믹한영어",
+      "views": 264353,
+      "tags": [
+        "권위·인용형"
+      ],
+      "hanEng": true,
+      "emoji": true,
+      "bracket": false,
+      "upper": false,
+      "engagement": 2.0105692010304406
+    },
+    {
+      "title": "룸메 월세 함부로 올리면 안되는 이유? #standupcomedy #standupcomedian #영어회화 #lucydarling",
+      "channel": "코믹한영어",
+      "views": 261567,
+      "tags": [
+        "질문형"
+      ],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 2.0618044325163343
+    },
+    {
+      "title": "[나 혼자 산다 665회 예고] 영어 공부에 도전하는 구성환👓 & 대쪽같은 이선민의 쇼핑 철학?!🛒, MBC 260918 방송",
+      "channel": "MBCentertainment",
+      "views": 239065,
+      "tags": [
+        "질문형"
+      ],
+      "hanEng": true,
+      "emoji": true,
+      "bracket": true,
+      "upper": true,
+      "engagement": 0.22629828707673647
+    },
+    {
+      "title": "랜들 박의 자존감 셀프 충전법 #영어듣기 #영어연설",
+      "channel": "월트영어 WALT",
+      "views": 236294,
+      "tags": [],
+      "hanEng": false,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 1.1299482847638957
+    },
+    {
+      "title": "\"유학, 어학원 필요 없습니다\" 4개국어 구사자의 영어 공부법, 이것만 하세요",
+      "channel": "윤석종",
+      "views": 227878,
+      "tags": [
+        "숫자형"
+      ],
+      "hanEng": false,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 1.2761214333985729
+    },
+    {
+      "title": "세상 모든 영어 문장 80%는 이걸로 해결됩니다 l 앞대가리 공식 46개 모음",
+      "channel": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "views": 222124,
+      "tags": [
+        "숫자형",
+        "결과·성과형",
+        "권위·인용형"
+      ],
+      "hanEng": true,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 1.2736129369181177
+    },
+    {
+      "title": "95%가 모르는 영어 단어 쉽게 외우는 방법",
+      "channel": "영어 읽어주는 남자",
+      "views": 212152,
+      "tags": [
+        "튜토리얼형"
+      ],
+      "hanEng": false,
+      "emoji": false,
+      "bracket": false,
+      "upper": false,
+      "engagement": 2.403936800030167
+    },
+    {
+      "title": "미국인은 듣자마자 알아챈다는 한중일 영어 발음 차이 (구분 가능?)",
+      "channel": "어썸코리아 클립",
+      "views": 200588,
+      "tags": [
+        "질문형"
+      ],
+      "hanEng": false,
+      "emoji": false,
+      "bracket": true,
+      "upper": false,
+      "engagement": 0.4626398388737113
+    }
+  ],
+  "top50": [
+    {
+      "videoId": "FGeRBd3tWIs",
+      "title": "어른도 모르는 어려운 영어단어를 사용하는 하영이? #내아이의사생활 #02hby",
+      "channelTitle": "두부우",
+      "viewCount": 5201856,
+      "avgDailyViews": 262278.912953279,
+      "engagementRate": 1.0551810738321092,
+      "publishedAt": "2026-08-30T04:00:03Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 32.5116
+    },
+    {
+      "videoId": "unA7m6rjTUw",
+      "title": "\"영어 나올 줄 알았는데?\" 할리우드 홍보장에서 완벽한 한국어 뱉어 외신 기자들 싹 다 얼게 만든 12살 독학 배우의 정체",
+      "channelTitle": "4800만",
+      "viewCount": 3324436,
+      "avgDailyViews": 150858.42354353698,
+      "engagementRate": 0.9415732473117244,
+      "publishedAt": "2026-08-27T23:07:01Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 117.88780141843972
+    },
+    {
+      "videoId": "pZD5E0XLFwY",
+      "title": "\"영어 쓰면 눈치 보여요\", 미국의 한국 경기도 마을 직접 가봤습니다",
+      "channelTitle": "영알남YAN",
+      "viewCount": 1603361,
+      "avgDailyViews": 76807.84033240241,
+      "engagementRate": 0.7943314075869377,
+      "publishedAt": "2026-08-29T03:00:03Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 1.32509173553719
+    },
+    {
+      "videoId": "RJBvFzqidRo",
+      "title": "화려한 옷을 입은 그녀의 오싹한 직업? #standupcomedy #standupcomedian #영어회화 #comedy",
+      "channelTitle": "코믹한영어",
+      "viewCount": 1090783,
+      "avgDailyViews": 68352.38350119778,
+      "engagementRate": 2.1916366500027964,
+      "publishedAt": "2026-09-03T01:00:09Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 5.9281684782608695
+    },
+    {
+      "videoId": "QEmEjcvqiZk",
+      "title": "이것만 죽어라 외우세요 l 세상 모든 해외여행 영어 문장 80%가 해결되는 앞대가리 공식 10개 5탄",
+      "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "viewCount": 980557,
+      "avgDailyViews": 36958.66446450586,
+      "engagementRate": 0.5115459886574671,
+      "publishedAt": "2026-08-23T11:15:06Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 1.7509946428571428
+    },
+    {
+      "videoId": "eM-56ds__aw",
+      "title": "기껏공부한 영어를 써먹지 못하는 하영이 #내아이의사생활 #02hby",
+      "channelTitle": "두부우",
+      "viewCount": 966173,
+      "avgDailyViews": 80516.2804694553,
+      "engagementRate": 1.0743417586705486,
+      "publishedAt": "2026-09-07T00:00:24Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 6.03858125
+    },
+    {
+      "videoId": "HcW9lIxxu44",
+      "title": "비밀스런 그 남자의 직업과 그의 철벽방어 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+      "channelTitle": "코믹한영어",
+      "viewCount": 682255,
+      "avgDailyViews": 85957.77270639359,
+      "engagementRate": 1.9687653443360622,
+      "publishedAt": "2026-09-11T01:30:35Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 3.707907608695652
+    },
+    {
+      "videoId": "Vdp9QjN2gT8",
+      "title": "have been 1분 완벽정리  #영어회화 #영어공부 #기초영어",
+      "channelTitle": "잉글리스트",
+      "viewCount": 561355,
+      "avgDailyViews": 26784.748162662112,
+      "engagementRate": 2.204843637270533,
+      "publishedAt": "2026-08-29T01:00:28Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 1.4656788511749348
+    },
+    {
+      "videoId": "1LAE85NxULI",
+      "title": "88세 할아버지가 미친듯이 영어 공부하는 반전 이유",
+      "channelTitle": "사람숲",
+      "viewCount": 478315,
+      "avgDailyViews": 21337.758561401588,
+      "engagementRate": 1.9865569760513468,
+      "publishedAt": "2026-08-27T14:00:26Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 13.985818713450293
+    },
+    {
+      "videoId": "EyhdWsOq_gQ",
+      "title": "기초영어는 이 한편으로 끝난다고 보시면 됩니다. 틀어두고 주구장창 들으세요~!",
+      "channelTitle": "잉글리스트",
+      "viewCount": 289418,
+      "avgDailyViews": 25167.542498263836,
+      "engagementRate": 1.2411114719886116,
+      "publishedAt": "2026-09-07T12:00:30Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 0.7556605744125326
+    },
+    {
+      "videoId": "igoN3sry5Ik",
+      "title": "\"I'm not big on~\" 1초 만에 해석 안 되면 꼭 보세요! | 원어민들이 정말 자주 쓰는 회화 5개",
+      "channelTitle": "주아쌤_소리튠영어",
+      "viewCount": 286617,
+      "avgDailyViews": 22853.43580770551,
+      "engagementRate": 0.5596318431914367,
+      "publishedAt": "2026-09-06T11:00:12Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 0.32570113636363635
+    },
+    {
+      "videoId": "59gBb20OzCQ",
+      "title": "사랑하면 닮는다의 완벽한 예시 게이커플 #standupcomedy #standupcomedy #영어회화 #lucydarling",
+      "channelTitle": "코믹한영어",
+      "viewCount": 284399,
+      "avgDailyViews": 197736.1133687946,
+      "engagementRate": 2.0270816704700088,
+      "publishedAt": "2026-09-17T13:28:53Z",
+      "lenBucket": "1~4분",
+      "freshness": "7일 이내",
+      "channelPerf": 1.5456467391304347
+    },
+    {
+      "videoId": "Xj-s0-UH0qQ",
+      "title": "수상한 심리학교수 그리고 그의 약혼녀🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+      "channelTitle": "코믹한영어",
+      "viewCount": 264353,
+      "avgDailyViews": 88940.15724115372,
+      "engagementRate": 2.0105692010304406,
+      "publishedAt": "2026-09-16T00:39:57Z",
+      "lenBucket": "1~4분",
+      "freshness": "7일 이내",
+      "channelPerf": 1.4367010869565218
+    },
+    {
+      "videoId": "0J2ZedwTyPg",
+      "title": "룸메 월세 함부로 올리면 안되는 이유? #standupcomedy #standupcomedian #영어회화 #lucydarling",
+      "channelTitle": "코믹한영어",
+      "viewCount": 261567,
+      "avgDailyViews": 20486.41949344598,
+      "engagementRate": 2.0618044325163343,
+      "publishedAt": "2026-09-06T05:34:20Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 1.4215597826086956
+    },
+    {
+      "videoId": "dCXUwo2dk7U",
+      "title": "[나 혼자 산다 665회 예고] 영어 공부에 도전하는 구성환👓 & 대쪽같은 이선민의 쇼핑 철학?!🛒, MBC 260918 방송",
+      "channelTitle": "MBCentertainment",
+      "viewCount": 239065,
+      "avgDailyViews": 32719.371946699106,
+      "engagementRate": 0.22629828707673647,
+      "publishedAt": "2026-09-11T16:38:36Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 0.025957111834961997
+    },
+    {
+      "videoId": "BaBiUIbDvjs",
+      "title": "랜들 박의 자존감 셀프 충전법 #영어듣기 #영어연설",
+      "channelTitle": "월트영어 WALT",
+      "viewCount": 236294,
+      "avgDailyViews": 20598.8013512041,
+      "engagementRate": 1.1299482847638957,
+      "publishedAt": "2026-09-07T12:41:24Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 7.117289156626506
+    },
+    {
+      "videoId": "mWx4ZeT2igY",
+      "title": "\"유학, 어학원 필요 없습니다\" 4개국어 구사자의 영어 공부법, 이것만 하세요",
+      "channelTitle": "윤석종",
+      "viewCount": 227878,
+      "avgDailyViews": 23392.790632741446,
+      "engagementRate": 1.2761214333985729,
+      "publishedAt": "2026-09-09T06:12:25Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 1.9815478260869566
+    },
+    {
+      "videoId": "SFFFMpLg8L4",
+      "title": "세상 모든 영어 문장 80%는 이걸로 해결됩니다 l 앞대가리 공식 46개 모음",
+      "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "viewCount": 222124,
+      "avgDailyViews": 11372.789236583953,
+      "engagementRate": 1.2736129369181177,
+      "publishedAt": "2026-08-30T11:15:06Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 0.39665
+    },
+    {
+      "videoId": "yGnoKpGO-As",
+      "title": "95%가 모르는 영어 단어 쉽게 외우는 방법",
+      "channelTitle": "영어 읽어주는 남자",
+      "viewCount": 212152,
+      "avgDailyViews": 31933.51393633831,
+      "engagementRate": 2.403936800030167,
+      "publishedAt": "2026-09-12T08:33:17Z",
+      "lenBucket": "1~4분",
+      "freshness": "7일 이내",
+      "channelPerf": 3.4108038585209
+    },
+    {
+      "videoId": "JRoa0LBnShY",
+      "title": "미국인은 듣자마자 알아챈다는 한중일 영어 발음 차이 (구분 가능?)",
+      "channelTitle": "어썸코리아 클립",
+      "viewCount": 200588,
+      "avgDailyViews": 6780.534937111791,
+      "engagementRate": 0.4626398388737113,
+      "publishedAt": "2026-08-20T10:00:36Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 1.0557263157894736
+    },
+    {
+      "videoId": "69RRB4pazVA",
+      "title": "영어 회화 이렇게 했더니 7일 만에 입 뚫림｜2026 AI 영어 회화 공부법",
+      "channelTitle": "제나쌤 | 영어독학",
+      "viewCount": 193155,
+      "avgDailyViews": 9322.02753609588,
+      "engagementRate": 1.3103466128238979,
+      "publishedAt": "2026-08-29T06:42:48Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 3.2627533783783784
+    },
+    {
+      "videoId": "vV4Kl9KbmZ8",
+      "title": "30분이면 왕초보도 당황할 정도로 영어가 술술 나옵니다. | 스피킹 벌크업 06",
+      "channelTitle": "주아쌤_소리튠영어",
+      "viewCount": 189535,
+      "avgDailyViews": 10805.116517832988,
+      "engagementRate": 1.0742079299337852,
+      "publishedAt": "2026-09-01T11:00:38Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 0.21538068181818182
+    },
+    {
+      "videoId": "u0qdx-d7mEg",
+      "title": "필수 여행영어 50문장 | 이것만 외워도 해외에서 웬만한 대화가 됩니다! (한글발음 포함)",
+      "channelTitle": "왕초보 영어학교",
+      "viewCount": 184277,
+      "avgDailyViews": 9646.011406885571,
+      "engagementRate": 0.9854729564731355,
+      "publishedAt": "2026-08-30T21:30:18Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 6.628669064748202
+    },
+    {
+      "videoId": "v6EZnsGpvkw",
+      "title": "72세 미망민의 젊은 남성 공개모집 #standupcomedy #standupcomedian #영어회화 #comedy",
+      "channelTitle": "코믹한영어",
+      "viewCount": 182349,
+      "avgDailyViews": 10165.929099614139,
+      "engagementRate": 1.728553488091517,
+      "publishedAt": "2026-09-01T01:30:20Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 0.9910271739130435
+    },
+    {
+      "videoId": "hsZRHAdEyBw",
+      "title": "이 영상 하나면 기초 영어 인생이 바뀝니다. 500가지 영어표현!  기초영어 | 영어회화 | 연속재생 | 영어흘려듣기 | 영어반복듣기",
+      "channelTitle": "선샤인스쿨 - 영어 중국어 Sunshine School",
+      "viewCount": 169365,
+      "avgDailyViews": 9344.40713726502,
+      "engagementRate": 1.3556519942136807,
+      "publishedAt": "2026-08-31T21:00:22Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 1.35492
+    },
+    {
+      "videoId": "tjc5TWYzgqE",
+      "title": "영어 노베였던 나를 영어 강사로 만들어준 단 하나의 독해법",
+      "channelTitle": "쉬운 영어, 파킬리스영어",
+      "viewCount": 157744,
+      "avgDailyViews": 11721.027288699841,
+      "engagementRate": 1.0149355918450147,
+      "publishedAt": "2026-09-05T13:00:11Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 9.560242424242425
+    },
+    {
+      "videoId": "1pPyeLPIlco",
+      "title": "통째로 외우세요 l 세상 모든 영어 문장에 붙이는 꼬리 공식 10개",
+      "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "viewCount": 156218,
+      "avgDailyViews": 10058.421741372576,
+      "engagementRate": 1.2680997068199567,
+      "publishedAt": "2026-09-03T11:15:16Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 0.2789607142857143
+    },
+    {
+      "videoId": "H9VSiJSsCjw",
+      "title": "[유료급] 9모 영어 딱 10점 올려준다.",
+      "channelTitle": "지안라이트",
+      "viewCount": 149531,
+      "avgDailyViews": 7309.18323934355,
+      "engagementRate": 4.950144117273341,
+      "publishedAt": "2026-08-29T13:00:32Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 3.824322250639386
+    },
+    {
+      "videoId": "n6gI6iL9c6E",
+      "title": "Preposition - English Grammar Lesson 📖💯 #english #grammar #education",
+      "channelTitle": "English MasterClass ",
+      "viewCount": 147397,
+      "avgDailyViews": 32755.141629179234,
+      "engagementRate": 1.383338873925521,
+      "publishedAt": "2026-09-14T12:00:03Z",
+      "lenBucket": "1~4분",
+      "freshness": "7일 이내",
+      "channelPerf": 0.2665406871609403
+    },
+    {
+      "videoId": "4LShGRVrbuQ",
+      "title": "[6시간 영어 회화 듣기] 원어민 일상 대화는 이걸로 끝내세요 (영어 팟캐스트 흘려듣기)",
+      "channelTitle": "영어식 사고ㅣ러너블 티처 케일라 & 아멜리아",
+      "viewCount": 144628,
+      "avgDailyViews": 8748.671826592872,
+      "engagementRate": 0.8746577426224521,
+      "publishedAt": "2026-09-02T11:14:45Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 17.01505882352941
+    },
+    {
+      "videoId": "AAjB95YXQxc",
+      "title": "본토 영어 발음, 랩으로 연습하면 됩니다",
+      "channelTitle": "이빨파티",
+      "viewCount": 143764,
+      "avgDailyViews": 5027.435549250511,
+      "engagementRate": 4.097687877354553,
+      "publishedAt": "2026-08-21T09:41:55Z",
+      "lenBucket": "4~10분",
+      "freshness": "8~30일",
+      "channelPerf": 5.026713286713287
+    },
+    {
+      "videoId": "w9Hyda2gIqM",
+      "title": "[메가스터디] 영어 윤예은쌤 -[2027 9모해설] 1등급이 '순서삽입' 푸는법",
+      "channelTitle": "윤글리시",
+      "viewCount": 131526,
+      "avgDailyViews": 14053.46969818764,
+      "engagementRate": 0.9678694706749997,
+      "publishedAt": "2026-09-09T15:23:05Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 16.797701149425286
+    },
+    {
+      "videoId": "YKDGkBAX_18",
+      "title": "왕초보도 이 영상 하나면 버터 발음 완성됩니다.ㅣPDF 무료 다운ㅣ축약 발음 훈련 몰아보기",
+      "channelTitle": "주아쌤_소리튠영어",
+      "viewCount": 121778,
+      "avgDailyViews": 7835.750995515989,
+      "engagementRate": 1.1882277587084695,
+      "publishedAt": "2026-09-03T11:00:29Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 0.1383840909090909
+    },
+    {
+      "videoId": "ywQXM8gzoco",
+      "title": "인간이 고양이한테 간택 당하는 과정 #영어듣기 #원어민영어 #길냥이간택",
+      "channelTitle": "리핏어게인",
+      "viewCount": 119427,
+      "avgDailyViews": 119427.0,
+      "engagementRate": 3.1048255419628727,
+      "publishedAt": "2026-09-18T23:00:17Z",
+      "lenBucket": "1~4분",
+      "freshness": "7일 이내",
+      "channelPerf": 0.5912227722772277
+    },
+    {
+      "videoId": "5lZQykyTi3c",
+      "title": "do와 does의 차이점 #기초영어 #영어회화 #영어공부",
+      "channelTitle": "잉글리스트",
+      "viewCount": 118873,
+      "avgDailyViews": 11789.125511510052,
+      "engagementRate": 2.678488807382669,
+      "publishedAt": "2026-09-08T22:00:05Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 0.3103733681462141
+    },
+    {
+      "videoId": "YwpRakz5YOw",
+      "title": "20일이면 충분합니다. [수능영어 벼락치기] ",
+      "channelTitle": "지안라이트",
+      "viewCount": 116768,
+      "avgDailyViews": 8698.7325357218,
+      "engagementRate": 4.185221978624281,
+      "publishedAt": "2026-09-05T13:50:04Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 2.986393861892583
+    },
+    {
+      "videoId": "LkP6GUDz1kg",
+      "title": "의외로 헷갈리는 영어 단어 3개",
+      "channelTitle": "영어 읽어주는 남자",
+      "viewCount": 115995,
+      "avgDailyViews": 13467.997613326668,
+      "engagementRate": 2.9061597482650114,
+      "publishedAt": "2026-09-10T09:17:48Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 1.8648713826366559
+    },
+    {
+      "videoId": "UZkVzeVdC0o",
+      "title": "챗GPT와 카톡 \"이 버튼\" 하나 눌렀더니 영어가 터졌습니다｜말문이 트이는 AI 영어 공부법 (프롬프트 무료제공)",
+      "channelTitle": "토종영어",
+      "viewCount": 111823,
+      "avgDailyViews": 5626.366889046252,
+      "engagementRate": 0.8728079196587465,
+      "publishedAt": "2026-08-30T03:00:16Z",
+      "lenBucket": "4~10분",
+      "freshness": "8~30일",
+      "channelPerf": 9.165819672131148
+    },
+    {
+      "videoId": "fu4MmH3uf1I",
+      "title": "영어 듣기 레벨 테스트! 당신은 몇 개 맞혔나요?",
+      "channelTitle": "주아쌤_소리튠영어",
+      "viewCount": 104066,
+      "avgDailyViews": 9871.916872713538,
+      "engagementRate": 0.49487825034112964,
+      "publishedAt": "2026-09-08T11:00:04Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 0.11825681818181819
+    },
+    {
+      "videoId": "M2LZnGgMFno",
+      "title": "외우지 말고 그냥 틀어두세요! 왕초보도 긴 문장을 쉽게 말할 수 있게 됩니다 | 원어민 일상영어 표현 1000문장 | 🎁 3만명 받아간 학습자료 드려요!",
+      "channelTitle": "캘리쌤 브이로그 영어",
+      "viewCount": 92642,
+      "avgDailyViews": 16908.1884933544,
+      "engagementRate": 1.1506660046199348,
+      "publishedAt": "2026-09-13T12:30:04Z",
+      "lenBucket": "20분+",
+      "freshness": "7일 이내",
+      "channelPerf": 0.18491417165668664
+    },
+    {
+      "videoId": "q_FC9hgwYiw",
+      "title": "원어민은 항상 쉽게 말해요 | 영어 핵심 패턴 7개 (카메론 근황 팟캐스트)",
+      "channelTitle": "트랭디",
+      "viewCount": 92492,
+      "avgDailyViews": 5563.428571428572,
+      "engagementRate": 1.5525667084720842,
+      "publishedAt": "2026-09-02T09:00:00Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 0.1934979079497908
+    },
+    {
+      "videoId": "W7UbrKtzYqc",
+      "title": "영어로 길게 말하기, 저는 이 책으로 했어요 | 직접 완독하고 효과 본 스피킹 훈련책",
+      "channelTitle": "쏘로그 | Tholog",
+      "viewCount": 82103,
+      "avgDailyViews": 3802.1772059083646,
+      "engagementRate": 1.4372191028342447,
+      "publishedAt": "2026-08-28T09:45:06Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 15.942330097087378
+    },
+    {
+      "videoId": "yklfwHSkylI",
+      "title": "영단어 무작정 외우지 마세요! 이걸 알아야 입이 트입니다. (feat. 박진영 영어 공부법)",
+      "channelTitle": "주아쌤_소리튠영어",
+      "viewCount": 80149,
+      "avgDailyViews": 4101.52395866773,
+      "engagementRate": 0.4541541379181275,
+      "publishedAt": "2026-08-30T11:00:34Z",
+      "lenBucket": "4~10분",
+      "freshness": "8~30일",
+      "channelPerf": 0.09107840909090908
+    },
+    {
+      "videoId": "U8kq4VTY4Cc",
+      "title": "한번 알면 평생 쓰는 스몰 토크 영어 표현 100개 2탄! | 🎬 영화·미드 500장면 모음.zip",
+      "channelTitle": "칩스영어",
+      "viewCount": 79492,
+      "avgDailyViews": 5118.288724144407,
+      "engagementRate": 1.5360036230060885,
+      "publishedAt": "2026-09-03T11:15:24Z",
+      "lenBucket": "20분+",
+      "freshness": "8~30일",
+      "channelPerf": 10.627272727272727
+    },
+    {
+      "videoId": "KC-Ke-TRjno",
+      "title": "영어 공부 다시 시작한다면 이 3권만 죽어라 볼겁니다. I 왕초보도 영어회화 독학으로 할 수 있어요",
+      "channelTitle": "캐나다형",
+      "viewCount": 77376,
+      "avgDailyViews": 3315.609378928903,
+      "engagementRate": 1.14247311827957,
+      "publishedAt": "2026-08-26T15:54:53Z",
+      "lenBucket": "4~10분",
+      "freshness": "8~30일",
+      "channelPerf": 41.6
+    },
+    {
+      "videoId": "2yVQEuv9Y2c",
+      "title": "만능 영어표현 \"Come to think of it\"",
+      "channelTitle": "주아쌤_소리튠영어",
+      "viewCount": 72995,
+      "avgDailyViews": 4074.6659775164753,
+      "engagementRate": 1.2822796081923418,
+      "publishedAt": "2026-09-01T02:03:20Z",
+      "lenBucket": "1~4분",
+      "freshness": "8~30일",
+      "channelPerf": 0.08294886363636364
+    },
+    {
+      "videoId": "RvIuQav3yGk",
+      "title": "국내파 영어, 유학 다녀오셨어요? 소리 듣는 비법",
+      "channelTitle": "웨이랜드WayLand",
+      "viewCount": 71846,
+      "avgDailyViews": 12965.368701373296,
+      "engagementRate": 0.06263396709628928,
+      "publishedAt": "2026-09-13T11:00:25Z",
+      "lenBucket": "10~20분",
+      "freshness": "7일 이내",
+      "channelPerf": 0.22312422360248446
+    },
+    {
+      "videoId": "UvMWMbiMQIE",
+      "title": "[나혼자산다] 아침부터 영어 공부하고 요가에 바이크까지 타는 김연경 갓생 아침 루틴 MBC230616방송 #김연경",
+      "channelTitle": "픽잇 :Pick it",
+      "viewCount": 69440,
+      "avgDailyViews": 3479.2908055595667,
+      "engagementRate": 0.30817972350230416,
+      "publishedAt": "2026-08-30T01:00:21Z",
+      "lenBucket": "10~20분",
+      "freshness": "8~30일",
+      "channelPerf": 0.2163239875389408
+    },
+    {
+      "videoId": "ijIzTJWn2xI",
+      "title": "한국에서도 이렇게 하면 영어 회화 가능🤎 #영어회화 #영어스피킹 #영어공부",
+      "channelTitle": "Hello Jennie",
+      "viewCount": 69277,
+      "avgDailyViews": 10473.006718924973,
+      "engagementRate": 2.4986647805187867,
+      "publishedAt": "2026-09-12T09:14:40Z",
+      "lenBucket": "1~4분",
+      "freshness": "7일 이내",
+      "channelPerf": 0.2025643274853801
+    },
+    {
+      "videoId": "PluXRDgEZ3k",
+      "title": "(원어민 실제속도) 한국인들의 영어 스피킹이 늘지 않는 치명적인 이유, 이렇게 한번 해보세요!",
+      "channelTitle": "캘리쌤 브이로그 영어",
+      "viewCount": 66998,
+      "avgDailyViews": 19144.691462551513,
+      "engagementRate": 0.6522582763664587,
+      "publishedAt": "2026-09-15T12:00:38Z",
+      "lenBucket": "10~20분",
+      "freshness": "7일 이내",
+      "channelPerf": 0.13372854291417166
+    }
+  ],
+  "tag_table": [
+    {
+      "tag": "질문형",
+      "count": 6,
+      "avg_views": 1719715.8333333333
+    },
+    {
+      "tag": "숫자형",
+      "count": 4,
+      "avg_views": 429294.0
+    },
+    {
+      "tag": "권위·인용형",
+      "count": 3,
+      "avg_views": 489011.3333333333
+    },
+    {
+      "tag": "결과·성과형",
+      "count": 2,
+      "avg_views": 255771.0
+    },
+    {
+      "tag": "튜토리얼형",
+      "count": 1,
+      "avg_views": 212152.0
+    }
+  ],
+  "title_len_table": [
+    {
+      "bucket": "36~50자",
+      "median_views": 425386.5,
+      "n": 8
+    },
+    {
+      "bucket": "51자+",
+      "median_views": 286617,
+      "n": 9
+    },
+    {
+      "bucket": "21~35자",
+      "median_views": 236294,
+      "n": 3
+    }
+  ],
+  "first3words_top5": [
+    "어른도 모르는 어려운",
+    "\"영어 나올 줄",
+    "\"영어 쓰면 눈치",
+    "화려한 옷을 입은",
+    "이것만 죽어라 외우세요"
+  ],
+  "top_words": [
+    [
+      "영어",
+      7
+    ],
+    [
+      "#standupcomedy",
+      6
+    ],
+    [
+      "#영어회화",
+      6
+    ],
+    [
+      "#standupcomedian",
+      4
+    ],
+    [
+      "#lucydarling",
+      4
+    ],
+    [
+      "모르는",
+      2
+    ],
+    [
+      "하영이",
+      2
+    ],
+    [
+      "#내아이의사생활",
+      2
+    ],
+    [
+      "#02hby",
+      2
+    ],
+    [
+      "\"영어",
+      2
+    ]
+  ],
+  "desc_flags": {
+    "링크": 5
+  },
+  "top_tags": [
+    [
+      "영어회화",
+      6
+    ],
+    [
+      "영어공부",
+      6
+    ],
+    [
+      "기초영어",
+      5
+    ],
+    [
+      "영어",
+      4
+    ],
+    [
+      "왕초보영어",
+      3
+    ],
+    [
+      "내아이의사생활",
+      2
+    ],
+    [
+      "육아",
+      2
+    ],
+    [
+      "ENA",
+      2
+    ],
+    [
+      "도경완",
+      2
+    ],
+    [
+      "장윤정",
+      2
+    ],
+    [
+      "도연우",
+      2
+    ],
+    [
+      "도하영",
+      2
+    ],
+    [
+      "추성훈",
+      2
+    ],
+    [
+      "추사랑",
+      2
+    ],
+    [
+      "가족여행",
+      2
+    ]
+  ],
+  "dur_table": [
+    {
+      "bucket": "1~4분",
+      "n": 20,
+      "avg_views": 731465.8,
+      "avg_engagement": 1.843242410585071
+    },
+    {
+      "bucket": "20분+",
+      "n": 15,
+      "avg_views": 306942.86666666664,
+      "avg_engagement": 1.3361793459447926
+    },
+    {
+      "bucket": "10~20분",
+      "n": 11,
+      "avg_views": 143636.72727272726,
+      "avg_engagement": 1.131413295244956
+    },
+    {
+      "bucket": "4~10분",
+      "n": 4,
+      "avg_views": 103278.0,
+      "avg_engagement": 1.6417807633027492
+    }
+  ],
+  "weekday_counter": {
+    "Sun": 5,
+    "Thu": 5,
+    "Sat": 3,
+    "Mon": 3,
+    "Fri": 2,
+    "Wed": 2
+  },
+  "hour_counter": {
+    "4": 1,
+    "23": 1,
+    "3": 1,
+    "1": 3,
+    "11": 3,
+    "0": 2,
+    "14": 1,
+    "12": 2,
+    "13": 1,
+    "5": 1,
+    "16": 1,
+    "6": 1,
+    "8": 1,
+    "10": 1
+  },
+  "channel_table": [
+    {
+      "channel": "두부우",
+      "sub": 160000,
+      "n_videos": 2,
+      "total_views": 6168029,
+      "perf": 38.55018125
+    },
+    {
+      "channel": "4800만",
+      "sub": 28200,
+      "n_videos": 1,
+      "total_views": 3324436,
+      "perf": 117.88780141843972
+    },
+    {
+      "channel": "코믹한영어",
+      "sub": 184000,
+      "n_videos": 5,
+      "total_views": 2583357,
+      "perf": 14.039983695652174
+    },
+    {
+      "channel": "영알남YAN",
+      "sub": 1210000,
+      "n_videos": 1,
+      "total_views": 1603361,
+      "perf": 1.32509173553719
+    },
+    {
+      "channel": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+      "sub": 560000,
+      "n_videos": 2,
+      "total_views": 1202681,
+      "perf": 2.1476446428571427
+    },
+    {
+      "channel": "잉글리스트",
+      "sub": 383000,
+      "n_videos": 2,
+      "total_views": 850773,
+      "perf": 2.2213394255874674
+    },
+    {
+      "channel": "사람숲",
+      "sub": 34200,
+      "n_videos": 1,
+      "total_views": 478315,
+      "perf": 13.985818713450293
+    },
+    {
+      "channel": "주아쌤_소리튠영어",
+      "sub": 880000,
+      "n_videos": 1,
+      "total_views": 286617,
+      "perf": 0.32570113636363635
+    },
+    {
+      "channel": "MBCentertainment",
+      "sub": 9210000,
+      "n_videos": 1,
+      "total_views": 239065,
+      "perf": 0.025957111834961997
+    },
+    {
+      "channel": "월트영어 WALT",
+      "sub": 33200,
+      "n_videos": 1,
+      "total_views": 236294,
+      "perf": 7.117289156626506
+    },
+    {
+      "channel": "윤석종",
+      "sub": 115000,
+      "n_videos": 1,
+      "total_views": 227878,
+      "perf": 1.9815478260869566
+    },
+    {
+      "channel": "영어 읽어주는 남자",
+      "sub": 62200,
+      "n_videos": 1,
+      "total_views": 212152,
+      "perf": 3.4108038585209
+    },
+    {
+      "channel": "어썸코리아 클립",
+      "sub": 190000,
+      "n_videos": 1,
+      "total_views": 200588,
+      "perf": 1.0557263157894736
+    }
+  ],
+  "top3_share": 68.55985728257103,
+  "is_oligopoly": true,
+  "emerging_channels": [],
+  "comment_question_kw": {
+    "자막": 0,
+    "속도": 0,
+    "한글해석": 0,
+    "발음": 0,
+    "레벨": 2,
+    "교재": 6
+  },
+  "comment_complaint_kw": {
+    "광고과다": 0,
+    "난이도": 3,
+    "음질": 0,
+    "너무빠름": 0,
+    "반복지겨움": 0
+  },
+  "comment_request_kw": {
+    "비즈니스버전": 1,
+    "여행편": 0,
+    "느린속도버전": 0,
+    "왕초보버전": 0,
+    "발음교정": 0
+  },
+  "comment_sentiment": {
+    "pos_pct": 14.09090909090909,
+    "neu_pct": 85.9090909090909,
+    "neg_pct": 0.0,
+    "total": 220
+  },
+  "comment_coverage": {
+    "covered": [
+      "FGeRBd3tWIs",
+      "unA7m6rjTUw",
+      "pZD5E0XLFwY",
+      "RJBvFzqidRo",
+      "QEmEjcvqiZk",
+      "eM-56ds__aw",
+      "HcW9lIxxu44",
+      "Vdp9QjN2gT8",
+      "1LAE85NxULI",
+      "EyhdWsOq_gQ",
+      "59gBb20OzCQ"
+    ],
+    "skipped_disabled": [],
+    "uncovered_due_to_budget": [
+      "Xj-s0-UH0qQ",
+      "yGnoKpGO-As",
+      "n6gI6iL9c6E",
+      "ywQXM8gzoco"
+    ]
+  },
+  "low_competition_keywords": [],
+  "unmet_demand": [
+    "질문:레벨(2건)",
+    "질문:교재(6건)"
+  ],
+  "our_channel_comparison": "skipped: OUR_CHANNEL_ID not set",
+  "previous_briefing_comparison": "skipped: 2026-09-02 briefing used a different keyword set (sentence-focused), not comparable at keyword level",
+  "key_points": [
+    {
+      "point": "'영어' 광의 키워드에서는 학습 튜토리얼보다 예능·토크쇼 클립이 압도적으로 강세다",
+      "evidence": "TOP20 상위 3개 채널(두부우·4800만·코믹한영어) 점유율 68.6%, 반복단어 '#standupcomedy' 6회 최다",
+      "action": "'영어' 대신 상대적으로 학습 채널 비중이 높은 '영어 공부법'·'영어 스피킹'(top3 점유율 49~54%) 니치 키워드에 집중"
+    },
+    {
+      "point": "짧은 길이(1~4분) 영상이 TOP50 내 가장 많고 평균 조회수도 압도적 1위다",
+      "evidence": "1~4분 평균 조회수 731,466 (n=20), 타 구간은 10~30만대",
+      "action": "롱폼 강의형 대신 1~4분 임팩트형 클립(질문형 훅) 실험 편성"
+    },
+    {
+      "point": "댓글 '교재 추천' 질문이 최다 반복되지만 TOP20 어디에도 답이 없다",
+      "evidence": "질문 키워드 '교재' 6건 최다, TOP20 제목/설명 내 교재 추천 언급 0건",
+      "action": "'추천 영어 교재 비교' 또는 '독학러 교재 후기' 콘텐츠 우선 제작"
+    }
+  ],
+  "data_notes": [
+    "'영어' 단일 키워드는 예능/토크쇼/드라마 클립까지 폭넓게 포함하여 TOP20/TOP50이 순수 학습 채널 경쟁 구도보다 넓은 범위를 반영함",
+    "API 호출 예산(40회) 제약으로 댓글은 키워드별이 아닌 전체 후보 상위 10(조회수)+5(최근7일, 중복제외 15건) 중 11건만 수집, 4건 미수집",
+    "감정 톤 및 질문/불만/요청 분류는 키워드 매칭 기반 근사치"
+  ]
+}
