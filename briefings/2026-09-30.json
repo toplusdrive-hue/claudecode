@@ -1,0 +1,21 @@
+{
+ "date": "2026-09-30",
+ "partial": true,
+ "keywords": 4,
+ "videos": 49,
+ "api_calls_est": 36,
+ "median_views": 129592,
+ "top3_share": 62.5,
+ "oligopoly": true,
+ "emerging": [
+  "무슨일야",
+  "윤글리시",
+  "치과의사 김예진"
+ ],
+ "length_avg_views": {
+  "1-4": 796934,
+  "4-10": 98657,
+  "10-20": 174808,
+  "20+": 121768
+ }
+}
