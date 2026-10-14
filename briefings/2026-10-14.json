@@ -1,0 +1,15 @@
+{
+ "date": "2026-10-14",
+ "keywords": 9,
+ "videos_filtered": 138,
+ "videos_collected": 299,
+ "api_calls": 36,
+ "takeaways": [
+  "1~4분 클립형 평균 317,766회 vs 20분+ 87,741회",
+  "상위20 중 9개가 코미디/원어민 클립, 해시태그형",
+  "소형 채널(구독 1만 미만) 공부법 영상 채널 대비 성과 30~109배"
+ ],
+ "top3_channel_share_top20": 0.638,
+ "emerging_channels": 15,
+ "partial": false
+}
