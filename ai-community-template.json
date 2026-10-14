@@ -1,0 +1,16 @@
+{
+  "schemaVersion": "0.1.0",
+  "name": "AI 커뮤니티",
+  "behavior": "create",
+  "noteContentFormat": "{{content}}",
+  "properties": [
+    { "name": "title", "value": "{{title}}", "type": "text" },
+    { "name": "source", "value": "{{url}}", "type": "text" },
+    { "name": "author", "value": "{{author}}", "type": "text" },
+    { "name": "created", "value": "{{date}}", "type": "date" },
+    { "name": "tags", "value": "clippings", "type": "multitext" }
+  ],
+  "triggers": ["https://www.gpters.org/"],
+  "noteNameFormat": "{{title}}",
+  "path": "Clippings/AI 커뮤니티"
+}
