@@ -1,0 +1,339 @@
+{
+ "date": "2026-11-01",
+ "keywords": 9,
+ "videos": 152,
+ "api_calls": 40,
+ "partial": false,
+ "our_channel": null,
+ "top20": [
+  {
+   "id": "h9j58UhGyEU",
+   "title": "무시에 대처하는 김영철식 영어법ㅋㅋㅋ",
+   "channel": "엠빅뉴스",
+   "views": 17808497,
+   "views_per_day": 1047559,
+   "engagement_pct": 1.49,
+   "subs": 1440000,
+   "views_per_sub": 12.37,
+   "dur_min": 1.3,
+   "age_days": 17
+  },
+  {
+   "id": "94bxM-mFkZQ",
+   "title": "누구나 처음부터 잘하는 사람은 없다",
+   "channel": "눈물한가득",
+   "views": 8352019,
+   "views_per_day": 556801,
+   "engagement_pct": 1.74,
+   "subs": 129000,
+   "views_per_sub": 64.74,
+   "dur_min": 2.7,
+   "age_days": 15
+  },
+  {
+   "id": "O8XXYENJRok",
+   "title": "알면 좋은 외국어 #영어공부",
+   "channel": "CalliTube",
+   "views": 3810500,
+   "views_per_day": 152420,
+   "engagement_pct": 1.15,
+   "subs": 85700,
+   "views_per_sub": 44.46,
+   "dur_min": 1.0,
+   "age_days": 25
+  },
+  {
+   "id": "ZrCABiqDRrc",
+   "title": "듣자마자 아는 국민 목소리 레전드 10선! (+해외 성우)",
+   "channel": "랭킹스낵",
+   "views": 1397627,
+   "views_per_day": 58234,
+   "engagement_pct": 0.37,
+   "subs": 31600,
+   "views_per_sub": 44.23,
+   "dur_min": 3.1,
+   "age_days": 24
+  },
+  {
+   "id": "MEatxFgMttI",
+   "title": "일부러 틀리려는데 정답이래",
+   "channel": "꿀벌꿀잼",
+   "views": 1165159,
+   "views_per_day": 48548,
+   "engagement_pct": 1.17,
+   "subs": 9300,
+   "views_per_sub": 125.29,
+   "dur_min": 2.1,
+   "age_days": 24
+  },
+  {
+   "id": "uxNSbyqE1e0",
+   "title": "조크의 기본 원리",
+   "channel": "𝗣𝘂𝗻𝗰𝗵𝗹𝗶𝗻𝗲 𝗘𝗻𝗴𝗹𝗶𝘀𝗵",
+   "views": 1127499,
+   "views_per_day": 38879,
+   "engagement_pct": 1.93,
+   "subs": 147000,
+   "views_per_sub": 7.67,
+   "dur_min": 1.5,
+   "age_days": 29
+  },
+  {
+   "id": "mxcOtADCd6Q",
+   "title": "영어를 쓰면 죽는 세상 10",
+   "channel": "코밈 KOMEME",
+   "views": 1071280,
+   "views_per_day": 38260,
+   "engagement_pct": 2.21,
+   "subs": 812000,
+   "views_per_sub": 1.32,
+   "dur_min": 2.1,
+   "age_days": 28
+  },
+  {
+   "id": "7JmoRYbBvnE",
+   "title": "추측만이 쏟아지는 막장 가족 드라마 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 1064961,
+   "views_per_day": 76069,
+   "engagement_pct": 1.71,
+   "subs": 217000,
+   "views_per_sub": 4.91,
+   "dur_min": 1.9,
+   "age_days": 14
+  },
+  {
+   "id": "xgwhWfXkjTk",
+   "title": "시대를 잘못 타고난 귀여운 예비백조 🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 776773,
+   "views_per_day": 64731,
+   "engagement_pct": 1.77,
+   "subs": 217000,
+   "views_per_sub": 3.58,
+   "dur_min": 2.0,
+   "age_days": 12
+  },
+  {
+   "id": "-dNNViUXyxI",
+   "title": "[라디오스타] 모른다고 주눅 들 필요❌ 기존쎄 김영철의 영어 회화 생존법ㅣ#김영철 MBC261014방송",
+   "channel": "엠뚜루마뚜루 : MBC 공식 종합 채널",
+   "views": 722249,
+   "views_per_day": 65659,
+   "engagement_pct": 0.24,
+   "subs": 2950000,
+   "views_per_sub": 0.24,
+   "dur_min": 15.2,
+   "age_days": 11
+  },
+  {
+   "id": "eSfUs5_43xs",
+   "title": "영어 왕초보도 통째로 외울 수 있는 미친 책 #영어회화",
+   "channel": "영어독립",
+   "views": 716663,
+   "views_per_day": 24713,
+   "engagement_pct": 0.54,
+   "subs": 272000,
+   "views_per_sub": 2.63,
+   "dur_min": 1.1,
+   "age_days": 29
+  },
+  {
+   "id": "U2Rq1TU578g",
+   "title": "왕초보라면 이 영상부터 | 기초영어 180문장 틀어만 두면 저절로 외워집니다 | 시니어 1시간 흘려듣기 | 딱20영어",
+   "channel": "딱20 영어",
+   "views": 400834,
+   "views_per_day": 16033,
+   "engagement_pct": 0.96,
+   "subs": 6410,
+   "views_per_sub": 62.53,
+   "dur_min": 57.6,
+   "age_days": 25
+  },
+  {
+   "id": "qzdQTQGpdLw",
+   "title": "[1탄] NEON - A2O LITE 가사 해석 & 틀린 영어 고치기 🩵",
+   "channel": "Aran TV",
+   "views": 386129,
+   "views_per_day": 32177,
+   "engagement_pct": 0.96,
+   "subs": 663000,
+   "views_per_sub": 0.58,
+   "dur_min": 2.9,
+   "age_days": 12
+  },
+  {
+   "id": "vQcMn_Bi770",
+   "title": "요즘 애들이 이걸 본다고? #영어듣기 #영어회화 #그레이아나토미",
+   "channel": "리핏어게인",
+   "views": 345810,
+   "views_per_day": 69162,
+   "engagement_pct": 1.53,
+   "subs": 211000,
+   "views_per_sub": 1.64,
+   "dur_min": 1.3,
+   "age_days": 5
+  },
+  {
+   "id": "Wf5t9ww2bFg",
+   "title": "돈 한 푼 안 쓰고 영어 정복하기: 매일 쓰는 무료 사이트 BEST 10",
+   "channel": "meji 미지",
+   "views": 323605,
+   "views_per_day": 15410,
+   "engagement_pct": 2.85,
+   "subs": 12500,
+   "views_per_sub": 25.89,
+   "dur_min": 14.5,
+   "age_days": 21
+  },
+  {
+   "id": "w19i_a71QBs",
+   "title": "이성애자 여자들만 웃다가 울어버린 이유 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 293526,
+   "views_per_day": 13342,
+   "engagement_pct": 1.5,
+   "subs": 217000,
+   "views_per_sub": 1.35,
+   "dur_min": 2.2,
+   "age_days": 22
+  },
+  {
+   "id": "cQ5Eld6J9O0",
+   "title": "모두를 경악시킨 은밀한 모녀의 생활 🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 277131,
+   "views_per_day": 34641,
+   "engagement_pct": 2.13,
+   "subs": 217000,
+   "views_per_sub": 1.28,
+   "dur_min": 2.9,
+   "age_days": 8
+  },
+  {
+   "id": "QrIIZ_O1Veg",
+   "title": "말 한번 잘못뱉고 평생 이불킥 박제..🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 270633,
+   "views_per_day": 38662,
+   "engagement_pct": 1.2,
+   "subs": 217000,
+   "views_per_sub": 1.25,
+   "dur_min": 1.8,
+   "age_days": 7
+  },
+  {
+   "id": "WziVzT2vYrU",
+   "title": "[2탄] NEON - A2O LITE 가사 해석 & 틀린 영어 고치기 🩵",
+   "channel": "Aran TV",
+   "views": 264720,
+   "views_per_day": 22060,
+   "engagement_pct": 0.93,
+   "subs": 663000,
+   "views_per_sub": 0.4,
+   "dur_min": 2.8,
+   "age_days": 12
+  },
+  {
+   "id": "t27h0xDjPxU",
+   "title": "[영어 1등 선발전 풀버전]＂장수생인 거 부끄러움 없어요＂ 정답을 향해 거침없이 직진하는 수능 총 5번 재수생 | 티처스3: 재수전쟁 3 회",
+   "channel": "play 채널A",
+   "views": 252689,
+   "views_per_day": 84230,
+   "engagement_pct": 0.43,
+   "subs": 3330000,
+   "views_per_sub": 0.08,
+   "dur_min": 34.6,
+   "age_days": 3
+  }
+ ],
+ "kw": {
+  "영어": [
+   24,
+   35798136,
+   104093,
+   84
+  ],
+  "영어회화": [
+   33,
+   6160885,
+   74078,
+   72
+  ],
+  "영어 공부법": [
+   28,
+   1501220,
+   36050,
+   75
+  ],
+  "영어 스피킹": [
+   33,
+   2936750,
+   64747,
+   58
+  ],
+  "영어 듣기": [
+   34,
+   3337147,
+   41652,
+   72
+  ],
+  "영어 발음": [
+   9,
+   1184731,
+   67212,
+   89
+  ],
+  "영어 독학": [
+   24,
+   2546670,
+   46275,
+   65
+  ],
+  "원어민 표현": [
+   9,
+   576154,
+   48092,
+   91
+  ],
+  "영어 문법": [
+   17,
+   561392,
+   30837,
+   84
+  ]
+ },
+ "kw_fields": [
+  "videos",
+  "total_views",
+  "median_views",
+  "top3_channel_share_pct"
+ ],
+ "length": {
+  "1~4분": [
+   54,
+   53054,
+   1.88
+  ],
+  "4~10분": [
+   9,
+   16421,
+   1.51
+  ],
+  "10~20분": [
+   29,
+   19518,
+   1.45
+  ],
+  "20분+": [
+   60,
+   37038,
+   1.43
+  ]
+ },
+ "length_fields": [
+  "videos",
+  "median_views",
+  "avg_engagement_pct"
+ ]
+}
