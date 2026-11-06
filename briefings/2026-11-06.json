@@ -1,0 +1,18 @@
+{
+ "date": "2026-11-06",
+ "keywords": 9,
+ "videos": 156,
+ "api_calls": 38,
+ "points": [
+  "small-channel practical",
+  "1-4min length",
+  "entertainment clip fusion"
+ ],
+ "length_median": {
+  "1-4": 52674,
+  "4-10": 15474,
+  "10-20": 33439,
+  "20+": 21548
+ },
+ "top3_share": 64
+}
