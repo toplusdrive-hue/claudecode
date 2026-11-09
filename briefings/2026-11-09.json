@@ -1,0 +1,2751 @@
+{
+ "date": "2026-11-09",
+ "api_calls": 40,
+ "keyword_results": {
+  "영어 문장": 49,
+  "미드 문장": 45,
+  "영화 문장": 47,
+  "원어민 문장": 48,
+  "영어회화 문장": 50,
+  "필수 문장": 25,
+  "영어 문장 100": 25,
+  "영어 문장 반복": 25,
+  "영어 문장 듣기": 25,
+  "문장 흘려듣기": 25,
+  "문장 쉐도잉": 25,
+  "영어 문장 패턴": 25,
+  "최다 출현 문장": 1,
+  "영어 문장 몰아보기": 25
+ },
+ "total_filtered": 156,
+ "top_n": 50,
+ "top50": [
+  {
+   "videoId": "U2Rq1TU578g",
+   "title": "왕초보라면 이 영상부터 | 기초영어 180문장 틀어만 두면 저절로 외워집니다 | 시니어 1시간 흘려듣기 | 딱20영어",
+   "channelTitle": "딱20 영어",
+   "channelId": "UCL-iLmw8vFLsUc1ha14bbVg",
+   "publishedAt": "2026-10-06T23:00:04Z",
+   "duration_sec": 3454,
+   "viewCount": 468329,
+   "likeCount": 4242,
+   "commentCount": 100,
+   "tags": [
+    "기초영어회화",
+    "영어회화",
+    "영어흘려듣기",
+    "영어 반복듣기",
+    "왕초보 영어",
+    "시니어 영어",
+    "생활영어",
+    "기초영어 180문장",
+    "영어 틀어놓기",
+    "영어 1시간",
+    "영어 듣기",
+    "수면영어",
+    "영어회화 연속재생",
+    "50대 영어",
+    "60대 영어"
+   ],
+   "daily_avg_views": 13774,
+   "engagement_rate": 0.927,
+   "channel_subs": 7760,
+   "perf_vs_channel": 60.352,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 180,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "틀어두기",
+     "흘려듣기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보",
+     "기초",
+     "시니어"
+    ],
+    "rt": true,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "SFFFMpLg8L4",
+   "title": "세상 모든 영어 문장 80%는 이걸로 해결됩니다 l 앞대가리 공식 46개 모음",
+   "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+   "publishedAt": "2026-08-30T11:15:06Z",
+   "duration_sec": 4929,
+   "viewCount": 330104,
+   "likeCount": 3901,
+   "commentCount": 38,
+   "tags": [
+    "기초영어",
+    "영어회화",
+    "영어공부",
+    "영어독학",
+    "영어공부혼자하기",
+    "지름길영어",
+    "알고보카"
+   ],
+   "daily_avg_views": 4649,
+   "engagement_rate": 1.193,
+   "channel_subs": 571000,
+   "perf_vs_channel": 0.578,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 46,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "확신형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": 19
+  },
+  {
+   "videoId": "xaTAV--wNxg",
+   "title": "외국인이 지하철에서 말 걸 때, 이 영어 10문장이면 끝",
+   "channelTitle": "밀가루쌤영어",
+   "channelId": "UC53Xn-yXH33HsrjRmJOOP6Q",
+   "publishedAt": "2026-10-02T09:00:04Z",
+   "duration_sec": 745,
+   "viewCount": 275846,
+   "likeCount": 1815,
+   "commentCount": 25,
+   "tags": [
+    "지하철 영어",
+    "지하철 영어표현",
+    "외국인 길안내 영어",
+    "영어로 길 알려주기",
+    "외국인이 영어로 말 걸 때",
+    "지하철 길안내",
+    "몇 호선 영어로",
+    "세 정거장 영어로",
+    "It's three stops from here",
+    "기초 영어회화",
+    "왕초보 영어",
+    "생활영어",
+    "영어회화 표현",
+    "영어공부 혼자하기",
+    "성인 영어공부"
+   ],
+   "daily_avg_views": 7259,
+   "engagement_rate": 0.667,
+   "channel_subs": 64100,
+   "perf_vs_channel": 4.303,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": 10,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "확신형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "vV4Kl9KbmZ8",
+   "title": "30분이면 왕초보도 당황할 정도로 영어가 술술 나옵니다. | 스피킹 벌크업 06",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-09-01T11:00:38Z",
+   "duration_sec": 2160,
+   "viewCount": 232955,
+   "likeCount": 2515,
+   "commentCount": 63,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 3376,
+   "engagement_rate": 1.107,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.255,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": null,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "말문/입트임"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": true,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": 40
+  },
+  {
+   "videoId": "u0qdx-d7mEg",
+   "title": "필수 여행영어 50문장 | 이것만 외워도 해외에서 웬만한 대화가 됩니다! (한글발음 포함)",
+   "channelTitle": "왕초보 영어학교",
+   "channelId": "UC5tkGLO0GpglCOtkY_GJGpA",
+   "publishedAt": "2026-08-30T21:30:18Z",
+   "duration_sec": 1878,
+   "viewCount": 210958,
+   "likeCount": 2071,
+   "commentCount": 23,
+   "tags": [
+    "여행영어",
+    "여행영어회화",
+    "영어패턴",
+    "기초영어",
+    "기초영어회화",
+    "왕초보영어",
+    "왕초보영어학교",
+    "해외여행영어"
+   ],
+   "daily_avg_views": 2971,
+   "engagement_rate": 0.993,
+   "channel_subs": 30200,
+   "perf_vs_channel": 6.985,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 50,
+    "src": [
+     "여행"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "확신형",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "6ZvM3SmEjQg",
+   "title": "원어민이 밥 먹듯 쓰는 필수 영어 회화 200문장!ㅣ2시간 연속 재생 [왕초보 영어회화]",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-09-29T11:00:20Z",
+   "duration_sec": 6273,
+   "viewCount": 202703,
+   "likeCount": 3077,
+   "commentCount": 61,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 4944,
+   "engagement_rate": 1.548,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.222,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 200,
+    "src": [
+     "원어민"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "원어민처럼"
+    ],
+    "hook": "없음",
+    "freq": [
+     "필수",
+     "매일/밥먹듯"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": true,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "F9hLGXd7pe4",
+   "title": "제발 이것만 외우세요 l 세상에 존재하는 영어 문장 80%는 해결되는 앞대가리 공식 15개 4탄",
+   "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+   "publishedAt": "2026-08-16T11:15:28Z",
+   "duration_sec": 1485,
+   "viewCount": 199941,
+   "likeCount": 3209,
+   "commentCount": 45,
+   "tags": [
+    "영어회화",
+    "영어공부",
+    "영어독학",
+    "기초영어",
+    "생활영어",
+    "초보영어",
+    "앞대가리 공식",
+    "지름길영어",
+    "알고보카"
+   ],
+   "daily_avg_views": 2352,
+   "engagement_rate": 1.627,
+   "channel_subs": 571000,
+   "perf_vs_channel": 0.35,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": 15,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": 16
+  },
+  {
+   "videoId": "1pPyeLPIlco",
+   "title": "통째로 외우세요 l 세상 모든 영어 문장에 붙이는 꼬리 공식 10개",
+   "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+   "publishedAt": "2026-09-03T11:15:16Z",
+   "duration_sec": 1278,
+   "viewCount": 187893,
+   "likeCount": 2267,
+   "commentCount": 33,
+   "tags": [
+    "기초영어",
+    "영어독학",
+    "영어회화",
+    "영어공부혼자하기",
+    "생활영어",
+    "초보영어",
+    "앞대가리 공식",
+    "지름길영어"
+   ],
+   "daily_avg_views": 2804,
+   "engagement_rate": 1.224,
+   "channel_subs": 571000,
+   "perf_vs_channel": 0.329,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": 10,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "M2LZnGgMFno",
+   "title": "외우지 말고 그냥 틀어두세요! 왕초보도 긴 문장을 쉽게 말할 수 있게 됩니다 | 원어민 일상영어 표현 1000문장 | 🎁 3만명 받아간 학습자료 드려요!",
+   "channelTitle": "캘리쌤 브이로그 영어",
+   "channelId": "UCOfPBjrT7sFiBe3Bl2e9bEA",
+   "publishedAt": "2026-09-13T12:30:04Z",
+   "duration_sec": 6273,
+   "viewCount": 184999,
+   "likeCount": 2036,
+   "commentCount": 78,
+   "tags": [
+    "American pronunciation",
+    "English with native speakers",
+    "Speak English fluently",
+    "Speak like a native speaker",
+    "How to pronounce",
+    "Correct pronunciation",
+    "Real life English",
+    "Speak like an American",
+    "How to speak English",
+    "How to pronounce in English",
+    "Conversational English",
+    "Conversation in English",
+    "English grammar",
+    "Basic grammar",
+    "Intermediate English"
+   ],
+   "daily_avg_views": 3246,
+   "engagement_rate": 1.143,
+   "channel_subs": 528000,
+   "perf_vs_channel": 0.35,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 1000,
+    "src": [
+     "원어민",
+     "생활"
+    ],
+    "mode": [
+     "틀어두기",
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "금지형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": true
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "wMTdcaMrC9s",
+   "title": "외우지말고 걍 계속 틀어두십쇼. | 미드/영화 최다 출현 문장 300장면",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-10-06T11:00:28Z",
+   "duration_sec": 3693,
+   "viewCount": 161574,
+   "likeCount": 2208,
+   "commentCount": 26,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어노래",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 영어공부",
+    "영어 듣기",
+    "영어 쉐도잉"
+   ],
+   "daily_avg_views": 4752,
+   "engagement_rate": 1.383,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.177,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 300,
+    "src": [
+     "미드",
+     "영화"
+    ],
+    "mode": [
+     "틀어두기",
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "금지형",
+    "freq": [
+     "최다출현"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "YKDGkBAX_18",
+   "title": "왕초보도 이 영상 하나면 버터 발음 완성됩니다.ㅣPDF 무료 다운ㅣ축약 발음 훈련 몰아보기",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-09-03T11:00:29Z",
+   "duration_sec": 3912,
+   "viewCount": 152107,
+   "likeCount": 1788,
+   "commentCount": 89,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 2270,
+   "engagement_rate": 1.234,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.167,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": null,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "몰아보기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "확신형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": true,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "r0MO699ZnYc",
+   "title": "영어가 처음이라면 이 영상부터 보세요.ㅣPDF 무료 다운ㅣ미드보다 재밌는 토이 스토리 100문장",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-10-08T11:00:29Z",
+   "duration_sec": 2878,
+   "viewCount": 144848,
+   "likeCount": 1547,
+   "commentCount": 21,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 4526,
+   "engagement_rate": 1.083,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.159,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 100,
+    "src": [
+     "미드"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "7OX8Q5fGt5Y",
+   "title": "원어민이 직접 귀에 때려박아주는 필수 영어표현 1000문장 | 틀어만 놔도 영어가 한국어처럼 들려요! | 3만명 받아간 학습자료 드려요!",
+   "channelTitle": "캘리쌤 브이로그 영어",
+   "channelId": "UCOfPBjrT7sFiBe3Bl2e9bEA",
+   "publishedAt": "2026-10-04T12:30:00Z",
+   "duration_sec": 6479,
+   "viewCount": 140002,
+   "likeCount": 1236,
+   "commentCount": 52,
+   "tags": [
+    "American pronunciation",
+    "English with native speakers",
+    "Speak English fluently",
+    "Speak like a native speaker",
+    "How to pronounce",
+    "Correct pronunciation",
+    "Real life English",
+    "Speak like an American",
+    "How to speak English",
+    "How to pronounce in English",
+    "Conversational English",
+    "Conversation in English",
+    "English grammar",
+    "Basic grammar",
+    "Intermediate English"
+   ],
+   "daily_avg_views": 3889,
+   "engagement_rate": 0.92,
+   "channel_subs": 528000,
+   "perf_vs_channel": 0.265,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 1000,
+    "src": [
+     "원어민"
+    ],
+    "mode": [
+     "틀어두기"
+    ],
+    "eff": [
+     "귀트임"
+    ],
+    "hook": "없음",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "T2NqoPHpXcA",
+   "title": "오픽 IH 만들어주는 문장 100개 [1시간 합본]",
+   "channelTitle": "오픽노잼 opicnojam",
+   "channelId": "UCw4izi2fsJzFltt3EbmokWA",
+   "publishedAt": "2026-09-07T10:25:12Z",
+   "duration_sec": 3043,
+   "viewCount": 115057,
+   "likeCount": 1729,
+   "commentCount": 28,
+   "tags": [
+    "오픽",
+    "오픽노잼",
+    "오픽 모의고사",
+    "오픽 al",
+    "오픽 ih",
+    "오픽 im3",
+    "오픽 im2",
+    "오픽 im1",
+    "오픽 il",
+    "오픽 15문재",
+    "오픽 habit 카테고리",
+    "오픽 콤보세트 habit"
+   ],
+   "daily_avg_views": 1826,
+   "engagement_rate": 1.527,
+   "channel_subs": 372000,
+   "perf_vs_channel": 0.309,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 100,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": true,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "7kr9XfuiGcc",
+   "title": "이것만 무조건 외우세요 l 세상에 존재하는 모든 문장에 붙게 되는 필수 꼬리 공식 30개 모음",
+   "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+   "publishedAt": "2026-09-15T11:15:38Z",
+   "duration_sec": 3288,
+   "viewCount": 111622,
+   "likeCount": 1324,
+   "commentCount": 18,
+   "tags": [
+    "기초영어",
+    "영어독학",
+    "영어공부",
+    "영어공부혼자하기",
+    "앞대가리 공식",
+    "지름길영어",
+    "자리영어"
+   ],
+   "daily_avg_views": 2029,
+   "engagement_rate": 1.202,
+   "channel_subs": 571000,
+   "perf_vs_channel": 0.195,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 30,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "필수",
+     "무조건"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "IwI5qkUAIx8",
+   "title": "해외여행에서 무조건 쓰는 기적의 100문장 [왕초보 영어회화]",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-09-22T11:00:26Z",
+   "duration_sec": 3306,
+   "viewCount": 111257,
+   "likeCount": 1083,
+   "commentCount": 13,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 2318,
+   "engagement_rate": 0.985,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.122,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 100,
+    "src": [
+     "여행"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "무조건"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "JsmNhHZ9wbQ",
+   "title": "영어 왕초보라면 이 영상부터 보세요.ㅣ미드보다 재밌는 애니메이션 쉐도잉 몰아보기",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-09-27T11:00:16Z",
+   "duration_sec": 19825,
+   "viewCount": 108718,
+   "likeCount": 1651,
+   "commentCount": 23,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 2528,
+   "engagement_rate": 1.54,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.119,
+   "duration_bucket": "3시간+",
+   "slots": {
+    "num": null,
+    "src": [
+     "미드"
+    ],
+    "mode": [
+     "몰아보기",
+     "쉐도잉"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": true,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "6R_vi2Mwmuo",
+   "title": "이것만 죽어라 외우세요 l 세상 모든 영어 문장에 붙게 되는 필수 꼬리 공식 10개  2탄",
+   "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+   "publishedAt": "2026-09-08T11:15:18Z",
+   "duration_sec": 1149,
+   "viewCount": 104210,
+   "likeCount": 1229,
+   "commentCount": 22,
+   "tags": [
+    "영어회화",
+    "기초영어",
+    "영어독학",
+    "영어공부혼자하기",
+    "초보영어",
+    "생활영어",
+    "앞대가리 공식",
+    "지름길영어"
+   ],
+   "daily_avg_views": 1681,
+   "engagement_rate": 1.2,
+   "channel_subs": 571000,
+   "perf_vs_channel": 0.183,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": 10,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "KvycMYGwolk",
+   "title": "왕초보 일본어 회화 필수! 문장 마무리 패턴 30개｜따라만 하세요",
+   "channelTitle": "바로일본어 수지센세",
+   "channelId": "UCgLYy6GGv5ooNxZlqNUvDpQ",
+   "publishedAt": "2026-09-27T10:40:53Z",
+   "duration_sec": 4773,
+   "viewCount": 95154,
+   "likeCount": 921,
+   "commentCount": 39,
+   "tags": [],
+   "daily_avg_views": 2213,
+   "engagement_rate": 1.009,
+   "channel_subs": 93800,
+   "perf_vs_channel": 1.014,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 30,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "쉐도잉"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "atZDRpcnKks",
+   "title": "해외 여행 영어 한편에 끝내기 _ 누구나 쓸 수 있는 쉽고 중요한 여행 영어 문장들 한번에 끝내기",
+   "channelTitle": "친절한 대학",
+   "channelId": "UClPWDge6kFVESzlzcuXKJfw",
+   "publishedAt": "2026-08-19T23:00:24Z",
+   "duration_sec": 9872,
+   "viewCount": 91089,
+   "likeCount": 1793,
+   "commentCount": 61,
+   "tags": [
+    "친절한영어교실",
+    "기초영어"
+   ],
+   "daily_avg_views": 1111,
+   "engagement_rate": 2.035,
+   "channel_subs": 1230000,
+   "perf_vs_channel": 0.074,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": null,
+    "src": [
+     "여행"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "uzHt8k9Yoq4",
+   "title": "심심할 때마다 라디오처럼 틀어 놓고 편하게 흘려 들어보세요. 나도 모르게 영어로 대답하는 나를 발견하게 됩니다. (좋은 영어 문장 연속으로 이어 듣기)",
+   "channelTitle": "친절한 대학",
+   "channelId": "UClPWDge6kFVESzlzcuXKJfw",
+   "publishedAt": "2026-09-20T23:00:17Z",
+   "duration_sec": 13338,
+   "viewCount": 88606,
+   "likeCount": 1411,
+   "commentCount": 44,
+   "tags": [],
+   "daily_avg_views": 1772,
+   "engagement_rate": 1.642,
+   "channel_subs": 1230000,
+   "perf_vs_channel": 0.072,
+   "duration_bucket": "3시간+",
+   "slots": {
+    "num": null,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "틀어두기",
+     "흘려듣기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "YXwqTpy2pBM",
+   "title": "편하게 TV 처럼 매일 틀어 놓고 흘려 듣기만 해보세요. 그럼 영어 초보 바로 끝이 납니다. (핵심 필수 초급 영어문장 490개 엄선, 한번에 끝내기)",
+   "channelTitle": "친절한 대학",
+   "channelId": "UClPWDge6kFVESzlzcuXKJfw",
+   "publishedAt": "2026-10-11T23:00:19Z",
+   "duration_sec": 3130,
+   "viewCount": 88085,
+   "likeCount": 1538,
+   "commentCount": 46,
+   "tags": [],
+   "daily_avg_views": 3037,
+   "engagement_rate": 1.798,
+   "channel_subs": 1230000,
+   "perf_vs_channel": 0.072,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 490,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "틀어두기",
+     "흘려듣기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "필수",
+     "매일/밥먹듯"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "iBRddnTy2VI",
+   "title": "영어 왕초보도 외국인과 대화가 술술~ 스몰토크 50문장ㅣPDF 무료 다운",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-09-17T11:00:18Z",
+   "duration_sec": 1865,
+   "viewCount": 86101,
+   "likeCount": 1048,
+   "commentCount": 23,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 1625,
+   "engagement_rate": 1.244,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.094,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 50,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "말문/입트임"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "jFYvVCAzT9c",
+   "title": "원어민이 밥 먹듯 쓰는 필수 영어 회화 500문장 [왕초보 영어회화]",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-10-18T11:00:20Z",
+   "duration_sec": 15954,
+   "viewCount": 84547,
+   "likeCount": 1498,
+   "commentCount": 24,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 3843,
+   "engagement_rate": 1.8,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.093,
+   "duration_bucket": "3시간+",
+   "slots": {
+    "num": 500,
+    "src": [
+     "원어민"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "원어민처럼"
+    ],
+    "hook": "없음",
+    "freq": [
+     "필수",
+     "매일/밥먹듯"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "aG8KtyqZaR4",
+   "title": "암기 없이도 제대로 입 터지는 필수 패턴 150문장ㅣ왕초보 영어 회화",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-10-04T11:00:19Z",
+   "duration_sec": 2179,
+   "viewCount": 80334,
+   "likeCount": 1094,
+   "commentCount": 30,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 2232,
+   "engagement_rate": 1.399,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.088,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 150,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "말문/입트임"
+    ],
+    "hook": "없음",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "e_AV_TQs9-k",
+   "title": "왕초보 영어회화 기초 100문장 흘려듣기 | 틀어놓기만 해도 입에 붙는 일상 생활영어 | 왕초보·시니어 듣기 훈련 (한글 발음 포함)",
+   "channelTitle": "말트영어(기초&여행&생활영어)",
+   "channelId": "UC0eZuKTP1pcMIENI3fqwN3g",
+   "publishedAt": "2026-10-04T21:00:26Z",
+   "duration_sec": 4025,
+   "viewCount": 76721,
+   "likeCount": 930,
+   "commentCount": 15,
+   "tags": [
+    "영어",
+    "영어회화",
+    "영어단어",
+    "영어기초",
+    "초보영어",
+    "왕초보영어",
+    "영어독학",
+    "영어공부",
+    "영어듣기",
+    "영어루틴",
+    "생활영어",
+    "매일영어",
+    "영어기초배우기",
+    "쉬운영어",
+    "english"
+   ],
+   "daily_avg_views": 2131,
+   "engagement_rate": 1.232,
+   "channel_subs": 161000,
+   "perf_vs_channel": 0.477,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "생활"
+    ],
+    "mode": [
+     "틀어두기",
+     "흘려듣기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보",
+     "기초",
+     "시니어"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "7G21ggFVvgw",
+   "title": "생활영어 패턴 #69 | As long as ~ 50문장 | 통으로 외우세요 | 그냥 틀어만 놓으세요 | 자면서 듣는 기초 영어회화",
+   "channelTitle": "자면서 듣는 영어패턴",
+   "channelId": "UCRO_ZsPWql5pLfwrXA6ZC4g",
+   "publishedAt": "2026-10-10T19:40:28Z",
+   "duration_sec": 3823,
+   "viewCount": 74363,
+   "likeCount": 751,
+   "commentCount": 8,
+   "tags": [
+    "자면서 듣는 영어",
+    "영어 왕초보",
+    "기초 영어회화",
+    "영어 흘려듣기",
+    "영어회화 패턴",
+    "영어 100문장",
+    "영어 초보 탈출",
+    "생활영어 기초",
+    "영어 반복 듣기",
+    "왕초보 영어회화",
+    "영어 문장 반복",
+    "영어 듣기 초급",
+    "매일 영어 10분",
+    "영어 말하기 기초",
+    "초보 영어 패턴"
+   ],
+   "daily_avg_views": 2479,
+   "engagement_rate": 1.021,
+   "channel_subs": 2100,
+   "perf_vs_channel": 35.411,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 50,
+    "src": [
+     "생활"
+    ],
+    "mode": [
+     "틀어두기",
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "기초"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "WFmMi6QHVqg",
+   "title": "외우지말고 그냥 계속 틀어두십쇼. | 디카프리오 영화 일상 문장 100장면",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-08-18T11:00:00Z",
+   "duration_sec": 3412,
+   "viewCount": 73951,
+   "likeCount": 1529,
+   "commentCount": 46,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어노래",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 영어공부",
+    "영어 듣기",
+    "영어 쉐도잉"
+   ],
+   "daily_avg_views": 891,
+   "engagement_rate": 2.13,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.081,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 100,
+    "src": [
+     "영화",
+     "생활"
+    ],
+    "mode": [
+     "틀어두기",
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "금지형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": 29
+  },
+  {
+   "videoId": "Qc-pJ0w51Bc",
+   "title": "오픽 AL 만들어주는 문장 100개 [1시간 합본]",
+   "channelTitle": "오픽노잼 opicnojam",
+   "channelId": "UCw4izi2fsJzFltt3EbmokWA",
+   "publishedAt": "2026-08-24T09:00:39Z",
+   "duration_sec": 3498,
+   "viewCount": 72813,
+   "likeCount": 1258,
+   "commentCount": 14,
+   "tags": [
+    "오픽",
+    "오픽노잼",
+    "오픽 모의고사",
+    "오픽 al",
+    "오픽 ih",
+    "오픽 im3",
+    "오픽 im2",
+    "오픽 im1",
+    "오픽 il",
+    "오픽 15문재",
+    "오픽 habit 카테고리",
+    "오픽 콤보세트 habit"
+   ],
+   "daily_avg_views": 946,
+   "engagement_rate": 1.747,
+   "channel_subs": 372000,
+   "perf_vs_channel": 0.196,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 100,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": true,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "RLz7W0vi23w",
+   "title": "왕초보 생활 영어회화 100문장｜저녁마다 오가는 말은 정해져 있어요, 이것만 익히세요 (한글 발음 포함)",
+   "channelTitle": "말트영어(기초&여행&생활영어)",
+   "channelId": "UC0eZuKTP1pcMIENI3fqwN3g",
+   "publishedAt": "2026-09-06T21:00:25Z",
+   "duration_sec": 4250,
+   "viewCount": 72192,
+   "likeCount": 972,
+   "commentCount": 12,
+   "tags": [
+    "영어",
+    "영어회화",
+    "영어단어",
+    "영어기초",
+    "초보영어",
+    "왕초보영어",
+    "영어독학",
+    "영어공부",
+    "영어듣기",
+    "영어루틴",
+    "생활영어",
+    "매일영어",
+    "영어기초배우기",
+    "쉬운영어",
+    "english"
+   ],
+   "daily_avg_views": 1128,
+   "engagement_rate": 1.363,
+   "channel_subs": 161000,
+   "perf_vs_channel": 0.448,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "생활"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "MIqGk8qyTu4",
+   "title": "[왕초보 영어] Can I~? 패턴 영어 100문장 | 3단어부터 막힐 때 이것만 따라하세요! | 시니어 기초영어 | 생활영어 반복 듣기",
+   "channelTitle": "입붙 영어(기초, 여행, 생활영어)",
+   "channelId": "UC4P1LpkV5EsqyLLpoY4lx0A",
+   "publishedAt": "2026-08-30T23:00:24Z",
+   "duration_sec": 3885,
+   "viewCount": 70654,
+   "likeCount": 1501,
+   "commentCount": 28,
+   "tags": [
+    "생활영어",
+    "기초영어",
+    "영어회화",
+    "영어말하기",
+    "영어듣기",
+    "영어입문",
+    "영어배우기",
+    "영어공부",
+    "영어공부혼자하기",
+    "영어회화기초",
+    "여행영어",
+    "영어문장",
+    "영어문장 외우기",
+    "영어표현",
+    "영어기초회화"
+   ],
+   "daily_avg_views": 995,
+   "engagement_rate": 2.164,
+   "channel_subs": 14400,
+   "perf_vs_channel": 4.907,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "생활"
+    ],
+    "mode": [
+     "반복",
+     "쉐도잉"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "질문형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보",
+     "기초",
+     "시니어"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "7a-qXDke6IU",
+   "title": "[중고급] 긴 영어가 안 들린다면? 해석하지 말고 이렇게 들으세요! | 긴 문장 듣기 연습 #8 | 영어 리스닝 훈련",
+   "channelTitle": "Jim's Language TV",
+   "channelId": "UCdEmqNSAtwKAFkSLNZbqIyQ",
+   "publishedAt": "2026-10-14T21:45:11Z",
+   "duration_sec": 2464,
+   "viewCount": 69938,
+   "likeCount": 765,
+   "commentCount": 16,
+   "tags": [
+    "영어",
+    "영어공부",
+    "jim's language tv",
+    "영어독학",
+    "영어리스닝",
+    "영어듣기",
+    "영어회화",
+    "영어루틴",
+    "중급영어",
+    "영어 듣기",
+    "영어 어순",
+    "영어 공부"
+   ],
+   "daily_avg_views": 2690,
+   "engagement_rate": 1.117,
+   "channel_subs": 202000,
+   "perf_vs_channel": 0.346,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": null,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "금지형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "vNbfw5Okm6U",
+   "title": "[영어 패턴 #79] Where do you~? 필수 영어패턴 50문장 | 기초 생활영어 회화 | 왕초보 영어회화",
+   "channelTitle": "하루영어패턴",
+   "channelId": "UCqOmOJOohvX3Q79ThYboJeA",
+   "publishedAt": "2026-10-13T02:00:07Z",
+   "duration_sec": 1681,
+   "viewCount": 67647,
+   "likeCount": 454,
+   "commentCount": 4,
+   "tags": [
+    "패턴영어",
+    "생활영어",
+    "왕초보영어회화",
+    "기초영어회화",
+    "생활영어회화",
+    "영어공부혼자하기",
+    "영어문장공부",
+    "왕초보영어"
+   ],
+   "daily_avg_views": 2505,
+   "engagement_rate": 0.677,
+   "channel_subs": 2760,
+   "perf_vs_channel": 24.51,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": 50,
+    "src": [
+     "생활"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "질문형",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "왕초보",
+     "기초"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "aD3vNMtyBj0",
+   "title": "왕초보 영어회화 100문장｜안부부터 약속까지, 사람 만나면 주고받는 일상 대화 독학 (한글 발음 포함)",
+   "channelTitle": "말트영어(기초&여행&생활영어)",
+   "channelId": "UC0eZuKTP1pcMIENI3fqwN3g",
+   "publishedAt": "2026-09-20T21:00:25Z",
+   "duration_sec": 4095,
+   "viewCount": 67309,
+   "likeCount": 860,
+   "commentCount": 18,
+   "tags": [
+    "영어",
+    "영어회화",
+    "영어단어",
+    "영어기초",
+    "초보영어",
+    "왕초보영어",
+    "영어독학",
+    "영어공부",
+    "영어듣기",
+    "영어루틴",
+    "생활영어",
+    "매일영어",
+    "영어기초배우기",
+    "쉬운영어",
+    "english"
+   ],
+   "daily_avg_views": 1346,
+   "engagement_rate": 1.304,
+   "channel_subs": 161000,
+   "perf_vs_channel": 0.418,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "생활"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "842TXkWynTo",
+   "title": "왕초보 아침 영어회화 100문장｜눈 뜨고 아침 먹기까지, 매일 반복되는 말만 모았어요 (한글 발음 포함)",
+   "channelTitle": "말트영어(기초&여행&생활영어)",
+   "channelId": "UC0eZuKTP1pcMIENI3fqwN3g",
+   "publishedAt": "2026-08-23T21:00:28Z",
+   "duration_sec": 4098,
+   "viewCount": 60606,
+   "likeCount": 670,
+   "commentCount": 3,
+   "tags": [
+    "영어",
+    "영어회화",
+    "영어단어",
+    "영어기초",
+    "초보영어",
+    "왕초보영어",
+    "영어독학",
+    "영어공부",
+    "영어듣기",
+    "영어루틴",
+    "생활영어",
+    "매일영어",
+    "영어기초배우기",
+    "쉬운영어",
+    "english"
+   ],
+   "daily_avg_views": 777,
+   "engagement_rate": 1.11,
+   "channel_subs": 161000,
+   "perf_vs_channel": 0.376,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "반복"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "매일/밥먹듯"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "tsSHK7o5FbE",
+   "title": "[영어 듣기 무한 반복] 한국판 개봉 전 필수 시청 🎬 그냥 틀어만 둬도 귀가 뚫리는 인턴 원작 명대사",
+   "channelTitle": "하이빅쌤",
+   "channelId": "UCyor63cnjHmyTDIAavdmwxQ",
+   "publishedAt": "2026-09-13T09:00:19Z",
+   "duration_sec": 4560,
+   "viewCount": 59996,
+   "likeCount": 694,
+   "commentCount": 11,
+   "tags": [
+    "인턴",
+    "인턴 영화",
+    "영화 영어",
+    "기초영어",
+    "영어 발음",
+    "영어",
+    "영어발음",
+    "어려운 영어발음",
+    "하이빅쌤",
+    "영어 공부",
+    "영어 공부법",
+    "스피킹공부법",
+    "스피킹 공부",
+    "왕초보 영어",
+    "왕초보 영어공부법"
+   ],
+   "daily_avg_views": 1053,
+   "engagement_rate": 1.175,
+   "channel_subs": 265000,
+   "perf_vs_channel": 0.226,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": null,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "틀어두기",
+     "반복"
+    ],
+    "eff": [
+     "귀트임"
+    ],
+    "hook": "없음",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": true
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "XbfSHe0BDMc",
+   "title": "가볍게 들어보세요 _ 영어 핵심 필수 문장을 통해 배우는 영어의 뼈대 1강",
+   "channelTitle": "친절한 대학",
+   "channelId": "UClPWDge6kFVESzlzcuXKJfw",
+   "publishedAt": "2026-10-18T23:00:04Z",
+   "duration_sec": 2924,
+   "viewCount": 58936,
+   "likeCount": 1343,
+   "commentCount": 158,
+   "tags": [],
+   "daily_avg_views": 2679,
+   "engagement_rate": 2.547,
+   "channel_subs": 1230000,
+   "perf_vs_channel": 0.048,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 1,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "UbyzmioT4b8",
+   "title": "모든 영어 문장에 붙이기만 하세요 l 원어민이 매일 사용하는 꼬리 공식 10개 3탄",
+   "channelTitle": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "channelId": "UCezt_gfn8nJyFltdQUvFM0g",
+   "publishedAt": "2026-09-11T11:15:27Z",
+   "duration_sec": 1002,
+   "viewCount": 56179,
+   "likeCount": 661,
+   "commentCount": 13,
+   "tags": [
+    "영어회화",
+    "영어독학",
+    "영어공부",
+    "영어공부혼자하기",
+    "기초영어",
+    "생활영어",
+    "지름길영어",
+    "자리영어",
+    "앞대가리 공식"
+   ],
+   "daily_avg_views": 952,
+   "engagement_rate": 1.2,
+   "channel_subs": 571000,
+   "perf_vs_channel": 0.098,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": 10,
+    "src": [
+     "원어민"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "매일/밥먹듯"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "ov5kAeU9pdA",
+   "title": "초보라면 무조건 알아야하는 영어 회화 문장 30개 정리 _ 사용 횟수 압도적 1위 문장 10강",
+   "channelTitle": "친절한 대학",
+   "channelId": "UClPWDge6kFVESzlzcuXKJfw",
+   "publishedAt": "2026-10-25T23:00:03Z",
+   "duration_sec": 2696,
+   "viewCount": 54490,
+   "likeCount": 1128,
+   "commentCount": 27,
+   "tags": [],
+   "daily_avg_views": 3633,
+   "engagement_rate": 2.12,
+   "channel_subs": 1230000,
+   "perf_vs_channel": 0.044,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 30,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "무조건"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "-_rC-ZTx8KM",
+   "title": "왕초보 영어회화 100문장 따라 말하기｜짧게 시작해 길게 말하기, 왕초보·시니어도 입이 트여요 (한글 발음 포함)",
+   "channelTitle": "말트영어(기초&여행&생활영어)",
+   "channelId": "UC0eZuKTP1pcMIENI3fqwN3g",
+   "publishedAt": "2026-09-27T21:00:34Z",
+   "duration_sec": 4308,
+   "viewCount": 54350,
+   "likeCount": 721,
+   "commentCount": 9,
+   "tags": [
+    "영어",
+    "영어회화",
+    "영어단어",
+    "영어기초",
+    "초보영어",
+    "왕초보영어",
+    "영어독학",
+    "영어공부",
+    "영어듣기",
+    "영어루틴",
+    "생활영어",
+    "매일영어",
+    "영어기초배우기",
+    "쉬운영어",
+    "english"
+   ],
+   "daily_avg_views": 1264,
+   "engagement_rate": 1.343,
+   "channel_subs": 161000,
+   "perf_vs_channel": 0.338,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "쉐도잉"
+    ],
+    "eff": [
+     "말문/입트임"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보",
+     "시니어"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "GPn9YQO2Ww8",
+   "title": "[왕초보 영어] Can you? 패턴영어 100문장 | 부탁부터 질문까지 쉽게 해요! | 시니어 기초영어 반복듣기",
+   "channelTitle": "입붙 영어(기초, 여행, 생활영어)",
+   "channelId": "UC4P1LpkV5EsqyLLpoY4lx0A",
+   "publishedAt": "2026-09-20T23:00:04Z",
+   "duration_sec": 3818,
+   "viewCount": 52866,
+   "likeCount": 1192,
+   "commentCount": 27,
+   "tags": [
+    "생활영어",
+    "기초영어",
+    "영어회화",
+    "영어말하기",
+    "영어듣기",
+    "영어입문",
+    "영어배우기",
+    "영어공부",
+    "영어공부혼자하기",
+    "영어회화기초",
+    "여행영어",
+    "영어문장",
+    "영어문장 외우기",
+    "영어표현",
+    "영어기초회화"
+   ],
+   "daily_avg_views": 1057,
+   "engagement_rate": 2.306,
+   "channel_subs": 14400,
+   "perf_vs_channel": 3.671,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "반복"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "질문형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보",
+     "기초",
+     "시니어"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "XiPzNZJor4U",
+   "title": "일본어 여행회화 ✈️ 왕초보도 당장 써먹는 필수 표현 7개(한글 발음 포함) | 일본여행 치트키",
+   "channelTitle": "일본어 1위 해커스 회화·JLPT·학원·인강",
+   "channelId": "UCVsW_QS-bzIVDMChrRuBxPA",
+   "publishedAt": "2026-08-13T09:00:37Z",
+   "duration_sec": 614,
+   "viewCount": 49510,
+   "likeCount": 482,
+   "commentCount": 3,
+   "tags": [
+    "히라가나",
+    "일본어",
+    "JLPT",
+    "가타가나",
+    "가타카나",
+    "일본어회화",
+    "여행일본어",
+    "일본문화",
+    "일본어학원",
+    "일본어 학원",
+    "기초일본어",
+    "기초 일본어",
+    "일본어공부",
+    "일본어 공부",
+    "일본어문장"
+   ],
+   "daily_avg_views": 563,
+   "engagement_rate": 0.98,
+   "channel_subs": 160000,
+   "perf_vs_channel": 0.309,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": 7,
+    "src": [
+     "여행"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "필수"
+    ],
+    "lv": [
+     "왕초보"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "DkrWy0CHtYo",
+   "title": "딱 이것만 외우세요! 평생 써먹는 왕기초 영어회화 300문장 흘려듣기 (한글발음 포함)",
+   "channelTitle": "Jim's Language TV",
+   "channelId": "UCdEmqNSAtwKAFkSLNZbqIyQ",
+   "publishedAt": "2026-08-27T00:28:58Z",
+   "duration_sec": 5635,
+   "viewCount": 47322,
+   "likeCount": 375,
+   "commentCount": 17,
+   "tags": [
+    "영어회화",
+    "쉬운영어",
+    "생활영어",
+    "영어듣기",
+    "매일영어",
+    "영어공부법",
+    "왕초보영어",
+    "영어공부혼자하기",
+    "영어공부",
+    "초보영어",
+    "기초영어"
+   ],
+   "daily_avg_views": 639,
+   "engagement_rate": 0.828,
+   "channel_subs": 202000,
+   "perf_vs_channel": 0.234,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 300,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "흘려듣기",
+     "통째로외우기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "명령형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보",
+     "기초"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "hey-GVKRwYM",
+   "title": "현대문학사상 가장 강렬한 첫문장, 영화는 어땠을까? 📖💥🔫| 《이방인》 감상 리뷰",
+   "channelTitle": "파인의 취향",
+   "channelId": "UC6P0oaOpEFXwHigGCAgGWiw",
+   "publishedAt": "2026-10-08T09:00:00Z",
+   "duration_sec": 1001,
+   "viewCount": 44632,
+   "likeCount": 245,
+   "commentCount": 23,
+   "tags": [],
+   "daily_avg_views": 1395,
+   "engagement_rate": 0.6,
+   "channel_subs": 304,
+   "perf_vs_channel": 146.816,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": null,
+    "src": [
+     "영화"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "질문형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": true
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "xlq5atM2XWc",
+   "title": "한국인 90%가 모르는 어색한 영어, 이 10문장 쓰고 있으면 지금 당장 멈추세요!🚨",
+   "channelTitle": "가브리엘의 원어민 영어",
+   "channelId": "UCqV3Z9kMVQ6efcyfXoX3ljQ",
+   "publishedAt": "2026-10-29T12:39:21Z",
+   "duration_sec": 625,
+   "viewCount": 44306,
+   "likeCount": 598,
+   "commentCount": 12,
+   "tags": [],
+   "daily_avg_views": 4028,
+   "engagement_rate": 1.377,
+   "channel_subs": 98600,
+   "perf_vs_channel": 0.449,
+   "duration_bucket": "10~30분",
+   "slots": {
+    "num": 10,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": true
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "y0InSpcRVOg",
+   "title": "279.[🇺🇸영어회화 100문장]  알면 계속 쓰는 영어 진짜 많이 씁니다 📌 PDF파일 무료제공 |영어회화100일의기적",
+   "channelTitle": "10분영어",
+   "channelId": "UC6fZ02H87mj5GqMM7X9UQIQ",
+   "publishedAt": "2026-09-27T22:00:14Z",
+   "duration_sec": 4462,
+   "viewCount": 44150,
+   "likeCount": 527,
+   "commentCount": 24,
+   "tags": [
+    "엄마표영어",
+    "영어회화",
+    "영어회화배우기",
+    "초급영어배우기",
+    "영어듣기",
+    "영어쉐도잉",
+    "영어기초",
+    "영어반복",
+    "시니어영어",
+    "영어단어",
+    "여행영어",
+    "필수영단어",
+    "기초영어",
+    "퇴근길영어",
+    "쉬운영어"
+   ],
+   "daily_avg_views": 1027,
+   "engagement_rate": 1.248,
+   "channel_subs": 114000,
+   "perf_vs_channel": 0.387,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "매일/밥먹듯"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": true
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "Gr5-HJJA98I",
+   "title": "Have you~? 미국인이 사랑하는 영어질문 100문장!  1시간 몰아보고 입트자!  영어흘려듣기 | 쉬운영어 | 왕초보영어| 기초영어회화 | 영어반복듣기",
+   "channelTitle": "선샤인스쿨 - 영어  Sunshine School",
+   "channelId": "UC3NRgqFNR51OU7-kckFWVrA",
+   "publishedAt": "2026-08-24T21:00:05Z",
+   "duration_sec": 4321,
+   "viewCount": 43984,
+   "likeCount": 732,
+   "commentCount": 9,
+   "tags": [
+    "쉬운영어",
+    "영어반복듣기",
+    "영어듣기",
+    "영어공부",
+    "영어회화",
+    "영어단어암기",
+    "영어쉐도잉",
+    "쉬운영어공부",
+    "영어단어",
+    "중년영어",
+    "시니어영어",
+    "엄마영어",
+    "아빠영어",
+    "왕초보영어탈출",
+    "생활영어"
+   ],
+   "daily_avg_views": 571,
+   "engagement_rate": 1.685,
+   "channel_subs": 125000,
+   "perf_vs_channel": 0.352,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 100,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "흘려듣기",
+     "몰아보기",
+     "반복"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "질문형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "왕초보",
+     "기초"
+    ],
+    "rt": true,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "Up2ZaHy9Ddo",
+   "title": "만능 영어표현 \"Cope with\"",
+   "channelTitle": "주아쌤_소리튠영어",
+   "channelId": "UCokUZClKh1ZK0TjJgxVK5-g",
+   "publishedAt": "2026-08-21T11:00:30Z",
+   "duration_sec": 61,
+   "viewCount": 43275,
+   "likeCount": 552,
+   "commentCount": 9,
+   "tags": [
+    "영어",
+    "영어공부",
+    "영어회화",
+    "영어발음",
+    "영어발성",
+    "영어 잘하는법",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 쉐도잉",
+    "영어공부혼자하기",
+    "화상영어",
+    "영어회화학원",
+    "영어문장",
+    "영단어",
+    "영어로"
+   ],
+   "daily_avg_views": 541,
+   "engagement_rate": 1.296,
+   "channel_subs": 912000,
+   "perf_vs_channel": 0.047,
+   "duration_bucket": "1~10분",
+   "slots": {
+    "num": null,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "없음"
+    ],
+    "rt": false,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "_VUMngGcI6U",
+   "title": "[1시간 30분 흘려듣기] 영어 대답 40문장이면 충분합니다. 60대도 질문에 바로 대답 나와요",
+   "channelTitle": "들려야 말하는 영어",
+   "channelId": "UCQJEHG7bAaZGyoJgHvKhJuQ",
+   "publishedAt": "2026-11-03T10:00:06Z",
+   "duration_sec": 5437,
+   "viewCount": 42357,
+   "likeCount": 609,
+   "commentCount": 20,
+   "tags": [],
+   "daily_avg_views": 7060,
+   "engagement_rate": 1.485,
+   "channel_subs": 14500,
+   "perf_vs_channel": 2.921,
+   "duration_bucket": "1~3시간",
+   "slots": {
+    "num": 40,
+    "src": [
+     "없음"
+    ],
+    "mode": [
+     "흘려듣기"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "확신형",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "시니어"
+    ],
+    "rt": true,
+    "sep": false,
+    "emoji": false
+   },
+   "prev_rank": null
+  },
+  {
+   "videoId": "dH2UTJzYFT8",
+   "title": "기초 여행영어 50문장 | 이 패턴만 알아도 영어로 대화 가능! | 한글 발음 포함 | 여행영어 패턴 2탄",
+   "channelTitle": "왕초보 영어학교",
+   "channelId": "UC5tkGLO0GpglCOtkY_GJGpA",
+   "publishedAt": "2026-09-14T21:00:18Z",
+   "duration_sec": 1967,
+   "viewCount": 39695,
+   "likeCount": 430,
+   "commentCount": 9,
+   "tags": [],
+   "daily_avg_views": 709,
+   "engagement_rate": 1.106,
+   "channel_subs": 30200,
+   "perf_vs_channel": 1.314,
+   "duration_bucket": "30~60분",
+   "slots": {
+    "num": 50,
+    "src": [
+     "여행"
+    ],
+    "mode": [
+     "없음"
+    ],
+    "eff": [
+     "없음"
+    ],
+    "hook": "없음",
+    "freq": [
+     "없음"
+    ],
+    "lv": [
+     "기초"
+    ],
+    "rt": false,
+    "sep": true,
+    "emoji": false
+   },
+   "prev_rank": null
+  }
+ ],
+ "channels": {
+  "UCRO_ZsPWql5pLfwrXA6ZC4g": {
+   "subs": 2100,
+   "vids": 75,
+   "since": "2025-02-15",
+   "hidden": false
+  },
+  "UCL-iLmw8vFLsUc1ha14bbVg": {
+   "subs": 7760,
+   "vids": 97,
+   "since": "2025-11-07",
+   "hidden": false
+  },
+  "UCokUZClKh1ZK0TjJgxVK5-g": {
+   "subs": 912000,
+   "vids": 1034,
+   "since": "2016-05-24",
+   "hidden": false
+  },
+  "UC3NRgqFNR51OU7-kckFWVrA": {
+   "subs": 125000,
+   "vids": 230,
+   "since": "2023-02-07",
+   "hidden": false
+  },
+  "UClPWDge6kFVESzlzcuXKJfw": {
+   "subs": 1230000,
+   "vids": 1279,
+   "since": "2018-08-06",
+   "hidden": false
+  },
+  "UCOfPBjrT7sFiBe3Bl2e9bEA": {
+   "subs": 528000,
+   "vids": 1104,
+   "since": "2023-10-08",
+   "hidden": false
+  },
+  "UC53Xn-yXH33HsrjRmJOOP6Q": {
+   "subs": 64100,
+   "vids": 1188,
+   "since": "2014-04-24",
+   "hidden": false
+  },
+  "UCVsW_QS-bzIVDMChrRuBxPA": {
+   "subs": 160000,
+   "vids": 1343,
+   "since": "2018-11-08",
+   "hidden": false
+  },
+  "UCQJEHG7bAaZGyoJgHvKhJuQ": {
+   "subs": 14500,
+   "vids": 72,
+   "since": "2025-12-11",
+   "hidden": false
+  },
+  "UCyor63cnjHmyTDIAavdmwxQ": {
+   "subs": 265000,
+   "vids": 929,
+   "since": "2020-04-06",
+   "hidden": false
+  },
+  "UCqV3Z9kMVQ6efcyfXoX3ljQ": {
+   "subs": 98600,
+   "vids": 280,
+   "since": "2025-09-10",
+   "hidden": false
+  },
+  "UCw4izi2fsJzFltt3EbmokWA": {
+   "subs": 372000,
+   "vids": 437,
+   "since": "2018-08-01",
+   "hidden": false
+  },
+  "UC6P0oaOpEFXwHigGCAgGWiw": {
+   "subs": 304,
+   "vids": 66,
+   "since": "2026-04-07",
+   "hidden": false
+  },
+  "UC6fZ02H87mj5GqMM7X9UQIQ": {
+   "subs": 114000,
+   "vids": 449,
+   "since": "2023-05-27",
+   "hidden": false
+  },
+  "UC0eZuKTP1pcMIENI3fqwN3g": {
+   "subs": 161000,
+   "vids": 138,
+   "since": "2012-11-10",
+   "hidden": false
+  },
+  "UCezt_gfn8nJyFltdQUvFM0g": {
+   "subs": 571000,
+   "vids": 715,
+   "since": "2022-05-18",
+   "hidden": false
+  },
+  "UCgLYy6GGv5ooNxZlqNUvDpQ": {
+   "subs": 93800,
+   "vids": 49,
+   "since": "2025-09-03",
+   "hidden": false
+  },
+  "UC4P1LpkV5EsqyLLpoY4lx0A": {
+   "subs": 14400,
+   "vids": 53,
+   "since": "2025-12-04",
+   "hidden": false
+  },
+  "UCdEmqNSAtwKAFkSLNZbqIyQ": {
+   "subs": 202000,
+   "vids": 83,
+   "since": "2022-11-16",
+   "hidden": false
+  },
+  "UC5tkGLO0GpglCOtkY_GJGpA": {
+   "subs": 30200,
+   "vids": 54,
+   "since": "2025-07-31",
+   "hidden": false
+  },
+  "UCqOmOJOohvX3Q79ThYboJeA": {
+   "subs": 2760,
+   "vids": 136,
+   "since": "2026-09-04",
+   "hidden": false
+  }
+ }
+}
