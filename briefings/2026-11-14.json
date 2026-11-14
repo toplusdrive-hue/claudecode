@@ -1,0 +1,4532 @@
+{
+ "date": "2026-11-14",
+ "collected_at": "2026-11-14T21:07:19.780741+00:00",
+ "published_after": "2026-10-15T21:07:19Z",
+ "api_calls": 40,
+ "api_budget": 40,
+ "quota_exceeded": false,
+ "keywords": {
+  "main": [
+   "영어",
+   "영어회화",
+   "영어 공부법",
+   "영어 스피킹"
+  ],
+  "sub": [
+   "영어 듣기",
+   "영어 발음",
+   "영어 독학",
+   "원어민 표현",
+   "영어 문법"
+  ],
+  "exclude": [
+   "shorts",
+   "밈",
+   "ASMR",
+   "노래"
+  ],
+  "temp": []
+ },
+ "n_raw": 302,
+ "n_filtered": 162,
+ "kwstats": {
+  "영어": {
+   "n": 30,
+   "raw": 50,
+   "total": 24917083,
+   "median": 65956,
+   "top3share": 64.7,
+   "top3ch": [
+    "눈물한가득",
+    "침착맨",
+    "디글 :Diggle"
+   ],
+   "recent7": 11,
+   "top": [
+    "94bxM-mFkZQ",
+    "hEndbxCDZ4Q",
+    "DHDBwdTiqbo",
+    "5_vJ3WvIzVs",
+    "HdKMjQPr_UM",
+    "fk8uNHJSCv8",
+    "7JmoRYbBvnE",
+    "vzOXyz6QP44",
+    "RkBYyYtLEgc",
+    "e9KNOE2dnIg"
+   ]
+  },
+  "영어회화": {
+   "n": 33,
+   "raw": 47,
+   "total": 5028820,
+   "median": 44746,
+   "top3share": 63.5,
+   "top3ch": [
+    "코믹한영어",
+    "엠뚜루마뚜루 : MBC 공식 종합 채널",
+    "날라리데이브!"
+   ],
+   "recent7": 9,
+   "top": [
+    "7JmoRYbBvnE",
+    "-dNNViUXyxI",
+    "V4gcMudCzuw",
+    "vQcMn_Bi770",
+    "cQ5Eld6J9O0",
+    "QrIIZ_O1Veg",
+    "LqPF1C8yc8U",
+    "e9KNOE2dnIg",
+    "1b3HhAEDWOc",
+    "AlHt38GUcXE"
+   ]
+  },
+  "영어 공부법": {
+   "n": 25,
+   "raw": 42,
+   "total": 1751505,
+   "median": 57681,
+   "top3share": 58.6,
+   "top3ch": [
+    "만다블_국내파통역사의 영어공부법",
+    "주아쌤_소리튠영어",
+    "영어 루틴 쌤"
+   ],
+   "recent7": 7,
+   "top": [
+    "YPg-FHROJ5c",
+    "RbjgxCl9B98",
+    "Y6u-UKWKFiU",
+    "2rcJGw1HYvE",
+    "X4t6jkbay9M",
+    "zR8ZShoP4JY",
+    "cPa0rkfGyWs",
+    "liL4EuXPV8s",
+    "jFYvVCAzT9c",
+    "7rB4pxOMLYo"
+   ]
+  },
+  "영어 스피킹": {
+   "n": 34,
+   "raw": 43,
+   "total": 1825293,
+   "median": 34440,
+   "top3share": 38.4,
+   "top3ch": [
+    "주아쌤_소리튠영어",
+    "캘리쌤 브이로그 영어",
+    "아메리코리아노"
+   ],
+   "recent7": 8,
+   "top": [
+    "LqPF1C8yc8U",
+    "AlHt38GUcXE",
+    "zR8ZShoP4JY",
+    "hIEa5HGr46U",
+    "k_vPdS8fweM",
+    "jFYvVCAzT9c",
+    "GCXmfMpOhiQ",
+    "ASay4Wog-Yk",
+    "cJ7nxX0T0LA",
+    "YCJGFQ9Pz9Y"
+   ]
+  },
+  "영어 듣기": {
+   "n": 30,
+   "raw": 48,
+   "total": 1998133,
+   "median": 34429,
+   "top3share": 61.0,
+   "top3ch": [
+    "리핏어게인",
+    "주아쌤_소리튠영어",
+    "쏘로그 | Tholog"
+   ],
+   "recent7": 7,
+   "top": [
+    "x0GuUXA_ql0",
+    "vQcMn_Bi770",
+    "RbjgxCl9B98",
+    "2rcJGw1HYvE",
+    "hIEa5HGr46U",
+    "lXw-cxdBltU",
+    "jFYvVCAzT9c",
+    "7rB4pxOMLYo",
+    "QA1pVZ6L3bs",
+    "_VUMngGcI6U"
+   ]
+  },
+  "영어 발음": {
+   "n": 16,
+   "raw": 45,
+   "total": 1853587,
+   "median": 81005,
+   "top3share": 70.5,
+   "top3ch": [
+    "친절한 대학 기초영어",
+    "Aran TV",
+    "매일영어Study English"
+   ],
+   "recent7": 6,
+   "top": [
+    "qzdQTQGpdLw",
+    "6Qkdjrz2d8g",
+    "TAqRBlzm_MM",
+    "t1wnH9SWVRk",
+    "e9KNOE2dnIg",
+    "q8MoUzkGAwY",
+    "jFYvVCAzT9c",
+    "GG7pBdY-v58",
+    "7ZBViZRo6ys",
+    "2a-eX90v_lU"
+   ]
+  },
+  "영어 독학": {
+   "n": 25,
+   "raw": 39,
+   "total": 1351964,
+   "median": 37966,
+   "top3share": 60.2,
+   "top3ch": [
+    "만다블_국내파통역사의 영어공부법",
+    "주아쌤_소리튠영어",
+    "쏘로그 | Tholog"
+   ],
+   "recent7": 7,
+   "top": [
+    "YPg-FHROJ5c",
+    "RbjgxCl9B98",
+    "X4t6jkbay9M",
+    "jFYvVCAzT9c",
+    "7rB4pxOMLYo",
+    "Cut19wiY-dA",
+    "FD2U3rm3q8o",
+    "LHZrENoPUTc",
+    "_hueYOvjAtc",
+    "m7NtVfSylXs"
+   ]
+  },
+  "원어민 표현": {
+   "n": 15,
+   "raw": 42,
+   "total": 611413,
+   "median": 28614,
+   "top3share": 87.2,
+   "top3ch": [
+    "가브리엘의 원어민 영어",
+    "주아쌤_소리튠영어",
+    "매일영어Study English"
+   ],
+   "recent7": 6,
+   "top": [
+    "ppUGWoUkJJI",
+    "cPa0rkfGyWs",
+    "jPRPe7oNfSE",
+    "LHZrENoPUTc",
+    "oRLPksmMNcI",
+    "z1rxgc8PE_U",
+    "cbZBcQD8XhY",
+    "0bIuxFpks68",
+    "_1UkAeCZ80Q",
+    "9-QYm18lqHM"
+   ]
+  },
+  "영어 문법": {
+   "n": 20,
+   "raw": 44,
+   "total": 957010,
+   "median": 28299,
+   "top3share": 71.1,
+   "top3ch": [
+    "매일영어Study English",
+    "만다블_국내파통역사의 영어공부법",
+    "라꼼므, 번역가의 영어공부법"
+   ],
+   "recent7": 5,
+   "top": [
+    "YPg-FHROJ5c",
+    "e9KNOE2dnIg",
+    "liL4EuXPV8s",
+    "7ZBViZRo6ys",
+    "7FlS5t2EHkg",
+    "x1aqqroz0c0",
+    "kinG9f09_g4",
+    "8s1wnCsQ5r4",
+    "m9McxH2cqlE",
+    "mRzVgD-alXw"
+   ]
+  }
+ },
+ "top20": [
+  {
+   "id": "94bxM-mFkZQ",
+   "title": "누구나 처음부터 잘하는 사람은 없다",
+   "channel": "눈물한가득",
+   "channelId": "UC-8xHYl97o2Lhri_ycEkydg",
+   "published": "2026-10-17T09:00:33Z",
+   "pub_kst": "Sat 18",
+   "age": 28,
+   "dur": 162,
+   "bucket": "1~4분",
+   "views": 9215398,
+   "likes": 157828,
+   "comments": 2564,
+   "tags": [],
+   "cat": "1",
+   "lang": "ko",
+   "daily": 329121,
+   "eng": 1.74,
+   "perf": 70.35,
+   "subs": 131000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어"
+   ],
+   "ttags": []
+  },
+  {
+   "id": "hEndbxCDZ4Q",
+   "title": "국어 vs 영어 vs 수학 뭐가 제일 중요할까?",
+   "channel": "침착맨",
+   "channelId": "UCUj6rrhMTR9pipbAWBAMvUQ",
+   "published": "2026-11-04T10:00:16Z",
+   "pub_kst": "Wed 19",
+   "age": 10,
+   "dur": 4517,
+   "bucket": "20분+",
+   "views": 4508677,
+   "likes": 26728,
+   "comments": 2069,
+   "tags": [],
+   "cat": "24",
+   "lang": "ko",
+   "daily": 450868,
+   "eng": 0.64,
+   "perf": 1.35,
+   "subs": 3330000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "질문형",
+    "비교형",
+    "한/영 혼용"
+   ]
+  },
+  {
+   "id": "DHDBwdTiqbo",
+   "title": "(NEW) 50일간 매일 7시간씩 영어 공부✍️ 뉴욕 '브로드웨이' 진출을 위해 영어 공부에 진심을 쏟은 아이비✨ #유퀴즈온더블럭",
+   "channel": "디글 :Diggle",
+   "channelId": "UCWYzc_p0GgfCepIWDHGFmEg",
+   "published": "2026-11-05T06:40:03Z",
+   "pub_kst": "Thu 15",
+   "age": 9,
+   "dur": 988,
+   "bucket": "10~20분",
+   "views": 2389087,
+   "likes": 7356,
+   "comments": 611,
+   "tags": [
+    "CJ100",
+    "YOUQUIZONTHEBLOCK",
+    "tvN 유퀴즈",
+    "명언제조기",
+    "유재석",
+    "유퀴즈",
+    "유퀴즈 감동",
+    "유퀴즈 게스트",
+    "유퀴즈 노가리",
+    "유퀴즈 눈물",
+    "유퀴즈 다시보기",
+    "유퀴즈 레전드",
+    "유퀴즈 레전드 모음",
+    "유퀴즈 명언",
+    "유퀴즈 몰아보기",
+    "유퀴즈 배우",
+    "유퀴즈 사투리",
+    "유퀴즈 영화",
+    "유퀴즈 운동선수",
+    "유퀴즈 유재석",
+    "유퀴즈 일반인",
+    "유퀴즈 재미",
+    "유퀴즈 퀴즈",
+    "유퀴즈 풀버전",
+    "유퀴즈 할머니",
+    "유퀴즈온더블럭",
+    "유퀴즈온더블럭 다시보기",
+    "티빙에서스트리밍"
+   ],
+   "cat": "24",
+   "lang": "ko",
+   "daily": 265454,
+   "eng": 0.33,
+   "perf": 0.55,
+   "subs": 4310000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "숫자형",
+    "한/영 혼용",
+    "이모지",
+    "괄호·구분자",
+    "대문자"
+   ]
+  },
+  {
+   "id": "5_vJ3WvIzVs",
+   "title": "원어민도 당황하는 딘딘 TOP7 ㅋㅋㅋ",
+   "channel": "한입만",
+   "channelId": "UCuhZp4QFA7fZmKWpx5mlJKQ",
+   "published": "2026-11-10T09:50:34Z",
+   "pub_kst": "Tue 18",
+   "age": 4,
+   "dur": 97,
+   "bucket": "1~4분",
+   "views": 2227782,
+   "likes": 22876,
+   "comments": 228,
+   "tags": [],
+   "cat": "24",
+   "lang": "ko",
+   "daily": 556946,
+   "eng": 1.04,
+   "perf": 114.83,
+   "subs": 19400,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "숫자형",
+    "권위·인용형",
+    "한/영 혼용"
+   ]
+  },
+  {
+   "id": "HdKMjQPr_UM",
+   "title": "20대 억만장자가 유럽여행 가는 법",
+   "channel": "단커피",
+   "channelId": "UCRCtNhNlR3k_DfkIvAIvnlg",
+   "published": "2026-10-16T11:18:10Z",
+   "pub_kst": "Fri 20",
+   "age": 29,
+   "dur": 123,
+   "bucket": "1~4분",
+   "views": 1356651,
+   "likes": 13936,
+   "comments": 309,
+   "tags": [],
+   "cat": "22",
+   "lang": "en",
+   "daily": 46781,
+   "eng": 1.05,
+   "perf": 10.28,
+   "subs": 132000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "숫자형"
+   ]
+  },
+  {
+   "id": "fk8uNHJSCv8",
+   "title": "“영어도 못 하시면서” 무시당한 공항 할아버지… 팀장이 “대사님”이라 부르자",
+   "channel": "일일막장",
+   "channelId": "UC1uBUWleJzONOUPHw6glTWQ",
+   "published": "2026-10-24T09:00:14Z",
+   "pub_kst": "Sat 18",
+   "age": 21,
+   "dur": 144,
+   "bucket": "1~4분",
+   "views": 1288495,
+   "likes": 41481,
+   "comments": 84,
+   "tags": [],
+   "cat": "22",
+   "lang": "ko",
+   "daily": 61357,
+   "eng": 3.23,
+   "perf": 48.62,
+   "subs": 26500,
+   "fresh": "8~30일",
+   "kws": [
+    "영어"
+   ],
+   "ttags": []
+  },
+  {
+   "id": "7JmoRYbBvnE",
+   "title": "추측만이 쏟아지는 막장 가족 드라마 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "channelId": "UC5SUNyVlWpvuU5qbIat3cQA",
+   "published": "2026-10-18T08:26:59Z",
+   "pub_kst": "Sun 17",
+   "age": 27,
+   "dur": 114,
+   "bucket": "1~4분",
+   "views": 1267095,
+   "likes": 20440,
+   "comments": 187,
+   "tags": [],
+   "cat": "22",
+   "lang": "ko",
+   "daily": 46929,
+   "eng": 1.63,
+   "perf": 5.76,
+   "subs": 220000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어",
+    "영어회화"
+   ],
+   "ttags": [
+    "한/영 혼용"
+   ]
+  },
+  {
+   "id": "vzOXyz6QP44",
+   "title": "20살 딸을 둔 아버지의 고충",
+   "channel": "𝗣𝘂𝗻𝗰𝗵𝗹𝗶𝗻𝗲 𝗘𝗻𝗴𝗹𝗶𝘀𝗵",
+   "channelId": "UCU3fgui7NLyYeNk3hIHIKYQ",
+   "published": "2026-10-27T01:55:05Z",
+   "pub_kst": "Tue 10",
+   "age": 18,
+   "dur": 125,
+   "bucket": "1~4분",
+   "views": 1262837,
+   "likes": 24522,
+   "comments": 1159,
+   "tags": [],
+   "cat": "24",
+   "lang": "ko",
+   "daily": 70158,
+   "eng": 2.03,
+   "perf": 8.1,
+   "subs": 156000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "숫자형"
+   ]
+  },
+  {
+   "id": "-dNNViUXyxI",
+   "title": "[라디오스타] 모른다고 주눅 들 필요❌ 기존쎄 김영철의 영어 회화 생존법ㅣ#김영철 MBC261014방송",
+   "channel": "엠뚜루마뚜루 : MBC 공식 종합 채널",
+   "channelId": "UCiwQRG2sCcfjKkgxMEdJGPg",
+   "published": "2026-10-21T03:00:14Z",
+   "pub_kst": "Wed 12",
+   "age": 24,
+   "dur": 913,
+   "bucket": "10~20분",
+   "views": 735879,
+   "likes": 1578,
+   "comments": 157,
+   "tags": [
+    "T70006G",
+    "261014",
+    "라디오스타",
+    "라스",
+    "라스 레전드",
+    "김영철",
+    "김영철 영어",
+    "라디오스타 김영철",
+    "라스 김영철",
+    "영어",
+    "영어 회화",
+    "김영철 라디오",
+    "철파엠",
+    "김영철의 파워FM",
+    "김영철 성대모사",
+    "김영철 레전드",
+    "김영철 박미선",
+    "성시경",
+    "김영철 성시경",
+    "일본어",
+    "JLPT",
+    "박준금",
+    "함은정",
+    "강균성",
+    "김영철 이영자",
+    "기세",
+    "언어는 기세",
+    "외국인",
+    "기존쎄",
+    "개그맨",
+    "scoot over",
+    "영어 실력",
+    "광기",
+    "맑눈광"
+   ],
+   "cat": "24",
+   "lang": "ko",
+   "daily": 30662,
+   "eng": 0.24,
+   "perf": 0.25,
+   "subs": 2960000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어회화"
+   ],
+   "ttags": [
+    "숫자형",
+    "한/영 혼용",
+    "이모지",
+    "괄호·구분자"
+   ]
+  },
+  {
+   "id": "qzdQTQGpdLw",
+   "title": "[1탄] NEON - A2O LITE 가사 해석 & 틀린 영어 고치기 🩵",
+   "channel": "Aran TV",
+   "channelId": "UCmoUsPP4mD9-PPdRmeUI05A",
+   "published": "2026-10-20T08:02:45Z",
+   "pub_kst": "Tue 17",
+   "age": 25,
+   "dur": 175,
+   "bucket": "1~4분",
+   "views": 458234,
+   "likes": 3965,
+   "comments": 233,
+   "tags": [
+    "아란한인생학교",
+    "인생학교",
+    "아잉",
+    "아란잉글리쉬",
+    "AranEnglish",
+    "김아란",
+    "에듀테이너",
+    "arankim",
+    "회화",
+    "영어",
+    "영어회화",
+    "영어발음",
+    "영어표현",
+    "영어공부",
+    "영어강의",
+    "영어인강",
+    "강사",
+    "영어강사",
+    "원어민",
+    "영어학습",
+    "English",
+    "Englishlanguage",
+    "Korea",
+    "America",
+    "American",
+    "꿀팁",
+    "미국",
+    "미국인",
+    "아메리카",
+    "아리스",
+    "아리스커플",
+    "크리스",
+    "스피킹",
+    "영어스피킹",
+    "교포",
+    "아란티비",
+    "생활영어",
+    "영어강좌",
+    "영어팁",
+    "영어선생님",
+    "스피킹강의",
+    "아란TV",
+    "AranTV",
+    "유학",
+    "미국유학",
+    "어학연수",
+    "tips",
+    "아란영어",
+    "미국영어",
+    "미국발음",
+    "edutainer",
+    "아란tv",
+    "aranmusic",
+    "아란뮤직",
+    "미국 생활",
+    "미국 일상",
+    "국제커플",
+    "국제부부",
+    "영어 공부",
+    "워홀"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 18329,
+   "eng": 0.92,
+   "perf": 0.69,
+   "subs": 665000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어 발음"
+   ],
+   "ttags": [
+    "숫자형",
+    "경고·반전형",
+    "한/영 혼용",
+    "이모지",
+    "괄호·구분자",
+    "대문자"
+   ]
+  },
+  {
+   "id": "x0GuUXA_ql0",
+   "title": "자네, 미스터 빈 닮은꼴 해볼 생각 없나?! #영어공부 #영어듣기 #토크쇼",
+   "channel": "리핏어게인",
+   "channelId": "UCn_GeYFqvx2xpXx7cJtN15A",
+   "published": "2026-11-06T23:02:23Z",
+   "pub_kst": "Sat 08",
+   "age": 7,
+   "dur": 69,
+   "bucket": "1~4분",
+   "views": 420241,
+   "likes": 4976,
+   "comments": 158,
+   "tags": [
+    "영어회화",
+    "기초영어",
+    "영어쉐도잉",
+    "영어공부",
+    "매일영어",
+    "1일1영",
+    "영화영어",
+    "스피킹",
+    "리스닝",
+    "리딩",
+    "english",
+    "영어",
+    "초보영어",
+    "영어독학",
+    "영어연습",
+    "영어말하기",
+    "영어듣기",
+    "영어발음",
+    "여행영어",
+    "영어명언",
+    "영어명대사",
+    "생활영어",
+    "비즈니스영어",
+    "일상영어",
+    "영국영어",
+    "원어민영어"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 60034,
+   "eng": 1.22,
+   "perf": 1.97,
+   "subs": 213000,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어 듣기"
+   ],
+   "ttags": [
+    "질문형"
+   ]
+  },
+  {
+   "id": "V4gcMudCzuw",
+   "title": "미국 스포츠 역사에 남을 장면 ㄷㄷ #영어회화 #미식축구",
+   "channel": "날라리데이브!",
+   "channelId": "UCaWOQq12LbtZ8n02lTYBbuA",
+   "published": "2026-11-02T07:10:20Z",
+   "pub_kst": "Mon 16",
+   "age": 12,
+   "dur": 72,
+   "bucket": "1~4분",
+   "views": 400695,
+   "likes": null,
+   "comments": 86,
+   "tags": [
+    "Mark Bowman",
+    "USC",
+    "built different",
+    "미식축구",
+    "영어표현",
+    "영어회화",
+    "힐링잉글리시"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 33391,
+   "eng": 0.02,
+   "perf": 1.37,
+   "subs": 292000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어회화"
+   ],
+   "ttags": []
+  },
+  {
+   "id": "vQcMn_Bi770",
+   "title": "요즘 애들이 이걸 본다고? #영어듣기 #영어회화 #그레이아나토미",
+   "channel": "리핏어게인",
+   "channelId": "UCn_GeYFqvx2xpXx7cJtN15A",
+   "published": "2026-10-27T01:55:40Z",
+   "pub_kst": "Tue 10",
+   "age": 18,
+   "dur": 77,
+   "bucket": "1~4분",
+   "views": 377276,
+   "likes": 5462,
+   "comments": 131,
+   "tags": [
+    "영어공부",
+    "미드",
+    "영드",
+    "영국영어",
+    "미국영어",
+    "영어듣기",
+    "영어말하기",
+    "넷플릭스",
+    "셀프영어",
+    "영어표현",
+    "매일영어",
+    "쉬운영어공부",
+    "영어팟캐스트",
+    "영어토크쇼",
+    "스탠딩코미디"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 20960,
+   "eng": 1.48,
+   "perf": 1.77,
+   "subs": 213000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어회화",
+    "영어 듣기"
+   ],
+   "ttags": [
+    "질문형"
+   ]
+  },
+  {
+   "id": "6Qkdjrz2d8g",
+   "title": "배우는데 10분도 안걸리는데, 평생 까막눈으로 사시겠습니까? 영어 왜 이렇게 읽히는지 이해 안가셨던 분들 _ 영어 왕왕초보를 위한 I(i, 아이) 발음 총정리",
+   "channel": "친절한 대학 기초영어",
+   "channelId": "UC5bAQKjAHUvQ1MQV24YyGTw",
+   "published": "2026-10-19T23:00:28Z",
+   "pub_kst": "Tue 08",
+   "age": 25,
+   "dur": 2250,
+   "bucket": "20분+",
+   "views": 325533,
+   "likes": 2686,
+   "comments": 42,
+   "tags": [
+    "친절한영어교실",
+    "친절한대학",
+    "clswjfgkseogkr",
+    "친절대학"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 13021,
+   "eng": 0.84,
+   "perf": 0.47,
+   "subs": 686000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어 발음"
+   ],
+   "ttags": [
+    "숫자형",
+    "질문형",
+    "괄호·구분자"
+   ]
+  },
+  {
+   "id": "cQ5Eld6J9O0",
+   "title": "모두를 경악시킨 은밀한 모녀의 생활 🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "channelId": "UC5SUNyVlWpvuU5qbIat3cQA",
+   "published": "2026-10-24T12:15:12Z",
+   "pub_kst": "Sat 21",
+   "age": 21,
+   "dur": 174,
+   "bucket": "1~4분",
+   "views": 309227,
+   "likes": 6323,
+   "comments": 101,
+   "tags": [],
+   "cat": "22",
+   "lang": "ko",
+   "daily": 14725,
+   "eng": 2.08,
+   "perf": 1.41,
+   "subs": 220000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어회화"
+   ],
+   "ttags": [
+    "한/영 혼용",
+    "이모지"
+   ]
+  },
+  {
+   "id": "QrIIZ_O1Veg",
+   "title": "말 한번 잘못뱉고 평생 이불킥 박제..🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "channelId": "UC5SUNyVlWpvuU5qbIat3cQA",
+   "published": "2026-10-25T10:36:33Z",
+   "pub_kst": "Sun 19",
+   "age": 20,
+   "dur": 106,
+   "bucket": "1~4분",
+   "views": 305747,
+   "likes": 3563,
+   "comments": 27,
+   "tags": [],
+   "cat": "22",
+   "lang": "ko",
+   "daily": 15287,
+   "eng": 1.17,
+   "perf": 1.39,
+   "subs": 220000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어회화"
+   ],
+   "ttags": [
+    "한/영 혼용",
+    "이모지"
+   ]
+  },
+  {
+   "id": "RkBYyYtLEgc",
+   "title": "음지 영어 딘딘이 수능을 본다면?",
+   "channel": "딘딘은 딘딘",
+   "channelId": "UCTnTzaL_7heOCUs63ErMCUA",
+   "published": "2026-11-13T09:00:27Z",
+   "pub_kst": "Fri 18",
+   "age": 1,
+   "dur": 1489,
+   "bucket": "20분+",
+   "views": 291603,
+   "likes": 1776,
+   "comments": 377,
+   "tags": [
+    "elsels",
+    "딘디",
+    "임철",
+    "딘딘영어",
+    "딘딘캐나다",
+    "캐나다딘딘",
+    "캐나다유학",
+    "캐나다",
+    "딘딘유학",
+    "영어회화",
+    "캐나다여행",
+    "원어민영어",
+    "원어민회화",
+    "원어민표현",
+    "벤쿠버",
+    "밴쿠버",
+    "미국영어",
+    "슬랭영어",
+    "일박이일",
+    "1박2일",
+    "워크맨딘딘",
+    "딘딘워크맨",
+    "예능",
+    "쇼츠",
+    "shorts",
+    "웹예능",
+    "딘딘은딘딘",
+    "스트릿영어",
+    "영포티영어",
+    "영어딘딘",
+    "딘딘슬랭",
+    "MZ영어",
+    "딘딘 영어",
+    "딘딘 캐나다",
+    "딘딘존박영어",
+    "딘딘물들이기",
+    "젠Z영어",
+    "스윙스딘딘",
+    "딘딘스윙스",
+    "쇼미더머니",
+    "쇼미",
+    "쇼미더머니2",
+    "퉁퉁이",
+    "팀도라에몽",
+    "밴쿠버여행",
+    "밴쿠버 여행",
+    "딘딘 밴쿠버",
+    "딘딘밴쿠버",
+    "vancouver",
+    "밴쿠버딘딘",
+    "밴쿠버 딘딘",
+    "딘딘 누나",
+    "딘딘누나",
+    "딘딘둘째누나",
+    "딘딘 둘째누나",
+    "둘째 누나",
+    "추억",
+    "딘딘썰",
+    "딘딘 썰",
+    "유학",
+    "유학생",
+    "아민",
+    "딘딘친구",
+    "딘딘 친구",
+    "딘딘캐나다친구",
+    "딘딘캐나다학교",
+    "딘딘 고등학교",
+    "딘딘 아민",
+    "딘딘아민",
+    "Amin",
+    "밴쿠버프로젝트",
+    "canada",
+    "dindin",
+    "수능",
+    "수능영어",
+    "스능 영어",
+    "딘딘 수능",
+    "딘딘수능",
+    "딘딘영어실력",
+    "말해보카",
+    "실전영어",
+    "영어앱",
+    "영어공부",
+    "영어공부앱",
+    "니꼴로"
+   ],
+   "cat": "24",
+   "lang": "ko",
+   "daily": 291603,
+   "eng": 0.74,
+   "perf": 0.69,
+   "subs": 424000,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "질문형"
+   ]
+  },
+  {
+   "id": "YPg-FHROJ5c",
+   "title": "’이걸‘ 먼저 깨닫는 사람이 영어실력 미친듯이 확 늘어요 | 국내파 통역사의 독학 영어공부법 #영어공부법 #영어회화 #영어스피킹",
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "channelId": "UCDp0BcWITympoRz30fODYLw",
+   "published": "2026-10-16T10:47:29Z",
+   "pub_kst": "Fri 19",
+   "age": 29,
+   "dur": 177,
+   "bucket": "1~4분",
+   "views": 291572,
+   "likes": 2275,
+   "comments": 36,
+   "tags": [],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 10054,
+   "eng": 0.79,
+   "perf": 7.09,
+   "subs": 41100,
+   "fresh": "8~30일",
+   "kws": [
+    "영어 공부법",
+    "영어 독학",
+    "영어 문법"
+   ],
+   "ttags": [
+    "튜토리얼형",
+    "권위·인용형",
+    "괄호·구분자"
+   ]
+  },
+  {
+   "id": "LqPF1C8yc8U",
+   "title": "미국 시골 주말 루틴 영어! 진짜 미국인의 일상 영어를 그대로 보여드려요! | 반복해서 들으면 리스닝 실력이 폭발합니다!",
+   "channel": "캘리쌤 브이로그 영어",
+   "channelId": "UCOfPBjrT7sFiBe3Bl2e9bEA",
+   "published": "2026-10-25T12:30:11Z",
+   "pub_kst": "Sun 21",
+   "age": 20,
+   "dur": 776,
+   "bucket": "10~20분",
+   "views": 244743,
+   "likes": 2262,
+   "comments": 129,
+   "tags": [
+    "American pronunciation",
+    "English with native speakers",
+    "Speak English fluently",
+    "Speak like a native speaker",
+    "How to pronounce",
+    "Correct pronunciation",
+    "Real life English",
+    "Speak like an American",
+    "How to speak English",
+    "How to pronounce in English",
+    "Conversational English",
+    "Conversation in English",
+    "English grammar",
+    "Basic grammar",
+    "Intermediate English",
+    "Advanced English",
+    "English lesson",
+    "English class",
+    "Study English",
+    "Learn beginner English",
+    "영어",
+    "영어회화",
+    "미국",
+    "영어공부",
+    "회화",
+    "토익",
+    "실전영어",
+    "토플",
+    "유학",
+    "영어브이로그",
+    "여행영어",
+    "오픽"
+   ],
+   "cat": "22",
+   "lang": "en-US",
+   "daily": 12237,
+   "eng": 0.98,
+   "perf": 0.46,
+   "subs": 531000,
+   "fresh": "8~30일",
+   "kws": [
+    "영어회화",
+    "영어 스피킹"
+   ],
+   "ttags": [
+    "튜토리얼형",
+    "권위·인용형",
+    "괄호·구분자"
+   ]
+  },
+  {
+   "id": "TAqRBlzm_MM",
+   "title": "같은 영어, 다른 발음 미국 영어 vs 영국 영어",
+   "channel": "라잌셀럽 ",
+   "channelId": "UCicnKwdmE8erQpt_ZWz8E8w",
+   "published": "2026-11-05T11:07:48Z",
+   "pub_kst": "Thu 20",
+   "age": 9,
+   "dur": 69,
+   "bucket": "1~4분",
+   "views": 196059,
+   "likes": 1129,
+   "comments": 62,
+   "tags": [],
+   "cat": "22",
+   "lang": "ko",
+   "daily": 21784,
+   "eng": 0.61,
+   "perf": 9.56,
+   "subs": 20500,
+   "fresh": "8~30일",
+   "kws": [
+    "영어 발음"
+   ],
+   "ttags": [
+    "비교형",
+    "권위·인용형",
+    "한/영 혼용"
+   ]
+  }
+ ],
+ "recent7_top10": [
+  {
+   "id": "5_vJ3WvIzVs",
+   "title": "원어민도 당황하는 딘딘 TOP7 ㅋㅋㅋ",
+   "channel": "한입만",
+   "channelId": "UCuhZp4QFA7fZmKWpx5mlJKQ",
+   "published": "2026-11-10T09:50:34Z",
+   "pub_kst": "Tue 18",
+   "age": 4,
+   "dur": 97,
+   "bucket": "1~4분",
+   "views": 2227782,
+   "likes": 22876,
+   "comments": 228,
+   "tags": [],
+   "cat": "24",
+   "lang": "ko",
+   "daily": 556946,
+   "eng": 1.04,
+   "perf": 114.83,
+   "subs": 19400,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "숫자형",
+    "권위·인용형",
+    "한/영 혼용"
+   ]
+  },
+  {
+   "id": "RkBYyYtLEgc",
+   "title": "음지 영어 딘딘이 수능을 본다면?",
+   "channel": "딘딘은 딘딘",
+   "channelId": "UCTnTzaL_7heOCUs63ErMCUA",
+   "published": "2026-11-13T09:00:27Z",
+   "pub_kst": "Fri 18",
+   "age": 1,
+   "dur": 1489,
+   "bucket": "20분+",
+   "views": 291603,
+   "likes": 1776,
+   "comments": 377,
+   "tags": [
+    "elsels",
+    "딘디",
+    "임철",
+    "딘딘영어",
+    "딘딘캐나다",
+    "캐나다딘딘",
+    "캐나다유학",
+    "캐나다",
+    "딘딘유학",
+    "영어회화",
+    "캐나다여행",
+    "원어민영어",
+    "원어민회화",
+    "원어민표현",
+    "벤쿠버",
+    "밴쿠버",
+    "미국영어",
+    "슬랭영어",
+    "일박이일",
+    "1박2일",
+    "워크맨딘딘",
+    "딘딘워크맨",
+    "예능",
+    "쇼츠",
+    "shorts",
+    "웹예능",
+    "딘딘은딘딘",
+    "스트릿영어",
+    "영포티영어",
+    "영어딘딘",
+    "딘딘슬랭",
+    "MZ영어",
+    "딘딘 영어",
+    "딘딘 캐나다",
+    "딘딘존박영어",
+    "딘딘물들이기",
+    "젠Z영어",
+    "스윙스딘딘",
+    "딘딘스윙스",
+    "쇼미더머니",
+    "쇼미",
+    "쇼미더머니2",
+    "퉁퉁이",
+    "팀도라에몽",
+    "밴쿠버여행",
+    "밴쿠버 여행",
+    "딘딘 밴쿠버",
+    "딘딘밴쿠버",
+    "vancouver",
+    "밴쿠버딘딘",
+    "밴쿠버 딘딘",
+    "딘딘 누나",
+    "딘딘누나",
+    "딘딘둘째누나",
+    "딘딘 둘째누나",
+    "둘째 누나",
+    "추억",
+    "딘딘썰",
+    "딘딘 썰",
+    "유학",
+    "유학생",
+    "아민",
+    "딘딘친구",
+    "딘딘 친구",
+    "딘딘캐나다친구",
+    "딘딘캐나다학교",
+    "딘딘 고등학교",
+    "딘딘 아민",
+    "딘딘아민",
+    "Amin",
+    "밴쿠버프로젝트",
+    "canada",
+    "dindin",
+    "수능",
+    "수능영어",
+    "스능 영어",
+    "딘딘 수능",
+    "딘딘수능",
+    "딘딘영어실력",
+    "말해보카",
+    "실전영어",
+    "영어앱",
+    "영어공부",
+    "영어공부앱",
+    "니꼴로"
+   ],
+   "cat": "24",
+   "lang": "ko",
+   "daily": 291603,
+   "eng": 0.74,
+   "perf": 0.69,
+   "subs": 424000,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "질문형"
+   ]
+  },
+  {
+   "id": "x0GuUXA_ql0",
+   "title": "자네, 미스터 빈 닮은꼴 해볼 생각 없나?! #영어공부 #영어듣기 #토크쇼",
+   "channel": "리핏어게인",
+   "channelId": "UCn_GeYFqvx2xpXx7cJtN15A",
+   "published": "2026-11-06T23:02:23Z",
+   "pub_kst": "Sat 08",
+   "age": 7,
+   "dur": 69,
+   "bucket": "1~4분",
+   "views": 420241,
+   "likes": 4976,
+   "comments": 158,
+   "tags": [
+    "영어회화",
+    "기초영어",
+    "영어쉐도잉",
+    "영어공부",
+    "매일영어",
+    "1일1영",
+    "영화영어",
+    "스피킹",
+    "리스닝",
+    "리딩",
+    "english",
+    "영어",
+    "초보영어",
+    "영어독학",
+    "영어연습",
+    "영어말하기",
+    "영어듣기",
+    "영어발음",
+    "여행영어",
+    "영어명언",
+    "영어명대사",
+    "생활영어",
+    "비즈니스영어",
+    "일상영어",
+    "영국영어",
+    "원어민영어"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 60034,
+   "eng": 1.22,
+   "perf": 1.97,
+   "subs": 213000,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어 듣기"
+   ],
+   "ttags": [
+    "질문형"
+   ]
+  },
+  {
+   "id": "QA1pVZ6L3bs",
+   "title": "GOOD NEIGHBOR ✅ VS BAD NEIGHBOR! 🏡😱 | Slow English Listening Story for Beginners",
+   "channel": "Easy English Land",
+   "channelId": "UC3uDzb-DWMvZ_8WBMKK0MVQ",
+   "published": "2026-11-12T10:52:03Z",
+   "pub_kst": "Thu 19",
+   "age": 2,
+   "dur": 340,
+   "bucket": "4~10분",
+   "views": 74145,
+   "likes": 271,
+   "comments": 17,
+   "tags": [
+    "easy english story",
+    "slow english for beginners",
+    "english listening practice",
+    "a2 english story",
+    "learn english through story",
+    "good neighbor vs bad neighbor",
+    "neighborhood english story",
+    "good manners vs bad manners",
+    "family story english",
+    "polite vs rude english",
+    "english vocabulary for beginners",
+    "english shadowing practice",
+    "simple english conversation",
+    "english speaking practice",
+    "esl",
+    "english story",
+    "daily english",
+    "learn english",
+    "good manners",
+    "bad manners",
+    "good vs bad"
+   ],
+   "cat": "27",
+   "lang": "en",
+   "daily": 37072,
+   "eng": 0.39,
+   "perf": 56.6,
+   "subs": 1310,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어 듣기"
+   ],
+   "ttags": [
+    "비교형",
+    "이모지",
+    "괄호·구분자",
+    "대문자"
+   ]
+  },
+  {
+   "id": "zR8ZShoP4JY",
+   "title": "99%가 모르는 클로드 영어 공부법. 이거 안하면 아무리 AI 써도 소용없어요",
+   "channel": "영어독립",
+   "channelId": "UCk0_b4YlVwHMUJofZTSb3ww",
+   "published": "2026-11-09T12:57:13Z",
+   "pub_kst": "Mon 21",
+   "age": 5,
+   "dur": 793,
+   "bucket": "10~20분",
+   "views": 120207,
+   "likes": 772,
+   "comments": 23,
+   "tags": [
+    "영어공부",
+    "영어독립",
+    "영어독립365",
+    "영어회화",
+    "영어",
+    "원어민",
+    "영어독학",
+    "원어민 영어",
+    "회화",
+    "스피킹",
+    "미드",
+    "공부",
+    "자기계발",
+    "영문법",
+    "영어 문법",
+    "문법",
+    "독학",
+    "주지후",
+    "김재우",
+    "기초",
+    "구동사",
+    "김재우의구동사100",
+    "김재우의영어회화100"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 24041,
+   "eng": 0.66,
+   "perf": 0.44,
+   "subs": 273000,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어 공부법",
+    "영어 스피킹"
+   ],
+   "ttags": [
+    "숫자형",
+    "튜토리얼형",
+    "한/영 혼용"
+   ]
+  },
+  {
+   "id": "q8MoUzkGAwY",
+   "title": "명예영국인 앞에서 영어하면 생기는 일 TOP3",
+   "channel": "라잌셀럽 ",
+   "channelId": "UCicnKwdmE8erQpt_ZWz8E8w",
+   "published": "2026-11-09T14:27:49Z",
+   "pub_kst": "Mon 23",
+   "age": 5,
+   "dur": 67,
+   "bucket": "1~4분",
+   "views": 105522,
+   "likes": 423,
+   "comments": 5,
+   "tags": [],
+   "cat": "22",
+   "lang": "ko",
+   "daily": 21104,
+   "eng": 0.41,
+   "perf": 5.15,
+   "subs": 20500,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어 발음"
+   ],
+   "ttags": [
+    "숫자형",
+    "권위·인용형",
+    "한/영 혼용"
+   ]
+  },
+  {
+   "id": "Cut19wiY-dA",
+   "title": "영어 공부 다시 시작한다면 저는 이 5권만 읽습니다｜영어 원서 추천, 영어 왕초보 탈출",
+   "channel": "제나쌤 | 영어독학",
+   "channelId": "UCNM9TmyfbOD_GWAfd9qyOMw",
+   "published": "2026-11-10T14:23:50Z",
+   "pub_kst": "Tue 23",
+   "age": 4,
+   "dur": 596,
+   "bucket": "4~10분",
+   "views": 83580,
+   "likes": 736,
+   "comments": 40,
+   "tags": [
+    "영어원서",
+    "영어책",
+    "영어동화",
+    "영어공부"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 20895,
+   "eng": 0.93,
+   "perf": 1.32,
+   "subs": 63400,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어 독학"
+   ],
+   "ttags": [
+    "숫자형"
+   ]
+  },
+  {
+   "id": "_1UkAeCZ80Q",
+   "title": "\"기대돼요\"를 expect로 말하면 원어민이 이렇게 알아들어요ㅣ어색한 영어 TOP10",
+   "channel": "가브리엘의 원어민 영어",
+   "channelId": "UCqV3Z9kMVQ6efcyfXoX3ljQ",
+   "published": "2026-11-13T11:00:05Z",
+   "pub_kst": "Fri 20",
+   "age": 1,
+   "dur": 970,
+   "bucket": "10~20분",
+   "views": 20105,
+   "likes": 289,
+   "comments": 17,
+   "tags": [],
+   "cat": "22",
+   "lang": "ko",
+   "daily": 20105,
+   "eng": 1.52,
+   "perf": 0.2,
+   "subs": 101000,
+   "fresh": "7일 이내",
+   "kws": [
+    "원어민 표현"
+   ],
+   "ttags": [
+    "숫자형",
+    "권위·인용형",
+    "한/영 혼용",
+    "괄호·구분자"
+   ]
+  },
+  {
+   "id": "Di_W8U-4HFQ",
+   "title": "작년에 점수 올랐다 연락만 100건 받음 (feat. 영어 위기탈출넘버원)",
+   "channel": "빡쌤",
+   "channelId": "UCKOQWf3jYtPjC0AMZ5GrumQ",
+   "published": "2026-11-12T09:00:28Z",
+   "pub_kst": "Thu 18",
+   "age": 2,
+   "dur": 905,
+   "bucket": "10~20분",
+   "views": 39674,
+   "likes": null,
+   "comments": 86,
+   "tags": [],
+   "cat": "22",
+   "lang": "ko",
+   "daily": 19837,
+   "eng": 0.22,
+   "perf": 0.46,
+   "subs": 86900,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어"
+   ],
+   "ttags": [
+    "숫자형",
+    "한/영 혼용",
+    "괄호·구분자"
+   ]
+  },
+  {
+   "id": "X4t6jkbay9M",
+   "title": "평범한 나를 통역사로 만들어준 인생 영어독학책 3권 (공부순서 +공부방법) | 영어,10배 빨리 잘하고싶으면 그냥 이것만 미친듯이 하세요 | 국내파통역사의 인생역전 아웃풋영어공부법",
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "channelId": "UCDp0BcWITympoRz30fODYLw",
+   "published": "2026-11-07T00:27:13Z",
+   "pub_kst": "Sat 09",
+   "age": 7,
+   "dur": 879,
+   "bucket": "10~20분",
+   "views": 125119,
+   "likes": 986,
+   "comments": 16,
+   "tags": [
+    "영어스피킹",
+    "영어듣기",
+    "영어말하기",
+    "영어입트이기",
+    "영어독학",
+    "영어독해",
+    "영어잘하는법",
+    "국내파영어공부법",
+    "영어읽기",
+    "영어리스닝",
+    "영어귀뚫기",
+    "영어초급",
+    "영어중급",
+    "영어고급",
+    "영어뇌만들기",
+    "영어식사고",
+    "영어혼자서잘하는법",
+    "유학",
+    "어학연수",
+    "교환학생",
+    "미국영어",
+    "영국영어",
+    "영어발음",
+    "원어민영어",
+    "30대영어공부",
+    "직장인영어회화",
+    "40대영어",
+    "50대영어공부",
+    "자연스럽게영어하기",
+    "영어빨리잘하는법"
+   ],
+   "cat": "27",
+   "lang": "ko",
+   "daily": 17874,
+   "eng": 0.8,
+   "perf": 3.04,
+   "subs": 41100,
+   "fresh": "7일 이내",
+   "kws": [
+    "영어 공부법",
+    "영어 독학"
+   ],
+   "ttags": [
+    "숫자형",
+    "튜토리얼형",
+    "권위·인용형",
+    "괄호·구분자"
+   ]
+  }
+ ],
+ "title_types": [
+  {
+   "type": "한/영 혼용",
+   "n": 9,
+   "avg_views": 1377531,
+   "avg_eng": 0.96
+  },
+  {
+   "type": "숫자형",
+   "n": 7,
+   "avg_views": 1250857,
+   "avg_eng": 0.92
+  },
+  {
+   "type": "괄호·구분자",
+   "n": 6,
+   "avg_views": 740841,
+   "avg_eng": 0.68
+  },
+  {
+   "type": "질문형",
+   "n": 5,
+   "avg_views": 1184666,
+   "avg_eng": 0.98
+  },
+  {
+   "type": "이모지",
+   "n": 5,
+   "avg_views": 839634,
+   "avg_eng": 0.95
+  },
+  {
+   "type": "권위·인용형",
+   "n": 4,
+   "avg_views": 740039,
+   "avg_eng": 0.85
+  },
+  {
+   "type": "비교형",
+   "n": 2,
+   "avg_views": 2352368,
+   "avg_eng": 0.62
+  },
+  {
+   "type": "대문자",
+   "n": 2,
+   "avg_views": 1423660,
+   "avg_eng": 0.62
+  },
+  {
+   "type": "튜토리얼형",
+   "n": 2,
+   "avg_views": 268157,
+   "avg_eng": 0.89
+  },
+  {
+   "type": "경고·반전형",
+   "n": 1,
+   "avg_views": 458234,
+   "avg_eng": 0.92
+  }
+ ],
+ "title_len": {
+  "~25자": {
+   "n": 14,
+   "median": 59600
+  },
+  "26~40자": {
+   "n": 40,
+   "median": 35111
+  },
+  "61자+": {
+   "n": 45,
+   "median": 25106
+  },
+  "41~60자": {
+   "n": 63,
+   "median": 33377
+  }
+ },
+ "first3": [
+  "누구나 처음부터 잘하는",
+  "국어 vs 영어",
+  "(NEW) 50일간 매일",
+  "원어민도 당황하는 딘딘",
+  "20대 억만장자가 유럽여행"
+ ],
+ "top_words": [
+  [
+   "영어회화",
+   6
+  ],
+  [
+   "vs",
+   3
+  ],
+  [
+   "standupcomedy",
+   3
+  ],
+  [
+   "standupcomedian",
+   3
+  ],
+  [
+   "lucydarling",
+   3
+  ],
+  [
+   "미국",
+   3
+  ],
+  [
+   "영어듣기",
+   2
+  ],
+  [
+   "이걸",
+   2
+  ],
+  [
+   "평생",
+   2
+  ],
+  [
+   "발음",
+   2
+  ]
+ ],
+ "desc_flags": {
+  "타임스탬프(설명 전체)": 2,
+  "링크(첫2줄)": 3,
+  "해시태그(첫2줄)": 4
+ },
+ "top_tags": [
+  [
+   "영어공부",
+   53
+  ],
+  [
+   "영어회화",
+   47
+  ],
+  [
+   "영어듣기",
+   37
+  ],
+  [
+   "영어",
+   35
+  ],
+  [
+   "기초영어",
+   31
+  ],
+  [
+   "영어독학",
+   28
+  ],
+  [
+   "생활영어",
+   27
+  ],
+  [
+   "영어발음",
+   20
+  ],
+  [
+   "왕초보영어",
+   20
+  ],
+  [
+   "영어쉐도잉",
+   19
+  ],
+  [
+   "영어스피킹",
+   14
+  ],
+  [
+   "쉬운영어",
+   13
+  ],
+  [
+   "여행영어",
+   12
+  ],
+  [
+   "#영어쉐도잉",
+   11
+  ],
+  [
+   "영어공부혼자하기",
+   11
+  ]
+ ],
+ "duration": {
+  "1~4분": {
+   "n": 50,
+   "avg_views": 414144,
+   "median": 41772,
+   "avg_eng": 2.04,
+   "avg_daily": 29279
+  },
+  "20분+": {
+   "n": 70,
+   "avg_views": 104803,
+   "median": 25220,
+   "avg_eng": 1.77,
+   "avg_daily": 14080
+  },
+  "10~20분": {
+   "n": 29,
+   "avg_views": 164593,
+   "median": 39674,
+   "avg_eng": 1.14,
+   "avg_daily": 16683
+  },
+  "4~10분": {
+   "n": 13,
+   "avg_views": 65430,
+   "median": 55815,
+   "avg_eng": 1.42,
+   "avg_daily": 8634
+  }
+ },
+ "weekday": {
+  "Sat": 4,
+  "Wed": 2,
+  "Thu": 2,
+  "Tue": 5,
+  "Fri": 3,
+  "Sun": 3,
+  "Mon": 1
+ },
+ "hour": {
+  "18-24": 11,
+  "12-18": 5,
+  "06-12": 4
+ },
+ "channels_top20": [
+  {
+   "channel": "눈물한가득",
+   "subs": 131000,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 70.35,
+   "videos_total": "95",
+   "created": "2026-06-06"
+  },
+  {
+   "channel": "침착맨",
+   "subs": 3330000,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 1.35,
+   "videos_total": "7815",
+   "created": "2014-09-30"
+  },
+  {
+   "channel": "디글 :Diggle",
+   "subs": 4310000,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 0.55,
+   "videos_total": "94028",
+   "created": "2020-02-26"
+  },
+  {
+   "channel": "한입만",
+   "subs": 19400,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 114.83,
+   "videos_total": "93",
+   "created": "2024-11-02"
+  },
+  {
+   "channel": "단커피",
+   "subs": 132000,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 10.28,
+   "videos_total": "252",
+   "created": "2020-09-06"
+  },
+  {
+   "channel": "일일막장",
+   "subs": 26500,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 48.62,
+   "videos_total": "37",
+   "created": "2026-08-17"
+  },
+  {
+   "channel": "코믹한영어",
+   "subs": 220000,
+   "n": 4,
+   "n_top20": 3,
+   "perf": 5.76,
+   "videos_total": "400",
+   "created": "2024-10-08"
+  },
+  {
+   "channel": "𝗣𝘂𝗻𝗰𝗵𝗹𝗶𝗻𝗲 𝗘𝗻𝗴𝗹𝗶𝘀𝗵",
+   "subs": 156000,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 8.1,
+   "videos_total": "251",
+   "created": "2025-11-01"
+  },
+  {
+   "channel": "엠뚜루마뚜루 : MBC 공식 종합 채널",
+   "subs": 2960000,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 0.25,
+   "videos_total": "15271",
+   "created": "2020-09-21"
+  },
+  {
+   "channel": "Aran TV",
+   "subs": 665000,
+   "n": 2,
+   "n_top20": 1,
+   "perf": 0.69,
+   "videos_total": "1045",
+   "created": "2015-06-30"
+  },
+  {
+   "channel": "리핏어게인",
+   "subs": 213000,
+   "n": 2,
+   "n_top20": 2,
+   "perf": 1.97,
+   "videos_total": "893",
+   "created": "2024-01-18"
+  },
+  {
+   "channel": "날라리데이브!",
+   "subs": 292000,
+   "n": 2,
+   "n_top20": 1,
+   "perf": 1.37,
+   "videos_total": "449",
+   "created": "2006-03-02"
+  },
+  {
+   "channel": "친절한 대학 기초영어",
+   "subs": 686000,
+   "n": 2,
+   "n_top20": 1,
+   "perf": 0.47,
+   "videos_total": "541",
+   "created": "2019-09-11"
+  },
+  {
+   "channel": "딘딘은 딘딘",
+   "subs": 424000,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 0.69,
+   "videos_total": "461",
+   "created": "2020-09-02"
+  },
+  {
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "subs": 41100,
+   "n": 6,
+   "n_top20": 1,
+   "perf": 7.09,
+   "videos_total": "106",
+   "created": "2025-05-05"
+  },
+  {
+   "channel": "캘리쌤 브이로그 영어",
+   "subs": 531000,
+   "n": 1,
+   "n_top20": 1,
+   "perf": 0.46,
+   "videos_total": "1111",
+   "created": "2023-10-08"
+  },
+  {
+   "channel": "라잌셀럽 ",
+   "subs": 20500,
+   "n": 2,
+   "n_top20": 1,
+   "perf": 9.56,
+   "videos_total": "473",
+   "created": "2025-06-02"
+  }
+ ],
+ "emerging": [
+  {
+   "channel": "쏘로그 | Tholog",
+   "subs": 6460,
+   "best_perf": 25.63,
+   "title": "진작 알았다면 영어가 훨씬 쉬웠을 텐데 | 단기간에 영어 실력 높이는 법 3가지",
+   "views": 165560,
+   "created": "2013-02-08"
+  },
+  {
+   "channel": "브레인글리시_영어뇌 만들기",
+   "subs": 2390,
+   "best_perf": 40.91,
+   "title": "10년 공부해도 안되던 영어듣기, 이렇게 하니까 드디어 들립니다",
+   "views": 97770,
+   "created": "2026-09-11"
+  },
+  {
+   "channel": "랭스쿨 영어",
+   "subs": 2880,
+   "best_perf": 32.72,
+   "title": "해외여행에서 듣고 대답할 수 있게 되는 영어 회화 필수 패턴 40개 | 원어민 영어 리스닝 스피킹 1시간 몰아보기",
+   "views": 94231,
+   "created": "2026-10-18"
+  },
+  {
+   "channel": "Easy English Land",
+   "subs": 1310,
+   "best_perf": 56.6,
+   "title": "GOOD NEIGHBOR ✅ VS BAD NEIGHBOR! 🏡😱 | Slow English Listening Story for Beginners",
+   "views": 74145,
+   "created": "2026-09-12"
+  },
+  {
+   "channel": "윤글리시",
+   "subs": 9450,
+   "best_perf": 6.72,
+   "title": "[메가스터디] 영어 윤예은쌤 -[2028 OT강좌] 1등급이 '1분 만에' 주제 푸는법",
+   "views": 63503,
+   "created": "2012-11-25"
+  },
+  {
+   "channel": "클로이 아이엘츠 독학졸업",
+   "subs": 2710,
+   "best_perf": 20.6,
+   "title": "아이엘츠독학 스피킹 526문장 외우고 깔끔하게 7점받자! 시험관이 7점 8점주는 콜로케이션, 문장구조, 주제별표현을 만능문장으로 해결하세요.(클로이 인출훈련스터디)",
+   "views": 55815,
+   "created": "2012-03-08"
+  },
+  {
+   "channel": "정원밖",
+   "subs": 1100,
+   "best_perf": 46.02,
+   "title": "비싼 강의 들어도 이걸 알려주는 사람 없어요. 독학 영어 실력 높이는 4가지 법칙",
+   "views": 50625,
+   "created": "2026-09-25"
+  },
+  {
+   "channel": "로렌쌤_ 누구나 영어를 모국어처럼",
+   "subs": 8140,
+   "best_perf": 5.28,
+   "title": "영어 원서 수십 권 읽어도 영어로 말 못하는 이유｜30년 영어 전문가의 원서 공부법",
+   "views": 42987,
+   "created": "2024-06-02"
+  },
+  {
+   "channel": "어셔어학원 _ TV USHER",
+   "subs": 1300,
+   "best_perf": 28.32,
+   "title": "영어 문법 어려운 분들은 꼭 보세요",
+   "views": 36822,
+   "created": "2016-02-23"
+  },
+  {
+   "channel": "션티빙 SheanTving",
+   "subs": 3470,
+   "best_perf": 4.85,
+   "title": "D-15 수능 영어 공부법",
+   "views": 16824,
+   "created": "2023-04-21"
+  },
+  {
+   "channel": "Starting Today",
+   "subs": 4470,
+   "best_perf": 3.42,
+   "title": "[실생활 영어 듣기] 나..회사 그만둘까? 친구의 퇴사 고민, 영어로 듣기 🥲",
+   "views": 15286,
+   "created": "2024-10-05"
+  },
+  {
+   "channel": "재미개미TV",
+   "subs": 2760,
+   "best_perf": 5.37,
+   "title": "영어로 “I have dog” 했다가 생기는 일 #영어회화 #영어문법 #영어관사 #생활영어 #영어공부 #쇼츠영어 #영어꿀팁 #원어민영어",
+   "views": 14831,
+   "created": "2012-10-04"
+  },
+  {
+   "channel": "수능영어 닥터",
+   "subs": 1700,
+   "best_perf": 6.9,
+   "title": "이거였구나! 수능영어 노베가 최소 공부로 3등급 가는 가장 빠른 방법",
+   "views": 11738,
+   "created": "2022-11-30"
+  },
+  {
+   "channel": "윤짱의 야매영어",
+   "subs": 289,
+   "best_perf": 6.0,
+   "title": "\"~후에\"를 말하는게 3가지나 있다고??   #영어 #영어문법 #영어기초 #영어독학 #영어공부 #초등영어 #중등영어",
+   "views": 1734,
+   "created": "2026-08-30"
+  },
+  {
+   "channel": "테스영어",
+   "subs": 264,
+   "best_perf": 4.92,
+   "title": "Book 18: 접속사 - Chapter 3 #영어회화 #영어인강 #영어문법 #영어 #유용한영어표현 #영문법 #영어공부 #영어회화학원 #중등영어",
+   "views": 1300,
+   "created": "2024-03-27"
+  },
+  {
+   "channel": "마흔의 뻔뻔한 영어 독학 | 나마공",
+   "subs": 401,
+   "best_perf": 2.17,
+   "title": "40대 영어 왕초보 스피킹 독학, 첫 AI 스피킹 코칭 결과는?ㅋㅋ｜1분 영어말하기 1일차",
+   "views": 870,
+   "created": "2025-09-09"
+  },
+  {
+   "channel": "OutPut English⏐아웃풋 잉글리시",
+   "subs": 11,
+   "best_perf": 21.73,
+   "title": "3분 만에 이해하는 영어문법의 90% | OutPut English EP.06 #영어기초 #영어회화 #영문법 #어법 #영어독학 #OPIc #스피킹 #문법기초 #문장확장 #문법개념",
+   "views": 239,
+   "created": "2026-02-05"
+  }
+ ],
+ "overall_top3_share": 47.9,
+ "comment_videos": [
+  "94bxM-mFkZQ",
+  "hEndbxCDZ4Q",
+  "DHDBwdTiqbo",
+  "5_vJ3WvIzVs",
+  "HdKMjQPr_UM",
+  "fk8uNHJSCv8",
+  "RkBYyYtLEgc",
+  "x0GuUXA_ql0",
+  "QA1pVZ6L3bs",
+  "zR8ZShoP4JY",
+  "q8MoUzkGAwY"
+ ],
+ "comment_count": 193,
+ "sentiment": {
+  "pos": 88,
+  "neu": 95,
+  "neg": 10,
+  "method": "키워드 기반 대략 분류"
+ },
+ "all_filtered": [
+  {
+   "id": "94bxM-mFkZQ",
+   "title": "누구나 처음부터 잘하는 사람은 없다",
+   "channel": "눈물한가득",
+   "views": 9215398,
+   "daily": 329121,
+   "eng": 1.74,
+   "perf": 70.35,
+   "bucket": "1~4분",
+   "age": 28,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "hEndbxCDZ4Q",
+   "title": "국어 vs 영어 vs 수학 뭐가 제일 중요할까?",
+   "channel": "침착맨",
+   "views": 4508677,
+   "daily": 450868,
+   "eng": 0.64,
+   "perf": 1.35,
+   "bucket": "20분+",
+   "age": 10,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "DHDBwdTiqbo",
+   "title": "(NEW) 50일간 매일 7시간씩 영어 공부✍️ 뉴욕 '브로드웨이' 진출을 위해 영어 공부에 진심을 쏟은 아이비✨ #유퀴즈온더블럭",
+   "channel": "디글 :Diggle",
+   "views": 2389087,
+   "daily": 265454,
+   "eng": 0.33,
+   "perf": 0.55,
+   "bucket": "10~20분",
+   "age": 9,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "5_vJ3WvIzVs",
+   "title": "원어민도 당황하는 딘딘 TOP7 ㅋㅋㅋ",
+   "channel": "한입만",
+   "views": 2227782,
+   "daily": 556946,
+   "eng": 1.04,
+   "perf": 114.83,
+   "bucket": "1~4분",
+   "age": 4,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "HdKMjQPr_UM",
+   "title": "20대 억만장자가 유럽여행 가는 법",
+   "channel": "단커피",
+   "views": 1356651,
+   "daily": 46781,
+   "eng": 1.05,
+   "perf": 10.28,
+   "bucket": "1~4분",
+   "age": 29,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "fk8uNHJSCv8",
+   "title": "“영어도 못 하시면서” 무시당한 공항 할아버지… 팀장이 “대사님”이라 부르자",
+   "channel": "일일막장",
+   "views": 1288495,
+   "daily": 61357,
+   "eng": 3.23,
+   "perf": 48.62,
+   "bucket": "1~4분",
+   "age": 21,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "7JmoRYbBvnE",
+   "title": "추측만이 쏟아지는 막장 가족 드라마 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 1267095,
+   "daily": 46929,
+   "eng": 1.63,
+   "perf": 5.76,
+   "bucket": "1~4분",
+   "age": 27,
+   "kws": [
+    "영어",
+    "영어회화"
+   ]
+  },
+  {
+   "id": "vzOXyz6QP44",
+   "title": "20살 딸을 둔 아버지의 고충",
+   "channel": "𝗣𝘂𝗻𝗰𝗵𝗹𝗶𝗻𝗲 𝗘𝗻𝗴𝗹𝗶𝘀𝗵",
+   "views": 1262837,
+   "daily": 70158,
+   "eng": 2.03,
+   "perf": 8.1,
+   "bucket": "1~4분",
+   "age": 18,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "-dNNViUXyxI",
+   "title": "[라디오스타] 모른다고 주눅 들 필요❌ 기존쎄 김영철의 영어 회화 생존법ㅣ#김영철 MBC261014방송",
+   "channel": "엠뚜루마뚜루 : MBC 공식 종합 채널",
+   "views": 735879,
+   "daily": 30662,
+   "eng": 0.24,
+   "perf": 0.25,
+   "bucket": "10~20분",
+   "age": 24,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "qzdQTQGpdLw",
+   "title": "[1탄] NEON - A2O LITE 가사 해석 & 틀린 영어 고치기 🩵",
+   "channel": "Aran TV",
+   "views": 458234,
+   "daily": 18329,
+   "eng": 0.92,
+   "perf": 0.69,
+   "bucket": "1~4분",
+   "age": 25,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "x0GuUXA_ql0",
+   "title": "자네, 미스터 빈 닮은꼴 해볼 생각 없나?! #영어공부 #영어듣기 #토크쇼",
+   "channel": "리핏어게인",
+   "views": 420241,
+   "daily": 60034,
+   "eng": 1.22,
+   "perf": 1.97,
+   "bucket": "1~4분",
+   "age": 7,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "V4gcMudCzuw",
+   "title": "미국 스포츠 역사에 남을 장면 ㄷㄷ #영어회화 #미식축구",
+   "channel": "날라리데이브!",
+   "views": 400695,
+   "daily": 33391,
+   "eng": 0.02,
+   "perf": 1.37,
+   "bucket": "1~4분",
+   "age": 12,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "vQcMn_Bi770",
+   "title": "요즘 애들이 이걸 본다고? #영어듣기 #영어회화 #그레이아나토미",
+   "channel": "리핏어게인",
+   "views": 377276,
+   "daily": 20960,
+   "eng": 1.48,
+   "perf": 1.77,
+   "bucket": "1~4분",
+   "age": 18,
+   "kws": [
+    "영어회화",
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "6Qkdjrz2d8g",
+   "title": "배우는데 10분도 안걸리는데, 평생 까막눈으로 사시겠습니까? 영어 왜 이렇게 읽히는지 이해 안가셨던 분들 _ 영어 왕왕초보를 위한 I(i, 아이) 발음 총정리",
+   "channel": "친절한 대학 기초영어",
+   "views": 325533,
+   "daily": 13021,
+   "eng": 0.84,
+   "perf": 0.47,
+   "bucket": "20분+",
+   "age": 25,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "cQ5Eld6J9O0",
+   "title": "모두를 경악시킨 은밀한 모녀의 생활 🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 309227,
+   "daily": 14725,
+   "eng": 2.08,
+   "perf": 1.41,
+   "bucket": "1~4분",
+   "age": 21,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "QrIIZ_O1Veg",
+   "title": "말 한번 잘못뱉고 평생 이불킥 박제..🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 305747,
+   "daily": 15287,
+   "eng": 1.17,
+   "perf": 1.39,
+   "bucket": "1~4분",
+   "age": 20,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "RkBYyYtLEgc",
+   "title": "음지 영어 딘딘이 수능을 본다면?",
+   "channel": "딘딘은 딘딘",
+   "views": 291603,
+   "daily": 291603,
+   "eng": 0.74,
+   "perf": 0.69,
+   "bucket": "20분+",
+   "age": 1,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "YPg-FHROJ5c",
+   "title": "’이걸‘ 먼저 깨닫는 사람이 영어실력 미친듯이 확 늘어요 | 국내파 통역사의 독학 영어공부법 #영어공부법 #영어회화 #영어스피킹",
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "views": 291572,
+   "daily": 10054,
+   "eng": 0.79,
+   "perf": 7.09,
+   "bucket": "1~4분",
+   "age": 29,
+   "kws": [
+    "영어 공부법",
+    "영어 독학",
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "LqPF1C8yc8U",
+   "title": "미국 시골 주말 루틴 영어! 진짜 미국인의 일상 영어를 그대로 보여드려요! | 반복해서 들으면 리스닝 실력이 폭발합니다!",
+   "channel": "캘리쌤 브이로그 영어",
+   "views": 244743,
+   "daily": 12237,
+   "eng": 0.98,
+   "perf": 0.46,
+   "bucket": "10~20분",
+   "age": 20,
+   "kws": [
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "TAqRBlzm_MM",
+   "title": "같은 영어, 다른 발음 미국 영어 vs 영국 영어",
+   "channel": "라잌셀럽 ",
+   "views": 196059,
+   "daily": 21784,
+   "eng": 0.61,
+   "perf": 9.56,
+   "bucket": "1~4분",
+   "age": 9,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "ppUGWoUkJJI",
+   "title": "미국에선 잘 안쓰는데 한국인들은 유독 자주 사용하는 어색한 영어 표현 7가지",
+   "channel": "가브리엘의 원어민 영어",
+   "views": 195883,
+   "daily": 8162,
+   "eng": 0.76,
+   "perf": 1.94,
+   "bucket": "10~20분",
+   "age": 24,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "t1wnH9SWVRk",
+   "title": "배우는데 10분도 안걸리는데, 평생 까막눈으로 사시겠습니까? 영어 왜 이렇게 읽히는지 이해 안가셨던 분들 _ ea, ou, -ing, ay/ey/oy 등 어려운 발음 총정리",
+   "channel": "친절한 대학 기초영어",
+   "views": 192024,
+   "daily": 10668,
+   "eng": 1.28,
+   "perf": 0.28,
+   "bucket": "20분+",
+   "age": 18,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "e9KNOE2dnIg",
+   "title": "\"너 왜 안 와?\" 영어로 Why 말고 원어민 찐 패턴 #영어회화 #영어공부",
+   "channel": "매일영어Study English",
+   "views": 190131,
+   "daily": 13581,
+   "eng": 3.21,
+   "perf": 2.77,
+   "bucket": "1~4분",
+   "age": 14,
+   "kws": [
+    "영어",
+    "영어회화",
+    "영어 발음",
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "1b3HhAEDWOc",
+   "title": "귀여운 철가루맨의 치명적인 가게..🤣 #standupcomedy #standupcomedian #영어회화 #lucydarling",
+   "channel": "코믹한영어",
+   "views": 172478,
+   "daily": 10146,
+   "eng": 1.57,
+   "perf": 0.78,
+   "bucket": "1~4분",
+   "age": 17,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "AlHt38GUcXE",
+   "title": "원어민 일상회화의 핵심! 영어 왕초보가 가장 먼저 외워야 할 필수 패턴 30개",
+   "channel": "아메리코리아노",
+   "views": 169366,
+   "daily": 13028,
+   "eng": 1.31,
+   "perf": 0.55,
+   "bucket": "10~20분",
+   "age": 13,
+   "kws": [
+    "영어",
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "RbjgxCl9B98",
+   "title": "진작 알았다면 영어가 훨씬 쉬웠을 텐데 | 단기간에 영어 실력 높이는 법 3가지",
+   "channel": "쏘로그 | Tholog",
+   "views": 165560,
+   "daily": 11037,
+   "eng": 1.86,
+   "perf": 25.63,
+   "bucket": "4~10분",
+   "age": 15,
+   "kws": [
+    "영어 공부법",
+    "영어 듣기",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "Y6u-UKWKFiU",
+   "title": "영어 100번 들어도 귀 안 뚫리는 이유는 따로 있습니다",
+   "channel": "생각하는 영어",
+   "views": 130075,
+   "daily": 5203,
+   "eng": 0.65,
+   "perf": 0.91,
+   "bucket": "10~20분",
+   "age": 25,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "2rcJGw1HYvE",
+   "title": "영어듣기 방법! 10분 뒤 여러분의 '영어 리스닝' 관점이 완전히 바뀝니다. 안 들리던 영어가 뻥 뚫리는 영어 듣기 공부법",
+   "channel": "영어 루틴 쌤",
+   "views": 129634,
+   "daily": 12963,
+   "eng": 0.44,
+   "perf": 1.14,
+   "bucket": "4~10분",
+   "age": 10,
+   "kws": [
+    "영어 공부법",
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "X4t6jkbay9M",
+   "title": "평범한 나를 통역사로 만들어준 인생 영어독학책 3권 (공부순서 +공부방법) | 영어,10배 빨리 잘하고싶으면 그냥 이것만 미친듯이 하세요 | 국내파통역사의 인생역전 아웃풋영어공부법",
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "views": 125119,
+   "daily": 17874,
+   "eng": 0.8,
+   "perf": 3.04,
+   "bucket": "10~20분",
+   "age": 7,
+   "kws": [
+    "영어 공부법",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "zR8ZShoP4JY",
+   "title": "99%가 모르는 클로드 영어 공부법. 이거 안하면 아무리 AI 써도 소용없어요",
+   "channel": "영어독립",
+   "views": 120207,
+   "daily": 24041,
+   "eng": 0.66,
+   "perf": 0.44,
+   "bucket": "10~20분",
+   "age": 5,
+   "kws": [
+    "영어 공부법",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "aB6hOm5-4Yk",
+   "title": "난이도 최하, 초초간단 영어회화, 영어 감각 0% 를 위한 영어 강의 2강 _ 이해할 필요 조차 없어요.",
+   "channel": "친절한 대학",
+   "views": 107017,
+   "daily": 4653,
+   "eng": 1.71,
+   "perf": 0.09,
+   "bucket": "20분+",
+   "age": 23,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "hIEa5HGr46U",
+   "title": "10년을 들어도 귀 안 뚫리는 이유 따로 있습니다(영어 귀 뚫는 3가지 규칙) 미국 뉴스 쉐도잉 #영어리스닝",
+   "channel": "잉핏 English",
+   "views": 105936,
+   "daily": 3924,
+   "eng": 1.25,
+   "perf": 4.49,
+   "bucket": "20분+",
+   "age": 27,
+   "kws": [
+    "영어 스피킹",
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "q8MoUzkGAwY",
+   "title": "명예영국인 앞에서 영어하면 생기는 일 TOP3",
+   "channel": "라잌셀럽 ",
+   "views": 105522,
+   "daily": 21104,
+   "eng": 0.41,
+   "perf": 5.15,
+   "bucket": "1~4분",
+   "age": 5,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "cPa0rkfGyWs",
+   "title": "들었을 뿐인데 영어가 유창해지는 앤톤 영어 팟캐스트 | 원어민 회화 표현 잔뜩 배워가세요!",
+   "channel": "주아쌤_소리튠영어",
+   "views": 100679,
+   "daily": 6292,
+   "eng": 1.69,
+   "perf": 0.11,
+   "bucket": "10~20분",
+   "age": 16,
+   "kws": [
+    "영어 공부법",
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "lXw-cxdBltU",
+   "title": "10년 공부해도 안되던 영어듣기, 이렇게 하니까 드디어 들립니다",
+   "channel": "브레인글리시_영어뇌 만들기",
+   "views": 97770,
+   "daily": 12221,
+   "eng": 1.04,
+   "perf": 40.91,
+   "bucket": "4~10분",
+   "age": 8,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "k_vPdS8fweM",
+   "title": "해외여행에서 듣고 대답할 수 있게 되는 영어 회화 필수 패턴 40개 | 원어민 영어 리스닝 스피킹 1시간 몰아보기",
+   "channel": "랭스쿨 영어",
+   "views": 94231,
+   "daily": 7853,
+   "eng": 1.64,
+   "perf": 32.72,
+   "bucket": "20분+",
+   "age": 12,
+   "kws": [
+    "영어",
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "liL4EuXPV8s",
+   "title": "'첫단어’ 하나로 싹 바뀌는 영어식 문장의 비밀 (영어교재 추천!)",
+   "channel": "라꼼므, 번역가의 영어공부법",
+   "views": 91680,
+   "daily": 3820,
+   "eng": 1.37,
+   "perf": 1.62,
+   "bucket": "10~20분",
+   "age": 24,
+   "kws": [
+    "영어 공부법",
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "jFYvVCAzT9c",
+   "title": "원어민이 밥 먹듯 쓰는 필수 영어 회화 500문장 [왕초보 영어회화]",
+   "channel": "주아쌤_소리튠영어",
+   "views": 90596,
+   "daily": 3355,
+   "eng": 1.77,
+   "perf": 0.1,
+   "bucket": "20분+",
+   "age": 27,
+   "kws": [
+    "영어회화",
+    "영어 공부법",
+    "영어 스피킹",
+    "영어 듣기",
+    "영어 발음",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "7rB4pxOMLYo",
+   "title": "영화 '인턴'이 한국어로 들리는 미친 훈련법 공개합니다.ㅣPDF 무료 다운ㅣ리스닝 블록 02",
+   "channel": "주아쌤_소리튠영어",
+   "views": 86201,
+   "daily": 3748,
+   "eng": 1.09,
+   "perf": 0.09,
+   "bucket": "20분+",
+   "age": 23,
+   "kws": [
+    "영어",
+    "영어 공부법",
+    "영어 듣기",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "GCXmfMpOhiQ",
+   "title": "1초 영어 말하기 l 첫시작이 바로 생각나야 돼요",
+   "channel": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "views": 84558,
+   "daily": 3132,
+   "eng": 1.75,
+   "perf": 0.15,
+   "bucket": "1~4분",
+   "age": 27,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "Cut19wiY-dA",
+   "title": "영어 공부 다시 시작한다면 저는 이 5권만 읽습니다｜영어 원서 추천, 영어 왕초보 탈출",
+   "channel": "제나쌤 | 영어독학",
+   "views": 83580,
+   "daily": 20895,
+   "eng": 0.93,
+   "perf": 1.32,
+   "bucket": "4~10분",
+   "age": 4,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "GG7pBdY-v58",
+   "title": "원어민 영어는 혀가 전부다",
+   "channel": "트랭디",
+   "views": 82378,
+   "daily": 3582,
+   "eng": 2.14,
+   "perf": 0.17,
+   "bucket": "4~10분",
+   "age": 23,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "7ZBViZRo6ys",
+   "title": "\"나 지각할 뻔했어!\" 영어로? #영어회화 #영어공부",
+   "channel": "매일영어Study English",
+   "views": 79632,
+   "daily": 4684,
+   "eng": 2.64,
+   "perf": 1.16,
+   "bucket": "1~4분",
+   "age": 17,
+   "kws": [
+    "영어 발음",
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "ASay4Wog-Yk",
+   "title": "평범한 30살, 영어하나로 인생 바뀐 이유 | 나를 통역사로 만들어준 영어공부법 #영어공부법 #영어회화 #영어스피킹 #영어공부",
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "views": 79510,
+   "daily": 3786,
+   "eng": 0.8,
+   "perf": 1.93,
+   "bucket": "1~4분",
+   "age": 21,
+   "kws": [
+    "영어 공부법",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "QA1pVZ6L3bs",
+   "title": "GOOD NEIGHBOR ✅ VS BAD NEIGHBOR! 🏡😱 | Slow English Listening Story for Beginners",
+   "channel": "Easy English Land",
+   "views": 74145,
+   "daily": 37072,
+   "eng": 0.39,
+   "perf": 56.6,
+   "bucket": "4~10분",
+   "age": 2,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "_VUMngGcI6U",
+   "title": "[1시간 30분 흘려듣기] 영어 대답 40문장이면 충분합니다. 60대도 질문에 바로 대답 나와요",
+   "channel": "들려야 말하는 영어",
+   "views": 71807,
+   "daily": 6528,
+   "eng": 1.36,
+   "perf": 4.76,
+   "bucket": "20분+",
+   "age": 11,
+   "kws": [
+    "영어",
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "cJ7nxX0T0LA",
+   "title": "스폰지밥으로 배우는 영어 | 왕초보 리스닝 & 스피킹 [소리튠 쉐도잉]",
+   "channel": "주아쌤_소리튠영어",
+   "views": 71485,
+   "daily": 2859,
+   "eng": 1.1,
+   "perf": 0.08,
+   "bucket": "20분+",
+   "age": 25,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "YCJGFQ9Pz9Y",
+   "title": "필수 여행영어 150문장 | 해외 가기 전 꼭 보고 가세요! | 공항, 비행기, 입국심사, 교통 호텔, 식당, 쇼핑, 위급상황",
+   "channel": "왕초보 영어학교",
+   "views": 67514,
+   "daily": 2597,
+   "eng": 1.05,
+   "perf": 2.21,
+   "bucket": "20분+",
+   "age": 26,
+   "kws": [
+    "영어",
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "jPRPe7oNfSE",
+   "title": "🍂 딱! 이맘때 쓰는 가을 날씨 찐 원어민 영어 표현 #영어회화 #여행영어",
+   "channel": "매일영어Study English",
+   "views": 64944,
+   "daily": 4059,
+   "eng": 5.01,
+   "perf": 0.95,
+   "bucket": "1~4분",
+   "age": 16,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "RWR_3X0Iw_k",
+   "title": "\"아.. 커피 한잔하면 딱 좋겠다.\" 영어로? #영어회화 #영어공부",
+   "channel": "매일영어Study English",
+   "views": 64398,
+   "daily": 7155,
+   "eng": 4.92,
+   "perf": 0.94,
+   "bucket": "1~4분",
+   "age": 9,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "j15UUavPNf4",
+   "title": "[메가스터디] 영어 윤예은쌤 -[2028 OT강좌] 1등급이 '1분 만에' 주제 푸는법",
+   "channel": "윤글리시",
+   "views": 63503,
+   "daily": 2352,
+   "eng": 1.01,
+   "perf": 6.72,
+   "bucket": "20분+",
+   "age": 27,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "VygG3FYEXFU",
+   "title": "“이것만 따라해도 재수 안 합니다” 수능날 최고 성적을 위한 마지막 30일 루틴",
+   "channel": "꾸준로그",
+   "views": 57681,
+   "daily": 1989,
+   "eng": 0.32,
+   "perf": 0.74,
+   "bucket": "10~20분",
+   "age": 29,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "ov5kAeU9pdA",
+   "title": "초보라면 무조건 알아야하는 영어 회화 문장 30개 정리 _ 사용 횟수 압도적 1위 문장 10강",
+   "channel": "친절한 대학",
+   "views": 55956,
+   "daily": 2945,
+   "eng": 2.09,
+   "perf": 0.05,
+   "bucket": "20분+",
+   "age": 19,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "FD2U3rm3q8o",
+   "title": "아이엘츠독학 스피킹 526문장 외우고 깔끔하게 7점받자! 시험관이 7점 8점주는 콜로케이션, 문장구조, 주제별표현을 만능문장으로 해결하세요.(클로이 인출훈련스터디)",
+   "channel": "클로이 아이엘츠 독학졸업",
+   "views": 55815,
+   "daily": 2537,
+   "eng": 0.91,
+   "perf": 20.6,
+   "bucket": "4~10분",
+   "age": 22,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "LHZrENoPUTc",
+   "title": "영어 회화 3개월 만에 영어 입 트이는 공부법｜원어민처럼 말하는 영어 덩어리 표현 훈련법 ㅣ 영어듣기 영어말하기 영어독학 (업데이트 버전)",
+   "channel": "영어 루틴 쌤",
+   "views": 55199,
+   "daily": 3247,
+   "eng": 0.73,
+   "perf": 0.48,
+   "bucket": "10~20분",
+   "age": 17,
+   "kws": [
+    "영어 공부법",
+    "영어 스피킹",
+    "영어 독학",
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "k-8dvqXJmSs",
+   "title": "왕초보 필수 영어 단어 / 쉽게 읽는 법 / 기초 파닉스",
+   "channel": "본즈 기초 영어",
+   "views": 54798,
+   "daily": 3653,
+   "eng": 2.43,
+   "perf": 0.19,
+   "bucket": "20분+",
+   "age": 15,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "MAbOQeRhtGI",
+   "title": "영어 기초 없어도 됩니다. 패턴을 알면 말은 금방 트입니다.",
+   "channel": "체인지스피킹",
+   "views": 54066,
+   "daily": 2163,
+   "eng": 1.93,
+   "perf": 0.36,
+   "bucket": "20분+",
+   "age": 25,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "_hueYOvjAtc",
+   "title": "비싼 강의 들어도 이걸 알려주는 사람 없어요. 독학 영어 실력 높이는 4가지 법칙",
+   "channel": "정원밖",
+   "views": 50625,
+   "daily": 1875,
+   "eng": 1.0,
+   "perf": 46.02,
+   "bucket": "4~10분",
+   "age": 27,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "Y91i2nqvHPo",
+   "title": "일주일 개과천선 vlog | 영어스피킹•비우기실천•집밥•독서•홈트🏋️",
+   "channel": "MIYUT미윳",
+   "views": 48562,
+   "daily": 3469,
+   "eng": 1.1,
+   "perf": 0.17,
+   "bucket": "20분+",
+   "age": 14,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "fz479rXO49s",
+   "title": "\"내 생각엔 말이야~\" I think 말고 찐 원어민 패턴 #영어회화 #영어공부",
+   "channel": "매일영어Study English",
+   "views": 48323,
+   "daily": 4832,
+   "eng": 5.25,
+   "perf": 0.7,
+   "bucket": "1~4분",
+   "age": 10,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "2a-eX90v_lU",
+   "title": "\"내 생각엔~\" I think 말고 조심스러운 원어민 찐 패턴 #영어회화 #영어공부",
+   "channel": "매일영어Study English",
+   "views": 47910,
+   "daily": 7985,
+   "eng": 5.57,
+   "perf": 0.7,
+   "bucket": "1~4분",
+   "age": 6,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "82HS7XTpQaQ",
+   "title": "리스닝 실력 쑥쑥 UP 영어 뉴스 쉐도잉 I 면접장에 아이스 커피 들고 온다면?",
+   "channel": "프렌들리 영어",
+   "views": 47479,
+   "daily": 2499,
+   "eng": 1.5,
+   "perf": 0.46,
+   "bucket": "10~20분",
+   "age": 19,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "7FlS5t2EHkg",
+   "title": "여러분이 알고 싶은 한국 이름 영어 스펠링이나 발음 설명 법, 댓글로 남겨주세요! #영어 #한국어",
+   "channel": "리쿠톡",
+   "views": 46723,
+   "daily": 5191,
+   "eng": 2.42,
+   "perf": 0.26,
+   "bucket": "1~4분",
+   "age": 9,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "t5aGEEwyzQ8",
+   "title": "[무조건 한등급은 올린다]27수능 영어 찍기특강(신규 트렌드 완전 반영!)",
+   "channel": "수능박사 한의대생 해서",
+   "views": 45753,
+   "daily": 11438,
+   "eng": 7.44,
+   "perf": 3.84,
+   "bucket": "20분+",
+   "age": 4,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "oRLPksmMNcI",
+   "title": "들었을 뿐인데 영어가 유창해지는 라이즈 앤톤 영어 팟캐스트 | 찐 원어민 회화 표현 배워가세요!",
+   "channel": "주아쌤_소리튠영어",
+   "views": 45719,
+   "daily": 11430,
+   "eng": 1.34,
+   "perf": 0.05,
+   "bucket": "10~20분",
+   "age": 4,
+   "kws": [
+    "영어 스피킹",
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "m7NtVfSylXs",
+   "title": "[중고급] 영어 귀 뚫리는 긴 문장 듣기! | 60문장 통합본 (#5~8) | 해석하지 말고 이렇게 들으세요!",
+   "channel": "Jim's Language TV",
+   "views": 44746,
+   "daily": 1945,
+   "eng": 1.01,
+   "perf": 0.22,
+   "bucket": "20분+",
+   "age": 23,
+   "kws": [
+    "영어회화",
+    "영어 듣기",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "yiQ5KQMDvuY",
+   "title": "긴 영어가 안 들린다면? 해석하지 말고 이렇게 들으세요.ㅣ미드/ 영화 최다 출현 50문장",
+   "channel": "주아쌤_소리튠영어",
+   "views": 43738,
+   "daily": 3976,
+   "eng": 1.44,
+   "perf": 0.05,
+   "bucket": "20분+",
+   "age": 11,
+   "kws": [
+    "영어",
+    "영어회화",
+    "영어 스피킹",
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "x1aqqroz0c0",
+   "title": "영어 원서 수십 권 읽어도 영어로 말 못하는 이유｜30년 영어 전문가의 원서 공부법",
+   "channel": "로렌쌤_ 누구나 영어를 모국어처럼",
+   "views": 42987,
+   "daily": 2529,
+   "eng": 0.29,
+   "perf": 5.28,
+   "bucket": "20분+",
+   "age": 17,
+   "kws": [
+    "영어 독학",
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "vni9RSkW0uk",
+   "title": "토익시험 전 LC 벼락치기⬆️토익 리스닝 빈출문장 듣기",
+   "channel": "아무튼영어 토익",
+   "views": 41711,
+   "daily": 5959,
+   "eng": 1.39,
+   "perf": 0.2,
+   "bucket": "20분+",
+   "age": 7,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "Di_W8U-4HFQ",
+   "title": "작년에 점수 올랐다 연락만 100건 받음 (feat. 영어 위기탈출넘버원)",
+   "channel": "빡쌤",
+   "views": 39674,
+   "daily": 19837,
+   "eng": 0.22,
+   "perf": 0.46,
+   "bucket": "10~20분",
+   "age": 2,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "kX3eHermGhM",
+   "title": "어려운 단어 그만 외우세요. 진짜 쉽게 영어로 말하는 비법을 공개합니다.",
+   "channel": "체인지스피킹",
+   "views": 38404,
+   "daily": 2021,
+   "eng": 2.24,
+   "perf": 0.25,
+   "bucket": "20분+",
+   "age": 19,
+   "kws": [
+    "영어 스피킹",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "rvq4bOni6KY",
+   "title": "영어로 길게 말하기, 한 달 동안 이렇게 연습했어요 | 영어를 길게 뱉어내는 실전 스피킹 훈련법",
+   "channel": "meji 미지",
+   "views": 37966,
+   "daily": 1309,
+   "eng": 1.45,
+   "perf": 2.97,
+   "bucket": "4~10분",
+   "age": 29,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "kinG9f09_g4",
+   "title": "영어 문법 어려운 분들은 꼭 보세요",
+   "channel": "어셔어학원 _ TV USHER",
+   "views": 36822,
+   "daily": 1674,
+   "eng": 0.02,
+   "perf": 28.32,
+   "bucket": "1~4분",
+   "age": 22,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "t78Nxygr6kQ",
+   "title": "영어를 한국어처럼 듣는 가장 빠른 방법ㅣ최고의 리스닝 공부법",
+   "channel": "주아쌤_소리튠영어",
+   "views": 35481,
+   "daily": 1867,
+   "eng": 0.9,
+   "perf": 0.04,
+   "bucket": "10~20분",
+   "age": 19,
+   "kws": [
+    "영어회화",
+    "영어 공부법",
+    "영어 스피킹",
+    "영어 듣기",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "gIwV8aPHIqQ",
+   "title": "영어 6년 해도 입이 안 떨어지는 이유 | 학교 1년치 = 3주",
+   "channel": "어셔어학원 _ TV USHER",
+   "views": 35477,
+   "daily": 3548,
+   "eng": 0.03,
+   "perf": 27.29,
+   "bucket": "1~4분",
+   "age": 10,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "5HBR3LKJWwY",
+   "title": "영어공부방법 그만 찾고 기초만 해보세요. 회화는 정말 생각보다 쉬워요.",
+   "channel": "잉글리스트",
+   "views": 34745,
+   "daily": 8686,
+   "eng": 2.56,
+   "perf": 0.09,
+   "bucket": "20분+",
+   "age": 4,
+   "kws": [
+    "영어",
+    "영어회화"
+   ]
+  },
+  {
+   "id": "vesL_OHwaHM",
+   "title": "영어가 잘 들리는 발음규칙 공개합니다",
+   "channel": "노마쌤 - 즐거운 영어 습관",
+   "views": 34179,
+   "daily": 17090,
+   "eng": 2.21,
+   "perf": 0.23,
+   "bucket": "1~4분",
+   "age": 2,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "z1rxgc8PE_U",
+   "title": "\"이건 통째로 외워두세요\" 일상에서 두고두고 써먹는 영어 표현 6가지 ‼️",
+   "channel": "가브리엘의 원어민 영어",
+   "views": 33722,
+   "daily": 4215,
+   "eng": 1.06,
+   "perf": 0.33,
+   "bucket": "4~10분",
+   "age": 8,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "mBAy0Aw6twc",
+   "title": "왕초보 영어회화 100문장｜은행·미용실·동네에서 볼일 볼 때 꼭 쓰는 생활영어 (한글 발음 포함)",
+   "channel": "말트영어(기초&여행&생활영어)",
+   "views": 33399,
+   "daily": 2569,
+   "eng": 1.26,
+   "perf": 0.21,
+   "bucket": "20분+",
+   "age": 13,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "tL92GZyQsxs",
+   "title": "영어 귀 뚫는 3가지 규칙, OO를 모르면 100번을 들어도 안 들립니다 (미국 뉴스 쉐도잉) #영어리스닝",
+   "channel": "잉핏 English",
+   "views": 33377,
+   "daily": 3709,
+   "eng": 1.07,
+   "perf": 1.41,
+   "bucket": "20분+",
+   "age": 9,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "FO684qZViyY",
+   "title": "왕초보 영어회화 100문장｜살면서 꼭 필요한 순간, 이 한마디면 걱정 없어요 (한글 발음 포함)",
+   "channel": "말트영어(기초&여행&생활영어)",
+   "views": 33129,
+   "daily": 1656,
+   "eng": 1.39,
+   "perf": 0.21,
+   "bucket": "20분+",
+   "age": 20,
+   "kws": [
+    "영어회화",
+    "영어 스피킹",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "8s1wnCsQ5r4",
+   "title": "영어 필수 시대!! 기초 영어를 알려드립니다 / 필수 영어 단어 읽는 법",
+   "channel": "본즈 기초 영어",
+   "views": 31962,
+   "daily": 1102,
+   "eng": 2.98,
+   "perf": 0.11,
+   "bucket": "20분+",
+   "age": 29,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "5QYpWTByNJc",
+   "title": "286.[🇺🇸영어회화 100문장]  이것만은 꼭 평생쓰는 영어 | 영어회화100일의기적 | 생활영어 📌 PDF파일 무료제공",
+   "channel": "10분영어",
+   "views": 31474,
+   "daily": 1368,
+   "eng": 1.46,
+   "perf": 0.28,
+   "bucket": "20분+",
+   "age": 23,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "m9McxH2cqlE",
+   "title": "기초 영어 작문 / 영어 회화 / 영어 문법 / 쉽게 배웁니다 / Bones English",
+   "channel": "본즈 영어",
+   "views": 30231,
+   "daily": 1778,
+   "eng": 2.21,
+   "perf": 0.12,
+   "bucket": "20분+",
+   "age": 17,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "DLLjtU9nw2E",
+   "title": "영어책 100권 읽을 바엔 차라리 이 영상 1개 보세요",
+   "channel": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "views": 30108,
+   "daily": 3011,
+   "eng": 1.74,
+   "perf": 0.05,
+   "bucket": "10~20분",
+   "age": 10,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "mRzVgD-alXw",
+   "title": "English Rules",
+   "channel": "Madhumita Ghosh",
+   "views": 29123,
+   "daily": 1618,
+   "eng": 1.93,
+   "perf": 0.03,
+   "bucket": "1~4분",
+   "age": 18,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "1O3AoUKEJXg",
+   "title": "내 나이가 몇이든, 영어로 빨리 말하고 싶으면 \"이 방법\"이 무조건 통합니다",
+   "channel": "180도 스피킹",
+   "views": 29080,
+   "daily": 1077,
+   "eng": 2.48,
+   "perf": 0.28,
+   "bucket": "20분+",
+   "age": 27,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "cbZBcQD8XhY",
+   "title": "\"나 ~잘 못해\" 단계별 원어민 찐표현 3가지! (소질 없을 때)😒 #영어회화 #영어공부",
+   "channel": "매일영어Study English",
+   "views": 28950,
+   "daily": 1072,
+   "eng": 3.15,
+   "perf": 0.42,
+   "bucket": "1~4분",
+   "age": 27,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "YAP7LcU9pNc",
+   "title": "왕초보 영어회화 기초 100문장 따라 말하기｜한 마디씩 늘려 말하면 입에 붙는 왕초보·시니어 생활영어 (한글 발음 포함)",
+   "channel": "말트영어(기초&여행&생활영어)",
+   "views": 28886,
+   "daily": 1070,
+   "eng": 1.63,
+   "perf": 0.18,
+   "bucket": "20분+",
+   "age": 27,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "0bIuxFpks68",
+   "title": "\"I feel like pizza.\" 무슨 뜻일까? 원어민이 밥먹듯 쓰는 2가지 표현💡| feel~, feel like~",
+   "channel": "가브리엘의 원어민 영어",
+   "views": 28614,
+   "daily": 1590,
+   "eng": 2.23,
+   "perf": 0.28,
+   "bucket": "10~20분",
+   "age": 18,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "iajF7fn1zGk",
+   "title": "\"우리가 친구라고 하긴 좀 그렇지\" 영어로? #영어회화 #영어공부",
+   "channel": "매일영어Study English",
+   "views": 27475,
+   "daily": 5495,
+   "eng": 6.18,
+   "perf": 0.4,
+   "bucket": "1~4분",
+   "age": 5,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "8x7jpLe9h7o",
+   "title": "영어가 들리기 시작해요 🎧 초보자를 위한 짧은 영어 이야기 ‘택시 기사의 하루’",
+   "channel": "듣고배우는영어",
+   "views": 26844,
+   "daily": 2440,
+   "eng": 1.29,
+   "perf": 0.13,
+   "bucket": "20분+",
+   "age": 11,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "OYT-XQ2jVf8",
+   "title": "285.[🇺🇸영어회화 100문장] 모르면 손해 알짜 영어만 모았어요 | 영어회화100일의기적 | 생활영어 📌 PDF파일 무료제공",
+   "channel": "10분영어",
+   "views": 25681,
+   "daily": 988,
+   "eng": 1.28,
+   "perf": 0.23,
+   "bucket": "20분+",
+   "age": 26,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "F-pVZ7pLXcc",
+   "title": "영어로 소통하는 데 가장 기본이 되는 최우선 영어패턴 30개",
+   "channel": "180도 스피킹",
+   "views": 25335,
+   "daily": 2534,
+   "eng": 2.66,
+   "perf": 0.24,
+   "bucket": "20분+",
+   "age": 10,
+   "kws": [
+    "영어",
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "O5SJnWCD224",
+   "title": "291.[🇺🇸영어회화 100문장] 영어는 짧게 실력은 확실하게 | 영어회화100일의기적 | 생활영어 📌 PDF파일 무료제공",
+   "channel": "10분영어",
+   "views": 25106,
+   "daily": 5021,
+   "eng": 1.28,
+   "perf": 0.22,
+   "bucket": "20분+",
+   "age": 5,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "QMIxLqVgEGo",
+   "title": "[중급] 영어 잘하고 싶다면? 이대로 따라만 하세요! | 영어 길게 말하기 #23 | 영어 입 트이는 스피킹 연습",
+   "channel": "Jim's Language TV",
+   "views": 24764,
+   "daily": 1303,
+   "eng": 1.17,
+   "perf": 0.12,
+   "bucket": "20분+",
+   "age": 19,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "JybFVoDVuDM",
+   "title": "일상 어디서든 통하는 “I’m about to” 핵심 9문장. 그냥 통째로 외우세요!",
+   "channel": "김재우의 영어회화",
+   "views": 24569,
+   "daily": 2457,
+   "eng": 1.11,
+   "perf": 0.33,
+   "bucket": "10~20분",
+   "age": 10,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "L07OUHX-1MQ",
+   "title": "[중급] 더 이상 짧은 문장은 그만! 긴 문장도 술술 말하는 가장 쉬운 방법 | 영어 길게 말하기 #22",
+   "channel": "Jim's Language TV",
+   "views": 24073,
+   "daily": 926,
+   "eng": 1.06,
+   "perf": 0.12,
+   "bucket": "20분+",
+   "age": 26,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "BQesz20_IYg",
+   "title": "comfortable, 네 음절로 읽고 있나요? 60초 영어발음 치트키",
+   "channel": "날라리데이브!",
+   "views": 23236,
+   "daily": 7745,
+   "eng": 2.19,
+   "perf": 0.08,
+   "bucket": "1~4분",
+   "age": 3,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "OZvtBdq4waw",
+   "title": "영어회화 패턴 1시간 몰아보기 | 왕초보 생활영어 총정리",
+   "channel": "밀가루쌤영어",
+   "views": 23110,
+   "daily": 2101,
+   "eng": 1.93,
+   "perf": 0.36,
+   "bucket": "20분+",
+   "age": 11,
+   "kws": [
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "SIH36m84_S4",
+   "title": "영작&회화&문법 / 모든 것을 한 강의에 담았습니다 / Bones English",
+   "channel": "본즈 영어",
+   "views": 22107,
+   "daily": 1579,
+   "eng": 3.55,
+   "perf": 0.09,
+   "bucket": "20분+",
+   "age": 14,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "UUQRd5krzXY",
+   "title": "영어 실력 확실히 좋아집니다!! 기초 영어 회화 / 영작 / Bones English",
+   "channel": "본즈 영어",
+   "views": 21104,
+   "daily": 4221,
+   "eng": 4.63,
+   "perf": 0.08,
+   "bucket": "20분+",
+   "age": 5,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "2WeMBA6tcXg",
+   "title": "평범한 30살이 유학없이 영어입터진 매일 5분 루틴 | 국내파통역사의 #영어회화 #영어스피킹  아웃풋 영어공부법 #영어공부법 #영어공부",
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "views": 20485,
+   "daily": 1205,
+   "eng": 1.15,
+   "perf": 0.5,
+   "bucket": "1~4분",
+   "age": 17,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "gEv3Gaqu87I",
+   "title": "1초 영어 공식 l 일단 빠르게 말하면 알아서 완성되요",
+   "channel": "지름길영어 - 영어가 늦었을 땐 빠른 길로",
+   "views": 20417,
+   "daily": 1701,
+   "eng": 2.02,
+   "perf": 0.04,
+   "bucket": "1~4분",
+   "age": 12,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "Hl3ulezo-X0",
+   "title": "듣기 연습할 때 꼭 기억해야 할 것! #영어 #영어듣기",
+   "channel": "리쿠톡",
+   "views": 20172,
+   "daily": 1552,
+   "eng": 3.47,
+   "perf": 0.11,
+   "bucket": "1~4분",
+   "age": 13,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "_1UkAeCZ80Q",
+   "title": "\"기대돼요\"를 expect로 말하면 원어민이 이렇게 알아들어요ㅣ어색한 영어 TOP10",
+   "channel": "가브리엘의 원어민 영어",
+   "views": 20105,
+   "daily": 20105,
+   "eng": 1.52,
+   "perf": 0.2,
+   "bucket": "10~20분",
+   "age": 1,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "D-y2spCXxX8",
+   "title": "영어로 말할 수 있습니다!! / 쉬운 영어로 배우는 영어 회화 / Bones English",
+   "channel": "본즈 영어",
+   "views": 19243,
+   "daily": 6414,
+   "eng": 3.09,
+   "perf": 0.07,
+   "bucket": "20분+",
+   "age": 3,
+   "kws": [
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "6qmI0AW03-k",
+   "title": "대치동 잘하는 아이를 그대로 비학군지에서 따라하면 안 되는 이유, 영어 1등급은 ‘진도’가 아닙니다 | 그들은 어떻게 영어 1등급을 만드나_백시영·남기정 원장",
+   "channel": "국풀TV",
+   "views": 18703,
+   "daily": 9352,
+   "eng": 1.17,
+   "perf": 0.51,
+   "bucket": "20분+",
+   "age": 2,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "QMpqr7G-Ooo",
+   "title": "292.[🇺🇸영어회화 100문장] 영어가 터져요 입이 먼저 반응합니다 | 영어회화100일의기적 | 생활영어 📌 PDF파일 무료제공",
+   "channel": "10분영어",
+   "views": 18595,
+   "daily": 9298,
+   "eng": 1.46,
+   "perf": 0.16,
+   "bucket": "20분+",
+   "age": 2,
+   "kws": [
+    "영어",
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "_8M-QyTKtXg",
+   "title": "메가스터디 영어강사가 알려주는 수능 영어 공부법 [메기스터디x메가스터디 콜라보]",
+   "channel": "중년이상준",
+   "views": 18544,
+   "daily": 9272,
+   "eng": 1.01,
+   "perf": 0.07,
+   "bucket": "20분+",
+   "age": 2,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "LNbvn6Z3z-0",
+   "title": "[중급] 영어 입 트이는 속도가 완전히 달라집니다 | 영어 길게 말하기 #24 | 긴 문장 만드는 스피킹 루틴",
+   "channel": "Jim's Language TV",
+   "views": 17921,
+   "daily": 3584,
+   "eng": 1.13,
+   "perf": 0.09,
+   "bucket": "20분+",
+   "age": 5,
+   "kws": [
+    "영어회화",
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "9-QYm18lqHM",
+   "title": "원어민이 밥 먹듯 쓰는 영어표현 45개, 초보라면 이것부터 외우세요.",
+   "channel": "랭스쿨 영어",
+   "views": 17778,
+   "daily": 1046,
+   "eng": 3.8,
+   "perf": 6.17,
+   "bucket": "20분+",
+   "age": 17,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "U2U6aMJ1r7Q",
+   "title": "289.[🇺🇸영어회화 100문장] 영어가 안 터질때 이 100개가 정답입니다 | 영어회화100일의기적 | 생활영어 📌 PDF파일 무료제공",
+   "channel": "10분영어",
+   "views": 17295,
+   "daily": 1441,
+   "eng": 1.84,
+   "perf": 0.15,
+   "bucket": "20분+",
+   "age": 12,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "XQPZZ_RbHdw",
+   "title": "D-15 수능 영어 공부법",
+   "channel": "션티빙 SheanTving",
+   "views": 16824,
+   "daily": 1682,
+   "eng": 1.31,
+   "perf": 4.85,
+   "bucket": "1~4분",
+   "age": 10,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "nm0DgfJW6xA",
+   "title": "528 매일 10분 들었더니 영어가 술술 나와요. 영어 회화 대화 30문장 듣기",
+   "channel": "1일1영어",
+   "views": 16072,
+   "daily": 4018,
+   "eng": 1.46,
+   "perf": 0.09,
+   "bucket": "10~20분",
+   "age": 4,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "QL7FnsSKF3w",
+   "title": "영어 독학 3년차, 퇴근 후 1시간 반 루틴 ✏️ | 성인 회화, AI, 화상영어",
+   "channel": "다프네 Daphne",
+   "views": 15673,
+   "daily": 7836,
+   "eng": 0.06,
+   "perf": 1.39,
+   "bucket": "10~20분",
+   "age": 2,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "sEpQFE89poo",
+   "title": "왕초보도 놀라울 정도로 느는 최고의 영어 공부법 | 급한데 영어 기초가 부족하다면 꼭 클릭!",
+   "channel": "키위엔 영어",
+   "views": 15637,
+   "daily": 3909,
+   "eng": 1.87,
+   "perf": 0.03,
+   "bucket": "10~20분",
+   "age": 4,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "uIEZzFjDWHI",
+   "title": "[실생활 영어 듣기] 나..회사 그만둘까? 친구의 퇴사 고민, 영어로 듣기 🥲",
+   "channel": "Starting Today",
+   "views": 15286,
+   "daily": 588,
+   "eng": 0.79,
+   "perf": 3.42,
+   "bucket": "20분+",
+   "age": 26,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "oDKHqU-iwkY",
+   "title": "영어 연음, 이 규칙 5개만 알면 안 들리던 말이 들리기 시작합니다",
+   "channel": "가브리엘의 원어민 영어",
+   "views": 14892,
+   "daily": 7446,
+   "eng": 2.52,
+   "perf": 0.15,
+   "bucket": "10~20분",
+   "age": 2,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "7W__qDS7sx0",
+   "title": "영어로 “I have dog” 했다가 생기는 일 #영어회화 #영어문법 #영어관사 #생활영어 #영어공부 #쇼츠영어 #영어꿀팁 #원어민영어",
+   "channel": "재미개미TV",
+   "views": 14831,
+   "daily": 3708,
+   "eng": 2.13,
+   "perf": 5.37,
+   "bucket": "1~4분",
+   "age": 4,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "gIa0zM4xRWY",
+   "title": "Contact me는 너무 딱딱해요! 원어민이 쓰는 연락 표현 3가지",
+   "channel": "가브리엘의 원어민 영어",
+   "views": 14727,
+   "daily": 1339,
+   "eng": 1.95,
+   "perf": 0.15,
+   "bucket": "4~10분",
+   "age": 11,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "xSoBmH6ybIw",
+   "title": "영어 왕초보도 맨날 하는 말부터 영어로 바꿔말하세요. 그래야 영어가 늘어요!",
+   "channel": "180도 스피킹",
+   "views": 14233,
+   "daily": 3558,
+   "eng": 2.65,
+   "perf": 0.14,
+   "bucket": "20분+",
+   "age": 4,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "hazIl4PA5Wk",
+   "title": "[2탄] 젠슨 황 3번째 불륜, 영어 기사 속 핵심 표현",
+   "channel": "Aran TV",
+   "views": 14205,
+   "daily": 14205,
+   "eng": 1.59,
+   "perf": 0.02,
+   "bucket": "1~4분",
+   "age": 1,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "9DCk0RzNEWE",
+   "title": "\"이렇게 읽는 거였어?!😳\" 한국인이 자주 실수하는 영어 발음 12가지 모음",
+   "channel": "가브리엘의 원어민 영어",
+   "views": 12934,
+   "daily": 2587,
+   "eng": 1.46,
+   "perf": 0.13,
+   "bucket": "4~10분",
+   "age": 5,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "0_yyV_MqqAQ",
+   "title": "왕초보 영어, 하루 딱 30분씩만 해봅시다 | 실리콘밸리 출신 딸이 60대 엄마에게 가르친 공부 순서 5단계",
+   "channel": "김원샷의 원싸이트",
+   "views": 12582,
+   "daily": 6291,
+   "eng": 1.3,
+   "perf": 0.32,
+   "bucket": "20분+",
+   "age": 2,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "GDsFolOwGrM",
+   "title": "어차피 알려줘도 99%는 제대로 안해요 | 독학으로 영어공부 잘하거 싶다면 꼭 보세요(공부순서+방법) #영어회화 #영어공부법 #영어공부",
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "views": 12303,
+   "daily": 2461,
+   "eng": 1.32,
+   "perf": 0.3,
+   "bucket": "1~4분",
+   "age": 5,
+   "kws": [
+    "영어 공부법",
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "idJIVuuQtKU",
+   "title": "수능영어 긴문장 다 뚫립니다! [2027ver. 지우개해석법]",
+   "channel": "지안라이트",
+   "views": 12116,
+   "daily": 865,
+   "eng": 3.34,
+   "perf": 0.3,
+   "bucket": "20분+",
+   "age": 14,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "xaqLv_gxfAI",
+   "title": "이거였구나! 수능영어 노베가 최소 공부로 3등급 가는 가장 빠른 방법",
+   "channel": "수능영어 닥터",
+   "views": 11738,
+   "daily": 618,
+   "eng": 3.83,
+   "perf": 6.9,
+   "bucket": "4~10분",
+   "age": 19,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "b1q9ugVwKgw",
+   "title": "영어의 자신감!! 기초 문법과 영어 말하기 / Bones English",
+   "channel": "본즈 영어",
+   "views": 11018,
+   "daily": 11018,
+   "eng": 4.39,
+   "perf": 0.04,
+   "bucket": "20분+",
+   "age": 1,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "WVxNpSyQmQ8",
+   "title": "영어가 들리기 시작해요 🎧 초보자를 위한 쉬운 영어 대화 ‘푸드트럭에서 주문하기’",
+   "channel": "듣고배우는영어",
+   "views": 10359,
+   "daily": 10359,
+   "eng": 1.54,
+   "perf": 0.05,
+   "bucket": "20분+",
+   "age": 1,
+   "kws": [
+    "영어",
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "vIN3mdW2YRg",
+   "title": "[26분 영어 회화 듣기] 그냥 틀어두면 영어가 귀에 꽂혀요 (영어 팟캐스트 흘려듣기)",
+   "channel": "영어식 사고ㅣ원어민 팟캐스트",
+   "views": 9934,
+   "daily": 4967,
+   "eng": 1.05,
+   "perf": 0.73,
+   "bucket": "20분+",
+   "age": 2,
+   "kws": [
+    "영어회화",
+    "영어 스피킹",
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "WwbZ6syi3-k",
+   "title": "526 하루에 딱 10분만 들어도 영어할 수 있어요. 영어회화 대화30문장 듣기",
+   "channel": "1일1영어",
+   "views": 9350,
+   "daily": 1039,
+   "eng": 1.91,
+   "perf": 0.05,
+   "bucket": "10~20분",
+   "age": 9,
+   "kws": [
+    "영어회화"
+   ]
+  },
+  {
+   "id": "zAs5kxud574",
+   "title": "[중급영어리스닝] AI 번역 시대, 영어 공부는 이제 필요없을까? 🎧🤖💬 CEFR B1(Intermediate)",
+   "channel": "영어 귀뚫기 : 리스닝 반복학습",
+   "views": 8936,
+   "daily": 638,
+   "eng": 0.85,
+   "perf": 0.87,
+   "bucket": "20분+",
+   "age": 14,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "XJuqZ2sXWUA",
+   "title": "529 외우지 마세요. 듣다보면 외워져요. 영어회화 대화 30문장 듣기",
+   "channel": "1일1영어",
+   "views": 8856,
+   "daily": 4428,
+   "eng": 1.67,
+   "perf": 0.05,
+   "bucket": "10~20분",
+   "age": 2,
+   "kws": [
+    "영어",
+    "영어회화"
+   ]
+  },
+  {
+   "id": "jtuXMe-AaVo",
+   "title": "[중급영어리스닝] 운동 뭐부터 시작할까? : 리얼 운동 토크 🏃‍♂️⏰🔥 CEFR B1(Intermediate)",
+   "channel": "영어 귀뚫기 : 리스닝 반복학습",
+   "views": 8768,
+   "daily": 351,
+   "eng": 1.23,
+   "perf": 0.85,
+   "bucket": "20분+",
+   "age": 25,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "Aq8zgKGg614",
+   "title": "단풍구경 잘했어? #285| 일상영어 | 영어듣기 | 리스닝 | small talk | 스몰토크 | 쉽고짧은영어 | 생활영어 | 기초영어회화 | 상황영어",
+   "channel": "그레잇영어 Great English",
+   "views": 7930,
+   "daily": 661,
+   "eng": 1.13,
+   "perf": 0.22,
+   "bucket": "20분+",
+   "age": 12,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "1FXcyYttg8A",
+   "title": "난방을 켤까? 말까? #280| 일상영어 | 영어듣기 | 리스닝 | small talk | 스몰토크 | 쉽고짧은영어 | 생활영어 | 기초영어회화 | 상황영어",
+   "channel": "그레잇영어 Great English",
+   "views": 7295,
+   "daily": 304,
+   "eng": 0.96,
+   "perf": 0.2,
+   "bucket": "20분+",
+   "age": 24,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "Z5qkxeAQwaA",
+   "title": "왕초보 기초영어 100문장 듣기｜한국인이 제일 헷갈리는 현재완료, 시니어도 이것만 알면 영어가 확 늘어요 (퀴즈 포함·한글 발음)",
+   "channel": "말트영어(기초&여행&생활영어)",
+   "views": 6618,
+   "daily": 1103,
+   "eng": 2.4,
+   "perf": 0.04,
+   "bucket": "20분+",
+   "age": 6,
+   "kws": [
+    "영어",
+    "영어회화",
+    "영어 독학",
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "Gan8V2XsDlc",
+   "title": "‘이걸’ 모르니 영어를 10년해도 불편할 수밖에,, | 영어원서 혼자 읽다가 포기했다면 , 이 영상을 꼭 보세요! | 국내파통역사가 알려주는 '진짜 영어식사고'",
+   "channel": "만다블_국내파통역사의 영어공부법",
+   "views": 6541,
+   "daily": 6541,
+   "eng": 0.76,
+   "perf": 0.16,
+   "bucket": "20분+",
+   "age": 1,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "a70CiSoNn4U",
+   "title": "[중급영어리스닝] 감기 걸린 동료에게 이렇게 말해주세요 🌡️🤧💊 CEFR B1(Intermediate)",
+   "channel": "영어 귀뚫기 : 리스닝 반복학습",
+   "views": 5528,
+   "daily": 614,
+   "eng": 1.03,
+   "perf": 0.54,
+   "bucket": "20분+",
+   "age": 9,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "FnFTz_UPFOM",
+   "title": "호텔 룸서비스 시키기 #288| 일상영어 | 영어듣기 | 리스닝 | small talk | 스몰토크 | 쉽고짧은영어 | 생활영어 | 기초영어회화 | 상황영어",
+   "channel": "그레잇영어 Great English",
+   "views": 5296,
+   "daily": 1059,
+   "eng": 0.96,
+   "perf": 0.15,
+   "bucket": "20분+",
+   "age": 5,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "UFt1Izq44Bc",
+   "title": "632 패턴영어｜I owe you~ 영어회화 패턴 30문장｜통째로 외우세요｜평생 써먹는 영어｜영어로 말하려면｜이걸 알아야 됩니다｜원어민이 가장 패턴｜매일 듣고 따라하세요",
+   "channel": "영어할래요?",
+   "views": 3800,
+   "daily": 211,
+   "eng": 2.79,
+   "perf": 0.21,
+   "bucket": "20분+",
+   "age": 18,
+   "kws": [
+    "영어 스피킹"
+   ]
+  },
+  {
+   "id": "IRJUtLvQHdk",
+   "title": "[영어듣기 연습] 뉴욕 베이글의 비밀: 델리 주문 눈치게임부터 한국식 감성 카페 열풍까지 | 미국 일상 영어 팟캐스트 🎧",
+   "channel": "영어말하기-Speak English",
+   "views": 3504,
+   "daily": 3504,
+   "eng": 1.03,
+   "perf": 0.02,
+   "bucket": "20분+",
+   "age": 1,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "RJ68rO6Isbs",
+   "title": "수능d-6 , team08은 좋겠다.. 수능전에 나를 만나서.. 영어킬러 문장삽입 완벽 해결.[수능영어 푸는법 벼락치기]",
+   "channel": "영어강사YC",
+   "views": 3259,
+   "daily": 3259,
+   "eng": 3.62,
+   "perf": 0.3,
+   "bucket": "20분+",
+   "age": 1,
+   "kws": [
+    "영어"
+   ]
+  },
+  {
+   "id": "YRfJdE6uBS8",
+   "title": "혼자 하는 영어회화 공부에서 가장 중요한 건 | 초급 영어 독학",
+   "channel": "영어 왕초보 자책금지 프로젝트",
+   "views": 3221,
+   "daily": 134,
+   "eng": 1.24,
+   "perf": 0.12,
+   "bucket": "10~20분",
+   "age": 24,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "JYvuOxMyoIc",
+   "title": "5년째 하고있는 영어공부법",
+   "channel": "바리스타쿠",
+   "views": 2090,
+   "daily": 2090,
+   "eng": 0.72,
+   "perf": 0.51,
+   "bucket": "1~4분",
+   "age": 1,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "0U6MHoz_2Nc",
+   "title": "\"~후에\"를 말하는게 3가지나 있다고??   #영어 #영어문법 #영어기초 #영어독학 #영어공부 #초등영어 #중등영어",
+   "channel": "윤짱의 야매영어",
+   "views": 1734,
+   "daily": 69,
+   "eng": 2.94,
+   "perf": 6.0,
+   "bucket": "1~4분",
+   "age": 25,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "ZNZWlkI9guY",
+   "title": "'친한 척?pretending❌🙄 #영어회화 #원어민영어 #유용한영어표현",
+   "channel": "영어 키위새",
+   "views": 1557,
+   "daily": 1557,
+   "eng": 2.76,
+   "perf": 0.01,
+   "bucket": "1~4분",
+   "age": 1,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "xNbsgS5eAEE",
+   "title": "한국인이 쉽게 알기 어려운 원어민 표현 알려드립니다 # #영어회화 #유용한영어표현 #영어",
+   "channel": "쥬피터 쌤 Teacher Jupiter",
+   "views": 1435,
+   "daily": 1435,
+   "eng": 2.44,
+   "perf": 1.11,
+   "bucket": "1~4분",
+   "age": 1,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "nP8Jo7_nkLo",
+   "title": "2026년 10월 고3 모의고사 영어듣기",
+   "channel": "신개념 잉글리시",
+   "views": 1387,
+   "daily": 58,
+   "eng": 0.22,
+   "perf": 0.54,
+   "bucket": "20분+",
+   "age": 24,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "McgGZQvby8g",
+   "title": "Book 18: 접속사 - Chapter 3 #영어회화 #영어인강 #영어문법 #영어 #유용한영어표현 #영문법 #영어공부 #영어회화학원 #중등영어",
+   "channel": "테스영어",
+   "views": 1300,
+   "daily": 1300,
+   "eng": 1.38,
+   "perf": 4.92,
+   "bucket": "1~4분",
+   "age": 1,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "qjMQPLcpQpo",
+   "title": "느리지만 가장 빠른 지름길. 혼자서도 입이 트이는 영어 회화 독학법의 모든 것!!! 그냥 이렇게 하세요 [1탄]",
+   "channel": "내 영어 어디로 가는가",
+   "views": 1282,
+   "daily": 160,
+   "eng": 1.48,
+   "perf": 0.83,
+   "bucket": "10~20분",
+   "age": 8,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "1NA45f6b9v4",
+   "title": "2026년 10월 고3 모의고사 영어 듣기 1~17번 | 실제 음원 + 정답 바로 확인",
+   "channel": "100초 영어",
+   "views": 1196,
+   "daily": 48,
+   "eng": 0.42,
+   "perf": 0.07,
+   "bucket": "20분+",
+   "age": 25,
+   "kws": [
+    "영어 듣기"
+   ]
+  },
+  {
+   "id": "p7RrMXoX3qw",
+   "title": "I'm busy 말고 이렇게 말하세요! 원어민 영어 표현 3가지 #영어회화",
+   "channel": "JP 티키타카 영어",
+   "views": 1139,
+   "daily": 1139,
+   "eng": 2.02,
+   "perf": 0.54,
+   "bucket": "1~4분",
+   "age": 1,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "lEDshXQGP-A",
+   "title": "📌원어민 영어표현 몰아보기📌 영어 공부 해야 하는데.... 해야 하는데.....",
+   "channel": "데이빗쌤",
+   "views": 962,
+   "daily": 962,
+   "eng": 1.87,
+   "perf": 0.11,
+   "bucket": "20분+",
+   "age": 1,
+   "kws": [
+    "원어민 표현"
+   ]
+  },
+  {
+   "id": "F8_OTi8OX_4",
+   "title": "40대 영어 왕초보 스피킹 독학, 첫 AI 스피킹 코칭 결과는?ㅋㅋ｜1분 영어말하기 1일차",
+   "channel": "마흔의 뻔뻔한 영어 독학 | 나마공",
+   "views": 870,
+   "daily": 54,
+   "eng": 0.57,
+   "perf": 2.17,
+   "bucket": "10~20분",
+   "age": 16,
+   "kws": [
+    "영어 독학"
+   ]
+  },
+  {
+   "id": "SPIwkPo51dc",
+   "title": "그림으로 쉽게 외우기 발음기호 50개! | 영어발음기호 암기법 #영어발음기호표 암기하는방법",
+   "channel": "거꾸로 영어학습법 ㅣ 한글영어",
+   "views": 622,
+   "daily": 52,
+   "eng": 2.57,
+   "perf": 0.35,
+   "bucket": "1~4분",
+   "age": 12,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "jlyWeEwf0mM",
+   "title": "학교와 영어 학원이 영어문법에 집착하는 진짜 이유 (영어시간에 가르칠 게 없다고?)",
+   "channel": "거꾸로 영어학습법 ㅣ 한글영어",
+   "views": 480,
+   "daily": 18,
+   "eng": 1.46,
+   "perf": 0.27,
+   "bucket": "1~4분",
+   "age": 27,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "nmRkLWhVF3Y",
+   "title": "영어발음 잘하기 제76강:서두를 필요 없어요.",
+   "channel": "영어발음 잘하기",
+   "views": 392,
+   "daily": 33,
+   "eng": 3.32,
+   "perf": 0.23,
+   "bucket": "20분+",
+   "age": 12,
+   "kws": [
+    "영어 발음"
+   ]
+  },
+  {
+   "id": "qltdt3GZ6xc",
+   "title": "베이직 그래머 인 유즈 공부법 3일 완성 \" 그래머 인 유즈 강의 없이 포기하지 않고 끝내는 비결",
+   "channel": "거꾸로 영어학습법 ㅣ 한글영어",
+   "views": 368,
+   "daily": 15,
+   "eng": 0.82,
+   "perf": 0.2,
+   "bucket": "1~4분",
+   "age": 24,
+   "kws": [
+    "영어 공부법"
+   ]
+  },
+  {
+   "id": "xgcqqA-QDOQ",
+   "title": "⚡ 중등 영어 문법 | 문장 속 명사절, 한방에 정리!",
+   "channel": "오늘도은수쌤",
+   "views": 345,
+   "daily": 13,
+   "eng": 2.61,
+   "perf": 0.38,
+   "bucket": "1~4분",
+   "age": 26,
+   "kws": [
+    "영어 문법"
+   ]
+  },
+  {
+   "id": "Gy8nCPJYrl4",
+   "title": "3분 만에 이해하는 영어문법의 90% | OutPut English EP.06 #영어기초 #영어회화 #영문법 #어법 #영어독학 #OPIc #스피킹 #문법기초 #문장확장 #문법개념",
+   "channel": "OutPut English⏐아웃풋 잉글리시",
+   "views": 239,
+   "daily": 27,
+   "eng": 1.26,
+   "perf": 21.73,
+   "bucket": "1~4분",
+   "age": 9,
+   "kws": [
+    "영어 문법"
+   ]
+  }
+ ]
+}
